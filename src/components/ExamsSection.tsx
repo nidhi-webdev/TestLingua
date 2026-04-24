@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { BookOpen, Globe, Award } from "lucide-react";
 
 interface ExamCardProps {
@@ -6,6 +5,8 @@ interface ExamCardProps {
   description: string;
   color: string;
   bgColor: string;
+  cardTint: string;
+  buttonColor: string;
   icon: React.ElementType;
   href: string;
   stats: {
@@ -19,42 +20,46 @@ const ExamCard: React.FC<ExamCardProps> = ({
   description,
   color,
   bgColor,
+  cardTint,
+  buttonColor,
   icon: Icon,
   href,
   stats,
 }) => {
   return (
-    <Link href={href}>
-      <div
-        className={`group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border-t-4 ${color}`}
-      >
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">{title}</h3>
-            <p className="text-gray-600 text-sm">{description}</p>
-          </div>
-          <div className={`w-12 h-12 rounded-full ${bgColor} flex items-center justify-center`}>
-            <Icon className="text-white" size={24} />
-          </div>
+    <div
+      className={`group relative rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 border-t-4 animate-fade-up ${color} ${cardTint}`}
+    >
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">{title}</h3>
+          <p className="text-gray-600 text-sm">{description}</p>
         </div>
-
-        <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-200">
-          <div>
-            <p className="text-gray-500 text-xs font-semibold">PRACTICE TESTS</p>
-            <p className="text-lg font-bold text-gray-900 mt-1">{stats.tests}</p>
-          </div>
-          <div>
-            <p className="text-gray-500 text-xs font-semibold">DURATION</p>
-            <p className="text-lg font-bold text-gray-900 mt-1">{stats.duration}</p>
-          </div>
-        </div>
-
-        <div className="mt-6 inline-flex items-center text-sm font-semibold group-hover:translate-x-2 transition-transform">
-          <span className={color.replace("border-t-4", "").replace("border-", "text-")}>Start Practice</span>
-          <span className="ml-2">→</span>
+        <div className={`w-12 h-12 rounded-full ${bgColor} flex items-center justify-center`}>
+          <Icon className="text-white" size={24} />
         </div>
       </div>
-    </Link>
+
+      <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-200">
+        <div>
+          <p className="text-gray-500 text-xs font-semibold">PRACTICE TESTS</p>
+          <p className="text-lg font-bold text-gray-900 mt-1">{stats.tests}</p>
+        </div>
+        <div>
+          <p className="text-gray-500 text-xs font-semibold">DURATION</p>
+          <p className="text-lg font-bold text-gray-900 mt-1">{stats.duration}</p>
+        </div>
+      </div>
+
+      <a
+        href={href}
+        className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 ${buttonColor}`}
+        aria-label={`Go to ${title} exam page`}
+      >
+        Go to Exam Page
+        <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
   );
 };
 
@@ -64,8 +69,10 @@ export default function ExamsSection() {
       title: "IELTS",
       description:
         "International English Language Testing System. Prepare for academic and general training modules.",
-      color: "border-blue-600",
-      bgColor: "bg-blue-600",
+      color: "border-slate-700",
+      bgColor: "bg-slate-700",
+      cardTint: "bg-linear-to-br from-slate-50 to-white",
+      buttonColor: "bg-slate-800 hover:bg-slate-900 focus:ring-slate-800",
       icon: BookOpen,
       href: "/exams/ielts",
       stats: {
@@ -77,8 +84,10 @@ export default function ExamsSection() {
       title: "TOEFL",
       description:
         "Test of English as a Foreign Language. Master iBT preparation with expert guidance.",
-      color: "border-green-600",
-      bgColor: "bg-green-600",
+      color: "border-zinc-700",
+      bgColor: "bg-zinc-700",
+      cardTint: "bg-linear-to-br from-zinc-50 to-white",
+      buttonColor: "bg-zinc-800 hover:bg-zinc-900 focus:ring-zinc-800",
       icon: Globe,
       href: "/exams/toefl",
       stats: {
@@ -90,8 +99,10 @@ export default function ExamsSection() {
       title: "Cambridge",
       description:
         "Cambridge English Qualifications. Prepare for B1, B2, C1, and C2 levels.",
-      color: "border-red-600",
-      bgColor: "bg-red-600",
+      color: "border-stone-700",
+      bgColor: "bg-stone-700",
+      cardTint: "bg-linear-to-br from-stone-50 to-white",
+      buttonColor: "bg-stone-800 hover:bg-stone-900 focus:ring-stone-800",
       icon: Award,
       href: "/exams/cambridge",
       stats: {
@@ -115,7 +126,9 @@ export default function ExamsSection() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {exams.map((exam, index) => (
-            <ExamCard key={index} {...exam} />
+            <div key={exam.title} className={`animate-fade-up delay-${(index + 1) * 150}`}>
+              <ExamCard {...exam} />
+            </div>
           ))}
         </div>
       </div>

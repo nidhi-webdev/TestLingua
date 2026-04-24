@@ -43,11 +43,11 @@ export default function FeaturesSection() {
             return (
               <div
                 key={index}
-                className="text-center p-6 rounded-xl hover:bg-gray-50 transition-colors"
+                className={`text-center p-6 rounded-xl hover:bg-gray-50 transition-colors animate-fade-up delay-${(index + 1) * 150}`}
               >
                 <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-linear-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
-                    <Icon className="text-blue-600" size={32} />
+                  <div className="w-16 h-16 bg-linear-to-br from-slate-100 to-slate-50 rounded-full flex items-center justify-center animate-float">
+                    <Icon className="text-slate-700" size={32} />
                   </div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">

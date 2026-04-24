@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ExamsSection from "@/components/ExamsSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import BlogSection from "@/components/BlogSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -29,6 +30,7 @@ export default function Home() {
         <Hero />
         <ExamsSection />
         <FeaturesSection />
+        <BlogSection />
         <CTASection />
         <Footer />
       </div>
