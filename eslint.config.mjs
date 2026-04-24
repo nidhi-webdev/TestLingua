@@ -1,6 +1,16 @@
 import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+
+if (typeof globalThis.structuredClone !== "function") {
+  globalThis.structuredClone = (value) => JSON.parse(JSON.stringify(value));
+}
+
+const [nextVitalsModule, nextTsModule] = await Promise.all([
+  import("eslint-config-next/core-web-vitals"),
+  import("eslint-config-next/typescript"),
+]);
+
+const nextVitals = nextVitalsModule.default;
+const nextTs = nextTsModule.default;
 
 const eslintConfig = defineConfig([
   ...nextVitals,

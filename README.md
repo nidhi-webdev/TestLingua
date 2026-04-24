@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TestLingua - English Exam Preparation Platform
 
-## Getting Started
+A modern, SEO-optimized English exam preparation platform built with Next.js. Master IELTS, TOEFL, and Cambridge English exams with expert guidance and comprehensive learning resources.
 
-First, run the development server:
+## 🚀 Features
 
+- **Beautiful UI** - Modern, responsive design with smooth animations
+- **SEO Optimized** - Built with Next.js for excellent search engine visibility
+- **Multiple Exams** - Support for IELTS, TOEFL, and Cambridge English
+- **Exam Cards** - Interactive cards showcasing practice tests and exam duration
+- **Features Section** - Highlights key benefits like adaptive learning and expert content
+- **Responsive Design** - Fully mobile-friendly interface
+- **Fast Performance** - Next.js optimization and Turbopack for development
+
+## 📋 Current Pages
+
+- **Home** (`/`) - Beautiful landing page with:
+  - Eye-catching hero section with animated background
+  - Exam selection cards
+  - Features overview
+  - Call-to-action section
+  - Comprehensive footer
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) 16.2+
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) 4+
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Package Manager**: npm
+
+## 📦 Installation & Setup
+
+### Prerequisites
+- Node.js 18+ 
+- npm or other package manager
+
+### Quick Start
+
+1. **Install dependencies**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Run development server**
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Open in browser**
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Build for Production
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Home page
+│   └── globals.css         # Global styles and animations
+└── components/
+    ├── Navbar.tsx          # Navigation bar
+    ├── Hero.tsx            # Hero section
+    ├── ExamsSection.tsx    # Exam cards display
+    ├── FeaturesSection.tsx # Features showcase
+    ├── CTASection.tsx      # Call-to-action
+    └── Footer.tsx          # Footer component
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design Highlights
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Gradient Colors**: Blue to purple gradient for modern appeal
+- **Animations**: Smooth blob animations in hero section
+- **Responsive Grid**: 3-column layout on desktop, stacked on mobile
+- **Interactive Cards**: Hover effects and smooth transitions
+- **Statistics**: Key metrics displayed in frosted glass containers
 
-## Deploy on Vercel
+## 🔍 SEO Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Optimized metadata for homepage and future pages
+- Open Graph tags for social sharing
+- Semantic HTML structure
+- Mobile-responsive design (critical for SEO)
+- Fast page load times with Next.js optimization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚧 Upcoming Features
+
+### Phase 2 - Exam Pages
+- Individual pages for IELTS, TOEFL, and Cambridge
+- Detailed exam information
+- Pricing and subscription options
+
+### Phase 3 - User Authentication
+- Sign up / Login system
+- User profiles and progress tracking
+- Personalized learning dashboard
+
+### Phase 4 - Backend API
+- Practice tests and quizzes
+- User progress analytics
+- Personalized recommendations
+- Payment processing
+
+### Phase 5 - Advanced Features
+- Live tutoring sessions
+- AI-powered feedback
+- Community forums
+- Certificate generation
+
+## 📝 Available Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server with Turbopack
+
+# Build
+npm run build        # Create production build
+npm start            # Start production server
+
+# Linting
+npm run lint         # Run ESLint
+```
+
+## 🤝 Contributing
+
+While this is currently a solo project, contribution guidelines will be established as the project grows. For now, please reach out for any suggestions or issues.
+
+## 📄 License
+
+This project is private and currently in development.
+
+---
+
+**Current Status**: UI Development Phase ✅  
+**Next Phase**: Backend Integration 🔜
+
+Built with ❤️ for English learners worldwide.
