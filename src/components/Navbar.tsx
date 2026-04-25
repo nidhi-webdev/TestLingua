@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, Settings, LogOut, LayoutDashboard } from "lucide-react";
+import { ChevronDown, Settings, LayoutDashboard } from "lucide-react";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -25,10 +25,6 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const handleLogout = async () => {
-    await signOut({ redirect: true, callbackUrl: "/login" });
-  };
 
   return (
     <nav className="fixed top-0 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-50 shadow-sm">
@@ -57,22 +53,34 @@ export default function Navbar() {
               Home
             </Link>
             <Link
-              href="/exams"
+              href="/exams/ielts"
               className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
             >
-              Exams
+              IELTS
             </Link>
             <Link
-              href="/features"
+              href="/exams/toefl"
               className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
             >
-              Features
+              TOEFL
             </Link>
             <Link
-              href="/about"
+              href="/exams/cambridge"
               className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
             >
-              About
+              Cambridge
+            </Link>
+            <Link
+              href="/mock-test"
+              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
+            >
+              Mock Test
+            </Link>
+            <Link
+              href="/blog"
+              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
+            >
+              Blog
             </Link>
             {session?.user && (
               <Link
@@ -121,17 +129,6 @@ export default function Navbar() {
                       <Settings className="w-4 h-4" />
                       Settings
                     </Link>
-                    <hr className="my-1" />
-                    <button
-                      onClick={() => {
-                        setIsOpen(false);
-                        handleLogout();
-                      }}
-                      className="w-full flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-50 transition-colors text-left"
-                    >
-                      <LogOut className="w-4 h-4" />
-                      Logout
-                    </button>
                   </div>
                 )}
               </div>
