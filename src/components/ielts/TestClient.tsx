@@ -5,6 +5,7 @@ import { ReadingTest } from "@/data/mock-reading-test";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { saveTestResultAction } from "@/app/actions/save-test-result";
+import { resetTestResultAction } from "@/app/actions/reset-test-result";
 
 interface TestClientProps {
   test: ReadingTest;
@@ -42,6 +43,17 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
     }
   };
 
+  const handleReset = async () => {
+    setAnswers({});
+    setSubmitted(false);
+    setScore(0);
+    try {
+      await resetTestResultAction(test.id);
+    } catch (error) {
+      console.error("Failed to reset progress", error);
+    }
+  };
+
   return (
     <div className="flex h-screen flex-col bg-slate-50 font-sans">
       {/* Header */}
@@ -65,12 +77,20 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
               Submit Test
             </button>
           ) : (
-            <Link
-              href="/exams/ielts/reading/section-1"
-              className="rounded-lg bg-slate-800 px-6 py-2.5 font-bold text-white shadow-md transition hover:bg-slate-900 hover:shadow-lg active:scale-95"
-            >
-              Return to Topics
-            </Link>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleReset}
+                className="rounded-lg border-2 border-slate-300 bg-white px-5 py-2.5 font-bold text-slate-700 shadow-sm transition hover:border-slate-400 hover:bg-slate-50 active:scale-95"
+              >
+                ↺ Reset
+              </button>
+              <Link
+                href="/exams/ielts/reading/section-1"
+                className="rounded-lg bg-slate-800 px-6 py-2.5 font-bold text-white shadow-md transition hover:bg-slate-900 hover:shadow-lg active:scale-95"
+              >
+                Return to Topics
+              </Link>
+            </div>
           )}
         </div>
       </header>
