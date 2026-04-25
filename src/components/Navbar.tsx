@@ -2,14 +2,32 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, Settings, LayoutDashboard } from "lucide-react";
+import { ChevronDown, Settings, LogOut, LayoutDashboard } from "lucide-react";
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Helper function to check if a link is active
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
+
+  // Helper function to get active class
+  const getLinkClass = (href: string) => {
+    const isLinkActive = isActive(href);
+    return isLinkActive
+      ? "text-blue-900 font-bold border-b-2 border-blue-900 transition-colors"
+      : "text-slate-700 hover:text-blue-900 transition-colors font-medium";
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -25,6 +43,10 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleLogout = async () => {
+    await signOut({ redirect: true, callbackUrl: "/login" });
+  };
 
   return (
     <nav className="fixed top-0 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-50 shadow-sm">
@@ -46,46 +68,31 @@ export default function Navbar() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8">
-            <Link
-              href="/"
-              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
-            >
+            <Link href="/" className={getLinkClass("/")}>
               Home
             </Link>
-            <Link
-              href="/exams/ielts"
-              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
-            >
+            <Link href="/exams/ielts" className={getLinkClass("/exams/ielts")}>
               IELTS
             </Link>
-            <Link
-              href="/exams/toefl"
-              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
-            >
+            <Link href="/exams/toefl" className={getLinkClass("/exams/toefl")}>
               TOEFL
             </Link>
             <Link
               href="/exams/cambridge"
-              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
+              className={getLinkClass("/exams/cambridge")}
             >
               Cambridge
             </Link>
-            <Link
-              href="/mock-test"
-              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
-            >
+            <Link href="/mock-test" className={getLinkClass("/mock-test")}>
               Mock Test
             </Link>
-            <Link
-              href="/blog"
-              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
-            >
+            <Link href="/blog" className={getLinkClass("/blog")}>
               Blog
             </Link>
             {session?.user && (
               <Link
                 href="/dashboard"
-                className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
+                className={getLinkClass("/dashboard")}
               >
                 Dashboard
               </Link>
@@ -129,6 +136,17 @@ export default function Navbar() {
                       <Settings className="w-4 h-4" />
                       Settings
                     </Link>
+                    <hr className="my-1" />
+                    <button
+                      onClick={() => {
+                        setIsOpen(false);
+                        handleLogout();
+                      }}
+                      className="w-full flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-50 transition-colors text-left"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>

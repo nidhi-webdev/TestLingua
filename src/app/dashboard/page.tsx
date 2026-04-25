@@ -1,9 +1,9 @@
 "use client";
 
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { LogOut, BookOpen, Target, Trophy, Clock, BarChart3 } from "lucide-react";
+import { BookOpen, Target, Trophy, Clock, BarChart3 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -24,10 +24,6 @@ export default function DashboardPage() {
       </div>
     );
   }
-
-  const handleLogout = async () => {
-    await signOut({ redirect: true, callbackUrl: "/login" });
-  };
 
   const examOptions = [
     {
@@ -69,29 +65,22 @@ export default function DashboardPage() {
       <main className="bg-white pt-16">
         <div className="min-h-screen bg-linear-to-b from-blue-50 via-white to-blue-50">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            {/* Header with user info and logout */}
-            <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900">
-              Welcome back, {session?.user?.name?.split(" ")[0]}!
-            </h1>
-            <p className="mt-2 text-slate-600">
-              {new Date().toLocaleDateString("en-US", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="inline-flex items-center gap-2 rounded-lg bg-red-100 px-4 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-200"
-          >
-            <LogOut className="h-4 w-4" />
-            Logout
-          </button>
-        </div>
+            {/* Header with user info */}
+            <div className="mb-8">
+              <div>
+                <h1 className="text-3xl font-bold text-slate-900">
+                  Welcome back, {session?.user?.name?.split(" ")[0]}!
+                </h1>
+                <p className="mt-2 text-slate-600">
+                  {new Date().toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
+              </div>
+            </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-4 mb-8">
