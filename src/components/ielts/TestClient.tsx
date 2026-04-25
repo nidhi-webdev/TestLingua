@@ -4,22 +4,24 @@ import { useState, useEffect } from "react";
 import { ReadingTest } from "@/data/mock-reading-test";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { saveTestResultAction } from "@/app/actions/save-test-result";
 
 interface TestClientProps {
   test: ReadingTest;
+  previousResult?: any;
 }
 
-export default function TestClient({ test }: TestClientProps) {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
+export default function TestClient({ test, previousResult }: TestClientProps) {
+  const [answers, setAnswers] = useState<Record<string, string>>(previousResult?.answers || {});
+  const [submitted, setSubmitted] = useState(!!previousResult);
+  const [score, setScore] = useState(previousResult?.score || 0);
 
   const handleAnswer = (questionId: string, value: string) => {
     if (submitted) return;
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
   };
 
-  const calculateScore = () => {
+  const calculateScore = async () => {
     let currentScore = 0;
     test.questions.forEach((q) => {
       const isCorrect = answers[q.id] === q.answer;
@@ -27,6 +29,17 @@ export default function TestClient({ test }: TestClientProps) {
     });
     setScore(currentScore);
     setSubmitted(true);
+
+    try {
+      await saveTestResultAction({
+        testId: test.id,
+        score: currentScore,
+        totalScore: test.questions.length,
+        answers: answers
+      });
+    } catch (error) {
+      console.error("Failed to save progress", error);
+    }
   };
 
   return (
