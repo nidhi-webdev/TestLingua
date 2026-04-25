@@ -32,8 +32,8 @@ export default function IELTSPage() {
       icon: BookOpen,
       duration: "60 min",
       focus: "Academic texts, skimming, scanning, inference",
-      href: "",
-      cta: "Coming soon",
+      href: "/exams/ielts/reading",
+      cta: "Start Reading Questions",
     },
     {
       name: "Writing",
