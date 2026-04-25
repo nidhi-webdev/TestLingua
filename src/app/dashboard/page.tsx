@@ -3,8 +3,7 @@
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Link from "next/link";
-import { LogOut, BookOpen, Target, Trophy, Clock, BarChart3, Settings } from "lucide-react";
+import { LogOut, BookOpen, Target, Trophy, Clock, BarChart3 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

@@ -41,7 +41,7 @@ export default function LoginPage() {
   const handleGoogleSignIn = async () => {
     try {
       await signIn("google", { redirect: true, callbackUrl: "/dashboard" });
-    } catch (err) {
+    } catch {
       setError("Google sign-in failed. Please try again.");
     }
   };

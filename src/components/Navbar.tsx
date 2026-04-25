@@ -51,6 +51,12 @@ export default function Navbar() {
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-8">
             <Link
+              href="/"
+              className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
+            >
+              Home
+            </Link>
+            <Link
               href="/exams"
               className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
             >
@@ -68,6 +74,14 @@ export default function Navbar() {
             >
               About
             </Link>
+            {session?.user && (
+              <Link
+                href="/dashboard"
+                className="text-slate-700 hover:text-blue-900 transition-colors font-medium"
+              >
+                Dashboard
+              </Link>
+            )}
           </div>
 
           {/* CTA Button / User Dropdown */}
