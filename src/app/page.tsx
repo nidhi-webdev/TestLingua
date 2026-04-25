@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ExamsSection from "@/components/ExamsSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import BlogSection from "@/components/BlogSection";
+import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
@@ -31,6 +32,7 @@ export default function Home() {
         <ExamsSection />
         <FeaturesSection />
         <BlogSection />
+        <PricingSection />
         <CTASection />
         <Footer />
       </div>

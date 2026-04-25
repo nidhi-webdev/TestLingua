@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-linear-to-b from-[#071A3A] to-[#031028] text-slate-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
@@ -88,29 +88,29 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-slate-700/70 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-slate-400">
               &copy; {currentYear} TestLingua. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a
                 href="#"
-                className="hover:text-white transition-colors"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-600/80 text-slate-300 hover:text-white hover:border-slate-400 transition-colors"
                 aria-label="Twitter"
               >
                 <Send size={20} />
               </a>
               <a
                 href="#"
-                className="hover:text-white transition-colors"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-600/80 text-slate-300 hover:text-white hover:border-slate-400 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Share2 size={20} />
               </a>
               <a
                 href="#"
-                className="hover:text-white transition-colors"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-600/80 text-slate-300 hover:text-white hover:border-slate-400 transition-colors"
                 aria-label="GitHub"
               >
                 <GitBranch size={20} />

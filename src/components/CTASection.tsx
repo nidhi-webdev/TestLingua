@@ -2,12 +2,12 @@ import Link from "next/link";
 
 export default function CTASection() {
   return (
-    <section className="py-20 bg-linear-to-r from-slate-800 to-slate-900 text-white">
+    <section className="py-20 bg-linear-to-r from-[#061A3B] to-[#031028] text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
           Ready to Ace Your English Exam?
         </h2>
-        <p className="text-lg md:text-xl text-slate-200 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-blue-100/85 mb-8 max-w-2xl mx-auto">
           Join thousands of successful students who have achieved their target scores with TestLingua.
           Start your free trial today and unlock full access to all our resources.
         </p>

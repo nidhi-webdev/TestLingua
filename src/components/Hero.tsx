@@ -2,12 +2,13 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen bg-linear-to-br from-[#031028] via-[#061A3B] to-[#04142E] flex items-center justify-center overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-slate-600 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-4000"></div>
-      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_35%),linear-gradient(120deg,rgba(255,255,255,0.08),transparent_30%,rgba(255,255,255,0.08))] animate-shimmer"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-700 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-800 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div className="absolute inset-0 opacity-35 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_35%),linear-gradient(120deg,rgba(255,255,255,0.08),transparent_30%,rgba(255,255,255,0.08))] animate-shimmer"></div>
+      <div className="absolute -inset-x-20 top-0 h-full opacity-20 blur-3xl bg-[radial-gradient(60%_45%_at_80%_50%,rgba(125,211,252,0.22),transparent_65%),radial-gradient(35%_30%_at_20%_70%,rgba(59,130,246,0.18),transparent_70%)] animate-smoke"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8">

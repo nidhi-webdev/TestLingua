@@ -10,8 +10,8 @@ const posts = [
     readTime: "6 min read",
     tag: "IELTS",
     href: "/blog/ielts-writing-task-2-guide",
-    cardStyle: "from-slate-50 to-white border-slate-200/60",
-    tagStyle: "bg-slate-100 text-slate-700",
+    cardStyle: "from-blue-50/70 to-white border-blue-200/60",
+    tagStyle: "bg-blue-100 text-blue-800",
   },
   {
     title: "TOEFL Speaking: 5 Drills To Improve Fluency Fast",
@@ -21,8 +21,8 @@ const posts = [
     readTime: "5 min read",
     tag: "TOEFL",
     href: "/blog/toefl-speaking-fluency-drills",
-    cardStyle: "from-zinc-50 to-white border-zinc-200/60",
-    tagStyle: "bg-zinc-100 text-zinc-700",
+    cardStyle: "from-slate-50/80 to-white border-slate-200/60",
+    tagStyle: "bg-slate-100 text-slate-800",
   },
   {
     title: "Cambridge C1 Reading: Smart Time Management Tactics",
@@ -32,8 +32,8 @@ const posts = [
     readTime: "7 min read",
     tag: "Cambridge",
     href: "/blog/cambridge-c1-reading-time-management",
-    cardStyle: "from-stone-50 to-white border-stone-200/60",
-    tagStyle: "bg-stone-100 text-stone-700",
+    cardStyle: "from-indigo-50/70 to-white border-indigo-200/60",
+    tagStyle: "bg-indigo-100 text-indigo-800",
   },
 ];
 
@@ -83,7 +83,7 @@ export default function BlogSection() {
 
               <Link
                 href={post.href}
-                className="inline-flex items-center rounded-full bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-gray-800"
+                className="inline-flex items-center rounded-full bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-800"
               >
                 Read Article
                 <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
@@ -95,7 +95,7 @@ export default function BlogSection() {
         <div className="mt-12 text-center animate-fade-up delay-600">
           <Link
             href="/blog"
-            className="inline-flex items-center rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition-all duration-300 hover:border-gray-900 hover:text-gray-900"
+            className="inline-flex items-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all duration-300 hover:border-blue-900 hover:text-blue-900"
           >
             View All Blog Posts
             <ArrowRight size={16} className="ml-2" />
