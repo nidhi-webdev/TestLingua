@@ -2,52 +2,101 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { BookOpen, Users, Target, Clock, CheckCircle, ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CheckCircle,
+  Clock,
+  Headphones,
+  Mic,
+  PenSquare,
+  Target,
+  Users,
+} from "lucide-react";
 
 export default function TOEFLPage() {
+  const sections = [
+    {
+      name: "Reading",
+      duration: "54-72 min",
+      icon: BookOpen,
+      note: "Academic passages and evidence-based responses",
+    },
+    {
+      name: "Listening",
+      duration: "41-57 min",
+      icon: Headphones,
+      note: "Lectures, campus dialogs, and inference questions",
+    },
+    {
+      name: "Speaking",
+      duration: "17 min",
+      icon: Mic,
+      note: "Independent and integrated speaking tasks",
+    },
+    {
+      name: "Writing",
+      duration: "29 min",
+      icon: PenSquare,
+      note: "Integrated writing with structured argument flow",
+    },
+  ];
+
   return (
     <>
       <Navbar />
       <main className="bg-white pt-16">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-slate-50 to-slate-100 py-20">
+        <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-zinc-800 py-20 text-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid items-center gap-10 md:grid-cols-2">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-                  Master the TOEFL Exam
-                </h1>
-                <p className="text-xl text-slate-600 mb-8">
-                  Complete preparation for the Test of English as a Foreign Language.
+                <p className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-200">
+                  TOEFL iBT Program
                 </p>
-                <button className="px-8 py-3 bg-slate-700 text-white rounded-lg hover:bg-slate-800 transition-colors font-semibold inline-flex items-center gap-2">
+                <h1 className="mb-5 text-4xl font-bold md:text-5xl">
+                  Professional TOEFL Preparation
+                </h1>
+                <p className="mb-8 text-lg text-slate-200">
+                  Build academic English mastery for university admissions with
+                  integrated-skill training, intelligent scoring insights, and
+                  exam-accurate timed practice.
+                </p>
+                <button className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-slate-900 transition hover:bg-slate-100">
                   Start Free Trial
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Exam Overview</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-slate-600 mt-1" />
-                    <div>
-                      <p className="font-semibold text-slate-900">Duration</p>
-                      <p className="text-slate-600">2 hours 55 minutes</p>
-                    </div>
+
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-7 backdrop-blur">
+                <h3 className="mb-5 text-xl font-semibold">Exam Overview</h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-lg bg-white/10 p-4">
+                    <Clock className="mb-2 h-5 w-5 text-slate-200" />
+                    <p className="text-xs uppercase tracking-wide text-slate-300">
+                      Duration
+                    </p>
+                    <p className="font-semibold">2h 55m</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-slate-600 mt-1" />
-                    <div>
-                      <p className="font-semibold text-slate-900">Format</p>
-                      <p className="text-slate-600">Internet-based (iBT)</p>
-                    </div>
+                  <div className="rounded-lg bg-white/10 p-4">
+                    <Target className="mb-2 h-5 w-5 text-slate-200" />
+                    <p className="text-xs uppercase tracking-wide text-slate-300">
+                      Max Score
+                    </p>
+                    <p className="font-semibold">120 points</p>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-slate-600 mt-1" />
-                    <div>
-                      <p className="font-semibold text-slate-900">Scoring</p>
-                      <p className="text-slate-600">120 points total</p>
-                    </div>
+                  <div className="rounded-lg bg-white/10 p-4">
+                    <Users className="mb-2 h-5 w-5 text-slate-200" />
+                    <p className="text-xs uppercase tracking-wide text-slate-300">
+                      Format
+                    </p>
+                    <p className="font-semibold">Internet-based</p>
+                  </div>
+                  <div className="rounded-lg bg-white/10 p-4">
+                    <CheckCircle className="mb-2 h-5 w-5 text-slate-200" />
+                    <p className="text-xs uppercase tracking-wide text-slate-300">
+                      Accepted By
+                    </p>
+                    <p className="font-semibold">12k+ institutions</p>
                   </div>
                 </div>
               </div>
@@ -55,41 +104,49 @@ export default function TOEFLPage() {
           </div>
         </section>
 
-        {/* Four Skills Section */}
         <section className="py-16 md:py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
-              The Four Skills
-            </h2>
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { name: "Reading", time: "54-72 min" },
-                { name: "Listening", time: "41-57 min" },
-                { name: "Speaking", time: "17 min" },
-                { name: "Writing", time: "29 min" },
-              ].map((skill, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <BookOpen className="w-8 h-8 text-slate-600 mb-4" />
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
-                    {skill.name}
-                  </h3>
-                  <p className="text-slate-600 text-sm">Duration: {skill.time}</p>
-                </div>
-              ))}
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
+                TOEFL iBT Sections
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-slate-600">
+                Structured section prep with integrated strategy drills and timed
+                simulation workflows.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {sections.map((section) => {
+                const Icon = section.icon;
+                return (
+                  <div
+                    key={section.name}
+                    className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+                  >
+                    <div className="mb-4 inline-flex rounded-xl bg-slate-100 p-3 text-slate-700">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-slate-900">
+                      {section.name}
+                    </h3>
+                    <p className="mt-1 text-sm font-medium text-slate-700">
+                      {section.duration}
+                    </p>
+                    <p className="mt-3 text-sm text-slate-600">{section.note}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* Features */}
-        <section className="py-16 md:py-24 bg-slate-50">
+        <section className="bg-slate-50 py-16 md:py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
-              Our TOEFL Preparation Includes
+            <h2 className="mb-12 text-center text-3xl font-bold text-slate-900 md:text-4xl">
+              What Makes This Program Professional
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid gap-8 md:grid-cols-2">
               {[
                 "iBT practice tests",
                 "Integrated tasks training",
@@ -99,8 +156,8 @@ export default function TOEFLPage() {
                 "Time management tips",
                 "Speaking fluency practice",
                 "Essay writing guidance",
-              ].map((feature, idx) => (
-                <div key={idx} className="flex items-start gap-3">
+              ].map((feature) => (
+                <div key={feature} className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <p className="text-slate-700 font-medium">{feature}</p>
                 </div>
@@ -109,16 +166,16 @@ export default function TOEFLPage() {
           </div>
         </section>
 
-        {/* CTA */}
         <section className="py-16 md:py-24">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="mb-6 text-3xl font-bold text-slate-900 md:text-4xl">
               Ready to Excel in TOEFL?
             </h2>
-            <p className="text-lg text-slate-600 mb-8">
-              Join thousands of successful test-takers who achieved their goals with TestLingua.
+            <p className="mb-8 text-lg text-slate-600">
+              Join focused learners preparing for admission goals with a complete,
+              professional TOEFL strategy stack.
             </p>
-            <button className="px-8 py-3 bg-slate-700 text-white rounded-lg hover:bg-slate-800 transition-colors font-semibold">
+            <button className="rounded-lg bg-slate-900 px-8 py-3 font-semibold text-white transition hover:bg-black">
               Start Learning Now
             </button>
           </div>

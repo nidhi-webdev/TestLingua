@@ -2,51 +2,72 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { BookOpen, Users, Target, Clock, CheckCircle, ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CheckCircle,
+  Clock,
+  GraduationCap,
+  Mic,
+  PenSquare,
+  Target,
+} from "lucide-react";
 
 export default function CambridgePage() {
+  const levels = [
+    { name: "A2 Key (KET)", focus: "Foundational everyday communication" },
+    { name: "B1 Preliminary (PET)", focus: "Independent practical language use" },
+    { name: "B2 First (FCE)", focus: "Upper-intermediate academic readiness" },
+    { name: "C1 Advanced (CAE)", focus: "High-level professional fluency" },
+    { name: "C2 Proficiency (CPE)", focus: "Near-native advanced command" },
+  ];
+
   return (
     <>
       <Navbar />
       <main className="bg-white pt-16">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-r from-indigo-50 to-indigo-100 py-20">
+        <section className="bg-gradient-to-br from-indigo-900 via-violet-900 to-fuchsia-900 py-20 text-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid items-center gap-10 md:grid-cols-2">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-                  Master Cambridge English
-                </h1>
-                <p className="text-xl text-slate-600 mb-8">
-                  Comprehensive preparation for Cambridge English Qualifications (KET, PET, FCE, CAE, CPE).
+                <p className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-100">
+                  Cambridge Qualification Path
                 </p>
-                <button className="px-8 py-3 bg-indigo-900 text-white rounded-lg hover:bg-indigo-800 transition-colors font-semibold inline-flex items-center gap-2">
+                <h1 className="mb-5 text-4xl font-bold md:text-5xl">
+                  Professional Cambridge Exam Preparation
+                </h1>
+                <p className="mb-8 text-lg text-indigo-100">
+                  Prepare from A2 to C2 with level-based pathways, assessment
+                  diagnostics, and polished exam strategies for each paper.
+                </p>
+                <button className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-indigo-900 transition hover:bg-indigo-50">
                   Start Free Trial
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </div>
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Exam Overview</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-indigo-600 mt-1" />
+
+              <div className="rounded-2xl border border-white/20 bg-white/10 p-7 backdrop-blur">
+                <h3 className="mb-5 text-xl font-semibold">Exam Snapshot</h3>
+                <div className="space-y-4 text-sm">
+                  <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3">
+                    <Clock className="h-5 w-5 text-indigo-100" />
                     <div>
-                      <p className="font-semibold text-slate-900">Duration</p>
-                      <p className="text-slate-600">Varies by level (1-3 hours)</p>
+                      <p className="text-indigo-100">Duration</p>
+                      <p className="font-semibold text-white">Varies by level</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-indigo-600 mt-1" />
+                  <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3">
+                    <GraduationCap className="h-5 w-5 text-indigo-100" />
                     <div>
-                      <p className="font-semibold text-slate-900">Levels</p>
-                      <p className="text-slate-600">A1 to C2 (6 levels)</p>
+                      <p className="text-indigo-100">CEFR Coverage</p>
+                      <p className="font-semibold text-white">A2 to C2</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-indigo-600 mt-1" />
+                  <div className="flex items-center gap-3 rounded-lg bg-white/10 p-3">
+                    <Target className="h-5 w-5 text-indigo-100" />
                     <div>
-                      <p className="font-semibold text-slate-900">Recognition</p>
-                      <p className="text-slate-600">Globally recognized qualification</p>
+                      <p className="text-indigo-100">Recognition</p>
+                      <p className="font-semibold text-white">Global benchmark</p>
                     </div>
                   </div>
                 </div>
@@ -55,71 +76,101 @@ export default function CambridgePage() {
           </div>
         </section>
 
-        {/* Four Skills Section */}
         <section className="py-16 md:py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
-              The Four Skills
-            </h2>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
+                Core Assessment Papers
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-slate-600">
+                Train across all tested competencies with paper-specific
+                frameworks and score-focused practice.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {[
-                { name: "Reading", time: "Variable" },
-                { name: "Writing", time: "Variable" },
-                { name: "Listening", time: "Variable" },
-                { name: "Speaking", time: "Variable" },
-              ].map((skill, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <BookOpen className="w-8 h-8 text-indigo-600 mb-4" />
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">
-                    {skill.name}
-                  </h3>
-                  <p className="text-slate-600 text-sm">Duration: {skill.time}</p>
-                </div>
-              ))}
+                { name: "Reading", icon: BookOpen, detail: "Comprehension and use of English" },
+                { name: "Writing", icon: PenSquare, detail: "Structured responses by level" },
+                { name: "Listening", icon: Clock, detail: "Contextual and detail-based listening" },
+                { name: "Speaking", icon: Mic, detail: "Interactive and long-turn speaking" },
+              ].map((paper) => {
+                const Icon = paper.icon;
+                return (
+                  <div
+                    key={paper.name}
+                    className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                  >
+                    <div className="mb-4 inline-flex rounded-xl bg-indigo-50 p-3 text-indigo-700">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-slate-900">
+                      {paper.name}
+                    </h3>
+                    <p className="mt-3 text-sm text-slate-600">{paper.detail}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* Features */}
-        <section className="py-16 md:py-24 bg-slate-50">
+        <section className="bg-slate-50 py-16 md:py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
-              Our Cambridge Preparation Includes
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                "Level-specific practice tests",
-                "All six Cambridge levels (A1-C2)",
-                "Authentic exam materials",
-                "Expert tutoring support",
-                "Speaking test preparation",
-                "Writing assessment feedback",
-                "Vocabulary builder by level",
-                "Progress tracking dashboard",
-              ].map((feature, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
-                  <p className="text-slate-700 font-medium">{feature}</p>
+            <div className="grid gap-10 lg:grid-cols-2">
+              <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                <h3 className="mb-6 text-2xl font-bold text-slate-900">
+                  Program Features
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    "Level-specific practice tests",
+                    "Authentic exam materials",
+                    "Speaking examiner simulations",
+                    "Writing rubric feedback",
+                    "Vocabulary ladders by CEFR level",
+                    "Progress tracking dashboard",
+                  ].map((feature) => (
+                    <div key={feature} className="flex items-start gap-3">
+                      <CheckCircle className="mt-0.5 h-5 w-5 text-emerald-600" />
+                      <p className="text-slate-700">{feature}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="rounded-2xl border border-indigo-200 bg-indigo-50 p-8 shadow-sm">
+                <h3 className="mb-6 text-2xl font-bold text-slate-900">
+                  Choose Your Level
+                </h3>
+                <div className="space-y-3">
+                  {levels.map((level) => (
+                    <div
+                      key={level.name}
+                      className="rounded-xl border border-indigo-100 bg-white p-4"
+                    >
+                      <p className="font-semibold text-slate-900">{level.name}</p>
+                      <p className="mt-1 text-sm text-slate-600">{level.focus}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* CTA */}
         <section className="py-16 md:py-24">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+          <div className="max-w-3xl mx-auto px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
               Achieve Your Cambridge English Goal
             </h2>
-            <p className="text-lg text-slate-600 mb-8">
-              Get certified with the world&apos;s most respected English qualification provider.
+            <p className="mt-4 text-lg text-slate-600">
+              From B2 First to C2 Proficiency, train with a professional pathway
+              tailored to your level and timeline.
             </p>
-            <button className="px-8 py-3 bg-indigo-900 text-white rounded-lg hover:bg-indigo-800 transition-colors font-semibold">
+            <button className="mt-8 inline-flex items-center gap-2 rounded-lg bg-indigo-900 px-8 py-3 font-semibold text-white transition hover:bg-indigo-800">
               Start Learning Now
+              <ArrowRight className="h-5 w-5" />
             </button>
           </div>
         </section>
