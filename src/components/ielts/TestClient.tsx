@@ -163,7 +163,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
 
                     {q.type === "true_false_not_given" ? (
                       <div className="flex flex-col sm:flex-row gap-4 ml-11">
-                        {["True", "False", "Not Given"].map((opt) => {
+                        {(["Yes", "No"].includes(q.answer) ? ["Yes", "No", "Not Given"] : ["True", "False", "Not Given"]).map((opt) => {
                           const isOptSelected = answers[q.id] === opt;
                           const isOptActuallyCorrect = submitted && q.answer === opt;
                           

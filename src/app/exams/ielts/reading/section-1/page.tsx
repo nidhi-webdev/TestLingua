@@ -9,17 +9,17 @@ const icons = [LayoutList, AlignLeft, AlignLeft, AlignLeft, Heading, Tag, Chevro
 
 export default function Section1Page() {
   const topics = [
-    { id: 1, title: "Multiple Choice", description: "Choose one or more correct answers from a list of options.", questions: 14 },
-    { id: 2, title: "Identifying Information", description: "Answer True, False, or Not Given based on the text.", questions: 10 },
-    { id: 3, title: "Identifying Writer's Views", description: "Answer Yes, No, or Not Given based on writer's claims.", questions: 10 },
-    { id: 4, title: "Matching Information", description: "Find specific information within paragraphs.", questions: 10 },
-    { id: 5, title: "Matching Headings", description: "Match paragraph headings from a given list.", questions: 10 },
-    { id: 6, title: "Matching Features", description: "Match statements to a list of options (e.g., people, theories).", questions: 10 },
-    { id: 7, title: "Matching Sentence Endings", description: "Complete sentences by choosing the best endings.", questions: 10 },
-    { id: 8, title: "Sentence Completion", description: "Fill in gaps in sentences using words from the text.", questions: 10 },
-    { id: 9, title: "Summary / Note Completion", description: "Complete a summary, note, table, or flow-chart.", questions: 10 },
-    { id: 10, title: "Diagram Label Completion", description: "Label a diagram based on a description in the text.", questions: 10 },
-    { id: 11, title: "Short-Answer Questions", description: "Answer questions about factual details using a strict word limit.", questions: 10 },
+    { id: 1, title: "Multiple Choice", description: "Choose one or more correct answers from a list of options.", questions: 14, href: "/exams/ielts/reading/test/1" },
+    { id: 2, title: "Identifying Information", description: "Answer True, False, or Not Given based on the text.", questions: 14, href: "/exams/ielts/reading/test/identifying-information-1" },
+    { id: 3, title: "Identifying Writer's Views", description: "Answer Yes, No, or Not Given based on writer's claims.", questions: 14, href: "/exams/ielts/reading/test/identifying-writers-views-1" },
+    { id: 4, title: "Matching Information", description: "Find specific information within paragraphs.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 5, title: "Matching Headings", description: "Match paragraph headings from a given list.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 6, title: "Matching Features", description: "Match statements to a list of options (e.g., people, theories).", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 7, title: "Matching Sentence Endings", description: "Complete sentences by choosing the best endings.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 8, title: "Sentence Completion", description: "Fill in gaps in sentences using words from the text.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 9, title: "Summary / Note Completion", description: "Complete a summary, note, table, or flow-chart.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 10, title: "Diagram Label Completion", description: "Label a diagram based on a description in the text.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 11, title: "Short-Answer Questions", description: "Answer questions about factual details using a strict word limit.", questions: 10, href: "/exams/ielts/reading/test/1" },
   ];
 
   return (
@@ -68,7 +68,7 @@ export default function Section1Page() {
               const Icon = icons[topic.id - 1];
               return (
                 <Link
-                  href="/exams/ielts/reading/test/1"
+                  href={topic.href}
                   key={topic.id}
                   className="group relative flex flex-col justify-between rounded-2xl bg-white p-6 shadow-md ring-1 ring-slate-200 border border-transparent transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:ring-blue-400 overflow-hidden"
                 >
