@@ -12,7 +12,7 @@ export default function Section1Page() {
     { id: 1, title: "Multiple Choice", description: "Choose one or more correct answers from a list of options.", questions: 14, href: "/exams/ielts/reading/test/1" },
     { id: 2, title: "Identifying Information", description: "Answer True, False, or Not Given based on the text.", questions: 14, href: "/exams/ielts/reading/test/identifying-information-1" },
     { id: 3, title: "Identifying Writer's Views", description: "Answer Yes, No, or Not Given based on writer's claims.", questions: 14, href: "/exams/ielts/reading/test/identifying-writers-views-1" },
-    { id: 4, title: "Matching Information", description: "Find specific information within paragraphs.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 4, title: "Matching Information", description: "Find specific information within paragraphs.", questions: 14, href: "/exams/ielts/reading/test/matching-information-1" },
     { id: 5, title: "Matching Headings", description: "Match paragraph headings from a given list.", questions: 10, href: "/exams/ielts/reading/test/1" },
     { id: 6, title: "Matching Features", description: "Match statements to a list of options (e.g., people, theories).", questions: 10, href: "/exams/ielts/reading/test/1" },
     { id: 7, title: "Matching Sentence Endings", description: "Complete sentences by choosing the best endings.", questions: 10, href: "/exams/ielts/reading/test/1" },

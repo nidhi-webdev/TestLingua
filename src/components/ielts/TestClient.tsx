@@ -100,7 +100,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         {/* Left Pane - Passage */}
         <div className="w-1/2 overflow-y-auto border-r border-slate-200 bg-white p-8 lg:p-12 xl:p-16 relative">
           <div 
-            className="max-w-3xl mx-auto text-slate-800 [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mb-6 [&_p]:text-lg [&_p]:leading-relaxed [&_p]:text-slate-800 [&_p]:mb-6"
+            className="max-w-3xl mx-auto text-slate-800 [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mb-6 [&_p]:text-lg [&_p]:leading-relaxed [&_p]:text-slate-800 [&_p]:mb-6 [&_strong]:inline-flex [&_strong]:h-8 [&_strong]:w-8 [&_strong]:items-center [&_strong]:justify-center [&_strong]:rounded-md [&_strong]:bg-blue-600 [&_strong]:text-white [&_strong]:text-sm [&_strong]:font-bold [&_strong]:mr-3 [&_strong]:shrink-0"
             dangerouslySetInnerHTML={{ __html: test.passage }}
           />
         </div>
@@ -108,6 +108,16 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         {/* Right Pane - Questions */}
         <div className="w-1/2 overflow-y-auto bg-slate-50 p-8 lg:p-12 xl:p-16 relative shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]">
           <div className="max-w-3xl mx-auto">
+            {/* Official IELTS instructions for matching information */}
+            {test.questions[0]?.type === "matching_information" && (
+              <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
+                <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                <p className="text-sm text-blue-700 leading-relaxed">
+                  The reading passage has seven paragraphs, <span className="font-bold">A–G</span>. Which paragraph contains the following information? Write the correct letter, <span className="font-bold">A–G</span>, in the boxes below.
+                </p>
+                <p className="text-sm font-semibold text-blue-800 mt-2">NB: You may use any letter more than once.</p>
+              </div>
+            )}
             {submitted && (
               <div className="mb-10 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-8 border border-blue-100 shadow-sm">
                 <h2 className="text-3xl font-bold text-blue-900 mb-2">Test Complete</h2>
@@ -189,6 +199,42 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                             </label>
                           );
                         })}
+                      </div>
+                    ) : q.type === "matching_information" ? (
+                      <div className="ml-11">
+                        <div className="flex flex-wrap gap-3">
+                          {q.options.map((opt) => {
+                            const isSelected = answers[q.id] === opt;
+                            const isActuallyCorrect = submitted && q.answer === opt;
+
+                            let btnClass = "border-slate-200 bg-slate-50 text-slate-600 hover:border-blue-300 hover:bg-blue-50";
+                            if (submitted && isActuallyCorrect) {
+                              btnClass = "border-emerald-500 bg-emerald-500 text-white shadow-md";
+                            } else if (submitted && isSelected && !isCorrect) {
+                              btnClass = "border-red-400 bg-red-100 text-red-700";
+                            } else if (isSelected) {
+                              btnClass = "border-blue-600 bg-blue-600 text-white shadow-md";
+                            }
+
+                            return (
+                              <label
+                                key={opt}
+                                className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-2 text-lg font-bold transition-all ${btnClass}`}
+                              >
+                                <input
+                                  type="radio"
+                                  name={q.id}
+                                  value={opt}
+                                  disabled={submitted}
+                                  checked={isSelected}
+                                  onChange={(e) => handleAnswer(q.id, e.target.value)}
+                                  className="hidden"
+                                />
+                                {opt}
+                              </label>
+                            );
+                          })}
+                        </div>
                       </div>
                     ) : (
                       <div className="space-y-4 ml-11">
