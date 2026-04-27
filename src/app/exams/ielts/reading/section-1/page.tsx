@@ -19,7 +19,7 @@ export default function Section1Page() {
     { id: 8, title: "Sentence Completion", description: "Fill in gaps in sentences using words from the text.", questions: 8, href: "/exams/ielts/reading/test/sentence-completion-1" },
     { id: 9, title: "Summary / Note Completion", description: "Complete a summary, note, table, or flow-chart.", questions: 3, href: "/exams/ielts/reading/test/flowchart-completion-1" },
     { id: 10, title: "Diagram Label Completion", description: "Label a diagram based on a description in the text.", questions: 5, href: "/exams/ielts/reading/test/diagram-completion-1" },
-    { id: 11, title: "Short-Answer Questions", description: "Answer questions about factual details using a strict word limit.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 11, title: "Short-Answer Questions", description: "Answer questions about factual details using a strict word limit.", questions: 5, href: "/exams/ielts/reading/test/short-answer-1" },
   ];
 
   return (

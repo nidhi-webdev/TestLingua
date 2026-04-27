@@ -100,7 +100,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         {/* Left Pane - Passage */}
         <div className="w-1/2 overflow-y-auto border-r border-slate-200 bg-white p-8 lg:p-12 xl:p-16 relative">
           <div 
-            className="max-w-3xl mx-auto text-slate-800 [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mb-6 [&_p]:text-lg [&_p]:leading-relaxed [&_p]:text-slate-800 [&_p]:mb-6 [&_strong]:inline-flex [&_strong]:h-8 [&_strong]:w-8 [&_strong]:items-center [&_strong]:justify-center [&_strong]:rounded-md [&_strong]:bg-blue-600 [&_strong]:text-white [&_strong]:text-sm [&_strong]:font-bold [&_strong]:mr-3 [&_strong]:shrink-0"
+            className="max-w-3xl mx-auto text-slate-800 [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mb-8 [&_p]:text-lg [&_p]:leading-relaxed [&_p]:text-slate-800 [&_p]:mb-6"
             dangerouslySetInnerHTML={{ __html: test.passage }}
           />
         </div>
@@ -108,6 +108,16 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         {/* Right Pane - Questions */}
         <div className="w-1/2 overflow-y-auto bg-slate-50 p-8 lg:p-12 xl:p-16 relative shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]">
           <div className="max-w-3xl mx-auto">
+            {/* Official IELTS instructions for short answer questions */}
+            {test.questions[0]?.type === "short_answer" && (
+              <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
+                <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                <p className="text-sm text-blue-700 leading-relaxed">
+                  Answer the questions below. Choose <span className="font-bold">NO MORE THAN THREE WORDS</span> from the text for each answer. Write your answers in the boxes below.
+                </p>
+              </div>
+            )}
+
             {/* Official IELTS instructions for flow-chart completion */}
             {test.questions[0]?.type === "flow_chart" && (
               <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
@@ -278,485 +288,174 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
             )}
 
             <div className="space-y-10">
-              {test.questions.map((q, index) => {
+            <div className="space-y-4">
+              {test.questions.map((q, idx) => {
                 const isAnswered = !!answers[q.id];
-                const isCorrect = submitted ? answers[q.id] === q.answer : null;
+                const isCorrect = submitted ? answers[q.id]?.trim().toLowerCase() === q.answer.toLowerCase() : null;
                 
                 return (
-                  <div 
-                    key={q.id} 
-                    className={`rounded-2xl border p-8 shadow-sm transition-colors ${
-                      submitted 
-                        ? isCorrect 
-                          ? 'border-emerald-200 bg-white' 
-                          : 'border-red-200 bg-white'
-                        : isAnswered 
-                          ? 'border-blue-300 bg-white' 
-                          : 'border-slate-200 bg-white'
-                    }`}
-                  >
-                    <div className="mb-6 flex items-start justify-between gap-4">
-                      <h3 className="text-xl font-medium text-slate-900 leading-snug">
-                        <span className="mr-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-700 shrink-0">
-                          {index + 1}
-                        </span>
-                        {q.text}
-                      </h3>
-                      {submitted && (
-                        isCorrect ? (
-                          <CheckCircle2 className="h-8 w-8 text-emerald-500 shrink-0" />
-                        ) : (
-                          <AlertCircle className="h-8 w-8 text-red-500 shrink-0" />
-                        )
-                      )}
+                  <div key={q.id} className="flex items-start gap-4 py-4 border-b border-slate-200 last:border-0 group">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-slate-800 text-sm font-bold text-white group-hover:bg-blue-600 transition-colors mt-1">
+                      {idx + 1}
                     </div>
-
-                    {q.type === "true_false_not_given" ? (
-                      <div className="flex flex-col sm:flex-row gap-4 ml-11">
-                        {(["Yes", "No"].includes(q.answer) ? ["Yes", "No", "Not Given"] : ["True", "False", "Not Given"]).map((opt) => {
-                          const isOptSelected = answers[q.id] === opt;
-                          const isOptActuallyCorrect = submitted && q.answer === opt;
-                          
-                          return (
-                            <label 
-                              key={opt}
-                              className={`flex flex-1 cursor-pointer items-center justify-center rounded-xl border-2 p-4 font-bold transition-all ${
-                                isOptSelected
-                                  ? 'border-blue-600 bg-blue-50 text-blue-800 shadow-sm' 
-                                  : 'border-slate-200 bg-slate-50 text-slate-500 hover:bg-slate-100 hover:border-slate-300'
-                              } ${isOptActuallyCorrect ? 'border-emerald-500 bg-emerald-50 text-emerald-800' : ''} ${submitted && isOptSelected && !isCorrect ? 'border-red-400 bg-red-50' : ''}`}
-                            >
-                              <input
-                                type="radio"
-                                name={q.id}
-                                value={opt}
-                                disabled={submitted}
-                                checked={isOptSelected}
-                                onChange={(e) => handleAnswer(q.id, e.target.value)}
-                                className="hidden"
-                              />
-                              {opt}
-                            </label>
-                          );
-                        })}
-                      </div>
-                    ) : q.type === "matching_headings" ? (
-                      <div className="ml-11">
-                        <div className="relative max-w-xl">
-                          <select
-                            disabled={submitted}
-                            value={answers[q.id] || ""}
-                            onChange={(e) => handleAnswer(q.id, e.target.value)}
-                            className={`w-full cursor-pointer appearance-none rounded-xl border-2 p-4 pr-10 font-medium transition-all outline-none ${
-                              submitted
-                                ? answers[q.id] === q.answer
-                                  ? "border-emerald-500 bg-emerald-50 text-emerald-800"
-                                  : "border-red-400 bg-red-50 text-red-800"
-                                : answers[q.id]
-                                ? "border-blue-500 bg-blue-50 text-blue-900"
-                                : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
-                            }`}
-                          >
-                            <option value="" disabled>Select the correct heading...</option>
-                            {q.options.map((opt) => {
-                              const romanNumeral = opt.split('.')[0].trim();
+                    <div className="flex-1 min-w-0">
+                      {q.type === "true_false_not_given" ? (
+                        <div className="flex flex-col gap-3">
+                          <p className="text-slate-800 font-medium leading-relaxed">{q.text}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {(["Yes", "No"].includes(q.answer) ? ["Yes", "No", "Not Given"] : ["True", "False", "Not Given"]).map((opt) => {
+                              const isSelected = answers[q.id] === opt;
+                              const isActuallyCorrect = submitted && q.answer === opt;
+                              
                               return (
-                                <option key={opt} value={romanNumeral}>
+                                <button 
+                                  key={opt}
+                                  disabled={submitted}
+                                  onClick={() => handleAnswer(q.id, opt)}
+                                  className={`px-4 py-1.5 text-sm font-bold border transition-all ${
+                                    isSelected
+                                      ? 'bg-slate-800 border-slate-800 text-white' 
+                                      : 'bg-white border-slate-300 text-slate-600 hover:border-slate-400'
+                                  } ${isActuallyCorrect ? 'bg-emerald-600 border-emerald-600 text-white' : ''}`}
+                                >
+                                  {opt}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ) : q.type === "matching_headings" || q.type === "matching_sentence_endings" ? (
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                          <p className="text-slate-800 font-medium flex-1">{q.text}</p>
+                          <div className="relative w-full sm:w-64">
+                            <select
+                              disabled={submitted}
+                              value={answers[q.id] || ""}
+                              onChange={(e) => handleAnswer(q.id, e.target.value)}
+                              className={`w-full border p-2 text-sm font-bold transition-all outline-none appearance-none ${
+                                submitted
+                                  ? isCorrect
+                                    ? "border-emerald-500 bg-emerald-50 text-emerald-800"
+                                    : "border-red-400 bg-red-50 text-red-800"
+                                  : answers[q.id]
+                                  ? "border-slate-800 ring-1 ring-slate-800"
+                                  : "border-slate-300 bg-white text-slate-600"
+                              }`}
+                            >
+                              <option value="">Select...</option>
+                              {q.options.map((opt) => (
+                                <option key={opt} value={opt.split('.')[0].trim()}>
                                   {opt}
                                 </option>
-                              );
-                            })}
-                          </select>
-                          <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
-                            <ChevronDown className={`h-5 w-5 ${submitted ? 'text-slate-400' : 'text-slate-500'}`} />
+                              ))}
+                            </select>
                           </div>
                         </div>
-                        
-                        {submitted && answers[q.id] !== q.answer && (
-                          <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
-                            <CheckCircle2 className="h-4 w-4" />
-                            Correct Answer: {q.answer}
-                          </div>
-                        )}
-                      </div>
-                    ) : q.type === "flow_chart" ? (
-                      <div className="ml-11">
-                        <div className="flex flex-col items-center space-y-6">
-                          {/* We assume the first question carries the structure or we render a specific flow */}
-                          {/* For now, we'll build a flexible flow layout for the Greenhouse example */}
-                          <div className="w-full max-w-md space-y-8">
-                            {/* Glass Roof - Static */}
-                            <div className="rounded-xl border-2 border-slate-200 bg-white p-4 text-center font-bold text-slate-800 shadow-sm">
-                              Glass Roof
-                            </div>
-
-                            <div className="flex justify-center -my-4">
-                              <div className="h-8 w-px bg-slate-300"></div>
-                            </div>
-
-                            {/* Ventilation Panels Row */}
-                            <div className="grid grid-cols-2 gap-8">
-                              <div className="relative rounded-xl border-2 border-blue-100 bg-blue-50/30 p-4 text-center shadow-sm">
-                                <div className="text-xs font-bold text-blue-600 uppercase mb-2">Ventilation Panel</div>
-                                <input
-                                  type="text"
-                                  disabled={submitted}
-                                  value={answers[test.questions[0].id] || ""}
-                                  onChange={(e) => handleAnswer(test.questions[0].id, e.target.value)}
-                                  placeholder="Answer 1..."
-                                  className={`w-full rounded-lg border-2 px-2 py-1.5 text-center text-sm font-bold transition-all ${
-                                    submitted 
-                                      ? (answers[test.questions[0].id]?.toLowerCase() === test.questions[0].answer.toLowerCase() ? "border-emerald-500 bg-emerald-50 text-emerald-800" : "border-red-400 bg-red-50 text-red-800")
-                                      : "border-slate-200 focus:border-blue-500"
-                                  }`}
-                                />
-                              </div>
-                              <div className="relative rounded-xl border-2 border-blue-100 bg-blue-50/30 p-4 text-center shadow-sm">
-                                <div className="text-xs font-bold text-blue-600 uppercase mb-2">Ventilation Panel</div>
-                                <input
-                                  type="text"
-                                  disabled={submitted}
-                                  value={answers[test.questions[1].id] || ""}
-                                  onChange={(e) => handleAnswer(test.questions[1].id, e.target.value)}
-                                  placeholder="Answer 2..."
-                                  className={`w-full rounded-lg border-2 px-2 py-1.5 text-center text-sm font-bold transition-all ${
-                                    submitted 
-                                      ? (answers[test.questions[1].id]?.toLowerCase() === test.questions[1].answer.toLowerCase() ? "border-emerald-500 bg-emerald-50 text-emerald-800" : "border-red-400 bg-red-50 text-red-800")
-                                      : "border-slate-200 focus:border-blue-500"
-                                  }`}
-                                />
-                              </div>
-                            </div>
-
-                            <div className="flex justify-center">
-                              <div className="h-8 w-px bg-slate-300"></div>
-                            </div>
-
-                            {/* Walkway - Static */}
-                            <div className="rounded-xl border-2 border-slate-200 bg-white p-4 text-center font-bold text-slate-800 shadow-sm">
-                              Walkway
-                            </div>
-
-                            <div className="flex justify-center">
-                              <div className="h-8 w-px bg-slate-300"></div>
-                            </div>
-
-                            {/* Entrance with Gap */}
-                            <div className="rounded-xl border-2 border-blue-100 bg-blue-50/30 p-6 text-center shadow-sm">
-                              <div className="text-xs font-bold text-blue-600 uppercase mb-3 tracking-widest">Entrance System</div>
-                              <div className="flex items-center justify-center gap-3">
-                                <span className="font-bold text-slate-700">Connected to:</span>
-                                <input
-                                  type="text"
-                                  disabled={submitted}
-                                  value={answers[test.questions[2].id] || ""}
-                                  onChange={(e) => handleAnswer(test.questions[2].id, e.target.value)}
-                                  placeholder="Answer 3..."
-                                  className={`w-40 rounded-lg border-2 px-3 py-1.5 text-center font-bold transition-all ${
-                                    submitted 
-                                      ? (answers[test.questions[2].id]?.toLowerCase() === test.questions[2].answer.toLowerCase() ? "border-emerald-500 bg-emerald-50 text-emerald-800" : "border-red-400 bg-red-50 text-red-800")
-                                      : "border-slate-200 focus:border-blue-500"
-                                  }`}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {submitted && (
-                          <div className="mt-8 space-y-2">
-                            {test.questions.map((q, idx) => (
-                              answers[q.id]?.toLowerCase() !== q.answer.toLowerCase() && (
-                                <div key={q.id} className="inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-4 py-2 text-sm font-bold text-emerald-700 mr-4">
-                                  <CheckCircle2 className="h-4 w-4" />
-                                  Answer {idx + 1}: {q.answer}
-                                </div>
-                              )
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ) : q.type === "diagram_completion" ? (
-                      <div className="ml-11 flex items-center gap-6">
-                        <div className="flex-1">
-                          <input
-                            type="text"
-                            disabled={submitted}
-                            value={answers[q.id] || ""}
-                            onChange={(e) => handleAnswer(q.id, e.target.value)}
-                            placeholder={`Enter label for #${q.id.split('-').pop()?.replace('q', '')}...`}
-                            className={`h-12 w-full rounded-xl border-2 px-4 text-lg font-medium transition-all outline-none ${
-                              submitted
-                                ? (answers[q.id]?.trim().toLowerCase() === q.answer.toLowerCase())
-                                  ? "border-emerald-500 bg-emerald-50 text-emerald-800"
-                                  : "border-red-400 bg-red-50 text-red-800"
-                                : answers[q.id]
-                                ? "border-blue-500 bg-blue-50 focus:ring-4 focus:ring-blue-100"
-                                : "border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-                            }`}
-                          />
-                        </div>
-                        {submitted && (answers[q.id]?.trim().toLowerCase() !== q.answer.toLowerCase()) && (
-                          <div className="inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-2 text-sm font-bold text-emerald-700 whitespace-nowrap">
-                            <CheckCircle2 className="h-4 w-4" />
-                            Correct: {q.answer}
-                          </div>
-                        )}
-                      </div>
-                    ) : q.type === "summary_completion" ? (
-                      <div className="ml-11">
-                        <div className="rounded-2xl border-2 border-slate-200 bg-white p-8 shadow-sm">
-                          <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                            <AlignLeft className="h-4 w-4" />
-                            Summary: {test.title.split(':').pop()?.trim()}
-                          </h4>
-                          <div className="text-lg leading-[2.5rem] text-slate-700 font-medium">
-                            {q.text.split(/\[GAP\d+\]/).map((part, index, array) => {
-                              const gapKey = `gap${index + 1}`;
-                              // Find the question for this specific gap
-                              const gapQuestion = test.questions.find(tq => tq.id.endsWith(`-g${index + 1}`));
-                              
-                              if (!gapQuestion) return <span key={index}>{part}</span>;
-
-                              return (
-                                <span key={index}>
-                                  {part}
-                                  <span className="inline-block px-1">
-                                    <select
-                                      disabled={submitted}
-                                      value={answers[gapQuestion.id] || ""}
-                                      onChange={(e) => handleAnswer(gapQuestion.id, e.target.value)}
-                                      className={`h-10 min-w-[4rem] cursor-pointer appearance-none rounded-lg border-2 px-2 text-center font-bold transition-all outline-none ${
-                                        submitted
-                                          ? answers[gapQuestion.id] === gapQuestion.answer
-                                            ? "border-emerald-500 bg-emerald-50 text-emerald-800"
-                                            : "border-red-400 bg-red-50 text-red-800"
-                                          : answers[gapQuestion.id]
-                                          ? "border-blue-500 bg-blue-50 text-blue-900"
-                                          : "border-slate-200 bg-slate-50 text-slate-500 hover:border-slate-300"
-                                      }`}
-                                    >
-                                      <option value="">?</option>
-                                      {gapQuestion.options.map((opt) => (
-                                        <option key={opt} value={opt.split('.')[0].trim()}>
-                                          {opt.split('.')[0].trim()}
-                                        </option>
-                                      ))}
-                                    </select>
-                                  </span>
-                                </span>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        {submitted && (
-                          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {test.questions.map((gapQ, idx) => (
-                              answers[gapQ.id] !== gapQ.answer && (
-                                <div key={gapQ.id} className="flex items-center gap-2 rounded-lg bg-emerald-100 px-4 py-2 text-sm font-bold text-emerald-700 border border-emerald-200">
-                                  <CheckCircle2 className="h-4 w-4" />
-                                  Gap {idx + 1}: {gapQ.answer}
-                                </div>
-                              )
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ) : q.type === "sentence_completion" ? (
-                      <div className="ml-11">
-                        <div className="text-lg leading-loose text-slate-700 font-medium">
-                          {q.text.split('[GAP]').map((part, index, array) => (
-                            <span key={index}>
-                              {part}
-                              {index < array.length - 1 && (
-                                <input
-                                  type="text"
-                                  disabled={submitted}
-                                  value={answers[q.id] || ""}
-                                  onChange={(e) => handleAnswer(q.id, e.target.value)}
-                                  placeholder="Type here..."
-                                  className={`mx-2 h-10 w-48 rounded-lg border-2 px-3 text-base transition-all outline-none ${
-                                    submitted
-                                      ? (answers[q.id]?.trim().toLowerCase() === q.answer.toLowerCase())
-                                        ? "border-emerald-500 bg-emerald-50 text-emerald-800"
-                                        : "border-red-400 bg-red-50 text-red-800"
-                                      : "border-slate-200 focus:border-blue-500 focus:bg-blue-50 focus:ring-4 focus:ring-blue-100"
-                                  }`}
-                                />
-                              )}
-                            </span>
-                          ))}
-                        </div>
-                        {submitted && (answers[q.id]?.trim().toLowerCase() !== q.answer.toLowerCase()) && (
-                          <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
-                            <CheckCircle2 className="h-4 w-4" />
-                            Correct Answer: {q.answer}
-                          </div>
-                        )}
-                      </div>
-                    ) : q.type === "matching_sentence_endings" ? (
-                      <div className="ml-11">
-                        <div className="relative max-w-xl">
-                          <select
-                            disabled={submitted}
-                            value={answers[q.id] || ""}
-                            onChange={(e) => handleAnswer(q.id, e.target.value)}
-                            className={`w-full cursor-pointer appearance-none rounded-xl border-2 p-4 pr-10 font-medium transition-all outline-none ${
-                              submitted
-                                ? answers[q.id] === q.answer
-                                  ? "border-emerald-500 bg-emerald-50 text-emerald-800"
-                                  : "border-red-400 bg-red-50 text-red-800"
-                                : answers[q.id]
-                                ? "border-blue-500 bg-blue-50 text-blue-900"
-                                : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
-                            }`}
-                          >
-                            <option value="" disabled>Select the correct ending...</option>
+                      ) : q.type === "matching_features" || q.type === "matching_information" ? (
+                        <div className="flex flex-col gap-3">
+                          <p className="text-slate-800 font-medium">{q.text}</p>
+                          <div className="flex flex-wrap gap-1.5">
                             {q.options.map((opt) => {
                               const letter = opt.split('.')[0].trim();
+                              const isSelected = answers[q.id] === letter;
+                              const isActuallyCorrect = submitted && q.answer === letter;
+
                               return (
-                                <option key={opt} value={letter}>
-                                  {opt}
-                                </option>
+                                <button
+                                  key={opt}
+                                  disabled={submitted}
+                                  onClick={() => handleAnswer(q.id, letter)}
+                                  className={`flex h-8 w-8 items-center justify-center border text-xs font-bold transition-all ${
+                                    isSelected
+                                      ? 'bg-slate-800 border-slate-800 text-white'
+                                      : 'bg-white border-slate-300 text-slate-600 hover:border-slate-400'
+                                  } ${isActuallyCorrect ? 'bg-emerald-600 border-emerald-600 text-white' : ''}`}
+                                >
+                                  {letter}
+                                </button>
                               );
                             })}
-                          </select>
-                          <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
-                            <ChevronDown className={`h-5 w-5 ${submitted ? 'text-slate-400' : 'text-slate-500'}`} />
                           </div>
                         </div>
-                        
-                        {submitted && answers[q.id] !== q.answer && (
-                          <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
-                            <CheckCircle2 className="h-4 w-4" />
-                            Correct Answer: {q.answer}
+                      ) : q.type === "sentence_completion" || q.type === "short_answer" || q.type === "diagram_completion" ? (
+                        <div className="flex flex-col gap-3">
+                          <div className="text-slate-800 font-medium leading-relaxed">
+                            {q.type === "sentence_completion" ? (
+                               q.text.split('[GAP]').map((part, index, array) => (
+                                <span key={index}>
+                                  {part}
+                                  {index < array.length - 1 && (
+                                    <input
+                                      type="text"
+                                      disabled={submitted}
+                                      value={answers[q.id] || ""}
+                                      onChange={(e) => handleAnswer(q.id, e.target.value)}
+                                      className={`mx-1 w-32 border-b-2 border-slate-400 bg-transparent px-1 text-sm font-bold outline-none focus:border-slate-900 ${
+                                        submitted 
+                                          ? isCorrect ? "text-emerald-700 border-emerald-500" : "text-red-700 border-red-400"
+                                          : ""
+                                      }`}
+                                    />
+                                  )}
+                                </span>
+                              ))
+                            ) : (
+                              <p>{q.text}</p>
+                            )}
                           </div>
-                        )}
-                      </div>
-                    ) : q.type === "matching_features" ? (
-                      <div className="ml-11">
-                        <div className="flex flex-wrap gap-3">
-                          {q.options.map((opt) => {
-                            const letter = opt.split('.')[0].trim();
-                            const isSelected = answers[q.id] === letter;
-                            const isActuallyCorrect = submitted && q.answer === letter;
-
-                            let btnClass = "border-slate-200 bg-slate-50 text-slate-600 hover:border-blue-300 hover:bg-blue-50";
-                            if (submitted && isActuallyCorrect) {
-                              btnClass = "border-emerald-500 bg-emerald-500 text-white shadow-md";
-                            } else if (submitted && isSelected && !isCorrect) {
-                              btnClass = "border-red-400 bg-red-100 text-red-700";
-                            } else if (isSelected) {
-                              btnClass = "border-blue-600 bg-blue-600 text-white shadow-md";
-                            }
-
-                            return (
-                              <label
-                                key={opt}
-                                className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-2 text-lg font-bold transition-all ${btnClass}`}
-                              >
-                                <input
-                                  type="radio"
-                                  name={q.id}
-                                  value={letter}
+                          {q.type !== "sentence_completion" && (
+                            <input
+                              type="text"
+                              disabled={submitted}
+                              value={answers[q.id] || ""}
+                              onChange={(e) => handleAnswer(q.id, e.target.value)}
+                              className={`w-full sm:w-64 border p-2 text-sm font-bold transition-all outline-none ${
+                                submitted
+                                  ? isCorrect
+                                    ? "border-emerald-500 bg-emerald-50 text-emerald-800"
+                                    : "border-red-400 bg-red-50 text-red-800"
+                                  : answers[q.id]
+                                  ? "border-slate-800 ring-1 ring-slate-800"
+                                  : "border-slate-300 bg-white"
+                              }`}
+                            />
+                          )}
+                        </div>
+                      ) : (
+                        <div className="flex flex-col gap-3">
+                          <p className="text-slate-800 font-medium leading-relaxed">{q.text}</p>
+                          <div className="grid grid-cols-1 gap-1">
+                            {q.options?.map((opt) => {
+                              const optionLetter = opt.charAt(0);
+                              const isSelected = answers[q.id] === optionLetter;
+                              const isActuallyCorrect = submitted && q.answer === optionLetter;
+                              
+                              return (
+                                <button 
+                                  key={opt}
                                   disabled={submitted}
-                                  checked={isSelected}
-                                  onChange={(e) => handleAnswer(q.id, e.target.value)}
-                                  className="hidden"
-                                />
-                                {letter}
-                              </label>
-                            );
-                          })}
-                        </div>
-                        {submitted && answers[q.id] !== q.answer && (
-                          <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
-                            <CheckCircle2 className="h-4 w-4" />
-                            Correct Answer: {q.answer}
+                                  onClick={() => handleAnswer(q.id, optionLetter)}
+                                  className={`flex items-center gap-3 border p-2 text-left text-sm font-medium transition-all ${
+                                    isSelected
+                                      ? 'bg-slate-800 border-slate-800 text-white' 
+                                      : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                                  } ${isActuallyCorrect ? 'bg-emerald-600 border-emerald-600 text-white' : ''}`}
+                                >
+                                  <span className="shrink-0 font-bold w-6 text-center">{optionLetter}</span>
+                                  <span>{opt.substring(2)}</span>
+                                </button>
+                              );
+                            })}
                           </div>
-                        )}
-                      </div>
-                    ) : q.type === "matching_information" ? (
-                      <div className="ml-11">
-                        <div className="flex flex-wrap gap-3">
-                          {q.options.map((opt) => {
-                            const isSelected = answers[q.id] === opt;
-                            const isActuallyCorrect = submitted && q.answer === opt;
-
-                            let btnClass = "border-slate-200 bg-slate-50 text-slate-600 hover:border-blue-300 hover:bg-blue-50";
-                            if (submitted && isActuallyCorrect) {
-                              btnClass = "border-emerald-500 bg-emerald-500 text-white shadow-md";
-                            } else if (submitted && isSelected && !isCorrect) {
-                              btnClass = "border-red-400 bg-red-100 text-red-700";
-                            } else if (isSelected) {
-                              btnClass = "border-blue-600 bg-blue-600 text-white shadow-md";
-                            }
-
-                            return (
-                              <label
-                                key={opt}
-                                className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-2 text-lg font-bold transition-all ${btnClass}`}
-                              >
-                                <input
-                                  type="radio"
-                                  name={q.id}
-                                  value={opt}
-                                  disabled={submitted}
-                                  checked={isSelected}
-                                  onChange={(e) => handleAnswer(q.id, e.target.value)}
-                                  className="hidden"
-                                />
-                                {opt}
-                              </label>
-                            );
-                          })}
                         </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-4 ml-11">
-                        {q.options?.map((opt) => {
-                          const optionLetter = opt.charAt(0);
-                          const isSelected = answers[q.id] === optionLetter;
-                          const isActuallyCorrect = submitted && q.answer === optionLetter;
-                          
-                          return (
-                            <label 
-                              key={opt}
-                              className={`flex cursor-pointer items-start gap-4 rounded-xl border-2 p-5 transition-all ${
-                                isSelected
-                                  ? 'border-blue-600 bg-blue-50 shadow-sm' 
-                                  : 'border-slate-200 hover:bg-slate-50 hover:border-slate-300'
-                              } ${isActuallyCorrect ? 'border-emerald-500 bg-emerald-50 ring-1 ring-emerald-500' : ''} ${submitted && isSelected && !isCorrect ? 'border-red-400 bg-red-50' : ''}`}
-                            >
-                              <div className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 ${isSelected ? 'border-blue-600' : 'border-slate-300'}`}>
-                                {isSelected && <div className="h-2.5 w-2.5 rounded-full bg-blue-600" />}
-                              </div>
-                              <input
-                                type="radio"
-                                name={q.id}
-                                value={optionLetter}
-                                disabled={submitted}
-                                checked={isSelected}
-                                onChange={(e) => handleAnswer(q.id, e.target.value)}
-                                className="hidden"
-                              />
-                              <span className={`text-lg leading-relaxed ${isSelected ? 'text-blue-900 font-medium' : 'text-slate-700'}`}>{opt}</span>
-                            </label>
-                          )
-                        })}
-                      </div>
-                    )}
+                      )}
 
-                    {submitted && !isCorrect && (
-                      <div className="mt-6 ml-11 rounded-xl bg-emerald-50 p-4 border border-emerald-200 flex gap-3">
-                        <CheckCircle2 className="h-6 w-6 text-emerald-600 shrink-0" />
-                        <div>
-                          <p className="text-sm font-bold text-emerald-800 uppercase tracking-wide">Correct Answer</p>
-                          <p className="text-lg font-medium text-emerald-900 mt-1">{q.answer}</p>
+                      {submitted && !isCorrect && (
+                        <div className="mt-2 text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded border border-emerald-100 inline-block">
+                          Correct Answer: {q.answer}
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 );
               })}
@@ -765,5 +464,6 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         </div>
       </div>
     </div>
+  </div>
   );
 }
