@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ReadingTest } from "@/data/mock-reading-test";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { saveTestResultAction } from "@/app/actions/save-test-result";
 import { resetTestResultAction } from "@/app/actions/reset-test-result";
@@ -108,6 +108,29 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         {/* Right Pane - Questions */}
         <div className="w-1/2 overflow-y-auto bg-slate-50 p-8 lg:p-12 xl:p-16 relative shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]">
           <div className="max-w-3xl mx-auto">
+            {/* Official IELTS instructions for matching headings */}
+            {test.questions[0]?.type === "matching_headings" && (
+              <div className="mb-8 space-y-6">
+                <div className="rounded-xl border border-blue-200 bg-blue-50 p-5">
+                  <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                  <p className="text-sm text-blue-700 leading-relaxed">
+                    The reading passage has eight paragraphs, <span className="font-bold">A–H</span>. Choose the correct heading for each paragraph from the list of headings below. Write the correct number, <span className="font-bold">i–xi</span>, in the boxes below.
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h3 className="text-lg font-bold text-slate-900 mb-4 border-b pb-2">List of Headings</h3>
+                  <ul className="space-y-2">
+                    {test.questions[0].options.map((heading) => (
+                      <li key={heading} className="text-slate-700 font-medium">
+                        {heading}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
             {/* Official IELTS instructions for matching information */}
             {test.questions[0]?.type === "matching_information" && (
               <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
@@ -199,6 +222,45 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                             </label>
                           );
                         })}
+                      </div>
+                    ) : q.type === "matching_headings" ? (
+                      <div className="ml-11">
+                        <div className="relative max-w-xl">
+                          <select
+                            disabled={submitted}
+                            value={answers[q.id] || ""}
+                            onChange={(e) => handleAnswer(q.id, e.target.value)}
+                            className={`w-full cursor-pointer appearance-none rounded-xl border-2 p-4 pr-10 font-medium transition-all outline-none ${
+                              submitted
+                                ? answers[q.id] === q.answer
+                                  ? "border-emerald-500 bg-emerald-50 text-emerald-800"
+                                  : "border-red-400 bg-red-50 text-red-800"
+                                : answers[q.id]
+                                ? "border-blue-500 bg-blue-50 text-blue-900"
+                                : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
+                            }`}
+                          >
+                            <option value="" disabled>Select the correct heading...</option>
+                            {q.options.map((opt) => {
+                              const romanNumeral = opt.split('.')[0].trim();
+                              return (
+                                <option key={opt} value={romanNumeral}>
+                                  {opt}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+                            <ChevronDown className={`h-5 w-5 ${submitted ? 'text-slate-400' : 'text-slate-500'}`} />
+                          </div>
+                        </div>
+                        
+                        {submitted && answers[q.id] !== q.answer && (
+                          <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
+                            <CheckCircle2 className="h-4 w-4" />
+                            Correct Answer: {q.answer}
+                          </div>
+                        )}
                       </div>
                     ) : q.type === "matching_information" ? (
                       <div className="ml-11">
