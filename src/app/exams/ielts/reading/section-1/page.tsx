@@ -15,7 +15,7 @@ export default function Section1Page() {
     { id: 4, title: "Matching Information", description: "Find specific information within paragraphs.", questions: 14, href: "/exams/ielts/reading/test/matching-information-1" },
     { id: 5, title: "Matching Headings", description: "Match paragraph headings from a given list.", questions: 8, href: "/exams/ielts/reading/test/matching-headings-1" },
     { id: 6, title: "Matching Features", description: "Match statements to a list of options (e.g., people, theories).", questions: 8, href: "/exams/ielts/reading/test/matching-features-1" },
-    { id: 7, title: "Matching Sentence Endings", description: "Complete sentences by choosing the best endings.", questions: 10, href: "/exams/ielts/reading/test/1" },
+    { id: 7, title: "Matching Sentence Endings", description: "Complete sentences by choosing the best endings.", questions: 7, href: "/exams/ielts/reading/test/matching-sentence-endings-1" },
     { id: 8, title: "Sentence Completion", description: "Fill in gaps in sentences using words from the text.", questions: 10, href: "/exams/ielts/reading/test/1" },
     { id: 9, title: "Summary / Note Completion", description: "Complete a summary, note, table, or flow-chart.", questions: 10, href: "/exams/ielts/reading/test/1" },
     { id: 10, title: "Diagram Label Completion", description: "Label a diagram based on a description in the text.", questions: 10, href: "/exams/ielts/reading/test/1" },
