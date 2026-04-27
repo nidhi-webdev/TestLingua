@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ReadingTest } from "@/data/mock-reading-test";
-import { CheckCircle2, AlertCircle, ChevronDown } from "lucide-react";
+import { CheckCircle2, AlertCircle, ChevronDown, AlignLeft } from "lucide-react";
 import Link from "next/link";
 import { saveTestResultAction } from "@/app/actions/save-test-result";
 import { resetTestResultAction } from "@/app/actions/reset-test-result";
@@ -108,6 +108,74 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         {/* Right Pane - Questions */}
         <div className="w-1/2 overflow-y-auto bg-slate-50 p-8 lg:p-12 xl:p-16 relative shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]">
           <div className="max-w-3xl mx-auto">
+            {/* Official IELTS instructions for flow-chart completion */}
+            {test.questions[0]?.type === "flow_chart" && (
+              <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
+                <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                <p className="text-sm text-blue-700 leading-relaxed">
+                  Complete the flow-chart below. Choose <span className="font-bold">NO MORE THAN TWO WORDS</span> from the text for each answer. Write your answers in the boxes below.
+                </p>
+              </div>
+            )}
+
+            {/* Diagram Image Display */}
+            {test.imageUrl && (
+              <div className="mb-10 overflow-hidden rounded-2xl border-2 border-slate-200 bg-white p-4 shadow-sm">
+                <img 
+                  src={test.imageUrl} 
+                  alt="Test Diagram" 
+                  className="h-auto w-full rounded-xl object-contain"
+                />
+                <p className="mt-3 text-center text-sm font-medium text-slate-500 italic">
+                  Diagram: {test.title.split(':').pop()?.trim()}
+                </p>
+              </div>
+            )}
+
+            {/* Official IELTS instructions for diagram completion */}
+            {test.questions[0]?.type === "diagram_completion" && (
+              <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
+                <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                <p className="text-sm text-blue-700 leading-relaxed">
+                  Label the diagram below. Choose <span className="font-bold">NO MORE THAN TWO WORDS</span> from the text for each answer. Write your answers in the boxes below.
+                </p>
+              </div>
+            )}
+
+            {/* Official IELTS instructions for summary completion */}
+            {test.questions[0]?.type === "summary_completion" && (
+              <div className="mb-8 space-y-6">
+                <div className="rounded-xl border border-blue-200 bg-blue-50 p-5">
+                  <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                  <p className="text-sm text-blue-700 leading-relaxed">
+                    Complete the summary using the list of words, <span className="font-bold">A–G</span>, below. Write the correct letter, <span className="font-bold">A–G</span>, in the boxes below.
+                  </p>
+                </div>
+
+                <div className="rounded-xl border border-slate-200 bg-blue-50/50 p-6 shadow-sm">
+                  <h3 className="text-lg font-bold text-slate-900 mb-4 border-b border-slate-200 pb-2">List of Words</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {test.questions[0].options.map((word) => (
+                      <div key={word} className="text-slate-700 font-medium flex gap-3">
+                        <span className="font-bold text-blue-600">{word.split('.')[0]}.</span>
+                        <span>{word.split('.').slice(1).join('.').trim()}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Official IELTS instructions for sentence completion */}
+            {test.questions[0]?.type === "sentence_completion" && (
+              <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
+                <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                <p className="text-sm text-blue-700 leading-relaxed">
+                  Complete the sentences below. Choose <span className="font-bold">NO MORE THAN TWO WORDS</span> from the text for each answer. Write your answers in the boxes below.
+                </p>
+              </div>
+            )}
+
             {/* Official IELTS instructions for matching sentence endings */}
             {test.questions[0]?.type === "matching_sentence_endings" && (
               <div className="mb-8 space-y-6">
@@ -305,6 +373,222 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                         </div>
                         
                         {submitted && answers[q.id] !== q.answer && (
+                          <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
+                            <CheckCircle2 className="h-4 w-4" />
+                            Correct Answer: {q.answer}
+                          </div>
+                        )}
+                      </div>
+                    ) : q.type === "flow_chart" ? (
+                      <div className="ml-11">
+                        <div className="flex flex-col items-center space-y-6">
+                          {/* We assume the first question carries the structure or we render a specific flow */}
+                          {/* For now, we'll build a flexible flow layout for the Greenhouse example */}
+                          <div className="w-full max-w-md space-y-8">
+                            {/* Glass Roof - Static */}
+                            <div className="rounded-xl border-2 border-slate-200 bg-white p-4 text-center font-bold text-slate-800 shadow-sm">
+                              Glass Roof
+                            </div>
+
+                            <div className="flex justify-center -my-4">
+                              <div className="h-8 w-px bg-slate-300"></div>
+                            </div>
+
+                            {/* Ventilation Panels Row */}
+                            <div className="grid grid-cols-2 gap-8">
+                              <div className="relative rounded-xl border-2 border-blue-100 bg-blue-50/30 p-4 text-center shadow-sm">
+                                <div className="text-xs font-bold text-blue-600 uppercase mb-2">Ventilation Panel</div>
+                                <input
+                                  type="text"
+                                  disabled={submitted}
+                                  value={answers[test.questions[0].id] || ""}
+                                  onChange={(e) => handleAnswer(test.questions[0].id, e.target.value)}
+                                  placeholder="Answer 1..."
+                                  className={`w-full rounded-lg border-2 px-2 py-1.5 text-center text-sm font-bold transition-all ${
+                                    submitted 
+                                      ? (answers[test.questions[0].id]?.toLowerCase() === test.questions[0].answer.toLowerCase() ? "border-emerald-500 bg-emerald-50 text-emerald-800" : "border-red-400 bg-red-50 text-red-800")
+                                      : "border-slate-200 focus:border-blue-500"
+                                  }`}
+                                />
+                              </div>
+                              <div className="relative rounded-xl border-2 border-blue-100 bg-blue-50/30 p-4 text-center shadow-sm">
+                                <div className="text-xs font-bold text-blue-600 uppercase mb-2">Ventilation Panel</div>
+                                <input
+                                  type="text"
+                                  disabled={submitted}
+                                  value={answers[test.questions[1].id] || ""}
+                                  onChange={(e) => handleAnswer(test.questions[1].id, e.target.value)}
+                                  placeholder="Answer 2..."
+                                  className={`w-full rounded-lg border-2 px-2 py-1.5 text-center text-sm font-bold transition-all ${
+                                    submitted 
+                                      ? (answers[test.questions[1].id]?.toLowerCase() === test.questions[1].answer.toLowerCase() ? "border-emerald-500 bg-emerald-50 text-emerald-800" : "border-red-400 bg-red-50 text-red-800")
+                                      : "border-slate-200 focus:border-blue-500"
+                                  }`}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex justify-center">
+                              <div className="h-8 w-px bg-slate-300"></div>
+                            </div>
+
+                            {/* Walkway - Static */}
+                            <div className="rounded-xl border-2 border-slate-200 bg-white p-4 text-center font-bold text-slate-800 shadow-sm">
+                              Walkway
+                            </div>
+
+                            <div className="flex justify-center">
+                              <div className="h-8 w-px bg-slate-300"></div>
+                            </div>
+
+                            {/* Entrance with Gap */}
+                            <div className="rounded-xl border-2 border-blue-100 bg-blue-50/30 p-6 text-center shadow-sm">
+                              <div className="text-xs font-bold text-blue-600 uppercase mb-3 tracking-widest">Entrance System</div>
+                              <div className="flex items-center justify-center gap-3">
+                                <span className="font-bold text-slate-700">Connected to:</span>
+                                <input
+                                  type="text"
+                                  disabled={submitted}
+                                  value={answers[test.questions[2].id] || ""}
+                                  onChange={(e) => handleAnswer(test.questions[2].id, e.target.value)}
+                                  placeholder="Answer 3..."
+                                  className={`w-40 rounded-lg border-2 px-3 py-1.5 text-center font-bold transition-all ${
+                                    submitted 
+                                      ? (answers[test.questions[2].id]?.toLowerCase() === test.questions[2].answer.toLowerCase() ? "border-emerald-500 bg-emerald-50 text-emerald-800" : "border-red-400 bg-red-50 text-red-800")
+                                      : "border-slate-200 focus:border-blue-500"
+                                  }`}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {submitted && (
+                          <div className="mt-8 space-y-2">
+                            {test.questions.map((q, idx) => (
+                              answers[q.id]?.toLowerCase() !== q.answer.toLowerCase() && (
+                                <div key={q.id} className="inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-4 py-2 text-sm font-bold text-emerald-700 mr-4">
+                                  <CheckCircle2 className="h-4 w-4" />
+                                  Answer {idx + 1}: {q.answer}
+                                </div>
+                              )
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : q.type === "diagram_completion" ? (
+                      <div className="ml-11 flex items-center gap-6">
+                        <div className="flex-1">
+                          <input
+                            type="text"
+                            disabled={submitted}
+                            value={answers[q.id] || ""}
+                            onChange={(e) => handleAnswer(q.id, e.target.value)}
+                            placeholder={`Enter label for #${q.id.split('-').pop()?.replace('q', '')}...`}
+                            className={`h-12 w-full rounded-xl border-2 px-4 text-lg font-medium transition-all outline-none ${
+                              submitted
+                                ? (answers[q.id]?.trim().toLowerCase() === q.answer.toLowerCase())
+                                  ? "border-emerald-500 bg-emerald-50 text-emerald-800"
+                                  : "border-red-400 bg-red-50 text-red-800"
+                                : answers[q.id]
+                                ? "border-blue-500 bg-blue-50 focus:ring-4 focus:ring-blue-100"
+                                : "border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                            }`}
+                          />
+                        </div>
+                        {submitted && (answers[q.id]?.trim().toLowerCase() !== q.answer.toLowerCase()) && (
+                          <div className="inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-2 text-sm font-bold text-emerald-700 whitespace-nowrap">
+                            <CheckCircle2 className="h-4 w-4" />
+                            Correct: {q.answer}
+                          </div>
+                        )}
+                      </div>
+                    ) : q.type === "summary_completion" ? (
+                      <div className="ml-11">
+                        <div className="rounded-2xl border-2 border-slate-200 bg-white p-8 shadow-sm">
+                          <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                            <AlignLeft className="h-4 w-4" />
+                            Summary: {test.title.split(':').pop()?.trim()}
+                          </h4>
+                          <div className="text-lg leading-[2.5rem] text-slate-700 font-medium">
+                            {q.text.split(/\[GAP\d+\]/).map((part, index, array) => {
+                              const gapKey = `gap${index + 1}`;
+                              // Find the question for this specific gap
+                              const gapQuestion = test.questions.find(tq => tq.id.endsWith(`-g${index + 1}`));
+                              
+                              if (!gapQuestion) return <span key={index}>{part}</span>;
+
+                              return (
+                                <span key={index}>
+                                  {part}
+                                  <span className="inline-block px-1">
+                                    <select
+                                      disabled={submitted}
+                                      value={answers[gapQuestion.id] || ""}
+                                      onChange={(e) => handleAnswer(gapQuestion.id, e.target.value)}
+                                      className={`h-10 min-w-[4rem] cursor-pointer appearance-none rounded-lg border-2 px-2 text-center font-bold transition-all outline-none ${
+                                        submitted
+                                          ? answers[gapQuestion.id] === gapQuestion.answer
+                                            ? "border-emerald-500 bg-emerald-50 text-emerald-800"
+                                            : "border-red-400 bg-red-50 text-red-800"
+                                          : answers[gapQuestion.id]
+                                          ? "border-blue-500 bg-blue-50 text-blue-900"
+                                          : "border-slate-200 bg-slate-50 text-slate-500 hover:border-slate-300"
+                                      }`}
+                                    >
+                                      <option value="">?</option>
+                                      {gapQuestion.options.map((opt) => (
+                                        <option key={opt} value={opt.split('.')[0].trim()}>
+                                          {opt.split('.')[0].trim()}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </span>
+                                </span>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        {submitted && (
+                          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {test.questions.map((gapQ, idx) => (
+                              answers[gapQ.id] !== gapQ.answer && (
+                                <div key={gapQ.id} className="flex items-center gap-2 rounded-lg bg-emerald-100 px-4 py-2 text-sm font-bold text-emerald-700 border border-emerald-200">
+                                  <CheckCircle2 className="h-4 w-4" />
+                                  Gap {idx + 1}: {gapQ.answer}
+                                </div>
+                              )
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : q.type === "sentence_completion" ? (
+                      <div className="ml-11">
+                        <div className="text-lg leading-loose text-slate-700 font-medium">
+                          {q.text.split('[GAP]').map((part, index, array) => (
+                            <span key={index}>
+                              {part}
+                              {index < array.length - 1 && (
+                                <input
+                                  type="text"
+                                  disabled={submitted}
+                                  value={answers[q.id] || ""}
+                                  onChange={(e) => handleAnswer(q.id, e.target.value)}
+                                  placeholder="Type here..."
+                                  className={`mx-2 h-10 w-48 rounded-lg border-2 px-3 text-base transition-all outline-none ${
+                                    submitted
+                                      ? (answers[q.id]?.trim().toLowerCase() === q.answer.toLowerCase())
+                                        ? "border-emerald-500 bg-emerald-50 text-emerald-800"
+                                        : "border-red-400 bg-red-50 text-red-800"
+                                      : "border-slate-200 focus:border-blue-500 focus:bg-blue-50 focus:ring-4 focus:ring-blue-100"
+                                  }`}
+                                />
+                              )}
+                            </span>
+                          ))}
+                        </div>
+                        {submitted && (answers[q.id]?.trim().toLowerCase() !== q.answer.toLowerCase()) && (
                           <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
                             <CheckCircle2 className="h-4 w-4" />
                             Correct Answer: {q.answer}

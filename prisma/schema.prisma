@@ -72,6 +72,7 @@ model ReadingTest {
   id        String            @id @default(cuid())
   title     String
   passage     String            @db.Text
+  imageUrl    String?
   questions   ReadingQuestion[]
   testResults TestResult[]
   createdAt   DateTime          @default(now())

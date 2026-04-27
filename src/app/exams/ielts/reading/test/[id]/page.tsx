@@ -20,9 +20,10 @@ export default async function TestPage({ params }: { params: Promise<{ id: strin
 
   const formattedTest = {
     ...test,
+    imageUrl: test.imageUrl,
     questions: test.questions.map(q => ({
       ...q,
-      type: q.type as "multiple_choice" | "true_false_not_given"
+      type: q.type as any
     }))
   };
 
