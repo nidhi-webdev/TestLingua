@@ -415,8 +415,8 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                                     ? "border-emerald-500 bg-emerald-50 text-emerald-800"
                                     : "border-red-400 bg-red-50 text-red-800"
                                   : answers[q.id]
-                                  ? "border-slate-800 ring-1 ring-slate-800"
-                                  : "border-slate-300 bg-white"
+                                  ? "border-slate-800 ring-1 ring-slate-800 text-slate-900"
+                                  : "border-slate-300 bg-white text-slate-900"
                               }`}
                             />
                           )}
