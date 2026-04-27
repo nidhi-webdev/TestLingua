@@ -108,6 +108,31 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         {/* Right Pane - Questions */}
         <div className="w-1/2 overflow-y-auto bg-slate-50 p-8 lg:p-12 xl:p-16 relative shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]">
           <div className="max-w-3xl mx-auto">
+            {/* Official IELTS instructions for matching features */}
+            {test.questions[0]?.type === "matching_features" && (
+              <div className="mb-8 space-y-6">
+                <div className="rounded-xl border border-blue-200 bg-blue-50 p-5">
+                  <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                  <p className="text-sm text-blue-700 leading-relaxed">
+                    Look at the following statements and the list of people below. Match each statement with the correct person, <span className="font-bold">A–D</span>. Write the correct letter, <span className="font-bold">A–D</span>, in the boxes below.
+                  </p>
+                  <p className="text-sm font-semibold text-blue-800 mt-2">NB: You may use any letter more than once.</p>
+                </div>
+
+                <div className="rounded-xl border border-slate-200 bg-blue-50/50 p-6 shadow-sm">
+                  <h3 className="text-lg font-bold text-slate-900 mb-4 border-b border-slate-200 pb-2">List of People</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {test.questions[0].options.map((feature) => (
+                      <div key={feature} className="text-slate-700 font-medium flex gap-3">
+                        <span className="font-bold text-blue-600">{feature.split('.')[0]}.</span>
+                        <span>{feature.split('.').slice(1).join('.').trim()}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Official IELTS instructions for matching headings */}
             {test.questions[0]?.type === "matching_headings" && (
               <div className="mb-8 space-y-6">
@@ -255,6 +280,49 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                           </div>
                         </div>
                         
+                        {submitted && answers[q.id] !== q.answer && (
+                          <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
+                            <CheckCircle2 className="h-4 w-4" />
+                            Correct Answer: {q.answer}
+                          </div>
+                        )}
+                      </div>
+                    ) : q.type === "matching_features" ? (
+                      <div className="ml-11">
+                        <div className="flex flex-wrap gap-3">
+                          {q.options.map((opt) => {
+                            const letter = opt.split('.')[0].trim();
+                            const isSelected = answers[q.id] === letter;
+                            const isActuallyCorrect = submitted && q.answer === letter;
+
+                            let btnClass = "border-slate-200 bg-slate-50 text-slate-600 hover:border-blue-300 hover:bg-blue-50";
+                            if (submitted && isActuallyCorrect) {
+                              btnClass = "border-emerald-500 bg-emerald-500 text-white shadow-md";
+                            } else if (submitted && isSelected && !isCorrect) {
+                              btnClass = "border-red-400 bg-red-100 text-red-700";
+                            } else if (isSelected) {
+                              btnClass = "border-blue-600 bg-blue-600 text-white shadow-md";
+                            }
+
+                            return (
+                              <label
+                                key={opt}
+                                className={`flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-2 text-lg font-bold transition-all ${btnClass}`}
+                              >
+                                <input
+                                  type="radio"
+                                  name={q.id}
+                                  value={letter}
+                                  disabled={submitted}
+                                  checked={isSelected}
+                                  onChange={(e) => handleAnswer(q.id, e.target.value)}
+                                  className="hidden"
+                                />
+                                {letter}
+                              </label>
+                            );
+                          })}
+                        </div>
                         {submitted && answers[q.id] !== q.answer && (
                           <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-bold text-emerald-700">
                             <CheckCircle2 className="h-4 w-4" />
