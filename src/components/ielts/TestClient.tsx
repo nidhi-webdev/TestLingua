@@ -113,7 +113,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
               <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
                 <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
                 <p className="text-sm text-blue-700 leading-relaxed">
-                  Answer the questions below. Choose <span className="font-bold">NO MORE THAN THREE WORDS</span> from the text for each answer. Write your answers in the boxes below.
+                  Answer the questions below. Write your answers using <span className="font-bold">NO MORE THAN TWO WORDS AND/OR A NUMBER</span> from the text for each answer. Numbers can be written using figures (1, 2, etc.) or words (one, two, etc.). Hyphenated words such as 'check-in' count as single words. Write your answers in the boxes below.
                 </p>
               </div>
             )}
