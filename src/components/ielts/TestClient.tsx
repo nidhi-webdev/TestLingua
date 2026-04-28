@@ -16,6 +16,10 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
   const [answers, setAnswers] = useState<Record<string, string>>(previousResult?.answers || {});
   const [submitted, setSubmitted] = useState(!!previousResult);
   const [score, setScore] = useState(previousResult?.score || 0);
+  
+  // Determine if this is a Section 2 test (ID ends with -2)
+  const isSection2 = test.id.endsWith('-2');
+  const sectionLink = isSection2 ? '/exams/ielts/reading/section-2' : '/exams/ielts/reading/section-1';
 
   const handleAnswer = (questionId: string, value: string) => {
     if (submitted) return;
@@ -59,7 +63,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
       {/* Header */}
       <header className="flex shrink-0 items-center justify-between border-b border-slate-200 bg-white px-6 py-4 shadow-sm z-10 relative">
         <div className="flex items-center gap-4">
-          <Link href="/exams/ielts/reading/section-1" className="text-slate-500 hover:text-slate-900 font-medium transition">
+          <Link href={sectionLink} className="text-slate-500 hover:text-slate-900 font-medium transition">
             ← Exit
           </Link>
           <div className="h-6 w-px bg-slate-200"></div>
@@ -85,7 +89,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                 ↺ Reset
               </button>
               <Link
-                href="/exams/ielts/reading/section-1"
+                href={sectionLink}
                 className="rounded-lg bg-slate-800 px-6 py-2.5 font-bold text-white shadow-md transition hover:bg-slate-900 hover:shadow-lg active:scale-95"
               >
                 Return to Topics

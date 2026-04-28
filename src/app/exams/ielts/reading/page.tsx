@@ -22,10 +22,10 @@ export default function IELTSReadingPage() {
       description: "Work-related topics. Two or more short texts.",
       duration: "20 min",
       questions: "13-14 Questions",
-      href: "",
-      cta: "Coming Soon",
+      href: "/exams/ielts/reading/section-2",
+      cta: "Start Section 2",
       icon: BookOpen,
-      active: false,
+      active: true,
     },
     {
       name: "Section 3",
