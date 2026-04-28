@@ -19,37 +19,42 @@ async function main() {
     {
       id: "sa-q1",
       type: "short_answer",
+      order: 1,
       text: "What was the name of the ship that discovered the Mary Celeste?",
       options: [],
-      answer: "Dei Gratia",
+      answer: ["Dei Gratia"],
     },
     {
       id: "sa-q2",
       type: "short_answer",
+      order: 2,
       text: "To which Italian city was the Mary Celeste traveling?",
       options: [],
-      answer: "Genoa",
+      answer: ["Genoa"],
     },
     {
       id: "sa-q3",
       type: "short_answer",
+      order: 3,
       text: "What specific type of cargo was the ship carrying?",
       options: [],
-      answer: "industrial alcohol",
+      answer: ["industrial alcohol"],
     },
     {
       id: "sa-q4",
       type: "short_answer",
+      order: 4,
       text: "Which crucial piece of safety equipment was found to be missing?",
       options: [],
-      answer: "lifeboat",
+      answer: ["lifeboat"],
     },
     {
       id: "sa-q5",
       type: "short_answer",
+      order: 5,
       text: "Where was the Mary Celeste eventually wrecked in 1885?",
       options: [],
-      answer: "Haiti",
+      answer: ["Haiti"],
     }
   ];
 
@@ -60,6 +65,8 @@ async function main() {
     data: {
       id: "short-answer-1",
       title: "Short-Answer Questions: The Mary Celeste",
+      section: 1,
+      difficulty: "Easy",
       passage,
       questions: {
         create: questions,

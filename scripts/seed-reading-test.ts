@@ -4,6 +4,9 @@ import { mockReadingTest } from "../src/data/mock-reading-test";
 async function main() {
   console.log("Seeding reading test...");
 
+  // Delete existing if already seeded
+  await prisma.readingTest.deleteMany({ where: { id: mockReadingTest.id } });
+
   // Create the test
   const test = await prisma.readingTest.create({
     data: {

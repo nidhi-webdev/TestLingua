@@ -19,37 +19,42 @@ async function main() {
     {
       id: "dc-q1",
       type: "diagram_completion",
+      order: 1,
       text: "Label #1",
       options: [],
-      answer: "rotor blades",
+      answer: ["rotor blades"],
     },
     {
       id: "dc-q2",
       type: "diagram_completion",
+      order: 2,
       text: "Label #2",
       options: [],
-      answer: "hub",
+      answer: ["hub"],
     },
     {
       id: "dc-q3",
       type: "diagram_completion",
+      order: 3,
       text: "Label #3",
       options: [],
-      answer: "main shaft",
+      answer: ["main shaft"],
     },
     {
       id: "dc-q4",
       type: "diagram_completion",
+      order: 4,
       text: "Label #4",
       options: [],
-      answer: "gearbox",
+      answer: ["gearbox"],
     },
     {
       id: "dc-q5",
       type: "diagram_completion",
+      order: 5,
       text: "Label #5",
       options: [],
-      answer: "generator",
+      answer: ["generator"],
     }
   ];
 
@@ -60,6 +65,8 @@ async function main() {
     data: {
       id: "diagram-completion-1",
       title: "Diagram Completion: Wind Turbine Design",
+      section: 1,
+      difficulty: "Easy",
       passage,
       imageUrl: "/diagrams/wind_turbine_diagram.png",
       questions: {

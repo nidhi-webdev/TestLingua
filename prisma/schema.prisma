@@ -70,22 +70,25 @@ model VerificationToken {
 
 model ReadingTest {
   id        String            @id @default(cuid())
-  title     String
+  title       String
+  section     Int               @default(1)
+  difficulty  String            @default("Easy")
   passage     String            @db.Text
   imageUrl    String?
   questions   ReadingQuestion[]
   testResults TestResult[]
   createdAt   DateTime          @default(now())
-  updatedAt DateTime          @updatedAt
+  updatedAt   DateTime          @updatedAt
 }
 
 model ReadingQuestion {
   id            String      @id @default(cuid())
   readingTestId String
   type          String      // "multiple_choice" or "true_false_not_given"
+  order         Int         @default(0)
   text          String
   options       String[]    // Array of options, empty for true/false
-  answer        String
+  answer        String[]    // Changed to array to support "Choose TWO"
   readingTest   ReadingTest @relation(fields: [readingTestId], references: [id], onDelete: Cascade)
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt

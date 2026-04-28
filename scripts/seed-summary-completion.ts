@@ -28,13 +28,20 @@ async function main() {
   const summaryText = "The transition to [GAP1] power sources was prompted by the environmental damage caused by fossil fuels. Among the newer technologies, solar energy has become highly [GAP2] because of advancements in [GAP3] production. A major drawback of solar, however, is that it is [GAP4], which means that [GAP5] solutions are needed. Meanwhile, wind energy is growing, particularly in offshore locations. Finally, hydroelectricity is valued for its ability to provide a consistent [GAP6], although large-scale projects can cause [GAP7] problems.";
 
   const questions = [
-    { id: "sum-g1", type: "summary_completion", text: summaryText, options: wordList, answer: "E" }, // Sustainable
-    { id: "sum-g2", type: "summary_completion", text: summaryText, options: wordList, answer: "G" }, // Economical
-    { id: "sum-g3", type: "summary_completion", text: summaryText, options: wordList, answer: "B" }, // Silicon
-    { id: "sum-g4", type: "summary_completion", text: summaryText, options: wordList, answer: "D" }, // Intermittent
-    { id: "sum-g5", type: "summary_completion", text: summaryText, options: wordList, answer: "A" }, // Storage
-    { id: "sum-g6", type: "summary_completion", text: summaryText, options: wordList, answer: "F" }, // Baseload
-    { id: "sum-g7", type: "summary_completion", text: summaryText, options: wordList, answer: "C" }, // Ecological
+    { id: "sum-g1", type: "summary_completion",
+      order: 1, text: summaryText, options: wordList, answer: ["E"] }, // Sustainable
+    { id: "sum-g2", type: "summary_completion",
+      order: 2, text: summaryText, options: wordList, answer: ["G"] }, // Economical
+    { id: "sum-g3", type: "summary_completion",
+      order: 3, text: summaryText, options: wordList, answer: ["B"] }, // Silicon
+    { id: "sum-g4", type: "summary_completion",
+      order: 4, text: summaryText, options: wordList, answer: ["D"] }, // Intermittent
+    { id: "sum-g5", type: "summary_completion",
+      order: 5, text: summaryText, options: wordList, answer: ["A"] }, // Storage
+    { id: "sum-g6", type: "summary_completion",
+      order: 6, text: summaryText, options: wordList, answer: ["F"] }, // Baseload
+    { id: "sum-g7", type: "summary_completion",
+      order: 7, text: summaryText, options: wordList, answer: ["C"] }, // Ecological
   ];
 
   // Delete existing if already seeded
@@ -44,6 +51,8 @@ async function main() {
     data: {
       id: "summary-completion-1",
       title: "Summary Completion: Renewable Energy",
+      section: 1,
+      difficulty: "Easy",
       passage,
       questions: {
         create: questions,

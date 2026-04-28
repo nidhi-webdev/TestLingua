@@ -1,14 +1,17 @@
 export interface ReadingQuestion {
   id: string;
-  type: "true_false_not_given" | "multiple_choice";
+  type: string;
+  order: number;
   text: string;
   options?: string[];
-  answer: string;
+  answer: string[];
 }
 
 export interface ReadingTest {
   id: string;
   title: string;
+  section: number;
+  difficulty: string;
   passage: string;
   questions: ReadingQuestion[];
 }
@@ -16,6 +19,8 @@ export interface ReadingTest {
 export const mockReadingTest: ReadingTest = {
   id: "1",
   title: "The Discovery of Skara Brae",
+  section: 1,
+  difficulty: "Easy",
   passage: `
     <h2>The Discovery of Skara Brae</h2>
     <p>In the winter of 1850, a severe storm battered the Orkney Islands off the northern coast of Scotland. The howling winds and torrential rain stripped the earth from a large irregular mound known as Skerrabra at the Bay of Skaill on the mainland. When the storm finally cleared, local villagers discovered the outline of several stone buildings hidden beneath the sand. This was the dramatic unveiling of Skara Brae, a Neolithic settlement that would prove to be one of the best-preserved groups of prehistoric houses in Western Europe.</p>
@@ -34,6 +39,7 @@ export const mockReadingTest: ReadingTest = {
     {
       id: "q1",
       type: "multiple_choice",
+      order: 1,
       text: "What was the immediate result of the severe storm in 1850?",
       options: [
         "A. It destroyed the local village near the Bay of Skaill.",
@@ -41,11 +47,12 @@ export const mockReadingTest: ReadingTest = {
         "C. It forced the inhabitants of Skara Brae to abandon their homes.",
         "D. It stripped all the timber from the coastal areas."
       ],
-      answer: "B"
+      answer: ["B"]
     },
     {
       id: "q2",
       type: "multiple_choice",
+      order: 2,
       text: "Who was responsible for the initial excavation of Skara Brae?",
       options: [
         "A. A professional team sent by the government.",
@@ -53,11 +60,12 @@ export const mockReadingTest: ReadingTest = {
         "C. The local laird, William Watt.",
         "D. Villagers from the Orkney Islands."
       ],
-      answer: "C"
+      answer: ["C"]
     },
     {
       id: "q3",
       type: "multiple_choice",
+      order: 3,
       text: "Why did Professor V. Gordon Childe take over the excavation in 1925?",
       options: [
         "A. Because William Watt abandoned the project.",
@@ -65,11 +73,12 @@ export const mockReadingTest: ReadingTest = {
         "C. Because the government wanted to find more bone tools.",
         "D. Because the site was declared a UNESCO World Heritage site."
       ],
-      answer: "B"
+      answer: ["B"]
     },
     {
       id: "q4",
       type: "multiple_choice",
+      order: 4,
       text: "What unique building material was primarily used for the houses at Skara Brae?",
       options: [
         "A. Imported timber from the mainland.",
@@ -77,11 +86,12 @@ export const mockReadingTest: ReadingTest = {
         "C. Flat flagstones found along the local coastline.",
         "D. Animal bones and straw."
       ],
-      answer: "C"
+      answer: ["C"]
     },
     {
       id: "q5",
       type: "multiple_choice",
+      order: 5,
       text: "Which of the following artifacts was NOT explicitly mentioned as being found at Skara Brae?",
       options: [
         "A. Bone pins.",
@@ -89,11 +99,12 @@ export const mockReadingTest: ReadingTest = {
         "C. Grooved ware pottery.",
         "D. Bronze weapons."
       ],
-      answer: "D"
+      answer: ["D"]
     },
     {
       id: "q6",
       type: "multiple_choice",
+      order: 6,
       text: "Early theories suggested that Skara Brae was abandoned because of:",
       options: [
         "A. A sudden, massive sandstorm.",
@@ -101,11 +112,12 @@ export const mockReadingTest: ReadingTest = {
         "C. A lack of agricultural resources.",
         "D. An invasion from the sea."
       ],
-      answer: "A"
+      answer: ["A"]
     },
     {
       id: "q7",
       type: "multiple_choice",
+      order: 7,
       text: "According to the passage, the survival of Skara Brae is primarily due to:",
       options: [
         "A. The mild climate of the Orkney Islands.",
@@ -113,11 +125,12 @@ export const mockReadingTest: ReadingTest = {
         "C. The preservation efforts of William Watt.",
         "D. Its remote location away from the coastline."
       ],
-      answer: "B"
+      answer: ["B"]
     },
     {
       id: "q8",
       type: "multiple_choice",
+      order: 8,
       text: "What was the purpose of the stone 'dresser' found in each house?",
       options: [
         "A. To store fuel for the central hearth.",
@@ -125,11 +138,12 @@ export const mockReadingTest: ReadingTest = {
         "C. To support the timber roof of the dwelling.",
         "D. To display practical items and prized possessions."
       ],
-      answer: "D"
+      answer: ["D"]
     },
     {
       id: "q9",
       type: "multiple_choice",
+      order: 9,
       text: "What does the passage imply about the sanitation at Skara Brae?",
       options: [
         "A. It was surprisingly advanced for a Neolithic society.",
@@ -137,11 +151,12 @@ export const mockReadingTest: ReadingTest = {
         "C. It relied entirely on the nearby ocean tides.",
         "D. It was less sophisticated than their furniture design."
       ],
-      answer: "A"
+      answer: ["A"]
     },
     {
       id: "q10",
       type: "multiple_choice",
+      order: 10,
       text: "What artifact was initially used to support the theory of a hasty departure?",
       options: [
         "A. A primitive toilet.",
@@ -149,11 +164,12 @@ export const mockReadingTest: ReadingTest = {
         "C. A discarded necklace.",
         "D. A broken stone bed."
       ],
-      answer: "C"
+      answer: ["C"]
     },
     {
       id: "q11",
       type: "multiple_choice",
+      order: 11,
       text: "Why did the inhabitants use stone for their furniture?",
       options: [
         "A. Because stone was considered more aesthetically pleasing.",
@@ -161,11 +177,12 @@ export const mockReadingTest: ReadingTest = {
         "C. Because stone was easier to carve than wood.",
         "D. Because they wanted the furniture to last for generations."
       ],
-      answer: "B"
+      answer: ["B"]
     },
     {
       id: "q12",
       type: "multiple_choice",
+      order: 12,
       text: "What is the currently accepted reason for the abandonment of Skara Brae?",
       options: [
         "A. A massive, sudden sandstorm.",
@@ -173,11 +190,12 @@ export const mockReadingTest: ReadingTest = {
         "C. A gradual climate shift making agriculture difficult.",
         "D. A devastating disease outbreak."
       ],
-      answer: "C"
+      answer: ["C"]
     },
     {
       id: "q13",
       type: "multiple_choice",
+      order: 13,
       text: "In the final paragraph, the writer mentions Stonehenge and the Egyptian pyramids to:",
       options: [
         "A. Prove that Skara Brae is the oldest site in the world.",
@@ -185,11 +203,12 @@ export const mockReadingTest: ReadingTest = {
         "C. Suggest that the inhabitants traded with other ancient cultures.",
         "D. Compare the architectural styles of different Neolithic sites."
       ],
-      answer: "B"
+      answer: ["B"]
     },
     {
       id: "q14",
       type: "multiple_choice",
+      order: 14,
       text: "According to the passage, the stone 'dresser' suggests that the inhabitants of Skara Brae:",
       options: [
         "A. Needed sturdy furniture to survive severe storms.",
@@ -197,7 +216,7 @@ export const mockReadingTest: ReadingTest = {
         "C. Had a society that valued organization and aesthetics.",
         "D. Built it to block the low doorway from the cold."
       ],
-      answer: "C"
+      answer: ["C"]
     }
   ]
 };

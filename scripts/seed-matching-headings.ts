@@ -38,14 +38,22 @@ async function main() {
   ];
 
   const questions = [
-    { id: "mh-q1", type: "matching_headings", text: "Paragraph A", options: headings, answer: "v" },
-    { id: "mh-q2", type: "matching_headings", text: "Paragraph B", options: headings, answer: "vii" },
-    { id: "mh-q3", type: "matching_headings", text: "Paragraph C", options: headings, answer: "ii" },
-    { id: "mh-q4", type: "matching_headings", text: "Paragraph D", options: headings, answer: "iv" },
-    { id: "mh-q5", type: "matching_headings", text: "Paragraph E", options: headings, answer: "iii" },
-    { id: "mh-q6", type: "matching_headings", text: "Paragraph F", options: headings, answer: "i" },
-    { id: "mh-q7", type: "matching_headings", text: "Paragraph G", options: headings, answer: "x" },
-    { id: "mh-q8", type: "matching_headings", text: "Paragraph H", options: headings, answer: "xi" }
+    { id: "mh-q1", type: "matching_headings",
+      order: 1, text: "Paragraph A", options: headings, answer: ["v"] },
+    { id: "mh-q2", type: "matching_headings",
+      order: 2, text: "Paragraph B", options: headings, answer: ["vii"] },
+    { id: "mh-q3", type: "matching_headings",
+      order: 3, text: "Paragraph C", options: headings, answer: ["ii"] },
+    { id: "mh-q4", type: "matching_headings",
+      order: 4, text: "Paragraph D", options: headings, answer: ["iv"] },
+    { id: "mh-q5", type: "matching_headings",
+      order: 5, text: "Paragraph E", options: headings, answer: ["iii"] },
+    { id: "mh-q6", type: "matching_headings",
+      order: 6, text: "Paragraph F", options: headings, answer: ["i"] },
+    { id: "mh-q7", type: "matching_headings",
+      order: 7, text: "Paragraph G", options: headings, answer: ["x"] },
+    { id: "mh-q8", type: "matching_headings",
+      order: 8, text: "Paragraph H", options: headings, answer: ["xi"] }
   ];
 
   // Delete existing if already seeded
@@ -55,6 +63,8 @@ async function main() {
     data: {
       id: "matching-headings-1",
       title: "Matching Headings: The Future of Transportation",
+      section: 1,
+      difficulty: "Easy",
       passage,
       questions: {
         create: questions,

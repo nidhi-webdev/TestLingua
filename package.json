@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --concurrency 2"
+    "lint": "eslint --concurrency 2",
+    "seed": "tsx scripts/seed.ts",
+    "db:reset": "prisma migrate reset --force"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.2",
@@ -14,6 +16,7 @@
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
     "lucide-react": "^1.11.0",
     "next": "16.2.4",
     "next-auth": "^4.24.14",
@@ -32,6 +35,10 @@
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5"
+  },
+  "prisma": {
+    "seed": "tsx scripts/seed.ts"
   }
 }

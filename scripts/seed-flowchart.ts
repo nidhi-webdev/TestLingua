@@ -17,23 +17,26 @@ async function main() {
     {
       id: "fc-q1",
       type: "flow_chart",
+      order: 1,
       text: "Step 1",
       options: [],
-      answer: "planting beds",
+      answer: ["planting beds"],
     },
     {
       id: "fc-q2",
       type: "flow_chart",
+      order: 2,
       text: "Step 2",
       options: [],
-      answer: "planting beds",
+      answer: ["planting beds"],
     },
     {
       id: "fc-q3",
       type: "flow_chart",
+      order: 3,
       text: "Step 3",
       options: [],
-      answer: "water tank",
+      answer: ["water tank"],
     }
   ];
 
@@ -44,6 +47,8 @@ async function main() {
     data: {
       id: "flowchart-completion-1",
       title: "Flow-chart Completion: Sustainable Greenhouse",
+      section: 1,
+      difficulty: "Easy",
       passage,
       questions: {
         create: questions,

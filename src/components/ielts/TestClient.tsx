@@ -29,7 +29,11 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
   const calculateScore = async () => {
     let currentScore = 0;
     test.questions.forEach((q) => {
-      const isCorrect = answers[q.id] === q.answer;
+      const userAnswer = answers[q.id];
+      const isCorrect = Array.isArray(q.answer) 
+        ? q.answer.includes(userAnswer) // For single choice against array
+        : userAnswer === q.answer;
+      
       if (isCorrect) currentScore++;
     });
     setScore(currentScore);
@@ -295,7 +299,11 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
             <div className="space-y-4">
               {test.questions.map((q, idx) => {
                 const isAnswered = !!answers[q.id];
-                const isCorrect = submitted ? answers[q.id]?.trim().toLowerCase() === q.answer.toLowerCase() : null;
+                const isCorrect = submitted 
+                  ? Array.isArray(q.answer)
+                    ? q.answer.some(a => a.toLowerCase() === answers[q.id]?.trim().toLowerCase())
+                    : answers[q.id]?.trim().toLowerCase() === q.answer.toLowerCase()
+                  : null;
                 
                 return (
                   <div key={q.id} className="flex items-start gap-4 py-4 border-b border-slate-200 last:border-0 group">
@@ -307,9 +315,9 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                         <div className="flex flex-col gap-3">
                           <p className="text-slate-800 font-medium leading-relaxed">{q.text}</p>
                           <div className="flex flex-wrap gap-2">
-                            {(["Yes", "No"].includes(q.answer) ? ["Yes", "No", "Not Given"] : ["True", "False", "Not Given"]).map((opt) => {
+                            {(["Yes", "No"].includes(Array.isArray(q.answer) ? q.answer[0] : q.answer) ? ["Yes", "No", "Not Given"] : ["True", "False", "Not Given"]).map((opt) => {
                               const isSelected = answers[q.id] === opt;
-                              const isActuallyCorrect = submitted && q.answer === opt;
+                              const isActuallyCorrect = submitted && (Array.isArray(q.answer) ? q.answer.includes(opt) : q.answer === opt);
                               
                               return (
                                 <button 
@@ -362,7 +370,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                             {q.options.map((opt) => {
                               const letter = opt.split('.')[0].trim();
                               const isSelected = answers[q.id] === letter;
-                              const isActuallyCorrect = submitted && q.answer === letter;
+                              const isActuallyCorrect = submitted && (Array.isArray(q.answer) ? q.answer.includes(letter) : q.answer === letter);
 
                               return (
                                 <button
@@ -432,7 +440,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                             {q.options?.map((opt) => {
                               const optionLetter = opt.charAt(0);
                               const isSelected = answers[q.id] === optionLetter;
-                              const isActuallyCorrect = submitted && q.answer === optionLetter;
+                              const isActuallyCorrect = submitted && (Array.isArray(q.answer) ? q.answer.includes(optionLetter) : q.answer === optionLetter);
                               
                               return (
                                 <button 
@@ -456,7 +464,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
 
                       {submitted && !isCorrect && (
                         <div className="mt-2 text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-1 rounded border border-emerald-100 inline-block">
-                          Correct Answer: {q.answer}
+                          Correct Answer: {Array.isArray(q.answer) ? q.answer.join(', ') : q.answer}
                         </div>
                       )}
                     </div>
