@@ -203,29 +203,128 @@ async function main() {
     },
     {
       id: "identifying-information-2",
-      title: "Identifying Information: Urban Planning and Biodiversity",
+      title: "Identifying Information: The Impact of Biomimicry on Modern Engineering",
       section: 2,
       difficulty: "Medium",
       passage: `
-        <h2>Urban Planning and Biodiversity</h2>
-        <p>Modern cities are often seen as concrete jungles, devoid of life. However, innovative urban planning is proving that biodiversity can thrive alongside human development. The concept of 'green corridors'—continuous strips of vegetation connecting isolated parks—allows wildlife to move safely through urban areas. This not only protects native species but also improves the quality of life for residents by reducing the 'urban heat island' effect and providing recreational spaces.</p>
+        <h2>The Impact of Biomimicry on Modern Engineering</h2>
+        <p>Biomimicry, the practice of looking to nature for inspiration to solve complex human problems, has transitioned from a niche academic interest to a cornerstone of sustainable engineering. By studying the biological blueprints of plants and animals, engineers are discovering solutions that are often more efficient and environmentally friendly than those derived through traditional mechanical trial and error. The philosophy posits that nature, having undergone 3.8 billion years of research and development through evolution, has already solved many of the challenges we face today.</p>
+        <p>A classic example of biomimicry is the invention of Velcro. In 1941, Swiss engineer George de Mestral noticed how burrs from the burdock plant clung to his clothes and his dog's fur. Upon closer inspection under a microscope, he discovered thousands of tiny hooks that could latch onto loops of fabric. This simple observation led to a revolutionary fastening system that is now used in everything from children's shoes to space suits. While the concept seems intuitive today, it took de Mestral nearly a decade to perfect a manufacturing process that could replicate nature's precision at scale.</p>
+        <p>In Japan, biomimicry was instrumental in solving a major infrastructure problem. The original Shinkansen bullet train was so fast that it created a deafening 'sonic boom' whenever it exited a tunnel, disturbing residents in nearby areas. Eiji Nakatsu, the train’s chief engineer and an avid birdwatcher, realized that the kingfisher, a bird that dives into water to catch fish, does so with very little splash. By redesigning the train's nose to mimic the elongated, aerodynamic beak of the kingfisher, the engineering team not only eliminated the noise problem but also increased the train's speed by 10% and reduced its electricity consumption by 15%.</p>
+        <p>Furthermore, the 'Lotus Effect' has inspired a new generation of self-cleaning materials. The leaves of the lotus plant remain remarkably clean and dry despite growing in muddy water. Researchers found that this is not due to a smooth surface, but rather a microscopic forest of tiny wax-covered bumps that repel water droplets, causing them to roll off and carry dirt with them. Today, this principle is applied to exterior paints, window coatings, and even textiles, significantly reducing the need for chemical detergents. As we continue to face global resource shortages, the ability to mimic nature's low-energy, zero-waste systems may prove to be our most valuable technological asset.</p>
       `,
       questions: [
         {
-          id: "s2-ii-q1",
+          id: "s2-tf-q1",
           type: "true_false_not_given",
           order: 1,
-          text: "Green corridors help reduce the temperature in urban areas.",
+          text: "Biomimicry was originally developed as a way to reduce industrial waste.",
+          options: [],
+          answer: ["Not Given"]
+        },
+        {
+          id: "s2-tf-q2",
+          type: "true_false_not_given",
+          order: 2,
+          text: "Nature is viewed by biomimicry proponents as a long-term research resource.",
           options: [],
           answer: ["True"]
         },
         {
-          id: "s2-ii-q2",
+          id: "s2-tf-q3",
           type: "true_false_not_given",
-          order: 2,
-          text: "Most cities have successfully eliminated the 'urban heat island' effect.",
+          order: 3,
+          text: "George de Mestral was a Swiss scientist who specialized in plant biology.",
+          options: [],
+          answer: ["Not Given"]
+        },
+        {
+          id: "s2-tf-q4",
+          type: "true_false_not_given",
+          order: 4,
+          text: "The hooks found on burdock burrs were visible only with the aid of a microscope.",
+          options: [],
+          answer: ["True"]
+        },
+        {
+          id: "s2-tf-q5",
+          type: "true_false_not_given",
+          order: 5,
+          text: "It was immediately easy for de Mestral to mass-produce his hook-and-loop fastener.",
           options: [],
           answer: ["False"]
+        },
+        {
+          id: "s2-tf-q6",
+          type: "true_false_not_given",
+          order: 6,
+          text: "The primary complaint about the early Shinkansen train was its lack of speed.",
+          options: [],
+          answer: ["False"]
+        },
+        {
+          id: "s2-tf-q7",
+          type: "true_false_not_given",
+          order: 7,
+          text: "Eiji Nakatsu's interest in birds was a key factor in the train's redesign.",
+          options: [],
+          answer: ["True"]
+        },
+        {
+          id: "s2-tf-q8",
+          type: "true_false_not_given",
+          order: 8,
+          text: "Kingfishers use their beaks to create a splash when they hunt.",
+          options: [],
+          answer: ["False"]
+        },
+        {
+          id: "s2-tf-q9",
+          type: "true_false_not_given",
+          order: 9,
+          text: "The new train design resulted in a significant reduction in power usage.",
+          options: [],
+          answer: ["True"]
+        },
+        {
+          id: "s2-tf-q10",
+          type: "true_false_not_given",
+          order: 10,
+          text: "The surface of a lotus leaf is perfectly smooth to the touch.",
+          options: [],
+          answer: ["False"]
+        },
+        {
+          id: "s2-tf-q11",
+          type: "true_false_not_given",
+          order: 11,
+          text: "Water stays on a lotus leaf because it is absorbed by microscopic bumps.",
+          options: [],
+          answer: ["False"]
+        },
+        {
+          id: "s2-tf-q12",
+          type: "true_false_not_given",
+          order: 12,
+          text: "Lotus-inspired coatings are now more expensive than traditional paints.",
+          options: [],
+          answer: ["Not Given"]
+        },
+        {
+          id: "s2-tf-q13",
+          type: "true_false_not_given",
+          order: 13,
+          text: "Self-cleaning materials help decrease the reliance on artificial cleaning agents.",
+          options: [],
+          answer: ["True"]
+        },
+        {
+          id: "s2-tf-q14",
+          type: "true_false_not_given",
+          order: 14,
+          text: "The writer believes biomimicry will eventually replace all traditional engineering.",
+          options: [],
+          answer: ["Not Given"]
         }
       ]
     },
