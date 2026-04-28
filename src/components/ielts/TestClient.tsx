@@ -136,6 +136,16 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
               </div>
             )}
 
+            {/* Official IELTS instructions for diagram completion */}
+            {test.questions[0]?.type === "diagram_completion" && (
+              <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
+                <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
+                <p className="text-sm text-blue-700 leading-relaxed">
+                  Label the diagram below. Choose <span className="font-bold">NO MORE THAN TWO WORDS</span> from the text for each answer. Write your answers in the boxes below.
+                </p>
+              </div>
+            )}
+
             {/* Diagram Image Display */}
             {test.imageUrl && (
               <div className="mb-10 overflow-hidden rounded-2xl border-2 border-slate-200 bg-white p-4 shadow-sm">
@@ -146,16 +156,6 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                 />
                 <p className="mt-3 text-center text-sm font-medium text-slate-500 italic">
                   Diagram: {test.title.split(':').pop()?.trim()}
-                </p>
-              </div>
-            )}
-
-            {/* Official IELTS instructions for diagram completion */}
-            {test.questions[0]?.type === "diagram_completion" && (
-              <div className="mb-8 rounded-xl border border-blue-200 bg-blue-50 p-5">
-                <p className="text-sm font-bold text-blue-800 uppercase tracking-wide mb-1">Instructions</p>
-                <p className="text-sm text-blue-700 leading-relaxed">
-                  Label the diagram below. Choose <span className="font-bold">NO MORE THAN TWO WORDS</span> from the text for each answer. Write your answers in the boxes below.
                 </p>
               </div>
             )}
@@ -350,7 +350,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                                     ? "border-emerald-500 bg-emerald-50 text-emerald-800"
                                     : "border-red-400 bg-red-50 text-red-800"
                                   : answers[q.id]
-                                  ? "border-slate-800 ring-1 ring-slate-800"
+                                  ? "border-slate-800 ring-1 ring-slate-800 text-slate-900"
                                   : "border-slate-300 bg-white text-slate-600"
                               }`}
                             >
@@ -389,24 +389,26 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                             })}
                           </div>
                         </div>
-                      ) : q.type === "sentence_completion" || q.type === "short_answer" || q.type === "diagram_completion" ? (
+                      ) : q.type === "sentence_completion" || q.type === "flowchart_completion" || q.type === "short_answer" || q.type === "diagram_completion" ? (
                         <div className="flex flex-col gap-3">
                           <div className="text-slate-800 font-medium leading-relaxed">
-                            {q.type === "sentence_completion" ? (
+                            {q.text.includes('[GAP]') ? (
                                q.text.split('[GAP]').map((part, index, array) => (
                                 <span key={index}>
                                   {part}
                                   {index < array.length - 1 && (
                                     <input
                                       type="text"
+                                      autoComplete="off"
                                       disabled={submitted}
                                       value={answers[q.id] || ""}
                                       onChange={(e) => handleAnswer(q.id, e.target.value)}
-                                      className={`mx-1 w-32 border-b-2 border-slate-400 bg-transparent px-1 text-sm font-bold outline-none focus:border-slate-900 ${
+                                      className={`mx-1 w-40 border-b-2 border-slate-400 bg-blue-50/30 px-1 text-sm font-bold outline-none focus:border-blue-600 focus:bg-blue-50 transition-all ${
                                         submitted 
                                           ? isCorrect ? "text-emerald-700 border-emerald-500" : "text-red-700 border-red-400"
-                                          : ""
+                                          : "text-slate-900"
                                       }`}
+                                      placeholder="..."
                                     />
                                   )}
                                 </span>
@@ -415,9 +417,10 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                               <p>{q.text}</p>
                             )}
                           </div>
-                          {q.type !== "sentence_completion" && (
+                          {!q.text.includes('[GAP]') && (
                             <input
                               type="text"
+                              autoComplete="off"
                               disabled={submitted}
                               value={answers[q.id] || ""}
                               onChange={(e) => handleAnswer(q.id, e.target.value)}
@@ -430,6 +433,7 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                                   ? "border-slate-800 ring-1 ring-slate-800 text-slate-900"
                                   : "border-slate-300 bg-white text-slate-900"
                               }`}
+                              placeholder="Enter your answer..."
                             />
                           )}
                         </div>

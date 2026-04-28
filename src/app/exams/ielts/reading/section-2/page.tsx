@@ -9,17 +9,17 @@ const icons = [LayoutList, AlignLeft, AlignLeft, AlignLeft, Heading, Tag, Chevro
 
 export default function Section2Page() {
   const topics = [
-    { id: 1, title: "Multiple Choice", description: "Choose one or more correct answers from a list of options.", questions: 14, href: "/exams/ielts/reading/test/1-2" },
-    { id: 2, title: "Identifying Information", description: "Answer True, False, or Not Given based on the text.", questions: 14, href: "/exams/ielts/reading/test/identifying-information-2" },
-    { id: 3, title: "Identifying Writer's Views", description: "Answer Yes, No, or Not Given based on writer's claims.", questions: 14, href: "/exams/ielts/reading/test/identifying-writers-views-2" },
-    { id: 4, title: "Matching Information", description: "Find specific information within paragraphs.", questions: 14, href: "/exams/ielts/reading/test/matching-information-2" },
-    { id: 5, title: "Matching Headings", description: "Match paragraph headings from a given list.", questions: 8, href: "/exams/ielts/reading/test/matching-headings-2" },
-    { id: 6, title: "Matching Features", description: "Match statements to a list of options (e.g., people, theories).", questions: 8, href: "/exams/ielts/reading/test/matching-features-2" },
-    { id: 7, title: "Matching Sentence Endings", description: "Complete sentences by choosing the best endings.", questions: 7, href: "/exams/ielts/reading/test/matching-sentence-endings-2" },
-    { id: 8, title: "Sentence Completion", description: "Fill in gaps in sentences using words from the text.", questions: 8, href: "/exams/ielts/reading/test/sentence-completion-2" },
-    { id: 9, title: "Summary / Note Completion", description: "Complete a summary, note, table, or flow-chart.", questions: 3, href: "/exams/ielts/reading/test/flowchart-completion-2" },
-    { id: 10, title: "Diagram Label Completion", description: "Label a diagram based on a description in the text.", questions: 5, href: "/exams/ielts/reading/test/diagram-completion-2" },
-    { id: 11, title: "Short-Answer Questions", description: "Answer questions about factual details using a strict word limit.", questions: 5, href: "/exams/ielts/reading/test/short-answer-2" },
+    { id: 1, title: "Multiple Choice", description: "Master the art of selection and detail recognition.", questions: 14, href: "/exams/ielts/reading/test/1-2" },
+    { id: 2, title: "Identifying Information", description: "Navigate facts with True, False, or Not Given precision.", questions: 14, href: "/exams/ielts/reading/test/identifying-information-2" },
+    { id: 3, title: "Identifying Writer's Views", description: "Decode opinions and claims: Yes, No, or Not Given.", questions: 14, href: "/exams/ielts/reading/test/identifying-writers-views-2" },
+    { id: 4, title: "Matching Information", description: "Scan the landscape to find specific details in paragraphs.", questions: 14, href: "/exams/ielts/reading/test/matching-information-2" },
+    { id: 5, title: "Matching Headings", description: "Identify the soul of every paragraph with the perfect title.", questions: 8, href: "/exams/ielts/reading/test/matching-headings-2" },
+    { id: 6, title: "Matching Features", description: "Connect theories, facts, and figures to their pioneers.", questions: 14, href: "/exams/ielts/reading/test/matching-features-2" },
+    { id: 7, title: "Matching Sentence Endings", description: "Piece together the logic of complex linguistic evolution.", questions: 14, href: "/exams/ielts/reading/test/matching-sentence-endings-2" },
+    { id: 8, title: "Sentence Completion", description: "Bridge the gaps using precise words from the passage.", questions: 14, href: "/exams/ielts/reading/test/sentence-completion-2" },
+    { id: 9, title: "Summary/note/table/flow-chart completion", description: "Connect the dots and map the industrial or academic logic.", questions: 14, href: "/exams/ielts/reading/test/flowchart-completion-2" },
+    { id: 10, title: "Diagram Label Completion", description: "Visualize the text by labeling complex structures correctly.", questions: 14, href: "/exams/ielts/reading/test/diagram-completion-2" },
+    { id: 11, title: "Short-Answer Questions", description: "Precision matters: Answer with exact facts and strict limits.", questions: 14, href: "/exams/ielts/reading/test/short-answer-2" },
   ];
 
   return (
