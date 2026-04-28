@@ -6,30 +6,198 @@ async function main() {
   const section2Tests = [
     {
       id: "1-2",
-      title: "Multiple Choice: The Future of Renewable Energy",
+      title: "Multiple Choice: The Psychology of Workplace Productivity",
       section: 2,
       difficulty: "Medium",
       passage: `
-        <h2>The Future of Renewable Energy</h2>
-        <p>The global transition towards renewable energy sources is no longer a matter of if, but when. As the environmental costs of fossil fuels become increasingly undeniable, governments and industries are pouring billions into solar, wind, and hydroelectric power. However, the path to a carbon-neutral future is fraught with technical and economic hurdles. The primary challenge remains the intermittent nature of renewable sources; the sun does not always shine, and the wind does not always blow.</p>
-        <p>To address this, researchers are focusing on advanced energy storage systems. Lithium-ion batteries currently dominate the market, but their reliance on scarce materials like cobalt and lithium raises sustainability concerns. Alternatives such as solid-state batteries and hydrogen fuel cells are being aggressively pursued, though they are not yet commercially viable at scale. Furthermore, the existing electrical grid, designed for centralized power plants, must be modernized to handle the decentralized influx of green energy.</p>
+        <h2>The Evolution of the Productive Workspace</h2>
+        <p>In the early 20th century, workplace design was dominated by the principles of Taylorism, a theory of management that analyzed and synthesized workflows. Its main objective was improving economic efficiency, especially labor productivity. Office spaces were modeled after factories: rows of identical desks facing a supervisor’s station, intended to maximize output through constant oversight. However, as the global economy shifted towards service and knowledge-based work, the rigid, clinical atmosphere of the traditional office began to be viewed as a hindrance rather than a help.</p>
+        <p>Modern psychological research suggests that productivity is not merely a product of discipline, but is deeply influenced by the physical and social environment. One significant discovery is the 'Edge Effect,' a concept borrowed from ecology. Just as biodiversity is highest at the transition between two habitats, innovation in an office often peaks in 'collision zones'—shared spaces like cafeterias or lounges where employees from different departments interact spontaneously. Architects are now designing offices with deliberately non-linear paths to encourage these chance encounters, moving away from the isolated cubicles of the 1980s.</p>
+        <p>Furthermore, the introduction of biophilic design—incorporating natural elements like sunlight, plants, and water—has shown a measurable impact on cognitive function. A study by the University of Exeter found that employees worked 15% more effectively when 'lean' workspaces were filled with just a few houseplants. The presence of greenery was found to lower heart rates and improve concentration. This challenges the long-held belief that a minimalist, distraction-free environment is the gold standard for focus.</p>
+        <p>However, the trend toward 'open-plan' offices has not been without its critics. While intended to foster collaboration, many workers report that the lack of acoustic privacy leads to increased stress and a significant drop in deep-work capabilities. The challenge for future designers lies in creating 'hybrid' spaces: environments that offer the social stimulation of communal areas alongside 'monastic' zones for undisturbed, intensive tasks. As the workforce becomes more neurologically diverse, the ability to customize one’s immediate surroundings may become the most valued feature of the modern workplace.</p>
       `,
       questions: [
         {
           id: "s2-mc-q1",
           type: "multiple_choice",
           order: 1,
-          text: "What is cited as the main obstacle to a carbon-neutral future?",
-          options: ["A. The high cost of solar panels.", "B. The environmental impact of hydroelectric dams.", "C. The unreliable nature of renewable energy sources.", "D. A lack of government investment."],
-          answer: ["C"]
+          text: "What was the primary goal of office design under Taylorism?",
+          options: [
+            "A. To create a comfortable social environment for workers.",
+            "B. To ensure managers could observe every employee easily.",
+            "C. To allow for the flexible movement of office furniture.",
+            "D. To provide a variety of spaces for different tasks."
+          ],
+          answer: ["B"]
         },
         {
           id: "s2-mc-q2",
           type: "multiple_choice",
           order: 2,
-          text: "Which TWO alternatives to lithium-ion batteries are mentioned?",
-          options: ["A. Lead-acid batteries.", "B. Solid-state batteries.", "C. Nickel-cadmium batteries.", "D. Hydrogen fuel cells.", "E. Kinetic energy storage."],
-          answer: ["B", "D"]
+          text: "What does the writer imply about the transition to knowledge-based work?",
+          options: [
+            "A. It made traditional management theories more relevant.",
+            "B. It required a move away from factory-style office layouts.",
+            "C. It resulted in a decrease in overall economic efficiency.",
+            "D. It led to more supervision of individual employees."
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "s2-mc-q3",
+          type: "multiple_choice",
+          order: 3,
+          text: "Modern psychological research indicates that performance is primarily driven by:",
+          options: [
+            "A. Strict adherence to workplace discipline.",
+            "B. The salary and benefits provided to staff.",
+            "C. The surrounding environment and social factors.",
+            "D. The number of hours spent at a desk."
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mc-q4",
+          type: "multiple_choice",
+          order: 4,
+          text: "According to the 'Edge Effect' theory, where does innovation most frequently occur?",
+          options: [
+            "A. In highly specialized departmental rooms.",
+            "B. At the transition points between different habitats.",
+            "C. Within the quietest areas of the building.",
+            "D. In spaces where different groups of workers meet."
+          ],
+          answer: ["D"]
+        },
+        {
+          id: "s2-mc-q5",
+          type: "multiple_choice",
+          order: 5,
+          text: "Why are modern architects creating 'non-linear' paths in offices?",
+          options: [
+            "A. To make the office appear larger than it is.",
+            "B. To increase the time it takes to reach a desk.",
+            "C. To promote accidental interactions among staff.",
+            "D. To save space for more specialized equipment."
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mc-q6",
+          type: "multiple_choice",
+          order: 6,
+          text: "What change occurred in office design following the 1980s?",
+          options: [
+            "A. The introduction of more isolated cubicles.",
+            "B. A reduction in the use of shared cafeteria spaces.",
+            "C. A movement away from individual, enclosed workspaces.",
+            "D. The standardization of linear walking paths."
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mc-q7",
+          type: "multiple_choice",
+          order: 7,
+          text: "What is the defining characteristic of 'biophilic design'?",
+          options: [
+            "A. The use of advanced digital lighting systems.",
+            "B. The integration of organic and natural elements.",
+            "C. The removal of all unnecessary furniture.",
+            "D. The use of recycled industrial materials."
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "s2-mc-q8",
+          type: "multiple_choice",
+          order: 8,
+          text: "What did the University of Exeter study find regarding houseplants?",
+          options: [
+            "A. They are only effective in large, open-plan offices.",
+            "B. They boost efficiency even in very simple work areas.",
+            "C. they are less useful than sunlight for cognitive function.",
+            "D. they have no impact on employees in 'lean' spaces."
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "s2-mc-q9",
+          type: "multiple_choice",
+          order: 9,
+          text: "According to the text, greenery in the office has been shown to:",
+          options: [
+            "A. Increase the physical heart rate of employees.",
+            "B. Improve the overall speed of manual tasks.",
+            "C. Help workers maintain their concentration.",
+            "D. Prevent employees from taking too many breaks."
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mc-q10",
+          type: "multiple_choice",
+          order: 10,
+          text: "What previously held belief is challenged by biophilic research?",
+          options: [
+            "A. That plants are a distraction to serious work.",
+            "B. That sunlight is essential for office productivity.",
+            "C. That minimalist environments are best for focus.",
+            "D. That natural light is more important than greenery."
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mc-q11",
+          type: "multiple_choice",
+          order: 11,
+          text: "What is a common complaint about 'open-plan' office layouts?",
+          options: [
+            "A. They are too isolated for younger workers.",
+            "B. They provide too much privacy for senior staff.",
+            "C. The lack of sound-proofing leads to higher stress.",
+            "D. They discourage employees from collaborating."
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mc-q12",
+          type: "multiple_choice",
+          order: 12,
+          text: "The term 'monastic' zones refers to areas intended for:",
+          options: [
+            "A. Socializing during lunch and coffee breaks.",
+            "B. Religious or spiritual activities for staff.",
+            "C. Undisturbed and highly focused work tasks.",
+            "D. Training new employees in large groups."
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mc-q13",
+          type: "multiple_choice",
+          order: 13,
+          text: "What is the goal of creating 'hybrid' office spaces?",
+          options: [
+            "A. To replace physical offices with remote work options.",
+            "B. To balance social areas with quiet, private zones.",
+            "C. To combine factories and offices into one building.",
+            "D. To reduce the amount of time spent in communal areas."
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "s2-mc-q14",
+          type: "multiple_choice",
+          order: 14,
+          text: "What does the writer believe will be the most important future office feature?",
+          options: [
+            "A. The size and quality of the central cafeteria.",
+            "B. The ability for workers to adjust their own space.",
+            "C. The use of more expensive industrial furniture.",
+            "D. The standardization of all workspaces for consistency."
+          ],
+          answer: ["B"]
         }
       ]
     },
