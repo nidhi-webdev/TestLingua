@@ -330,27 +330,126 @@ async function main() {
     },
     {
       id: "identifying-writers-views-2",
-      title: "Identifying Writer's Views: The Ethics of Artificial Intelligence",
+      title: "Identifying Writer's Views: The Ethical Implications of Algorithmic Governance",
       section: 2,
       difficulty: "Medium",
       passage: `
-        <h2>The Ethics of Artificial Intelligence</h2>
-        <p>Artificial Intelligence (AI) is transforming every facet of our lives, from healthcare to finance. While the potential benefits are enormous, I believe we are moving too fast without adequate safeguards. AI algorithms are only as good as the data they are trained on, and if that data contains human biases, the AI will inevitably replicate and even amplify them. We need a global consensus on AI governance that prioritizes transparency and accountability above corporate profits.</p>
+        <h2>The Ethical Implications of Algorithmic Governance</h2>
+        <p>In the digital age, the mantle of governance is increasingly being shared with—or surrendered to—automated systems. Algorithmic governance, the use of mathematical models to allocate resources, manage public services, and even influence judicial outcomes, promises a level of efficiency and objectivity that human bureaucrats could never achieve. However, as these systems become more deeply embedded in the fabric of society, we must confront the reality that they are far from neutral tools. In my view, the current enthusiasm for 'data-driven' decision-making often blinds us to the profound ethical risks of delegating power to opaque code.</p>
+        <p>One of the most pressing concerns is the 'black box' problem. Many of the most advanced algorithms, particularly those utilizing deep learning, operate in ways that are not fully transparent even to their creators. When an algorithm denies a loan application or determines a criminal's risk of recidivism, the lack of an explainable rationale is a fundamental violation of due process. I contend that any system used to make life-altering decisions must be capable of providing a human-readable justification for its output. Efficiency should never be prioritized at the expense of accountability.</p>
+        <p>Furthermore, the notion that algorithms are objective is a dangerous fallacy. An algorithm is only as unbiased as the data it consumes. If the historical data used to train a model reflects existing societal prejudices—such as racial or gender bias—the algorithm will not only replicate these biases but will also give them a veneer of scientific legitimacy. We are effectively codifying the prejudices of the past into the automated systems of the future. While some argue that we can simply 'scrub' data of bias, I believe this is a naive oversimplification of a deeply structural problem.</p>
+        <p>Finally, our legal and regulatory frameworks are woefully unprepared for this shift. Current legislation often treats algorithms as proprietary intellectual property, allowing companies to hide their internal logic from public scrutiny. We urgently need a global consensus on algorithmic transparency that mandates independent audits of high-stakes systems. In the absence of such oversight, we risk creating a society where our lives are governed by forces that are neither elected nor understood. The question is not whether we should use algorithms, but how we can ensure they remain subservient to human values.</p>
       `,
       questions: [
         {
-          id: "s2-iw-q1",
+          id: "s2-yw-q1",
           type: "yes_no_not_given",
           order: 1,
-          text: "The writer is concerned about the speed at which AI is being developed.",
+          text: "Algorithmic governance is already being used in the legal system.",
           options: [],
           answer: ["Yes"]
         },
         {
-          id: "s2-iw-q2",
+          id: "s2-yw-q2",
           type: "yes_no_not_given",
           order: 2,
-          text: "AI systems are inherently more objective than humans.",
+          text: "Humans are generally more objective than mathematical models in decision-making.",
+          options: [],
+          answer: ["No"]
+        },
+        {
+          id: "s2-yw-q3",
+          type: "yes_no_not_given",
+          order: 3,
+          text: "The writer is concerned that the benefits of data-driven decisions are being exaggerated.",
+          options: [],
+          answer: ["Yes"]
+        },
+        {
+          id: "s2-yw-q4",
+          type: "yes_no_not_given",
+          order: 4,
+          text: "The developers of deep learning algorithms always understand exactly how their systems work.",
+          options: [],
+          answer: ["No"]
+        },
+        {
+          id: "s2-yw-q5",
+          type: "yes_no_not_given",
+          order: 5,
+          text: "The 'black box' problem is most common in the financial sector.",
+          options: [],
+          answer: ["Not Given"]
+        },
+        {
+          id: "s2-yw-q6",
+          type: "yes_no_not_given",
+          order: 6,
+          text: "The writer believes that every automated decision must be explainable to humans.",
+          options: [],
+          answer: ["Yes"]
+        },
+        {
+          id: "s2-yw-q7",
+          type: "yes_no_not_given",
+          order: 7,
+          text: "Accountability is more important than speed when making significant life choices.",
+          options: [],
+          answer: ["Yes"]
+        },
+        {
+          id: "s2-yw-q8",
+          type: "yes_no_not_given",
+          order: 8,
+          text: "Most algorithms are currently used for purely scientific research.",
+          options: [],
+          answer: ["Not Given"]
+        },
+        {
+          id: "s2-yw-q9",
+          type: "yes_no_not_given",
+          order: 9,
+          text: "Algorithms have the power to make societal prejudices appear to be based on science.",
+          options: [],
+          answer: ["Yes"]
+        },
+        {
+          id: "s2-yw-q10",
+          type: "yes_no_not_given",
+          order: 10,
+          text: "The writer agrees that cleaning data sets is an effective way to remove bias.",
+          options: [],
+          answer: ["No"]
+        },
+        {
+          id: "s2-yw-q11",
+          type: "yes_no_not_given",
+          order: 11,
+          text: "Existing laws protect the public's right to see the logic behind all corporate algorithms.",
+          options: [],
+          answer: ["No"]
+        },
+        {
+          id: "s2-yw-q12",
+          type: "yes_no_not_given",
+          order: 12,
+          text: "The writer calls for mandatory, external reviews of critical algorithmic systems.",
+          options: [],
+          answer: ["Yes"]
+        },
+        {
+          id: "s2-yw-q13",
+          type: "yes_no_not_given",
+          order: 13,
+          text: "Government-run algorithms are generally more transparent than those owned by private companies.",
+          options: [],
+          answer: ["Not Given"]
+        },
+        {
+          id: "s2-yw-q14",
+          type: "yes_no_not_given",
+          order: 14,
+          text: "The writer suggests that we should stop using algorithms in governance altogether.",
           options: [],
           answer: ["No"]
         }
@@ -358,22 +457,132 @@ async function main() {
     },
     {
       id: "matching-information-2",
-      title: "Matching Information: The Science of Sleep",
+      title: "Matching Information: The Science of Sleep and Cognitive Recovery",
       section: 2,
       difficulty: "Medium",
       passage: `
-        <h2>The Science of Sleep</h2>
-        <p><strong>Paragraph A:</strong> Sleep is a vital biological process that remains partially shrouded in mystery. While we sleep, our bodies repair tissues, consolidate memories, and flush out metabolic waste from the brain. Chronic sleep deprivation has been linked to a host of health issues, including obesity and heart disease.</p>
-        <p><strong>Paragraph B:</strong> Recent studies have highlighted the role of circadian rhythms—the internal clock that regulates our sleep-wake cycle. Exposure to blue light from screens can disrupt this rhythm, making it harder to fall asleep.</p>
+        <h2>The Science of Sleep and Cognitive Recovery</h2>
+        <p><strong>A</strong>. Sleep was long thought to be a passive state, a period of inactivity for the brain and body. However, modern neuroscience has revealed that the brain is intensely active during sleep, performing vital maintenance tasks that are impossible during waking hours. These processes are not merely for rest but are essential for cognitive function, emotional health, and physical longevity.</p>
+        <p><strong>B</strong>. One of the most critical roles of sleep is the physical restoration of the body. During deep, non-REM sleep, the body increases its production of growth hormones and begins the repair of muscle tissue and damaged cells. This period of 'physical housekeeping' is why athletes prioritize long sleep durations to recover from intensive training. Without this stage, the body remains in a state of high physiological stress, which can eventually lead to chronic inflammation.</p>
+        <p><strong>C</strong>. The cognitive benefits are equally profound. While we sleep, the brain undergoes a process called memory consolidation. Information gathered throughout the day is transferred from the short-term storage of the hippocampus to the long-term storage of the neocortex. This 'filing system' ensures that important skills and facts are preserved while redundant information is discarded. Studies have shown that students who sleep well after studying perform significantly better on tests than those who 'cram' all night.</p>
+        <p><strong>D</strong>. Dreaming, primarily occurring during REM sleep, serves as a form of emotional therapy. By revisiting stressful events in a safe, dream-state environment, the brain can strip away the emotional intensity of a memory, leaving behind the factual lesson. This emotional processing is vital for resilience; individuals deprived of REM sleep often struggle with mood regulation and are more prone to anxiety and depression.</p>
+        <p><strong>E</strong>. Even minor sleep deprivation can have a catastrophic impact on executive function—the mental skills that allow us to focus, plan, and multitask. The prefrontal cortex, the seat of high-level reasoning, is the first area to suffer when we lose sleep. This leads to increased impulsivity, a reduced ability to solve complex problems, and a heightened risk of errors in the workplace, which can be particularly dangerous in fields like medicine or aviation.</p>
+        <p><strong>F</strong>. Genetics also play a significant role in determining our sleep needs. Scientists have identified specific gene mutations that allow some individuals to function perfectly on as little as four hours of sleep, while others require nine or ten hours to feel rested. These 'short sleepers' possess a unique physiological efficiency that researchers are currently studying to understand if similar traits could be induced in the general population.</p>
+        <p><strong>G</strong>. Modern technology has significantly disrupted our ancestral circadian rhythms. The blue light emitted by smartphones and laptops mimics the frequency of daylight, tricking the brain into suppressing the production of melatonin, the hormone responsible for inducing sleep. This 'social jetlag' has led to a global epidemic of insomnia, as our biological clocks struggle to align with the demands of an always-on digital world.</p>
+        <p><strong>H</strong>. Looking forward, sleep therapy is evolving beyond simple sedative medications. Researchers are exploring the use of 'acoustic stimulation'—playing specific sound frequencies that synchronize with brain waves—to deepen the quality of non-REM sleep. By optimizing the architecture of sleep, rather than just its duration, scientists hope to treat cognitive decline and even slow the progression of neurodegenerative diseases.</p>
       `,
       questions: [
         {
           id: "s2-mi-q1",
           type: "matching_information",
           order: 1,
-          text: "Which paragraph mentions the physical consequences of not getting enough sleep?",
-          options: ["A", "B"],
+          text: "a reference to how heredity influences sleep patterns",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["F"]
+        },
+        {
+          id: "s2-mi-q2",
+          type: "matching_information",
+          order: 2,
+          text: "an explanation of why screens disrupt sleep cycles",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["G"]
+        },
+        {
+          id: "s2-mi-q3",
+          type: "matching_information",
+          order: 3,
+          text: "a description of the role of sleep in physical tissue repair",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["B"]
+        },
+        {
+          id: "s2-mi-q4",
+          type: "matching_information",
+          order: 4,
+          text: "a mention of how sleep helps with emotional stability",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["D"]
+        },
+        {
+          id: "s2-mi-q5",
+          type: "matching_information",
+          order: 5,
+          text: "an example of how memory is strengthened during rest",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mi-q6",
+          type: "matching_information",
+          order: 6,
+          text: "the consequences of sleep loss on professional performance",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["E"]
+        },
+        {
+          id: "s2-mi-q7",
+          type: "matching_information",
+          order: 7,
+          text: "a challenge to the idea that sleep is a period of total brain stillness",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
           answer: ["A"]
+        },
+        {
+          id: "s2-mi-q8",
+          type: "matching_information",
+          order: 8,
+          text: "a potential new method for enhancing the depth of sleep",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["H"]
+        },
+        {
+          id: "s2-mi-q9",
+          type: "matching_information",
+          order: 9,
+          text: "the biological mechanism responsible for inducing tiredness",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["G"]
+        },
+        {
+          id: "s2-mi-q10",
+          type: "matching_information",
+          order: 10,
+          text: "a mention of how athletes use sleep for better performance",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["B"]
+        },
+        {
+          id: "s2-mi-q11",
+          type: "matching_information",
+          order: 11,
+          text: "the specific part of the brain most affected by lack of rest",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["E"]
+        },
+        {
+          id: "s2-mi-q12",
+          type: "matching_information",
+          order: 12,
+          text: "how dreaming acts as a psychological buffer",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["D"]
+        },
+        {
+          id: "s2-mi-q13",
+          type: "matching_information",
+          order: 13,
+          text: "a comparison of academic success between rested and tired students",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["C"]
+        },
+        {
+          id: "s2-mi-q14",
+          type: "matching_information",
+          order: 14,
+          text: "a research effort focused on people with minimal sleep requirements",
+          options: ["A", "B", "C", "D", "E", "F", "G", "H"],
+          answer: ["F"]
         }
       ]
     },

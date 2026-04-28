@@ -311,11 +311,11 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                       {idx + 1}
                     </div>
                     <div className="flex-1 min-w-0">
-                      {q.type === "true_false_not_given" ? (
+                      {q.type === "true_false_not_given" || q.type === "yes_no_not_given" ? (
                         <div className="flex flex-col gap-3">
                           <p className="text-slate-800 font-medium leading-relaxed">{q.text}</p>
                           <div className="flex flex-wrap gap-2">
-                            {(["Yes", "No"].includes(Array.isArray(q.answer) ? q.answer[0] : q.answer) ? ["Yes", "No", "Not Given"] : ["True", "False", "Not Given"]).map((opt) => {
+                            {(q.type === "yes_no_not_given" ? ["Yes", "No", "Not Given"] : ["True", "False", "Not Given"]).map((opt) => {
                               const isSelected = answers[q.id] === opt;
                               const isActuallyCorrect = submitted && (Array.isArray(q.answer) ? q.answer.includes(opt) : q.answer === opt);
                               
