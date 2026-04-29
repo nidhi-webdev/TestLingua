@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
-import { Clock, AlertTriangle, CheckCircle, Send, FileText } from "lucide-react";
+import Link from "next/link";
+import { Clock, AlertTriangle, CheckCircle, Send, FileText, ArrowLeft } from "lucide-react";
 import { saveWritingSubmission } from "@/app/actions/save-writing-submission";
+import IELTSChart from "@/components/ielts/IELTSChart";
 
 interface WritingTest {
   id: string;
@@ -114,11 +115,22 @@ export default function WritingClient({ test }: WritingClientProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Back link */}
+      <Link
+        href={`/exams/ielts/writing?task=${test.id.startsWith("task1") ? "1" : "2"}`}
+        className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-purple-600 transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Back to Writing
+      </Link>
+
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-6">
         <div>
           <h1 className="text-xl font-bold text-slate-900">{test.title}</h1>
-          <p className="text-sm text-slate-500">IELTS Academic Writing</p>
+          <p className="text-sm text-slate-500">
+            {test.id.startsWith("task1") ? "Academic Task 1" : "Academic Task 2"}
+          </p>
         </div>
         <div className="flex items-center gap-6 mt-4 sm:mt-0">
           <div className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold text-lg ${timeLeft < 300 ? 'bg-red-50 text-red-600 animate-pulse' : 'bg-slate-100 text-slate-700'}`}>
@@ -170,15 +182,11 @@ export default function WritingClient({ test }: WritingClientProps) {
             {activeTab === "task1" ? test.task1Prompt : test.task2Prompt}
           </div>
 
-          {activeTab === "task1" && test.task1ImageUrl && (
+          {activeTab === "task1" && (
             <div className="mt-8 border-t border-slate-200 pt-8">
-              <Image 
-                src={test.task1ImageUrl} 
-                alt="Task 1 Visual" 
-                width={600} 
-                height={400} 
-                className="rounded-lg border border-slate-200 bg-white"
-              />
+              <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+                <IELTSChart testId={test.id} />
+              </div>
             </div>
           )}
         </div>

@@ -6,12 +6,27 @@ import { ArrowLeft, PenTool, TrendingUp, BarChart, PieChart, Table, Map, Activit
 
 import WritingCategories from "@/components/ielts/WritingCategories";
 
+
 export const dynamic = "force-dynamic";
 
-export default async function IELTSWritingPage() {
-  const tests = await prisma.writingTest.findMany({
-    orderBy: { createdAt: 'asc' }
-  });
+export default async function IELTSWritingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ task?: string }>;
+}) {
+  const { task } = await searchParams;
+
+  const heroTitle =
+    task === "1" ? "Academic Task 1" :
+    task === "2" ? "Academic Task 2" :
+    "Writing Tasks";
+
+  const heroSubtitle =
+    task === "1"
+      ? "Summarize, describe, or explain visual information such as graphs, charts, tables, or diagrams."
+      : task === "2"
+      ? "Write a formal essay responding to a point of view, argument, or problem."
+      : "Master Task 1 and Task 2 with our interactive editor, word counts, and expert model answers.";
 
   return (
     <>
@@ -32,9 +47,9 @@ export default async function IELTSWritingPage() {
                 <p className="mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-purple-100">
                   IELTS Writing Practice
                 </p>
-                <h1 className="text-4xl font-bold md:text-5xl">Writing Tasks</h1>
+                <h1 className="text-4xl font-bold md:text-5xl">{heroTitle}</h1>
                 <p className="mt-4 text-lg text-purple-100">
-                  Master Task 1 and Task 2 with our interactive editor, word counts, and expert model answers.
+                  {heroSubtitle}
                 </p>
               </div>
             </div>
