@@ -1,129 +1,103 @@
-import { prisma } from '../src/lib/prisma';
+import { prisma } from "../src/lib/prisma";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 async function main() {
-  console.log('Seeding specific Writing Topics for IELTS...');
-
-  // Task 1 Focused Tests
-  const task1Tests = [
+  const topics = [
+    // ── TASK 1 ─────────────────────────────────────────────────────────────
     {
       id: "task1-line-graph",
-      title: "Task 1 Practice: Line Graph",
-      difficulty: "Medium",
+      title: "Line Graph: Meat Consumption",
       task1Prompt: "The graph below shows the consumption of fish and some different kinds of meat in a European country between 1979 and 2004.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?w=800&auto=format&fit=crop&q=60", // Placeholder for line graph
-      task2Prompt: "Some people think that all teenagers should be required to do unpaid work in their free time to help the local community. They believe this would benefit both the individual teenager and society as a whole.\n\nDo you agree or disagree?",
+      task2Prompt: "",
+      task1ImageUrl: "", // Handled by IELTSChart component
     },
     {
       id: "task1-bar-chart",
-      title: "Task 1 Practice: Bar Chart",
-      difficulty: "Medium",
-      task1Prompt: "The chart below shows the total number of minutes (in billions) of telephone calls in the UK, divided into three categories, from 1995-2002.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60", // Placeholder for bar chart
-      task2Prompt: "In many countries, schools have severe problems with student behaviour. What do you think are the causes of this? What solutions can you suggest?",
+      title: "Bar Chart: Telephone Calls",
+      task1Prompt: "The chart below shows the total minutes of telephone calls in the UK, divided into three categories, from 1995–2002.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      task2Prompt: "",
+      task1ImageUrl: "",
     },
     {
       id: "task1-pie-chart",
-      title: "Task 1 Practice: Pie Chart",
-      difficulty: "Hard",
-      task1Prompt: "The pie charts below show the main reasons for migration to and from the UK in 2007.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60", // Placeholder for pie chart
-      task2Prompt: "Some people believe that unpaid community service should be a compulsory part of high school programmes (for example working for a charity, improving the neighbourhood or teaching sports to younger children).\n\nTo what extent do you agree or disagree?",
+      title: "Pie Chart: Migration Reasons",
+      task1Prompt: "The pie charts below show the main reasons why people moved to and from the UK in 2007.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      task2Prompt: "",
+      task1ImageUrl: "",
     },
     {
       id: "task1-table",
-      title: "Task 1 Practice: Table",
-      difficulty: "Medium",
-      task1Prompt: "The table below gives information on consumer spending on different items in five different countries in 2002.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: null,
-      task2Prompt: "It is generally believed that some people are born with certain talents, for instance for sport or music, and others are not. However, it is sometimes claimed that any child can be taught to become a good sports person or musician.\n\nDiscuss both these views and give your own opinion.",
+      title: "Table: Consumer Spending",
+      task1Prompt: "The table below gives information about consumer spending on different items in five different countries in 2002.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      task2Prompt: "",
+      task1ImageUrl: "",
     },
     {
       id: "task1-map",
-      title: "Task 1 Practice: Map",
-      difficulty: "Hard",
-      task1Prompt: "The maps below show the centre of a small town called Islip as it is now, and plans for its development.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&auto=format&fit=crop&q=60", // Placeholder for map
-      task2Prompt: "Nowadays, many families have both parents working. Some people say that the mother should stay at home to take care of the children.\n\nDo you agree or disagree?",
+      title: "Map: Islip Town Development",
+      task1Prompt: "The maps below show the town of Islip as it is now and the proposed development plan for the town centre in 2024.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      task2Prompt: "",
+      task1ImageUrl: "",
     },
     {
       id: "task1-process",
-      title: "Task 1 Practice: Process Diagram",
-      difficulty: "Hard",
+      title: "Process: Brick Manufacturing",
       task1Prompt: "The diagram below shows the process by which bricks are manufactured for the building industry.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=60", // Placeholder for process diagram
-      task2Prompt: "Global warming is one of the most serious issues that the world is facing today. What are the causes of global warming and what measures can governments and individuals take to tackle the issue?",
-    }
-  ];
+      task2Prompt: "",
+      task1ImageUrl: "",
+    },
 
-  // Task 2 Focused Tests
-  const task2Tests = [
+    // ── TASK 2 ─────────────────────────────────────────────────────────────
     {
       id: "task2-opinion",
-      title: "Task 2 Practice: Opinion Essay",
-      difficulty: "Medium",
-      task1Prompt: "The graph below shows the proportion of the population aged 65 and over between 1940 and 2040 in three different countries.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?w=800&auto=format&fit=crop&q=60",
-      task2Prompt: "Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true function of a university should be to give access to knowledge for its own sake, regardless of whether the course is useful to an employer.\n\nTo what extent do you agree or disagree with these opinions?",
+      title: "Opinion: Traditions vs Technology",
+      task1Prompt: "",
+      task2Prompt: "In many countries, traditional customs and ways of life are being lost as a result of the rapid development of technology and global communication. Some people believe that this is a negative development, while others argue that it is a necessary part of progress.\n\nTo what extent do you agree or disagree with this statement?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      task1ImageUrl: "",
     },
     {
       id: "task2-discussion",
-      title: "Task 2 Practice: Discussion Essay",
-      difficulty: "Medium",
-      task1Prompt: "The table below shows the percentage of mobile phone owners using various mobile phone features.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: null,
-      task2Prompt: "Some people think that a sense of competition in children should be encouraged. Others believe that children who are taught to co-operate rather than compete become more useful adults.\n\nDiscuss both these views and give your own opinion.",
+      title: "Discussion: Crime Punishment",
+      task1Prompt: "",
+      task2Prompt: "Some people believe that there should be fixed punishments for each type of crime. Others, however, argue that the circumstances of an individual crime, and the motivation for committing it, should always be taken into account when deciding on the punishment.\n\nDiscuss both these views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      task1ImageUrl: "",
     },
     {
       id: "task2-problem-solution",
-      title: "Task 2 Practice: Problem & Solution",
-      difficulty: "Hard",
-      task1Prompt: "The diagrams below show the site of a school in 2004 and the plan for changes to the school site in 2024.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&auto=format&fit=crop&q=60",
-      task2Prompt: "In many countries, the proportion of older people is steadily increasing. Does this trend have more positive or negative effects on society?\n\nWhat are the problems associated with an aging population, and what solutions can you suggest?",
+      title: "Problem & Solution: Urbanization",
+      task1Prompt: "",
+      task2Prompt: "In many parts of the world, more and more people are moving from rural areas to live in large cities. This trend has created several significant problems for both the people living in cities and those remaining in the countryside.\n\nWhat are the main problems associated with this trend, and what measures could be taken to address these issues?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      task1ImageUrl: "",
     },
     {
       id: "task2-advantage",
-      title: "Task 2 Practice: Advantage / Disadvantage",
-      difficulty: "Hard",
-      task1Prompt: "The bar chart shows the divorce rates in two European countries from 2011 to 2015.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
-      task2Prompt: "In some countries, young people are encouraged to work or travel for a year between finishing high school and starting university studies.\n\nDiscuss the advantages and disadvantages for young people who decide to do this.",
+      title: "Advantage: Remote Working",
+      task1Prompt: "",
+      task2Prompt: "An increasing number of people are now working from home rather than in a traditional office environment. While this offers greater flexibility, some argue that it can lead to a sense of isolation and a lack of professional development.\n\nDo the advantages of this trend outweigh the disadvantages?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      task1ImageUrl: "",
     },
     {
       id: "task2-two-part",
-      title: "Task 2 Practice: Two-Part Question",
-      difficulty: "Hard",
-      task1Prompt: "The pie charts below show the comparison of different kinds of energy production of France in two years.\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      task1ImageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60",
-      task2Prompt: "Happiness is considered very important in life. Why is it difficult to define?\n\nWhat factors are important in achieving happiness?",
-    }
+      title: "Two-Part: Museums",
+      task1Prompt: "",
+      task2Prompt: "Many museums and historical sites are expensive to maintain and require significant funding. Some people believe that these places should be free to the public, while others argue that visitors should pay an entrance fee to help cover costs.\n\nWhy are museums and historical sites important to a society? Do you think the benefits of making these sites free outweigh the costs?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      task1ImageUrl: "",
+    },
   ];
 
-  const allTests = [...task1Tests, ...task2Tests];
+  console.log("Seeding authentic IELTS writing topics...");
 
-  for (const test of allTests) {
+  for (const topic of topics) {
     await prisma.writingTest.upsert({
-      where: { id: test.id },
-      update: {
-        title: test.title,
-        difficulty: test.difficulty,
-        task1Prompt: test.task1Prompt,
-        task1ImageUrl: test.task1ImageUrl,
-        task2Prompt: test.task2Prompt,
-      },
-      create: {
-        id: test.id,
-        title: test.title,
-        difficulty: test.difficulty,
-        task1Prompt: test.task1Prompt,
-        task1ImageUrl: test.task1ImageUrl,
-        task2Prompt: test.task2Prompt,
-      },
+      where: { id: topic.id },
+      update: topic,
+      create: topic,
     });
-    console.log(`Seeded Writing Test: ${test.id}`);
   }
 
-  console.log('Writing topics seeded successfully!');
+  console.log("Seeding completed successfully.");
 }
 
 main()

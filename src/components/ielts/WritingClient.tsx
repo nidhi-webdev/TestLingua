@@ -24,7 +24,7 @@ export default function WritingClient({ test }: WritingClientProps) {
   const activeTab = isTask1 ? "task1" : "task2";
   const [task1Answer, setTask1Answer] = useState("");
   const [task2Answer, setTask2Answer] = useState("");
-  const [timeLeft, setTimeLeft] = useState(3600); // 60 minutes
+  const [timeLeft, setTimeLeft] = useState(isTask1 ? 1200 : 2400); // 20m for T1, 40m for T2
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
