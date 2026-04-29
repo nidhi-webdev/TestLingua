@@ -57,7 +57,9 @@ export const ModelName = {
   VerificationToken: 'VerificationToken',
   ReadingTest: 'ReadingTest',
   ReadingQuestion: 'ReadingQuestion',
-  TestResult: 'TestResult'
+  TestResult: 'TestResult',
+  WritingTest: 'WritingTest',
+  WritingSubmission: 'WritingSubmission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -171,6 +173,34 @@ export const TestResultScalarFieldEnum = {
 } as const
 
 export type TestResultScalarFieldEnum = (typeof TestResultScalarFieldEnum)[keyof typeof TestResultScalarFieldEnum]
+
+
+export const WritingTestScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  difficulty: 'difficulty',
+  task1Prompt: 'task1Prompt',
+  task1ImageUrl: 'task1ImageUrl',
+  task2Prompt: 'task2Prompt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WritingTestScalarFieldEnum = (typeof WritingTestScalarFieldEnum)[keyof typeof WritingTestScalarFieldEnum]
+
+
+export const WritingSubmissionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  writingTestId: 'writingTestId',
+  task1Answer: 'task1Answer',
+  task2Answer: 'task2Answer',
+  task1WordCount: 'task1WordCount',
+  task2WordCount: 'task2WordCount',
+  completedAt: 'completedAt'
+} as const
+
+export type WritingSubmissionScalarFieldEnum = (typeof WritingSubmissionScalarFieldEnum)[keyof typeof WritingSubmissionScalarFieldEnum]
 
 
 export const SortOrder = {

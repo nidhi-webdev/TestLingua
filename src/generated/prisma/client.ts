@@ -76,3 +76,13 @@ export type ReadingQuestion = Prisma.ReadingQuestionModel
  * 
  */
 export type TestResult = Prisma.TestResultModel
+/**
+ * Model WritingTest
+ * 
+ */
+export type WritingTest = Prisma.WritingTestModel
+/**
+ * Model WritingSubmission
+ * 
+ */
+export type WritingSubmission = Prisma.WritingSubmissionModel

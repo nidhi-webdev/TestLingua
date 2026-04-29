@@ -40,8 +40,8 @@ export default function IELTSPage() {
       icon: PenSquare,
       duration: "60 min",
       focus: "Task 1 reports and Task 2 argument essays",
-      href: "",
-      cta: "Coming soon",
+      href: "/exams/ielts/writing",
+      cta: "Start Writing Tasks",
     },
     {
       name: "Speaking",

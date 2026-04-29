@@ -390,7 +390,9 @@ export const ModelName = {
   VerificationToken: 'VerificationToken',
   ReadingTest: 'ReadingTest',
   ReadingQuestion: 'ReadingQuestion',
-  TestResult: 'TestResult'
+  TestResult: 'TestResult',
+  WritingTest: 'WritingTest',
+  WritingSubmission: 'WritingSubmission'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -406,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken" | "readingTest" | "readingQuestion" | "testResult"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "readingTest" | "readingQuestion" | "testResult" | "writingTest" | "writingSubmission"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -928,6 +930,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    WritingTest: {
+      payload: Prisma.$WritingTestPayload<ExtArgs>
+      fields: Prisma.WritingTestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WritingTestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WritingTestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>
+        }
+        findFirst: {
+          args: Prisma.WritingTestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WritingTestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>
+        }
+        findMany: {
+          args: Prisma.WritingTestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>[]
+        }
+        create: {
+          args: Prisma.WritingTestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>
+        }
+        createMany: {
+          args: Prisma.WritingTestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.WritingTestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>[]
+        }
+        delete: {
+          args: Prisma.WritingTestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>
+        }
+        update: {
+          args: Prisma.WritingTestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>
+        }
+        deleteMany: {
+          args: Prisma.WritingTestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.WritingTestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.WritingTestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>[]
+        }
+        upsert: {
+          args: Prisma.WritingTestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingTestPayload>
+        }
+        aggregate: {
+          args: Prisma.WritingTestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWritingTest>
+        }
+        groupBy: {
+          args: Prisma.WritingTestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WritingTestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WritingTestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WritingTestCountAggregateOutputType> | number
+        }
+      }
+    }
+    WritingSubmission: {
+      payload: Prisma.$WritingSubmissionPayload<ExtArgs>
+      fields: Prisma.WritingSubmissionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.WritingSubmissionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.WritingSubmissionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>
+        }
+        findFirst: {
+          args: Prisma.WritingSubmissionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.WritingSubmissionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>
+        }
+        findMany: {
+          args: Prisma.WritingSubmissionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>[]
+        }
+        create: {
+          args: Prisma.WritingSubmissionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>
+        }
+        createMany: {
+          args: Prisma.WritingSubmissionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.WritingSubmissionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>[]
+        }
+        delete: {
+          args: Prisma.WritingSubmissionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>
+        }
+        update: {
+          args: Prisma.WritingSubmissionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>
+        }
+        deleteMany: {
+          args: Prisma.WritingSubmissionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.WritingSubmissionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.WritingSubmissionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>[]
+        }
+        upsert: {
+          args: Prisma.WritingSubmissionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$WritingSubmissionPayload>
+        }
+        aggregate: {
+          args: Prisma.WritingSubmissionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWritingSubmission>
+        }
+        groupBy: {
+          args: Prisma.WritingSubmissionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WritingSubmissionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.WritingSubmissionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WritingSubmissionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1062,6 +1212,34 @@ export const TestResultScalarFieldEnum = {
 } as const
 
 export type TestResultScalarFieldEnum = (typeof TestResultScalarFieldEnum)[keyof typeof TestResultScalarFieldEnum]
+
+
+export const WritingTestScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  difficulty: 'difficulty',
+  task1Prompt: 'task1Prompt',
+  task1ImageUrl: 'task1ImageUrl',
+  task2Prompt: 'task2Prompt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WritingTestScalarFieldEnum = (typeof WritingTestScalarFieldEnum)[keyof typeof WritingTestScalarFieldEnum]
+
+
+export const WritingSubmissionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  writingTestId: 'writingTestId',
+  task1Answer: 'task1Answer',
+  task2Answer: 'task2Answer',
+  task1WordCount: 'task1WordCount',
+  task2WordCount: 'task2WordCount',
+  completedAt: 'completedAt'
+} as const
+
+export type WritingSubmissionScalarFieldEnum = (typeof WritingSubmissionScalarFieldEnum)[keyof typeof WritingSubmissionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1296,6 +1474,8 @@ export type GlobalOmitConfig = {
   readingTest?: Prisma.ReadingTestOmit
   readingQuestion?: Prisma.ReadingQuestionOmit
   testResult?: Prisma.TestResultOmit
+  writingTest?: Prisma.WritingTestOmit
+  writingSubmission?: Prisma.WritingSubmissionOmit
 }
 
 /* Types for Logging */

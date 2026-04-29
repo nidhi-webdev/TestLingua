@@ -1,11 +1,18 @@
-"use client";
 
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowLeft, PenTool } from "lucide-react";
+import { ArrowLeft, PenTool, TrendingUp, BarChart, PieChart, Table, Map, Activity } from "lucide-react";
 
-export default function IELTSWritingPage() {
+import WritingCategories from "@/components/ielts/WritingCategories";
+
+export const dynamic = "force-dynamic";
+
+export default async function IELTSWritingPage() {
+  const tests = await prisma.writingTest.findMany({
+    orderBy: { createdAt: 'asc' }
+  });
+
   return (
     <>
       <Navbar />
@@ -66,15 +73,9 @@ export default function IELTSWritingPage() {
           </div>
         </div>
 
-        <section className="py-14 md:py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-             <div className="text-center py-20">
-                <PenTool className="mx-auto h-12 w-12 text-slate-300 mb-4" />
-                <h2 className="text-2xl font-bold text-slate-900">Writing Module Coming Soon</h2>
-                <p className="mt-2 text-slate-500">We are currently building the interactive essay editor.</p>
-             </div>
-          </div>
-        </section>
+        <WritingCategories />
+
+
       </main>
       <Footer />
     </>
