@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import { 
   ArrowLeft, 
   TrendingUp, 
@@ -19,7 +20,19 @@ import {
 } from "lucide-react";
 
 export default function WritingCategories() {
-  const [selectedTask, setSelectedTask] = useState<"task1" | "task2" | null>(null);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const selectedTask = searchParams.get("task");
+
+  const handleSelectTask = (task: "1" | "2" | null) => {
+    if (task) {
+      router.push(`${pathname}?task=${task}`);
+    } else {
+      router.push(pathname);
+    }
+  };
 
   const task1Topics = [
     { name: "Line Graph", icon: TrendingUp, desc: "Describe trends and changes over time." },
@@ -38,7 +51,7 @@ export default function WritingCategories() {
     { name: "Two-Part Question", icon: HelpCircle, desc: "Answer two distinct direct questions." }
   ];
 
-  if (selectedTask === null) {
+  if (!selectedTask) {
     return (
       <div className="py-14 md:py-20 bg-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -51,9 +64,10 @@ export default function WritingCategories() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Task 1 Card */}
-            <button 
-              onClick={() => setSelectedTask("task1")}
-              className="text-left group relative overflow-hidden rounded-3xl bg-slate-50 border border-slate-200 p-8 transition-all hover:border-purple-400 hover:shadow-xl hover:-translate-y-1"
+            <Link 
+              href="/exams/ielts/writing?task=1"
+              scroll={false}
+              className="text-left group relative overflow-hidden rounded-3xl bg-slate-50 border border-slate-200 p-8 transition-all hover:border-purple-400 hover:shadow-xl hover:-translate-y-1 block"
             >
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                 <BarChart className="w-32 h-32 text-purple-900" />
@@ -66,17 +80,21 @@ export default function WritingCategories() {
                 <p className="text-slate-600 mb-6 leading-relaxed">
                   Visual Reports. You must summarize, describe, or explain visual information such as graphs, charts, tables, or diagrams.
                 </p>
-                <div className="flex items-center gap-4 text-sm font-semibold text-slate-700">
+                <div className="flex items-center gap-4 text-sm font-semibold text-slate-700 mb-6">
                   <span className="bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">150 Words Min</span>
                   <span className="bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">20 Minutes</span>
                 </div>
+                <div className="inline-flex items-center gap-2 font-bold text-purple-700 transition-transform group-hover:translate-x-1">
+                  Explore Topics &rarr;
+                </div>
               </div>
-            </button>
+            </Link>
 
             {/* Task 2 Card */}
-            <button 
-              onClick={() => setSelectedTask("task2")}
-              className="text-left group relative overflow-hidden rounded-3xl bg-slate-50 border border-slate-200 p-8 transition-all hover:border-indigo-400 hover:shadow-xl hover:-translate-y-1"
+            <Link 
+              href="/exams/ielts/writing?task=2"
+              scroll={false}
+              className="text-left group relative overflow-hidden rounded-3xl bg-slate-50 border border-slate-200 p-8 transition-all hover:border-indigo-400 hover:shadow-xl hover:-translate-y-1 block"
             >
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                 <FileText className="w-32 h-32 text-indigo-900" />
@@ -89,31 +107,35 @@ export default function WritingCategories() {
                 <p className="text-slate-600 mb-6 leading-relaxed">
                   Essay Writing. You must respond to a point of view, argument, or problem in a formal academic style.
                 </p>
-                <div className="flex items-center gap-4 text-sm font-semibold text-slate-700">
+                <div className="flex items-center gap-4 text-sm font-semibold text-slate-700 mb-6">
                   <span className="bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">250 Words Min</span>
                   <span className="bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">40 Minutes</span>
                 </div>
+                <div className="inline-flex items-center gap-2 font-bold text-indigo-700 transition-transform group-hover:translate-x-1">
+                  Explore Topics &rarr;
+                </div>
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
     );
   }
 
-  const isTask1 = selectedTask === "task1";
+  const isTask1 = selectedTask === "1";
   const topics = isTask1 ? task1Topics : task2Topics;
 
   return (
     <div className="py-14 md:py-20 bg-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <button 
-          onClick={() => setSelectedTask(null)}
+        <Link 
+          href="/exams/ielts/writing"
+          scroll={false}
           className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-purple-600 transition"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Task Selection
-        </button>
+        </Link>
 
         <h2 className="text-3xl font-bold text-slate-900 mb-3">
           {isTask1 ? "Task 1: Visual Formats" : "Task 2: Essay Types"}
