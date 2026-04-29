@@ -20,7 +20,8 @@ interface WritingClientProps {
 }
 
 export default function WritingClient({ test }: WritingClientProps) {
-  const [activeTab, setActiveTab] = useState<"task1" | "task2">("task1");
+  const isTask1 = test.id.startsWith("task1");
+  const activeTab = isTask1 ? "task1" : "task2";
   const [task1Answer, setTask1Answer] = useState("");
   const [task2Answer, setTask2Answer] = useState("");
   const [timeLeft, setTimeLeft] = useState(3600); // 60 minutes
@@ -148,24 +149,17 @@ export default function WritingClient({ test }: WritingClientProps) {
         </div>
       </div>
 
-      {/* Tabs */}
+      {/* Single Tab — context-aware */}
       <div className="flex gap-4 mb-6 border-b border-slate-200">
-        <button
-          onClick={() => setActiveTab("task1")}
-          className={`pb-3 px-2 text-sm font-bold border-b-2 transition ${
-            activeTab === "task1" ? "border-blue-600 text-blue-600" : "border-transparent text-slate-500 hover:text-slate-800"
-          }`}
-        >
-          Task 1 (150 words, 20 mins)
-        </button>
-        <button
-          onClick={() => setActiveTab("task2")}
-          className={`pb-3 px-2 text-sm font-bold border-b-2 transition ${
-            activeTab === "task2" ? "border-blue-600 text-blue-600" : "border-transparent text-slate-500 hover:text-slate-800"
-          }`}
-        >
-          Task 2 (250 words, 40 mins)
-        </button>
+        {test.id.startsWith("task1") ? (
+          <div className="pb-3 px-2 text-sm font-bold border-b-2 border-blue-600 text-blue-600">
+            Academic Task 1 &nbsp;·&nbsp; 150 words min &nbsp;·&nbsp; 20 mins
+          </div>
+        ) : (
+          <div className="pb-3 px-2 text-sm font-bold border-b-2 border-blue-600 text-blue-600">
+            Academic Task 2 &nbsp;·&nbsp; 250 words min &nbsp;·&nbsp; 40 mins
+          </div>
+        )}
       </div>
 
       {/* Main Content Area */}

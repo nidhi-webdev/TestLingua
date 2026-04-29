@@ -22,26 +22,26 @@ import {
 } from "lucide-react";
 
 const difficultyStyle: Record<string, string> = {
-  Easy: "bg-emerald-50 text-emerald-700 border border-emerald-200",
-  Medium: "bg-amber-50 text-amber-700 border border-amber-200",
-  Hard: "bg-rose-50 text-rose-700 border border-rose-200",
+  "5-6": "bg-sky-50 text-sky-700 border border-sky-200",
+  "6-7": "bg-violet-50 text-violet-700 border border-violet-200",
+  "7-9": "bg-rose-50 text-rose-700 border border-rose-200",
 };
 
 const task1Topics = [
-  { id: "task1-line-graph",  name: "Line Graph",      icon: TrendingUp,   desc: "Describe trends and changes over time.",                        difficulty: "Medium", time: "20 min", words: "150+" },
-  { id: "task1-bar-chart",   name: "Bar Chart",        icon: BarChart,     desc: "Compare quantities across different categories.",               difficulty: "Easy",   time: "20 min", words: "150+" },
-  { id: "task1-pie-chart",   name: "Pie Chart",        icon: PieChart,     desc: "Explain proportions and percentage distributions.",             difficulty: "Medium", time: "20 min", words: "150+" },
-  { id: "task1-table",       name: "Table",            icon: Table,        desc: "Summarize and compare structured data points.",                 difficulty: "Easy",   time: "20 min", words: "150+" },
-  { id: "task1-map",         name: "Map",              icon: Map,          desc: "Detail geographical changes or proposed layouts.",              difficulty: "Hard",   time: "20 min", words: "150+" },
-  { id: "task1-process",     name: "Process Diagram",  icon: Activity,     desc: "Explain the stages of how something works.",                    difficulty: "Hard",   time: "20 min", words: "150+" },
+  { id: "task1-line-graph",  name: "Line Graph",      icon: TrendingUp,   desc: "Describe trends and changes over time.",                        difficulty: "6-7", time: "20 min", words: "150+" },
+  { id: "task1-bar-chart",   name: "Bar Chart",        icon: BarChart,     desc: "Compare quantities across different categories.",               difficulty: "5-6", time: "20 min", words: "150+" },
+  { id: "task1-pie-chart",   name: "Pie Chart",        icon: PieChart,     desc: "Explain proportions and percentage distributions.",             difficulty: "6-7", time: "20 min", words: "150+" },
+  { id: "task1-table",       name: "Table",            icon: Table,        desc: "Summarize and compare structured data points.",                 difficulty: "5-6", time: "20 min", words: "150+" },
+  { id: "task1-map",         name: "Map",              icon: Map,          desc: "Detail geographical changes or proposed layouts.",              difficulty: "7-9", time: "20 min", words: "150+" },
+  { id: "task1-process",     name: "Process Diagram",  icon: Activity,     desc: "Explain the stages of how something works.",                    difficulty: "7-9", time: "20 min", words: "150+" },
 ];
 
 const task2Topics = [
-  { id: "task2-opinion",          name: "Opinion Essay",          icon: MessageSquare, desc: "To what extent do you agree or disagree?",                     difficulty: "Medium", time: "40 min", words: "250+" },
-  { id: "task2-discussion",       name: "Discussion Essay",        icon: Scale,         desc: "Discuss both views and give your own opinion.",                 difficulty: "Medium", time: "40 min", words: "250+" },
-  { id: "task2-problem-solution", name: "Problem & Solution",      icon: Lightbulb,     desc: "Identify the causes and propose effective measures.",           difficulty: "Hard",   time: "40 min", words: "250+" },
-  { id: "task2-advantage",        name: "Advantage / Disadvantage",icon: ThumbsUp,      desc: "Do the advantages outweigh the disadvantages?",                difficulty: "Medium", time: "40 min", words: "250+" },
-  { id: "task2-two-part",         name: "Two-Part Question",       icon: HelpCircle,    desc: "Answer two distinct direct questions in one cohesive essay.",   difficulty: "Hard",   time: "40 min", words: "250+" },
+  { id: "task2-opinion",          name: "Opinion Essay",          icon: MessageSquare, desc: "To what extent do you agree or disagree?",                     difficulty: "6-7", time: "40 min", words: "250+" },
+  { id: "task2-discussion",       name: "Discussion Essay",        icon: Scale,         desc: "Discuss both views and give your own opinion.",                 difficulty: "6-7", time: "40 min", words: "250+" },
+  { id: "task2-problem-solution", name: "Problem & Solution",      icon: Lightbulb,     desc: "Identify the causes and propose effective measures.",           difficulty: "7-9", time: "40 min", words: "250+" },
+  { id: "task2-advantage",        name: "Advantage / Disadvantage",icon: ThumbsUp,      desc: "Do the advantages outweigh the disadvantages?",                difficulty: "6-7", time: "40 min", words: "250+" },
+  { id: "task2-two-part",         name: "Two-Part Question",       icon: HelpCircle,    desc: "Answer two distinct direct questions in one cohesive essay.",   difficulty: "7-9", time: "40 min", words: "250+" },
 ];
 
 export default function WritingCategories() {
@@ -190,12 +190,7 @@ export default function WritingCategories() {
 
                 {/* Main text */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-0.5">
-                    <h3 className="font-bold text-slate-900 text-base leading-snug">{topic.name}</h3>
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${difficultyStyle[topic.difficulty]}`}>
-                      {topic.difficulty}
-                    </span>
-                  </div>
+                  <h3 className="font-bold text-slate-900 text-base leading-snug mb-0.5">{topic.name}</h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{topic.desc}</p>
                 </div>
 
