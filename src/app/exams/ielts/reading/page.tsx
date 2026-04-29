@@ -32,10 +32,10 @@ export default function IELTSReadingPage() {
       description: "Academic topic of general interest. One long text.",
       duration: "20 min",
       questions: "13-14 Questions",
-      href: "",
-      cta: "Coming Soon",
+      href: "/exams/ielts/reading/section-3",
+      cta: "Start Section 3",
       icon: Target,
-      active: false,
+      active: true,
     },
   ];
 

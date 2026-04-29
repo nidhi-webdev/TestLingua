@@ -1,0 +1,102 @@
+"use client";
+
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { ArrowRight, Target, LayoutList, AlignLeft, Heading, Tag, ChevronsRight, PenLine, ClipboardList, ScanLine, HelpCircle, Layers } from "lucide-react";
+
+const icons = [LayoutList, AlignLeft, AlignLeft, Layers, Heading, Tag, ChevronsRight, PenLine, ClipboardList, ScanLine, HelpCircle];
+
+export default function Section3Page() {
+  const topics = [
+    { id: 1, title: "Multiple Choice (Advanced)", description: "Navigate complex arguments and choose the single best answer.", questions: 14, href: "/exams/ielts/reading/test/mcq-3" },
+    { id: 2, title: "Multiple Choice (Choose 2/3)", description: "Identify multiple correct viewpoints or facts from a large list.", questions: 14, href: "/exams/ielts/reading/test/mcq-multi-3" },
+    { id: 3, title: "Identifying Writer's Views", description: "Deep dive into the writer's claims: Yes, No, or Not Given.", questions: 14, href: "/exams/ielts/reading/test/writers-views-3" },
+    { id: 4, title: "Matching Information", description: "Pinpoint specific arguments or details within a dense academic text.", questions: 14, href: "/exams/ielts/reading/test/matching-info-3" },
+    { id: 5, title: "Matching Headings", description: "Synthesize long, complex paragraphs into the perfect summary.", questions: 14, href: "/exams/ielts/reading/test/matching-headings-3" },
+    { id: 6, title: "Summary Completion (Box)", description: "Complete a complex summary using a limited list of academic synonyms.", questions: 14, href: "/exams/ielts/reading/test/summary-box-3" },
+    { id: 7, title: "Matching Sentence Endings", description: "Connect the logical flow of advanced scientific or social arguments.", questions: 14, href: "/exams/ielts/reading/test/matching-sentences-3" },
+    { id: 8, title: "Sentence Completion", description: "Extract precise academic terminology to bridge gaps in the text.", questions: 14, href: "/exams/ielts/reading/test/sentence-completion-3" },
+    { id: 9, title: "Summary/note/table/flow-chart completion", description: "Connect the dots and map the industrial or academic logic.", questions: 14, href: "/exams/ielts/reading/test/flowchart-completion-3" },
+    { id: 10, title: "Diagram Label Completion", description: "Visualize the text by labeling complex structures correctly.", questions: 14, href: "/exams/ielts/reading/test/diagram-completion-3" },
+    { id: 11, title: "Short-Answer Questions", description: "Precision matters: Answer with exact facts and strict limits.", questions: 14, href: "/exams/ielts/reading/test/short-answer-3" },
+  ];
+
+  return (
+    <>
+      <Navbar />
+      <main className="bg-slate-50 pt-16 min-h-screen">
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-950 py-20 text-white">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <Link href="/exams/ielts/reading" className="inline-flex items-center gap-2 text-sm text-indigo-300 hover:text-white transition mb-8 group">
+              <ArrowRight className="h-4 w-4 rotate-180 transition group-hover:-translate-x-1" />
+              Back to Reading Sections
+            </Link>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 mb-4">
+                  <Target className="h-4 w-4" />
+                  IELTS Academic Reading
+                </div>
+                <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
+                  Reading{" "}
+                  <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                    Section 3
+                  </span>
+                </h1>
+                <p className="mt-4 max-w-xl text-slate-400 text-lg leading-relaxed">
+                  The ultimate challenge. Practice with 900-word academic texts and complex argumentative logic.
+                </p>
+              </div>
+              <div className="flex items-center gap-6 shrink-0">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-white">{topics.length}</p>
+                  <p className="text-xs text-slate-400 uppercase tracking-widest mt-1">Advanced Topics</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* All Topics */}
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {topics.map((topic, idx) => {
+              const Icon = icons[idx] || HelpCircle;
+              return (
+                <Link
+                  href={topic.href}
+                  key={topic.id}
+                  className="group relative flex flex-col justify-between rounded-2xl bg-white p-6 shadow-md ring-1 ring-slate-200 border border-transparent transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:ring-indigo-400 overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div>
+                    <div className="mb-5 flex items-center justify-between">
+                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-700 text-white shadow-lg shadow-indigo-200">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <span className="text-xs font-semibold text-slate-400">#{topic.id}</span>
+                    </div>
+                    <h3 className="mb-2 text-xl font-bold text-slate-900">{topic.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{topic.description}</p>
+                  </div>
+                  <div className="mt-6 flex items-center justify-between pt-5 border-t border-slate-100">
+                    <span className="text-sm font-semibold text-slate-500">{topic.questions} Questions</span>
+                    <div className="flex items-center gap-2 text-sm font-bold text-indigo-600 group-hover:gap-3 transition-all">
+                      Start Test
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}

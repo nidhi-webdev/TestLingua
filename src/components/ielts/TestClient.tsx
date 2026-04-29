@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ReadingTest } from "@/data/mock-reading-test";
-import { CheckCircle2, AlertCircle, ChevronDown, AlignLeft } from "lucide-react";
+import { ArrowRight, Clock, Target, CheckCircle2, AlertCircle, Bookmark, ChevronDown, AlignLeft } from "lucide-react";
 import Link from "next/link";
 import { saveTestResultAction } from "@/app/actions/save-test-result";
 import { resetTestResultAction } from "@/app/actions/reset-test-result";
@@ -13,32 +13,82 @@ interface TestClientProps {
 }
 
 export default function TestClient({ test, previousResult }: TestClientProps) {
-  const [answers, setAnswers] = useState<Record<string, string>>(previousResult?.answers || {});
+  const [answers, setAnswers] = useState<Record<string, any>>(previousResult?.answers || {});
   const [submitted, setSubmitted] = useState(!!previousResult);
   const [score, setScore] = useState(previousResult?.score || 0);
+  const [timeLeft, setTimeLeft] = useState(20 * 60); // 20 minutes in seconds
+  const [timerActive, setTimerActive] = useState(!previousResult);
   
   // Determine if this is a Section 2 test (ID ends with -2)
   const isSection2 = test.id.endsWith('-2');
   const sectionLink = isSection2 ? '/exams/ielts/reading/section-2' : '/exams/ielts/reading/section-1';
 
-  const handleAnswer = (questionId: string, value: string) => {
+  useEffect(() => {
+    let timer: any;
+    if (timerActive && timeLeft > 0) {
+      timer = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0 && !submitted) {
+      calculateScore();
+      setTimerActive(false);
+    }
+    return () => clearInterval(timer);
+  }, [timerActive, timeLeft, submitted]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const handleAnswer = (questionId: string, value: string, isMulti: boolean = false) => {
     if (submitted) return;
-    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+    
+    setAnswers((prev) => {
+      if (isMulti) {
+        const current = Array.isArray(prev[questionId]) ? prev[questionId] : [];
+        const next = current.includes(value)
+          ? current.filter((v: string) => v !== value)
+          : [...current, value];
+        return { ...prev, [questionId]: next };
+      }
+      return { ...prev, [questionId]: value };
+    });
   };
 
   const calculateScore = async () => {
     let currentScore = 0;
     test.questions.forEach((q) => {
       const userAnswer = answers[q.id];
-      const isCorrect = Array.isArray(q.answer) 
-        ? q.answer.includes(userAnswer) // For single choice against array
-        : userAnswer === q.answer;
-      
-      if (isCorrect) currentScore++;
+      if (!userAnswer) return;
+
+      if (Array.isArray(q.answer)) {
+        // If it's a multi-select question
+        if (Array.isArray(userAnswer)) {
+          // Compare arrays (order doesn't matter, but length and content do)
+          const sortedUser = [...userAnswer].sort();
+          const sortedCorrect = [...q.answer].sort();
+          if (JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect)) {
+            currentScore++;
+          }
+        } else {
+          // Single user answer against array of correct options (standard MCQ)
+          if (q.answer.includes(userAnswer)) {
+            currentScore++;
+          }
+        }
+      } else {
+        // Simple string comparison
+        if (userAnswer === q.answer) {
+          currentScore++;
+        }
+      }
     });
     setScore(currentScore);
     setSubmitted(true);
 
+    setTimerActive(false);
     try {
       await saveTestResultAction({
         testId: test.id,
@@ -55,6 +105,8 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
     setAnswers({});
     setSubmitted(false);
     setScore(0);
+    setTimeLeft(20 * 60);
+    setTimerActive(true);
     try {
       await resetTestResultAction(test.id);
     } catch (error) {
@@ -75,6 +127,14 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
         </div>
         
         <div className="flex items-center gap-6">
+          <div className={`flex items-center gap-2 px-4 py-2 rounded-lg border font-mono font-bold text-lg transition-colors shadow-sm ${
+            timeLeft < 300 
+              ? "bg-red-50 border-red-200 text-red-600 animate-pulse" 
+              : "bg-white border-slate-200 text-slate-700"
+          }`}>
+            <Clock className={`h-5 w-5 ${timeLeft < 300 ? "text-red-500" : "text-slate-400"}`} />
+            {formatTime(timeLeft)}
+          </div>
 
           
           {!submitted ? (
@@ -389,8 +449,20 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                             })}
                           </div>
                         </div>
-                      ) : q.type === "sentence_completion" || q.type === "flowchart_completion" || q.type === "short_answer" || q.type === "diagram_completion" ? (
-                        <div className="flex flex-col gap-3">
+                      ) : q.type === "sentence_completion" || q.type === "flowchart_completion" || q.type === "short_answer" || q.type === "diagram_completion" || q.type === "summary_completion" ? (
+                        <div className="flex flex-col gap-4">
+                          {q.options && q.options.length > 0 && (
+                            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm mb-2">
+                              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Options Box</p>
+                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                {q.options.map(opt => (
+                                  <div key={opt} className="text-sm font-bold text-slate-700 bg-slate-50 px-2 py-1 rounded border border-slate-100 truncate">
+                                    {opt}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                           <div className="text-slate-800 font-medium leading-relaxed">
                             {q.text.includes('[GAP]') ? (
                                q.text.split('[GAP]').map((part, index, array) => (
@@ -441,27 +513,35 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
                         <div className="flex flex-col gap-3">
                           <p className="text-slate-800 font-medium leading-relaxed">{q.text}</p>
                           <div className="grid grid-cols-1 gap-1">
-                            {q.options?.map((opt) => {
-                              const optionLetter = opt.charAt(0);
-                              const isSelected = answers[q.id] === optionLetter;
-                              const isActuallyCorrect = submitted && (Array.isArray(q.answer) ? q.answer.includes(optionLetter) : q.answer === optionLetter);
-                              
-                              return (
-                                <button 
-                                  key={opt}
-                                  disabled={submitted}
-                                  onClick={() => handleAnswer(q.id, optionLetter)}
-                                  className={`flex items-center gap-3 border p-2 text-left text-sm font-medium transition-all ${
-                                    isSelected
-                                      ? 'bg-slate-800 border-slate-800 text-white' 
-                                      : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
-                                  } ${isActuallyCorrect ? 'bg-emerald-600 border-emerald-600 text-white' : ''}`}
-                                >
-                                  <span className="shrink-0 font-bold w-6 text-center">{optionLetter}</span>
-                                  <span>{opt.substring(2)}</span>
-                                </button>
-                              );
-                            })}
+                             {q.options?.map((opt) => {
+                               const optionLetter = opt.charAt(0);
+                               const isMulti = q.answer.length > 1;
+                               const isSelected = isMulti 
+                                 ? Array.isArray(answers[q.id]) && answers[q.id].includes(optionLetter)
+                                 : answers[q.id] === optionLetter;
+                               
+                               const isActuallyCorrect = submitted && (
+                                 Array.isArray(q.answer) 
+                                   ? q.answer.includes(optionLetter) 
+                                   : q.answer === optionLetter
+                               );
+                               
+                               return (
+                                 <button 
+                                   key={opt}
+                                   disabled={submitted}
+                                   onClick={() => handleAnswer(q.id, optionLetter, isMulti)}
+                                   className={`flex items-center gap-3 border p-2 text-left text-sm font-medium transition-all ${
+                                     isSelected
+                                       ? 'bg-slate-800 border-slate-800 text-white' 
+                                       : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                                   } ${isActuallyCorrect ? 'bg-emerald-600 border-emerald-600 text-white' : ''}`}
+                                 >
+                                   <span className="shrink-0 font-bold w-6 text-center">{optionLetter}</span>
+                                   <span>{opt.substring(2)}</span>
+                                 </button>
+                               );
+                             })}
                           </div>
                         </div>
                       )}
