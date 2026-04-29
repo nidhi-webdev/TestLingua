@@ -61,6 +61,32 @@ export default function Section2Page() {
           </div>
         </section>
 
+        {/* Section Navigation Tabs */}
+        <div className="sticky top-16 z-20 border-b border-slate-200 bg-white/80 backdrop-blur-md shadow-sm">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="-mb-px flex gap-8 overflow-x-auto hide-scrollbar">
+              <Link
+                href="/exams/ielts/reading/section-1"
+                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
+              >
+                Section 1 (Easy)
+              </Link>
+              <Link
+                href="/exams/ielts/reading/section-2"
+                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-emerald-600 text-emerald-600"
+              >
+                Section 2 (Medium)
+              </Link>
+              <Link
+                href="/exams/ielts/reading/section-3"
+                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
+              >
+                Section 3 (Hard)
+              </Link>
+            </nav>
+          </div>
+        </div>
+
         {/* All Topics */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
