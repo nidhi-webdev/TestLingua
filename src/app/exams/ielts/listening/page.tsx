@@ -117,6 +117,38 @@ export default function IELTSListeningQuestionsPage() {
           </div>
         </section>
 
+        {/* Module Navigation Tabs */}
+        <div className="sticky top-16 z-20 border-b border-slate-200 bg-white/80 backdrop-blur-md shadow-sm">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="-mb-px flex gap-8 overflow-x-auto hide-scrollbar">
+              <Link
+                href="/exams/ielts/reading"
+                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
+              >
+                Reading
+              </Link>
+              <Link
+                href="/exams/ielts/listening"
+                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-blue-600 text-blue-600"
+              >
+                Listening
+              </Link>
+              <Link
+                href="/exams/ielts/writing"
+                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
+              >
+                Writing
+              </Link>
+              <Link
+                href="/exams/ielts/speaking"
+                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
+              >
+                Speaking
+              </Link>
+            </nav>
+          </div>
+        </div>
+
         <section className="py-14 md:py-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             {!hasStartedTest ? (
