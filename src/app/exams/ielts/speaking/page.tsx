@@ -4,32 +4,43 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Mic } from "lucide-react";
+import SpeakingCategories from "@/components/ielts/SpeakingCategories";
 
 export default function IELTSSpeakingPage() {
   return (
     <>
       <Navbar />
       <main className="bg-white pt-16">
-        <section className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 py-16 text-white">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 py-20 text-white relative overflow-hidden">
+          {/* Background Decorative Elements */}
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-emerald-700/10 blur-[100px] -rotate-12 transform translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-teal-500/10 blur-[80px] rotate-12 transform -translate-x-1/4" />
+          
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
             <Link
               href="/exams/ielts"
-              className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-100 transition hover:text-white"
+              className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 transition hover:text-white group"
             >
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4 transform group-hover:-translate-x-1 transition-transform" />
               Back to IELTS Overview
             </Link>
 
-            <div className="grid items-center gap-8 md:grid-cols-2">
-              <div>
-                <p className="mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-100">
-                  IELTS Speaking Practice
-                </p>
-                <h1 className="text-4xl font-bold md:text-5xl">Speaking Tests</h1>
-                <p className="mt-4 text-lg text-emerald-100">
-                  Practice Parts 1, 2, and 3 with real examiner questions and audio recording capabilities.
-                </p>
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="inline-flex rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-300 border border-emerald-500/30">
+                  IELTS Speaking
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-emerald-100 border border-white/10">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Live Feedback Ready
+                </span>
               </div>
+              <h1 className="text-4xl font-bold md:text-6xl tracking-tight leading-tight">
+                Master the <span className="text-emerald-400">IELTS Interview</span>
+              </h1>
+              <p className="mt-6 text-xl text-emerald-100/80 leading-relaxed max-w-2xl">
+                Simulate authentic Speaking tests with AI-powered analysis. Practice Parts 1, 2, and 3 with real examiner topics and improve your fluency.
+              </p>
             </div>
           </div>
         </section>
@@ -38,41 +49,30 @@ export default function IELTSSpeakingPage() {
         <div className="sticky top-16 z-20 border-b border-slate-200 bg-white/80 backdrop-blur-md shadow-sm">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="-mb-px flex gap-8 overflow-x-auto hide-scrollbar">
-              <Link
-                href="/exams/ielts/reading"
-                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
-              >
-                Reading
-              </Link>
-              <Link
-                href="/exams/ielts/listening"
-                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
-              >
-                Listening
-              </Link>
-              <Link
-                href="/exams/ielts/writing"
-                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-800"
-              >
-                Writing
-              </Link>
-              <Link
-                href="/exams/ielts/speaking"
-                className="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-colors border-blue-600 text-blue-600"
-              >
-                Speaking
-              </Link>
+              {["Reading", "Listening", "Writing", "Speaking"].map((tab) => {
+                const isActive = tab === "Speaking";
+                const href = `/exams/ielts/${tab.toLowerCase()}`;
+                return (
+                  <Link
+                    key={tab}
+                    href={href}
+                    className={`whitespace-nowrap border-b-2 py-4 px-1 text-sm font-bold transition-all duration-300 ${
+                      isActive 
+                        ? "border-emerald-600 text-emerald-600" 
+                        : "border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300"
+                    }`}
+                  >
+                    {tab}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
         </div>
 
-        <section className="py-14 md:py-20">
+        <section className="py-16 md:py-24 bg-slate-50/50">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-             <div className="text-center py-20">
-                <Mic className="mx-auto h-12 w-12 text-slate-300 mb-4" />
-                <h2 className="text-2xl font-bold text-slate-900">Speaking Module Coming Soon</h2>
-                <p className="mt-2 text-slate-500">We are currently integrating the audio recording features.</p>
-             </div>
+            <SpeakingCategories />
           </div>
         </section>
       </main>

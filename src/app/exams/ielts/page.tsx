@@ -48,8 +48,8 @@ export default function IELTSPage() {
       icon: Mic,
       duration: "11-14 min",
       focus: "Fluency, coherence, lexical resource",
-      href: "",
-      cta: "Coming soon",
+      href: "/exams/ielts/speaking",
+      cta: "Start Speaking Practice",
     },
   ];
 
