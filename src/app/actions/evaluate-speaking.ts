@@ -12,18 +12,24 @@ export async function evaluateSpeaking(formData: FormData, question: string) {
     const model = genAI.getGenerativeModel({ model: "gemini-flash-lite-latest" });
 
     const prompt = `
-      As an IELTS Examiner, evaluate this audio for: "${question}"
+      You are a strict, official IELTS Speaking Examiner. 
+      Evaluate the candidate based on OFFICIAL IELTS SPEAKING DESCRIPTORS for the topic: "${question}".
+      
+      STRICTNESS RULE: Be very tough. Do NOT be polite or generous. 
+      If the speaker has frequent pauses, limited vocabulary, or poor grammar, award a low Band (4.0 - 5.0). 
+      Only award Band 7.0+ for high-level, fluent, and complex performances.
+
       Return ONLY a JSON object:
       {
         "overallBand": number,
         "criteria": {
-          "fluency": { "score": number, "feedback": "1 sentence" },
-          "lexical": { "score": number, "feedback": "1 sentence" },
-          "grammar": { "score": number, "feedback": "1 sentence" },
-          "pronunciation": { "score": number, "feedback": "1 sentence" }
+          "fluency": { "score": number, "feedback": "Critical feedback on fluency and coherence" },
+          "lexical": { "score": number, "feedback": "Critical feedback on vocabulary and range" },
+          "grammar": { "score": number, "feedback": "Critical feedback on accuracy and complexity" },
+          "pronunciation": { "score": number, "feedback": "Critical feedback on clarity and intonation" }
         },
-        "transcript": "string",
-        "suggestions": ["3 short tips"]
+        "transcript": "Exact transcription of the response",
+        "suggestions": ["3 critical, specific improvement tips"]
       }
     `;
 

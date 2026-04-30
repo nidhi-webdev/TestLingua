@@ -53,7 +53,8 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
       title: "Part 2: Long Turn (Cue Card)",
       subtitle: "Individual Presentation",
       questions: [
-        "Describe a beautiful place you have visited in your country. You should say:\n- Where it is\n- When you went there\n- What you did there\n- And explain why you think it is beautiful."
+        "Describe a beautiful place you have visited in your country. You should say:\n- Where it is\n- When you went there\n- What you did there\n- And explain why you think it is beautiful.",
+        "Describe a time when you helped a stranger. You should say:\n- Who the person was\n- What the situation was\n- How you helped them\n- And explain how you felt after helping them."
       ],
       prepTime: 60,
       speakingTime: 120
@@ -153,12 +154,16 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
 
   useEffect(() => {
     if (!isEvaluating && !results) {
+      // All voice read-outs disabled per user request
+      /*
+      if (isRecording && partId === "part-2") return;
       const currentQuestion = isPrepPhase || isRecording 
         ? partData.questions[currentQuestionIndex]
         : "";
       if (currentQuestion) speak(currentQuestion);
+      */
     }
-  }, [currentQuestionIndex, isRecording]);
+  }, [currentQuestionIndex, isRecording, isPrepPhase]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
