@@ -6,29 +6,21 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function evaluateSpeaking(audioBase64: string, question: string) {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-lite-latest" });
 
     const prompt = `
-      You are an expert IELTS Speaking Examiner. 
-      Analyze the provided audio recording of a student answering the following question: "${question}"
-      
-      Evaluate the response based on official IELTS criteria:
-      1. Fluency and Coherence (0-9)
-      2. Lexical Resource (0-9)
-      3. Grammatical Range and Accuracy (0-9)
-      4. Pronunciation (0-9)
-      
-      Provide a concise feedback report in JSON format:
+      As an IELTS Examiner, evaluate this audio for: "${question}"
+      Return ONLY a JSON object:
       {
         "overallBand": number,
         "criteria": {
-          "fluency": { "score": number, "feedback": "string" },
-          "lexical": { "score": number, "feedback": "string" },
-          "grammar": { "score": number, "feedback": "string" },
-          "pronunciation": { "score": number, "feedback": "string" }
+          "fluency": { "score": number, "feedback": "1 sentence" },
+          "lexical": { "score": number, "feedback": "1 sentence" },
+          "grammar": { "score": number, "feedback": "1 sentence" },
+          "pronunciation": { "score": number, "feedback": "1 sentence" }
         },
         "transcript": "string",
-        "suggestions": ["string", "string"]
+        "suggestions": ["3 short tips"]
       }
     `;
 

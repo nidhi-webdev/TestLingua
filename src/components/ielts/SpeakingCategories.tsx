@@ -72,7 +72,7 @@ export default function SpeakingCategories() {
               href={`/exams/ielts/speaking/test/${part.id}`}
               onMouseEnter={() => setHoveredId(part.id)}
               onMouseLeave={() => setHoveredId(null)}
-              className="group relative flex flex-col bg-white rounded-2xl border border-slate-200 p-6 transition-all duration-300 hover:shadow-xl hover:border-emerald-200 overflow-hidden"
+              className="group relative flex flex-col bg-white rounded-2xl border border-slate-200 p-6 transition-all duration-300 hover:shadow-xl hover:border-emerald-200 overflow-hidden cursor-pointer"
             >
               {/* Animated Background Gradient on Hover */}
               <div className={`absolute inset-0 bg-gradient-to-br from-${part.color}-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} />

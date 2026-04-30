@@ -226,13 +226,13 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
           <div className="p-8 bg-slate-50 border-t flex justify-center gap-4">
             <button 
               onClick={() => setResults(null)}
-              className="px-8 py-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition"
+              className="px-8 py-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
             >
               Try Again
             </button>
             <Link 
               href="/exams/ielts/speaking"
-              className="px-8 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-900/20"
+              className="px-8 py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-900/20 cursor-pointer"
             >
               Finish Session
             </Link>
@@ -288,7 +288,7 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
               onClick={stopRecording}
               disabled={!isRecording}
               className={`px-6 py-2.5 rounded-xl font-bold text-sm transition shadow-lg ${
-                isRecording ? "bg-rose-600 hover:bg-rose-700 text-white shadow-rose-600/20" : "bg-slate-100 text-slate-400 cursor-not-allowed"
+                isRecording ? "bg-rose-600 hover:bg-rose-700 text-white shadow-rose-600/20 cursor-pointer" : "bg-slate-100 text-slate-400 cursor-not-allowed"
               }`}
             >
               Finish Recording
@@ -331,7 +331,7 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
                             startRecording();
                           }, 500);
                         }}
-                        className="flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition"
+                        className="flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition cursor-pointer"
                       >
                         Next Question <ChevronRight className="w-4 h-4" />
                       </button>
@@ -349,7 +349,7 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
                   </p>
                   <button
                     onClick={handleStartPractice}
-                    className="flex items-center gap-2 bg-slate-900 text-white px-8 py-3.5 rounded-2xl font-bold hover:bg-slate-800 transition shadow-xl shadow-slate-900/20 mx-auto"
+                    className="flex items-center gap-2 bg-slate-900 text-white px-8 py-3.5 rounded-2xl font-bold hover:bg-slate-800 transition shadow-xl shadow-slate-900/20 mx-auto cursor-pointer"
                   >
                     <Play className="w-5 h-5 fill-current" />
                     Start AI Assessment
