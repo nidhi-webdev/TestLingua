@@ -16,7 +16,7 @@ import {
 const parts = [
   {
     id: "part-1",
-    name: "Part 1: Interview",
+    name: "Part 1: Introduction & Interview",
     icon: User,
     color: "emerald",
     desc: "Personal questions about familiar topics like hobbies, home, or work.",

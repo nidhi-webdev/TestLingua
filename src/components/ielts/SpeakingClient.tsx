@@ -36,14 +36,18 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
   // Simulation data
   const partData = {
     "part-1": {
-      title: "Part 1: Interview",
-      subtitle: "Introduction & Familiar Topics",
+      title: "Part 1: Introduction & Interview",
+      subtitle: "Personal Topics & General Questions",
       questions: [
-        "Do you work or are you a student?",
-        "What is your favorite part of your studies or job?",
-        "How do you usually spend your weekends?",
-        "Is there anything you would like to change about your daily routine?"
-      ]
+        "Good morning. My name is Michael. To begin the test, could you tell me your full name, and whether you work or are a student?",
+        "Thank you. Now, let's talk about where you live. Do you live in a house or an apartment?",
+        "What do you like about the area where you live?",
+        "Let's talk about your family. Do you spend much time with your family?",
+        "Who are you closest to in your family?",
+        "Now let's talk about hobbies. Do you think it is important to have a hobby? Why?",
+        "What kind of hobbies are popular in your country?"
+      ],
+      duration: "4-5 mins"
     },
     "part-2": {
       title: "Part 2: Long Turn (Cue Card)",
@@ -127,6 +131,30 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
     }
     return () => clearInterval(timer);
   }, [timeLeft, isPrepPhase, isRecording]);
+
+  const speak = (text: string) => {
+    if (typeof window !== "undefined" && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+      
+      const voices = window.speechSynthesis.getVoices();
+      const englishVoice = voices.find(v => v.lang.includes("en-GB") || v.lang.includes("en-US"));
+      if (englishVoice) utterance.voice = englishVoice;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  useEffect(() => {
+    if (!isEvaluating && !results) {
+      const currentQuestion = isPrepPhase || isRecording 
+        ? partData.questions[currentQuestionIndex]
+        : "";
+      if (currentQuestion) speak(currentQuestion);
+    }
+  }, [currentQuestionIndex, isRecording]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -325,11 +353,12 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
                     <div className="flex justify-center">
                       <button 
                         onClick={() => {
-                          stopRecording();
-                          setTimeout(() => {
-                            setCurrentQuestionIndex(prev => (prev + 1) % partData.questions.length);
-                            startRecording();
-                          }, 500);
+                          if (currentQuestionIndex < partData.questions.length - 1) {
+                            setCurrentQuestionIndex(prev => prev + 1);
+                          } else {
+                            // If at last question, maybe show a hint or just let them finish
+                            alert("You have reached the end of the questions. Click 'Finish Recording' to see your results!");
+                          }
                         }}
                         className="flex items-center gap-2 text-emerald-600 font-bold hover:text-emerald-700 transition cursor-pointer"
                       >
