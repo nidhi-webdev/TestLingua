@@ -19,6 +19,8 @@ export async function evaluateSpeaking(formData: FormData, question: string) {
       If the speaker has frequent pauses, limited vocabulary, or poor grammar, award a low Band (4.0 - 5.0). 
       Only award Band 7.0+ for high-level, fluent, and complex performances.
 
+      EMPTY AUDIO RULE: If the audio is silent, contains only noise, or has no meaningful speech, you MUST award Band 0.0 or 1.0. Do NOT hallucinate a transcript or performance.
+
       Return ONLY a JSON object:
       {
         "overallBand": number,
@@ -29,7 +31,8 @@ export async function evaluateSpeaking(formData: FormData, question: string) {
           "pronunciation": { "score": number, "feedback": "Critical feedback on clarity and intonation" }
         },
         "transcript": "Exact transcription of the response",
-        "suggestions": ["3 critical, specific improvement tips"]
+        "suggestions": ["3 critical, specific improvement tips"],
+        "modelAnswer": "A high-quality Band 9.0 sample answer for this specific question"
       }
     `;
 

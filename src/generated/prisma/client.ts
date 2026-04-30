@@ -86,3 +86,8 @@ export type WritingTest = Prisma.WritingTestModel
  * 
  */
 export type WritingSubmission = Prisma.WritingSubmissionModel
+/**
+ * Model SpeakingResult
+ * 
+ */
+export type SpeakingResult = Prisma.SpeakingResultModel

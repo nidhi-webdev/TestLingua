@@ -13,10 +13,12 @@ import {
   Volume2,
   ChevronRight,
   Sparkles,
-  Info
+  Info,
+  RotateCcw
 } from "lucide-react";
 
 import { evaluateSpeaking } from "@/app/actions/evaluate-speaking";
+import { saveSpeakingResult } from "@/app/actions/save-speaking-result";
 
 interface SpeakingClientProps {
   partId: string;
@@ -93,6 +95,18 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
           formData.append("audio", base64Audio);
           
           const evaluation = await evaluateSpeaking(formData, partData.questions[currentQuestionIndex]);
+          
+          if (evaluation && !evaluation.error) {
+            await saveSpeakingResult({
+              partId,
+              overallBand: evaluation.overallBand,
+              transcript: evaluation.transcript,
+              modelAnswer: evaluation.modelAnswer,
+              criteria: evaluation.criteria,
+              suggestions: evaluation.suggestions
+            });
+          }
+
           setResults(evaluation);
           setIsEvaluating(false);
         };
@@ -243,6 +257,16 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
                 </p>
               </div>
 
+              <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
+                <h3 className="text-sm font-bold text-emerald-900 mb-4 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-emerald-600" />
+                  Band 9 Model Answer
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed italic whitespace-pre-wrap">
+                  "{results.modelAnswer}"
+                </p>
+              </div>
+
               <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100">
                 <h3 className="text-sm font-bold text-amber-900 mb-4 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-amber-600" />
@@ -262,10 +286,15 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
 
           <div className="p-8 bg-slate-50 border-t flex justify-center gap-4">
             <button 
-              onClick={() => setResults(null)}
-              className="px-8 py-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+              onClick={() => {
+                setResults(null);
+                setCurrentQuestionIndex(0);
+                setIsRecording(false);
+                setIsPrepPhase(false);
+              }}
+              className="px-8 py-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer flex items-center gap-2"
             >
-              Try Again
+              <RotateCcw className="w-4 h-4" /> Reset & Retry
             </button>
             <Link 
               href="/exams/ielts/speaking"
@@ -446,12 +475,11 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
               )}
             </div>
 
-            {/* Note Taking Area (Scratchpad) */}
             <div className="mt-8">
               <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Scratchpad / Notes</p>
               <textarea
                 placeholder="Type your brainstorm notes here..."
-                className="w-full h-40 bg-white border border-slate-200 rounded-2xl p-4 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition shadow-inner resize-none"
+                className="w-full h-40 bg-white border border-slate-200 rounded-2xl p-4 text-sm text-slate-800 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition shadow-inner resize-none outline-none"
               />
             </div>
           </div>

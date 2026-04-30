@@ -392,7 +392,8 @@ export const ModelName = {
   ReadingQuestion: 'ReadingQuestion',
   TestResult: 'TestResult',
   WritingTest: 'WritingTest',
-  WritingSubmission: 'WritingSubmission'
+  WritingSubmission: 'WritingSubmission',
+  SpeakingResult: 'SpeakingResult'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken" | "readingTest" | "readingQuestion" | "testResult" | "writingTest" | "writingSubmission"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "readingTest" | "readingQuestion" | "testResult" | "writingTest" | "writingSubmission" | "speakingResult"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1078,6 +1079,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SpeakingResult: {
+      payload: Prisma.$SpeakingResultPayload<ExtArgs>
+      fields: Prisma.SpeakingResultFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SpeakingResultFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SpeakingResultFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>
+        }
+        findFirst: {
+          args: Prisma.SpeakingResultFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SpeakingResultFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>
+        }
+        findMany: {
+          args: Prisma.SpeakingResultFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>[]
+        }
+        create: {
+          args: Prisma.SpeakingResultCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>
+        }
+        createMany: {
+          args: Prisma.SpeakingResultCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SpeakingResultCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>[]
+        }
+        delete: {
+          args: Prisma.SpeakingResultDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>
+        }
+        update: {
+          args: Prisma.SpeakingResultUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>
+        }
+        deleteMany: {
+          args: Prisma.SpeakingResultDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SpeakingResultUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SpeakingResultUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>[]
+        }
+        upsert: {
+          args: Prisma.SpeakingResultUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpeakingResultPayload>
+        }
+        aggregate: {
+          args: Prisma.SpeakingResultAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSpeakingResult>
+        }
+        groupBy: {
+          args: Prisma.SpeakingResultGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpeakingResultGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SpeakingResultCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpeakingResultCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1240,6 +1315,21 @@ export const WritingSubmissionScalarFieldEnum = {
 } as const
 
 export type WritingSubmissionScalarFieldEnum = (typeof WritingSubmissionScalarFieldEnum)[keyof typeof WritingSubmissionScalarFieldEnum]
+
+
+export const SpeakingResultScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  partId: 'partId',
+  overallBand: 'overallBand',
+  transcript: 'transcript',
+  modelAnswer: 'modelAnswer',
+  criteria: 'criteria',
+  suggestions: 'suggestions',
+  completedAt: 'completedAt'
+} as const
+
+export type SpeakingResultScalarFieldEnum = (typeof SpeakingResultScalarFieldEnum)[keyof typeof SpeakingResultScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1476,6 +1566,7 @@ export type GlobalOmitConfig = {
   testResult?: Prisma.TestResultOmit
   writingTest?: Prisma.WritingTestOmit
   writingSubmission?: Prisma.WritingSubmissionOmit
+  speakingResult?: Prisma.SpeakingResultOmit
 }
 
 /* Types for Logging */

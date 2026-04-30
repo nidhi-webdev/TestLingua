@@ -210,6 +210,7 @@ export type UserWhereInput = {
   sessions?: Prisma.SessionListRelationFilter
   testResults?: Prisma.TestResultListRelationFilter
   writingSubmissions?: Prisma.WritingSubmissionListRelationFilter
+  speakingResults?: Prisma.SpeakingResultListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -225,6 +226,7 @@ export type UserOrderByWithRelationInput = {
   sessions?: Prisma.SessionOrderByRelationAggregateInput
   testResults?: Prisma.TestResultOrderByRelationAggregateInput
   writingSubmissions?: Prisma.WritingSubmissionOrderByRelationAggregateInput
+  speakingResults?: Prisma.SpeakingResultOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -243,6 +245,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   sessions?: Prisma.SessionListRelationFilter
   testResults?: Prisma.TestResultListRelationFilter
   writingSubmissions?: Prisma.WritingSubmissionListRelationFilter
+  speakingResults?: Prisma.SpeakingResultListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -286,6 +289,7 @@ export type UserCreateInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -301,6 +305,7 @@ export type UserUncheckedCreateInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultUncheckedCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -316,6 +321,7 @@ export type UserUpdateInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -331,6 +337,7 @@ export type UserUncheckedUpdateInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUncheckedUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -483,6 +490,22 @@ export type UserUpdateOneWithoutWritingSubmissionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWritingSubmissionsInput, Prisma.UserUpdateWithoutWritingSubmissionsInput>, Prisma.UserUncheckedUpdateWithoutWritingSubmissionsInput>
 }
 
+export type UserCreateNestedOneWithoutSpeakingResultsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSpeakingResultsInput, Prisma.UserUncheckedCreateWithoutSpeakingResultsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSpeakingResultsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutSpeakingResultsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSpeakingResultsInput, Prisma.UserUncheckedCreateWithoutSpeakingResultsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSpeakingResultsInput
+  upsert?: Prisma.UserUpsertWithoutSpeakingResultsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSpeakingResultsInput, Prisma.UserUpdateWithoutSpeakingResultsInput>, Prisma.UserUncheckedUpdateWithoutSpeakingResultsInput>
+}
+
 export type UserCreateWithoutAccountsInput = {
   id?: string
   name?: string | null
@@ -495,6 +518,7 @@ export type UserCreateWithoutAccountsInput = {
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -509,6 +533,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultUncheckedCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -539,6 +564,7 @@ export type UserUpdateWithoutAccountsInput = {
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -553,6 +579,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUncheckedUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -567,6 +594,7 @@ export type UserCreateWithoutSessionsInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -581,6 +609,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultUncheckedCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -611,6 +640,7 @@ export type UserUpdateWithoutSessionsInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -625,6 +655,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUncheckedUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTestResultsInput = {
@@ -639,6 +670,7 @@ export type UserCreateWithoutTestResultsInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTestResultsInput = {
@@ -653,6 +685,7 @@ export type UserUncheckedCreateWithoutTestResultsInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTestResultsInput = {
@@ -683,6 +716,7 @@ export type UserUpdateWithoutTestResultsInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTestResultsInput = {
@@ -697,6 +731,7 @@ export type UserUncheckedUpdateWithoutTestResultsInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   writingSubmissions?: Prisma.WritingSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWritingSubmissionsInput = {
@@ -711,6 +746,7 @@ export type UserCreateWithoutWritingSubmissionsInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWritingSubmissionsInput = {
@@ -725,6 +761,7 @@ export type UserUncheckedCreateWithoutWritingSubmissionsInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   testResults?: Prisma.TestResultUncheckedCreateNestedManyWithoutUserInput
+  speakingResults?: Prisma.SpeakingResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWritingSubmissionsInput = {
@@ -755,6 +792,7 @@ export type UserUpdateWithoutWritingSubmissionsInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWritingSubmissionsInput = {
@@ -769,6 +807,83 @@ export type UserUncheckedUpdateWithoutWritingSubmissionsInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   testResults?: Prisma.TestResultUncheckedUpdateManyWithoutUserNestedInput
+  speakingResults?: Prisma.SpeakingResultUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSpeakingResultsInput = {
+  id?: string
+  name?: string | null
+  email?: string | null
+  emailVerified?: Date | string | null
+  image?: string | null
+  passwordHash?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  testResults?: Prisma.TestResultCreateNestedManyWithoutUserInput
+  writingSubmissions?: Prisma.WritingSubmissionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSpeakingResultsInput = {
+  id?: string
+  name?: string | null
+  email?: string | null
+  emailVerified?: Date | string | null
+  image?: string | null
+  passwordHash?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  testResults?: Prisma.TestResultUncheckedCreateNestedManyWithoutUserInput
+  writingSubmissions?: Prisma.WritingSubmissionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSpeakingResultsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSpeakingResultsInput, Prisma.UserUncheckedCreateWithoutSpeakingResultsInput>
+}
+
+export type UserUpsertWithoutSpeakingResultsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSpeakingResultsInput, Prisma.UserUncheckedUpdateWithoutSpeakingResultsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSpeakingResultsInput, Prisma.UserUncheckedCreateWithoutSpeakingResultsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSpeakingResultsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSpeakingResultsInput, Prisma.UserUncheckedUpdateWithoutSpeakingResultsInput>
+}
+
+export type UserUpdateWithoutSpeakingResultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  testResults?: Prisma.TestResultUpdateManyWithoutUserNestedInput
+  writingSubmissions?: Prisma.WritingSubmissionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSpeakingResultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  testResults?: Prisma.TestResultUncheckedUpdateManyWithoutUserNestedInput
+  writingSubmissions?: Prisma.WritingSubmissionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -781,6 +896,7 @@ export type UserCountOutputType = {
   sessions: number
   testResults: number
   writingSubmissions: number
+  speakingResults: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -788,6 +904,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   testResults?: boolean | UserCountOutputTypeCountTestResultsArgs
   writingSubmissions?: boolean | UserCountOutputTypeCountWritingSubmissionsArgs
+  speakingResults?: boolean | UserCountOutputTypeCountSpeakingResultsArgs
 }
 
 /**
@@ -828,6 +945,13 @@ export type UserCountOutputTypeCountWritingSubmissionsArgs<ExtArgs extends runti
   where?: Prisma.WritingSubmissionWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSpeakingResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SpeakingResultWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -842,6 +966,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   testResults?: boolean | Prisma.User$testResultsArgs<ExtArgs>
   writingSubmissions?: boolean | Prisma.User$writingSubmissionsArgs<ExtArgs>
+  speakingResults?: boolean | Prisma.User$speakingResultsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -884,6 +1009,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   testResults?: boolean | Prisma.User$testResultsArgs<ExtArgs>
   writingSubmissions?: boolean | Prisma.User$writingSubmissionsArgs<ExtArgs>
+  speakingResults?: boolean | Prisma.User$speakingResultsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -896,6 +1022,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     sessions: Prisma.$SessionPayload<ExtArgs>[]
     testResults: Prisma.$TestResultPayload<ExtArgs>[]
     writingSubmissions: Prisma.$WritingSubmissionPayload<ExtArgs>[]
+    speakingResults: Prisma.$SpeakingResultPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1304,6 +1431,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   testResults<T extends Prisma.User$testResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$testResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   writingSubmissions<T extends Prisma.User$writingSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$writingSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WritingSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  speakingResults<T extends Prisma.User$speakingResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$speakingResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpeakingResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1827,6 +1955,30 @@ export type User$writingSubmissionsArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.WritingSubmissionScalarFieldEnum | Prisma.WritingSubmissionScalarFieldEnum[]
+}
+
+/**
+ * User.speakingResults
+ */
+export type User$speakingResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SpeakingResult
+   */
+  select?: Prisma.SpeakingResultSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SpeakingResult
+   */
+  omit?: Prisma.SpeakingResultOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SpeakingResultInclude<ExtArgs> | null
+  where?: Prisma.SpeakingResultWhereInput
+  orderBy?: Prisma.SpeakingResultOrderByWithRelationInput | Prisma.SpeakingResultOrderByWithRelationInput[]
+  cursor?: Prisma.SpeakingResultWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SpeakingResultScalarFieldEnum | Prisma.SpeakingResultScalarFieldEnum[]
 }
 
 /**

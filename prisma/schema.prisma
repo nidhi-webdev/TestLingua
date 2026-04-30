@@ -25,6 +25,7 @@ model User {
   updatedAt         DateTime          @updatedAt
   testResults       TestResult[]
   writingSubmissions WritingSubmission[]
+  speakingResults   SpeakingResult[]
 }
 
 model Account {
@@ -140,4 +141,20 @@ model WritingSubmission {
 
   @@index([userId])
   @@index([writingTestId])
+}
+
+model SpeakingResult {
+  id            String   @id @default(cuid())
+  userId        String?
+  partId        String   // "part-1", "part-2", "part-3"
+  overallBand   Float
+  transcript    String   @db.Text
+  modelAnswer   String?  @db.Text
+  criteria      Json     // Store scores and feedback for each criterion
+  suggestions   String[]
+  completedAt   DateTime @default(now())
+
+  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
 }

@@ -59,7 +59,8 @@ export const ModelName = {
   ReadingQuestion: 'ReadingQuestion',
   TestResult: 'TestResult',
   WritingTest: 'WritingTest',
-  WritingSubmission: 'WritingSubmission'
+  WritingSubmission: 'WritingSubmission',
+  SpeakingResult: 'SpeakingResult'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -201,6 +202,21 @@ export const WritingSubmissionScalarFieldEnum = {
 } as const
 
 export type WritingSubmissionScalarFieldEnum = (typeof WritingSubmissionScalarFieldEnum)[keyof typeof WritingSubmissionScalarFieldEnum]
+
+
+export const SpeakingResultScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  partId: 'partId',
+  overallBand: 'overallBand',
+  transcript: 'transcript',
+  modelAnswer: 'modelAnswer',
+  criteria: 'criteria',
+  suggestions: 'suggestions',
+  completedAt: 'completedAt'
+} as const
+
+export type SpeakingResultScalarFieldEnum = (typeof SpeakingResultScalarFieldEnum)[keyof typeof SpeakingResultScalarFieldEnum]
 
 
 export const SortOrder = {
