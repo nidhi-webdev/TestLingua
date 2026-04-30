@@ -4,8 +4,11 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
-export async function evaluateSpeaking(audioBase64: string, question: string) {
+export async function evaluateSpeaking(formData: FormData, question: string) {
   try {
+    const audioBase64 = formData.get("audio") as string;
+    if (!audioBase64) throw new Error("No audio data provided");
+
     const model = genAI.getGenerativeModel({ model: "gemini-flash-lite-latest" });
 
     const prompt = `

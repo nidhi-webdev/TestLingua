@@ -87,7 +87,11 @@ export default function SpeakingClient({ partId }: SpeakingClientProps) {
         reader.onloadend = async () => {
           const base64Audio = (reader.result as string).split(',')[1];
           setIsEvaluating(true);
-          const evaluation = await evaluateSpeaking(base64Audio, partData.questions[currentQuestionIndex]);
+          
+          const formData = new FormData();
+          formData.append("audio", base64Audio);
+          
+          const evaluation = await evaluateSpeaking(formData, partData.questions[currentQuestionIndex]);
           setResults(evaluation);
           setIsEvaluating(false);
         };
