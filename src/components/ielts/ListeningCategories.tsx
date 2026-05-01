@@ -18,8 +18,8 @@ export default function ListeningCategories() {
   const sections = [
     {
       id: "section-1",
-      title: "Section 1: Social Conversation",
-      focus: "Transaction / Information",
+      title: "Section 1: Conversation in a Social Context",
+      focus: "TRANSACTION / INFORMATION",
       description: "A conversation between two people set in an everyday social context (e.g., booking a hotel).",
       icon: <Users className="w-6 h-6" />,
       questions: "10 Questions",
@@ -28,8 +28,8 @@ export default function ListeningCategories() {
     },
     {
       id: "section-2",
-      title: "Section 2: Social Monologue",
-      focus: "Information / Description",
+      title: "Section 2: Monologue in a Social Context",
+      focus: "INFORMATION / DESCRIPTION",
       description: "A monologue set in an everyday social context (e.g., a speech about local facilities).",
       icon: <MessageSquare className="w-6 h-6" />,
       questions: "10 Questions",
@@ -38,8 +38,8 @@ export default function ListeningCategories() {
     },
     {
       id: "section-3",
-      title: "Section 3: Educational Conversation",
-      focus: "Discussion / Analysis",
+      title: "Section 3: Conversation in an Academic Context",
+      focus: "DISCUSSION / ANALYSIS",
       description: "A conversation between up to four people set in an educational context (e.g., a tutor and students).",
       icon: <Users className="w-6 h-6" />,
       questions: "10 Questions",
@@ -48,8 +48,8 @@ export default function ListeningCategories() {
     },
     {
       id: "section-4",
-      title: "Section 4: Academic Monologue",
-      focus: "Lecture / Presentation",
+      title: "Section 4: Academic Lecture",
+      focus: "LECTURE / PRESENTATION",
       description: "A monologue on an academic subject (e.g., a university lecture). No break in the middle.",
       icon: <School className="w-6 h-6" />,
       questions: "10 Questions",
