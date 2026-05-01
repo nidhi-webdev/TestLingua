@@ -618,8 +618,196 @@ const type1Test: ListeningTest = {
   ]
 };
 
+const type2Transcript = `
+ACCOMMODATION ADVISOR: Good morning. Today I'm going to tell you about our five different accommodation options available for international students. Each one has different advantages depending on what you're looking for.
+
+Let's start with university halls of residence. These are on campus, which means you can easily access all the facilities. The halls are comfortable with individual study rooms, shared kitchen facilities, and a strong community atmosphere. Many students love the social life here. However, it can be quite noisy, especially during exam season parties. The rent is moderate, at around £120 per week.
+
+Next is homestay accommodation. You live with a local family who will welcome you into their home. This is excellent if you want to improve your English and learn about British culture. You'll have your own bedroom but share common areas with the family. The meals are usually included, which saves money. Some students find it less independent than they'd like, but most really enjoy the family atmosphere. The cost is typically £150 per week.
+
+Then there's private student housing. This is usually in purpose-built blocks with your own flat or shared house with other students. It's more independent than halls, and you often get a better quality room with your own bathroom. The downside is it's more expensive, around £180 per week, and you're responsible for your own meals and shopping.
+
+We also offer studio apartments. These are small, self-contained units perfect if you value privacy and independence. You have your own kitchen, bathroom, and living space. It's ideal for postgraduate students or those who prefer solitude. The trade-off is isolation – there's less community interaction. These cost about £220 per week.
+
+Finally, there's shared flat accommodation with local students, not other international students. Living with British students is a fantastic way to integrate into the local culture and have genuine friendships. You'll have more independence than halls or homestay. The challenge is that British students may not understand the needs of international students, and house-hunting can be competitive. Rent typically ranges from £100 to £140 per week depending on location.
+
+So in summary: halls are social and convenient; homestay is cultural and includes meals; private housing is independent and higher quality; studios are private and quiet; and shared flats with locals offer cultural integration. Do you have any questions about any of these options?
+`;
+
+const type2Test: ListeningTest = {
+  id: "listening-type-2",
+  title: "Student Accommodation Options",
+  difficulty: "Medium",
+  audioUrl: "https://example.com/listening-section-2-type-2.mp3",
+  transcript: type2Transcript,
+  sections: 2,
+  questions: [
+    {
+      id: "l2q1",
+      section: 2,
+      type: "matching",
+      text: "Best for improving English",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["B"],
+      order: 1,
+      transcript: "This is excellent if you want to improve your English and learn about British culture."
+    },
+    {
+      id: "l2q2",
+      section: 2,
+      type: "matching",
+      text: "Most expensive option",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["D"],
+      order: 2,
+      transcript: "These cost about £220 per week."
+    },
+    {
+      id: "l2q3",
+      section: 2,
+      type: "matching",
+      text: "Most affordable choice",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["E"],
+      order: 3,
+      transcript: "Rent typically ranges from £100 to £140 per week depending on location."
+    },
+    {
+      id: "l2q4",
+      section: 2,
+      type: "matching",
+      text: "Meals included",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["B"],
+      order: 4,
+      transcript: "The meals are usually included, which saves money."
+    },
+    {
+      id: "l2q5",
+      section: 2,
+      type: "matching",
+      text: "On campus location",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["A"],
+      order: 5,
+      transcript: "These are on campus, which means you can easily access all the facilities."
+    },
+    {
+      id: "l2q6",
+      section: 2,
+      type: "matching",
+      text: "Purpose-built with own bathroom",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["C"],
+      order: 6,
+      transcript: "It's usually in purpose-built blocks with your own flat or shared house with other students. It's more independent than halls, and you often get a better quality room with your own bathroom."
+    },
+    {
+      id: "l2q7",
+      section: 2,
+      type: "matching",
+      text: "Best for cultural integration",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["E"],
+      order: 7,
+      transcript: "Living with British students is a fantastic way to integrate into the local culture and have genuine friendships."
+    },
+    {
+      id: "l2q8",
+      section: 2,
+      type: "matching",
+      text: "Ideal for privacy and independence",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["D"],
+      order: 8,
+      transcript: "These are small, self-contained units perfect if you value privacy and independence."
+    },
+    {
+      id: "l2q9",
+      section: 2,
+      type: "matching",
+      text: "Strong social atmosphere",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["A"],
+      order: 9,
+      transcript: "Many students love the social life here."
+    },
+    {
+      id: "l2q10",
+      section: 2,
+      type: "matching",
+      text: "May be noisy",
+      options: [
+        "A. University halls of residence",
+        "B. Homestay accommodation",
+        "C. Private student housing",
+        "D. Studio apartments",
+        "E. Shared flat with local students"
+      ],
+      answer: ["A"],
+      order: 10,
+      transcript: "However, it can be quite noisy, especially during exam season parties."
+    }
+  ]
+};
+
 export const listeningPracticeSets = {
   "type-1": type1Test,
+  "type-2": type2Test,
   "type-3": type3Test,
   "type-4": type4Test,
   "type-6": type6Test,

@@ -73,7 +73,11 @@ export default function Section2TypePage() {
                     {practiceSet.title}
                   </h1>
                   <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl">
-                    Listen carefully and complete the labels on the floor plan based on the recording.
+                    {routeType === "type-2" 
+                      ? "Listen carefully and match the items to the correct options from the recording."
+                      : routeType === "type-1"
+                      ? "Listen carefully and select the correct answer for each question."
+                      : "Listen carefully and complete the labels on the floor plan based on the recording."}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 text-sm">
@@ -93,7 +97,11 @@ export default function Section2TypePage() {
                 <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Practice Set</p>
                 <p className="mt-2 text-3xl font-black">{totalQuestions} Questions</p>
                 <p className="mt-4 text-sm text-slate-500 leading-relaxed">
-                  Label the floor plan diagram by completing each location with words from the recording. Follow word limits carefully.
+                  {routeType === "type-2"
+                    ? "Match each item to the correct option from the list based on information from the recording."
+                    : routeType === "type-1"
+                    ? "Select the correct answer (A, B, or C) for each question based on what you hear."
+                    : "Label the floor plan diagram by completing each location with words from the recording. Follow word limits carefully."}
                 </p>
                 <div className="mt-6 flex items-center gap-3 text-xs font-black uppercase tracking-widest text-sky-600">
                   <PlayCircle className="w-4 h-4" /> Audio ready later via TTS
@@ -109,7 +117,13 @@ export default function Section2TypePage() {
               <div className="flex items-center justify-between gap-4 pb-6 border-b border-slate-100">
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">What&apos;s involved?</p>
-                  <h2 className="mt-2 text-2xl font-black text-slate-900">Plan/map/diagram labelling</h2>
+                  <h2 className="mt-2 text-2xl font-black text-slate-900">
+                    {routeType === "type-2"
+                      ? "Matching"
+                      : routeType === "type-1"
+                      ? "Multiple choice"
+                      : "Plan/map/diagram labelling"}
+                  </h2>
                 </div>
                 <button
                   type="button"
@@ -124,26 +138,56 @@ export default function Section2TypePage() {
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">What&apos;s involved?</h3>
                   <p>
-                    You have to complete labels on a visual such as a diagram, a set of pictures, a plan, or a map. The labels may be selected from a provided list or require words from the recording.
+                    {routeType === "type-2"
+                      ? "You have to match items from the recording to a list of options on the question paper, then write the correct letter on the answer sheet."
+                      : routeType === "type-1"
+                      ? "You have to choose one correct answer (A, B or C) to complete a question or sentence, then write the correct letter on the answer sheet."
+                      : "You have to complete labels on a visual such as a diagram, a set of pictures, a plan, or a map. The labels may be selected from a provided list or require words from the recording."}
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">Important guidelines</h3>
                   <ul className="space-y-2 list-disc list-inside text-sm">
-                    <li>Read the instructions very carefully as the word limit can change</li>
-                    <li>Follow word limits exactly, e.g., <span className="font-bold">NO MORE THAN TWO WORDS</span></li>
-                    <li>Writing more than the word limit will result in losing the mark</li>
-                    <li>Contracted words like &apos;they&apos;re&apos; will not be tested</li>
-                    <li>Hyphenated words like &apos;check-in&apos; count as single words</li>
-                    <li>Do not change words from the recording in any way</li>
+                    {routeType === "type-2" && (
+                      <>
+                        <li>Listen carefully for detailed information in the recording</li>
+                        <li>Understand how facts are connected to each other</li>
+                        <li>Follow conversations between speakers carefully</li>
+                        <li>Write the correct letter on your answer sheet</li>
+                        <li>You may need to match multiple items to different options</li>
+                      </>
+                    )}
+                    {routeType === "type-1" && (
+                      <>
+                        <li>Read the question carefully before listening</li>
+                        <li>Listen for the specific information asked in the question</li>
+                        <li>Only one answer is correct - choose the best option</li>
+                        <li>Some questions test general understanding, others test specific points</li>
+                        <li>Write the correct letter (A, B, or C) on your answer sheet</li>
+                      </>
+                    )}
+                    {routeType === "type-3" && (
+                      <>
+                        <li>Read the instructions very carefully as the word limit can change</li>
+                        <li>Follow word limits exactly, e.g., <span className="font-bold">NO MORE THAN TWO WORDS</span></li>
+                        <li>Writing more than the word limit will result in losing the mark</li>
+                        <li>Contracted words like &apos;they&apos;re&apos; will not be tested</li>
+                        <li>Hyphenated words like &apos;check-in&apos; count as single words</li>
+                        <li>Do not change words from the recording in any way</li>
+                      </>
+                    )}
                   </ul>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">What skills are tested?</h3>
                   <p>
-                    This question type tests your ability to understand descriptions of places and how they relate to the visual. It also tests your ability to understand spatial relationships and follow directions.
+                    {routeType === "type-2"
+                      ? "This type tests your ability to listen for detailed information, follow conversations between two people, and recognise how facts in the recording are connected to each other."
+                      : routeType === "type-1"
+                      ? "This type tests many listening skills, such as detailed understanding of specific points, or general understanding of the main points of the recording."
+                      : "This type tests your ability to understand descriptions of places and how they relate to the visual. It also tests your ability to understand spatial relationships and follow directions."}
                   </p>
                 </div>
               </div>
@@ -174,7 +218,13 @@ export default function Section2TypePage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Practice Questions</p>
-                    <h2 className="text-2xl font-black text-slate-900">Label the floor plan</h2>
+                    <h2 className="text-2xl font-black text-slate-900">
+                      {routeType === "type-2"
+                        ? "Matching questions"
+                        : routeType === "type-1"
+                        ? "Multiple choice questions"
+                        : "Label the floor plan"}
+                    </h2>
                   </div>
                 </div>
 
@@ -187,10 +237,44 @@ export default function Section2TypePage() {
                           <p className="mt-2 text-base font-semibold text-slate-900">{question.text}</p>
                         </div>
                         <span className="text-[10px] font-black uppercase tracking-widest text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full">
-                          Label
+                          {question.type === "matching"
+                            ? "Match"
+                            : question.type === "multiple_choice"
+                            ? "Select"
+                            : "Label"}
                         </span>
                       </div>
-                      {question.type === "multiple_choice" ? (
+
+                      {question.type === "matching" ? (
+                        <div className="mt-4">
+                          <div className="space-y-2">
+                            <label className="block text-xs font-bold text-slate-600 uppercase tracking-widest">
+                              Select the matching option:
+                            </label>
+                            <div className="space-y-2">
+                              {question.options?.map((option) => {
+                                const optionLetter = option.split(".")[0].trim();
+                                const isSelected = answers[question.id] === optionLetter;
+
+                                return (
+                                  <button
+                                    key={option}
+                                    type="button"
+                                    onClick={() => setAnswers((prev) => ({ ...prev, [question.id]: optionLetter }))}
+                                    className={`w-full text-left rounded-xl border px-4 py-3 text-sm font-medium transition ${
+                                      isSelected
+                                        ? "border-sky-500 bg-sky-50 text-sky-900 ring-2 ring-sky-200"
+                                        : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"
+                                    }`}
+                                  >
+                                    {option}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      ) : question.type === "multiple_choice" ? (
                         <div className="mt-4 space-y-3">
                           {question.options?.map((option) => {
                             const isSelected = answers[question.id] === option;
@@ -245,16 +329,44 @@ export default function Section2TypePage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">How you&apos;ll use this later</p>
-                    <h3 className="text-2xl font-black">Diagram visualization & audio pipeline</h3>
+                    <h3 className="text-2xl font-black">
+                      {routeType === "type-2"
+                        ? "Matching & audio pipeline"
+                        : routeType === "type-1"
+                        ? "Multiple choice & audio pipeline"
+                        : "Diagram visualization & audio pipeline"}
+                    </h3>
                   </div>
                 </div>
                 <p className="text-slate-300 leading-relaxed text-sm">
-                  The transcript is stored separately for text-to-speech conversion. Later, you can add an interactive diagram visualization where labels map to specific regions of a floor plan image.
+                  {routeType === "type-2"
+                    ? "The transcript is stored separately for text-to-speech conversion. Later, you can track answer patterns and provide detailed feedback on matching accuracy."
+                    : routeType === "type-1"
+                    ? "The transcript is stored separately for text-to-speech conversion. Later, you can track which answer choices are most commonly selected and provide detailed feedback."
+                    : "The transcript is stored separately for text-to-speech conversion. Later, you can add an interactive diagram visualization where labels map to specific regions of a floor plan image."}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3 text-xs font-black uppercase tracking-widest text-slate-200">
-                  <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Diagram ready</span>
-                  <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">TTS-ready</span>
-                  <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Real IELTS style</span>
+                  {routeType === "type-2" && (
+                    <>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Matching ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">TTS-ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Real IELTS style</span>
+                    </>
+                  )}
+                  {routeType === "type-1" && (
+                    <>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">MCQ ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">TTS-ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Real IELTS style</span>
+                    </>
+                  )}
+                  {routeType === "type-3" && (
+                    <>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Diagram ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">TTS-ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Real IELTS style</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
