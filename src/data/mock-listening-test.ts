@@ -805,11 +805,160 @@ const type2Test: ListeningTest = {
   ]
 };
 
+const type4Section2Transcript = `
+CONFERENCE ORGANISER: Hello and welcome to our registration desk for the Business Innovation Conference 2026. Let me confirm your details and check you in for the three-day event.
+
+PARTICIPANT: Yes, thank you. I'm looking forward to it.
+
+CONFERENCE ORGANISER: Excellent. First, could I have your full name, please?
+
+PARTICIPANT: It's Sarah Mitchell.
+
+CONFERENCE ORGANISER: And how do you spell your surname?
+
+PARTICIPANT: M-I-T-C-H-E-L-L.
+
+CONFERENCE ORGANISER: Perfect. Sarah Mitchell. Now, which company are you representing?
+
+PARTICIPANT: Tech Solutions UK. We're based in Manchester.
+
+CONFERENCE ORGANISER: Great, and what is your job title?
+
+PARTICIPANT: I'm the Senior Marketing Manager.
+
+CONFERENCE ORGANISER: Excellent. Could I also get your contact number for emergencies?
+
+PARTICIPANT: It's 0161 447 8820.
+
+CONFERENCE ORGANISER: And your email address?
+
+PARTICIPANT: sarah.mitchell@techsolutions.co.uk
+
+CONFERENCE ORGANISER: Perfect. Now, which workshops are you interested in attending? We have three main tracks: Digital Transformation on Friday morning, Sustainable Business Practices on Saturday afternoon, or Leadership Innovation on Sunday morning.
+
+PARTICIPANT: I'd like to attend the Digital Transformation workshop and the Leadership Innovation one.
+
+CONFERENCE ORGANISER: Wonderful choices. We'll add those to your schedule. We also have some networking events. There's a welcome reception on Thursday evening from 6 to 8 pm, a gala dinner on Saturday at 7 pm, and a morning networking breakfast on Sunday at 7:30 am. Will you be joining any of these?
+
+PARTICIPANT: Yes, definitely the welcome reception and the gala dinner. The breakfast sounds good too, but I won't be able to make that one.
+
+CONFERENCE ORGANISER: No problem. So that's the welcome reception and the gala dinner confirmed. Your conference package includes access to all keynote sessions, three lunches, and a welcome gift package. Regarding catering, do you have any dietary requirements?
+
+PARTICIPANT: Yes, I'm vegetarian, and I also have an allergy to nuts.
+
+CONFERENCE ORGANISER: Noted. Vegetarian meals with no nuts. I'll pass that to our catering team. The conference runs from Thursday 15th to Sunday 18th of July. Your accommodation voucher is valid at the Riverside Hotel, which is walking distance from the conference centre. Is there anything else I can help you with?
+
+PARTICIPANT: No, that all sounds perfect. Thank you.
+
+CONFERENCE ORGANISER: You're welcome. Welcome to the conference, Sarah!
+`;
+
+const type4Section2Test: ListeningTest = {
+  id: "listening-type-4-section2",
+  title: "Business Innovation Conference Registration",
+  difficulty: "Medium",
+  audioUrl: "https://example.com/listening-section-2-type-4.mp3",
+  transcript: type4Section2Transcript,
+  sections: 2,
+  questions: [
+    {
+      id: "l4s2q1",
+      section: 2,
+      type: "completion",
+      text: "Full name: _______________ Mitchell",
+      answer: ["Sarah"],
+      order: 1,
+      transcript: "First, could I have your full name, please? It's Sarah Mitchell."
+    },
+    {
+      id: "l4s2q2",
+      section: 2,
+      type: "completion",
+      text: "Company: _______________",
+      answer: ["Tech Solutions UK"],
+      order: 2,
+      transcript: "which company are you representing? Tech Solutions UK. We're based in Manchester."
+    },
+    {
+      id: "l4s2q3",
+      section: 2,
+      type: "completion",
+      text: "Job title: _______________",
+      answer: ["Senior Marketing Manager"],
+      order: 3,
+      transcript: "What is your job title? I'm the Senior Marketing Manager."
+    },
+    {
+      id: "l4s2q4",
+      section: 2,
+      type: "completion",
+      text: "Contact number: _______________",
+      answer: ["0161 447 8820"],
+      order: 4,
+      transcript: "Could I also get your contact number for emergencies? It's 0161 447 8820."
+    },
+    {
+      id: "l4s2q5",
+      section: 2,
+      type: "completion",
+      text: "Email: _______________",
+      answer: ["sarah.mitchell@techsolutions.co.uk"],
+      order: 5,
+      transcript: "And your email address? sarah.mitchell@techsolutions.co.uk"
+    },
+    {
+      id: "l4s2q6",
+      section: 2,
+      type: "completion",
+      text: "Workshops attending: Digital Transformation (Friday) and _______________",
+      answer: ["Leadership Innovation"],
+      order: 6,
+      transcript: "I'd like to attend the Digital Transformation workshop and the Leadership Innovation one."
+    },
+    {
+      id: "l4s2q7",
+      section: 2,
+      type: "completion",
+      text: "Networking events: Welcome reception and _______________",
+      answer: ["gala dinner"],
+      order: 7,
+      transcript: "So that's the welcome reception and the gala dinner confirmed."
+    },
+    {
+      id: "l4s2q8",
+      section: 2,
+      type: "completion",
+      text: "Dietary requirements: Vegetarian and no _______________",
+      answer: ["nuts"],
+      order: 8,
+      transcript: "I'm vegetarian, and I also have an allergy to nuts."
+    },
+    {
+      id: "l4s2q9",
+      section: 2,
+      type: "completion",
+      text: "Conference dates: 15th to _____ July",
+      answer: ["18th"],
+      order: 9,
+      transcript: "The conference runs from Thursday 15th to Sunday 18th of July."
+    },
+    {
+      id: "l4s2q10",
+      section: 2,
+      type: "completion",
+      text: "Accommodation: _______________Hotel",
+      answer: ["Riverside"],
+      order: 10,
+      transcript: "Your accommodation voucher is valid at the Riverside Hotel, which is walking distance from the conference centre."
+    }
+  ]
+};
+
 export const listeningPracticeSets = {
   "type-1": type1Test,
   "type-2": type2Test,
   "type-3": type3Test,
-  "type-4": type4Test,
+  "type-4": type4Section2Test,
   "type-6": type6Test,
 } as const;
 

@@ -77,7 +77,9 @@ export default function Section2TypePage() {
                       ? "Listen carefully and match the items to the correct options from the recording."
                       : routeType === "type-1"
                       ? "Listen carefully and select the correct answer for each question."
-                      : "Listen carefully and complete the labels on the floor plan based on the recording."}
+                      : routeType === "type-3"
+                      ? "Listen carefully and complete the labels on the floor plan based on the recording."
+                      : "Listen carefully and fill in gaps in a form, notes, table or flow chart based on the recording."}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 text-sm">
@@ -101,7 +103,9 @@ export default function Section2TypePage() {
                     ? "Match each item to the correct option from the list based on information from the recording."
                     : routeType === "type-1"
                     ? "Select the correct answer (A, B, or C) for each question based on what you hear."
-                    : "Label the floor plan diagram by completing each location with words from the recording. Follow word limits carefully."}
+                    : routeType === "type-3"
+                    ? "Label the floor plan diagram by completing each location with words from the recording. Follow word limits carefully."
+                    : "Fill in gaps in a form, notes, table or flow chart using words from the recording. Follow word limits carefully."}
                 </p>
                 <div className="mt-6 flex items-center gap-3 text-xs font-black uppercase tracking-widest text-sky-600">
                   <PlayCircle className="w-4 h-4" /> Audio ready later via TTS
@@ -122,7 +126,9 @@ export default function Section2TypePage() {
                       ? "Matching"
                       : routeType === "type-1"
                       ? "Multiple choice"
-                      : "Plan/map/diagram labelling"}
+                      : routeType === "type-3"
+                      ? "Plan/map/diagram labelling"
+                      : "Form/note/table/flow chart completion"}
                   </h2>
                 </div>
                 <button
@@ -142,7 +148,9 @@ export default function Section2TypePage() {
                       ? "You have to match items from the recording to a list of options on the question paper, then write the correct letter on the answer sheet."
                       : routeType === "type-1"
                       ? "You have to choose one correct answer (A, B or C) to complete a question or sentence, then write the correct letter on the answer sheet."
-                      : "You have to complete labels on a visual such as a diagram, a set of pictures, a plan, or a map. The labels may be selected from a provided list or require words from the recording."}
+                      : routeType === "type-3"
+                      ? "You have to complete labels on a visual such as a diagram, a set of pictures, a plan, or a map. The labels may be selected from a provided list or require words from the recording."
+                      : "You have to fill in gaps in an outline (form, notes, table, or flow chart) that summarises part or all of the recording. You may select words from a list or write words directly from the recording."}
                   </p>
                 </div>
 
@@ -177,6 +185,16 @@ export default function Section2TypePage() {
                         <li>Do not change words from the recording in any way</li>
                       </>
                     )}
+                    {routeType === "type-4" && (
+                      <>
+                        <li>Read the instructions very carefully as the word limit can change</li>
+                        <li>Follow word limits exactly, e.g., <span className="font-bold">NO MORE THAN TWO WORDS AND/OR A NUMBER</span></li>
+                        <li>Writing more than the word limit will result in losing the mark</li>
+                        <li>You may be selecting from a list OR writing words from the recording</li>
+                        <li>Do not change words from the recording in any way</li>
+                        <li>Focus on main points that the listener would naturally write down</li>
+                      </>
+                    )}
                   </ul>
                 </div>
 
@@ -187,7 +205,9 @@ export default function Section2TypePage() {
                       ? "This type tests your ability to listen for detailed information, follow conversations between two people, and recognise how facts in the recording are connected to each other."
                       : routeType === "type-1"
                       ? "This type tests many listening skills, such as detailed understanding of specific points, or general understanding of the main points of the recording."
-                      : "This type tests your ability to understand descriptions of places and how they relate to the visual. It also tests your ability to understand spatial relationships and follow directions."}
+                      : routeType === "type-3"
+                      ? "This type tests your ability to understand descriptions of places and how they relate to the visual. It also tests your ability to understand spatial relationships and follow directions."
+                      : "This type tests your ability to focus on main points and summarise information. It may involve understanding how different points relate to each other (in notes), how stages link together (in flow charts), or how facts fit into categories (in tables or forms)."}
                   </p>
                 </div>
               </div>
@@ -223,7 +243,9 @@ export default function Section2TypePage() {
                         ? "Matching questions"
                         : routeType === "type-1"
                         ? "Multiple choice questions"
-                        : "Label the floor plan"}
+                        : routeType === "type-3"
+                        ? "Label the floor plan"
+                        : "Complete the form/notes/table/flow chart"}
                     </h2>
                   </div>
                 </div>
@@ -241,7 +263,7 @@ export default function Section2TypePage() {
                             ? "Match"
                             : question.type === "multiple_choice"
                             ? "Select"
-                            : "Label"}
+                            : "Complete"}
                         </span>
                       </div>
 
@@ -294,12 +316,9 @@ export default function Section2TypePage() {
                               </button>
                             );
                           })}
-                          <p className="text-xs text-slate-400 font-medium">
-                            Correct answer: {question.answer.join(" / ")}
-                          </p>
                         </div>
                       ) : (
-                        <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+                        <div className="mt-4">
                           <input
                             type="text"
                             value={answers[question.id] || ""}
@@ -307,15 +326,7 @@ export default function Section2TypePage() {
                             placeholder="Type your answer"
                             className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
                           />
-                          <p className="text-xs text-slate-400 font-medium sm:text-right">
-                            Accepts: {question.answer.join(" / ")}
-                          </p>
                         </div>
-                      )}
-                      {question.transcript && (
-                        <p className="mt-3 text-xs leading-6 text-slate-500 border-t border-slate-200 pt-3">
-                          Transcript cue: {question.transcript}
-                        </p>
                       )}
                     </div>
                   ))}
@@ -334,7 +345,9 @@ export default function Section2TypePage() {
                         ? "Matching & audio pipeline"
                         : routeType === "type-1"
                         ? "Multiple choice & audio pipeline"
-                        : "Diagram visualization & audio pipeline"}
+                      : routeType === "type-3"
+                      ? "Diagram visualization & audio pipeline"
+                      : "Form/flow chart visualization & audio pipeline"}
                     </h3>
                   </div>
                 </div>
@@ -343,7 +356,9 @@ export default function Section2TypePage() {
                     ? "The transcript is stored separately for text-to-speech conversion. Later, you can track answer patterns and provide detailed feedback on matching accuracy."
                     : routeType === "type-1"
                     ? "The transcript is stored separately for text-to-speech conversion. Later, you can track which answer choices are most commonly selected and provide detailed feedback."
-                    : "The transcript is stored separately for text-to-speech conversion. Later, you can add an interactive diagram visualization where labels map to specific regions of a floor plan image."}
+                    : routeType === "type-3"
+                    ? "The transcript is stored separately for text-to-speech conversion. Later, you can add an interactive diagram visualization where labels map to specific regions of a floor plan image."
+                    : "The transcript is stored separately for text-to-speech conversion. Later, you can visualize form fields, flow chart stages, or table categories with interactive completion tracking."}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3 text-xs font-black uppercase tracking-widest text-slate-200">
                   {routeType === "type-2" && (
@@ -363,6 +378,13 @@ export default function Section2TypePage() {
                   {routeType === "type-3" && (
                     <>
                       <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Diagram ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">TTS-ready</span>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Real IELTS style</span>
+                    </>
+                  )}
+                  {routeType === "type-4" && (
+                    <>
+                      <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Form/flow chart ready</span>
                       <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">TTS-ready</span>
                       <span className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10">Real IELTS style</span>
                     </>
