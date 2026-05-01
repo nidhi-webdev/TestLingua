@@ -15,11 +15,11 @@ export async function saveSpeakingResult(data: {
     const result = await prisma.speakingResult.create({
       data: {
         partId: data.partId,
-        overallBand: data.overallBand,
-        transcript: data.transcript,
-        modelAnswer: data.modelAnswer,
-        criteria: data.criteria,
-        suggestions: data.suggestions,
+        overallBand: data.overallBand || 0,
+        transcript: data.transcript || "No transcript available",
+        modelAnswer: data.modelAnswer || "No model answer generated",
+        criteria: data.criteria || {},
+        suggestions: data.suggestions || [],
       }
     });
 

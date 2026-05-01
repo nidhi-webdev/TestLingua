@@ -393,7 +393,10 @@ export const ModelName = {
   TestResult: 'TestResult',
   WritingTest: 'WritingTest',
   WritingSubmission: 'WritingSubmission',
-  SpeakingResult: 'SpeakingResult'
+  SpeakingResult: 'SpeakingResult',
+  ListeningTest: 'ListeningTest',
+  ListeningQuestion: 'ListeningQuestion',
+  ListeningResult: 'ListeningResult'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -409,7 +412,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "session" | "verificationToken" | "readingTest" | "readingQuestion" | "testResult" | "writingTest" | "writingSubmission" | "speakingResult"
+    modelProps: "user" | "account" | "session" | "verificationToken" | "readingTest" | "readingQuestion" | "testResult" | "writingTest" | "writingSubmission" | "speakingResult" | "listeningTest" | "listeningQuestion" | "listeningResult"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1153,6 +1156,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ListeningTest: {
+      payload: Prisma.$ListeningTestPayload<ExtArgs>
+      fields: Prisma.ListeningTestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ListeningTestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ListeningTestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>
+        }
+        findFirst: {
+          args: Prisma.ListeningTestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ListeningTestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>
+        }
+        findMany: {
+          args: Prisma.ListeningTestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>[]
+        }
+        create: {
+          args: Prisma.ListeningTestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>
+        }
+        createMany: {
+          args: Prisma.ListeningTestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ListeningTestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>[]
+        }
+        delete: {
+          args: Prisma.ListeningTestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>
+        }
+        update: {
+          args: Prisma.ListeningTestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>
+        }
+        deleteMany: {
+          args: Prisma.ListeningTestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ListeningTestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ListeningTestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>[]
+        }
+        upsert: {
+          args: Prisma.ListeningTestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningTestPayload>
+        }
+        aggregate: {
+          args: Prisma.ListeningTestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateListeningTest>
+        }
+        groupBy: {
+          args: Prisma.ListeningTestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ListeningTestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ListeningTestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ListeningTestCountAggregateOutputType> | number
+        }
+      }
+    }
+    ListeningQuestion: {
+      payload: Prisma.$ListeningQuestionPayload<ExtArgs>
+      fields: Prisma.ListeningQuestionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ListeningQuestionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ListeningQuestionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>
+        }
+        findFirst: {
+          args: Prisma.ListeningQuestionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ListeningQuestionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>
+        }
+        findMany: {
+          args: Prisma.ListeningQuestionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>[]
+        }
+        create: {
+          args: Prisma.ListeningQuestionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>
+        }
+        createMany: {
+          args: Prisma.ListeningQuestionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ListeningQuestionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>[]
+        }
+        delete: {
+          args: Prisma.ListeningQuestionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>
+        }
+        update: {
+          args: Prisma.ListeningQuestionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>
+        }
+        deleteMany: {
+          args: Prisma.ListeningQuestionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ListeningQuestionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ListeningQuestionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>[]
+        }
+        upsert: {
+          args: Prisma.ListeningQuestionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningQuestionPayload>
+        }
+        aggregate: {
+          args: Prisma.ListeningQuestionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateListeningQuestion>
+        }
+        groupBy: {
+          args: Prisma.ListeningQuestionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ListeningQuestionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ListeningQuestionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ListeningQuestionCountAggregateOutputType> | number
+        }
+      }
+    }
+    ListeningResult: {
+      payload: Prisma.$ListeningResultPayload<ExtArgs>
+      fields: Prisma.ListeningResultFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ListeningResultFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ListeningResultFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>
+        }
+        findFirst: {
+          args: Prisma.ListeningResultFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ListeningResultFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>
+        }
+        findMany: {
+          args: Prisma.ListeningResultFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>[]
+        }
+        create: {
+          args: Prisma.ListeningResultCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>
+        }
+        createMany: {
+          args: Prisma.ListeningResultCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ListeningResultCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>[]
+        }
+        delete: {
+          args: Prisma.ListeningResultDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>
+        }
+        update: {
+          args: Prisma.ListeningResultUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>
+        }
+        deleteMany: {
+          args: Prisma.ListeningResultDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ListeningResultUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ListeningResultUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>[]
+        }
+        upsert: {
+          args: Prisma.ListeningResultUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ListeningResultPayload>
+        }
+        aggregate: {
+          args: Prisma.ListeningResultAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateListeningResult>
+        }
+        groupBy: {
+          args: Prisma.ListeningResultGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ListeningResultGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ListeningResultCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ListeningResultCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1330,6 +1555,48 @@ export const SpeakingResultScalarFieldEnum = {
 } as const
 
 export type SpeakingResultScalarFieldEnum = (typeof SpeakingResultScalarFieldEnum)[keyof typeof SpeakingResultScalarFieldEnum]
+
+
+export const ListeningTestScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  difficulty: 'difficulty',
+  audioUrl: 'audioUrl',
+  sections: 'sections',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ListeningTestScalarFieldEnum = (typeof ListeningTestScalarFieldEnum)[keyof typeof ListeningTestScalarFieldEnum]
+
+
+export const ListeningQuestionScalarFieldEnum = {
+  id: 'id',
+  listeningTestId: 'listeningTestId',
+  section: 'section',
+  type: 'type',
+  order: 'order',
+  text: 'text',
+  options: 'options',
+  answer: 'answer',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ListeningQuestionScalarFieldEnum = (typeof ListeningQuestionScalarFieldEnum)[keyof typeof ListeningQuestionScalarFieldEnum]
+
+
+export const ListeningResultScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  listeningTestId: 'listeningTestId',
+  score: 'score',
+  totalScore: 'totalScore',
+  answers: 'answers',
+  completedAt: 'completedAt'
+} as const
+
+export type ListeningResultScalarFieldEnum = (typeof ListeningResultScalarFieldEnum)[keyof typeof ListeningResultScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1567,6 +1834,9 @@ export type GlobalOmitConfig = {
   writingTest?: Prisma.WritingTestOmit
   writingSubmission?: Prisma.WritingSubmissionOmit
   speakingResult?: Prisma.SpeakingResultOmit
+  listeningTest?: Prisma.ListeningTestOmit
+  listeningQuestion?: Prisma.ListeningQuestionOmit
+  listeningResult?: Prisma.ListeningResultOmit
 }
 
 /* Types for Logging */

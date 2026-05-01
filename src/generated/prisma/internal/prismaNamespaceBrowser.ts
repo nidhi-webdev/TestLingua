@@ -60,7 +60,10 @@ export const ModelName = {
   TestResult: 'TestResult',
   WritingTest: 'WritingTest',
   WritingSubmission: 'WritingSubmission',
-  SpeakingResult: 'SpeakingResult'
+  SpeakingResult: 'SpeakingResult',
+  ListeningTest: 'ListeningTest',
+  ListeningQuestion: 'ListeningQuestion',
+  ListeningResult: 'ListeningResult'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -217,6 +220,48 @@ export const SpeakingResultScalarFieldEnum = {
 } as const
 
 export type SpeakingResultScalarFieldEnum = (typeof SpeakingResultScalarFieldEnum)[keyof typeof SpeakingResultScalarFieldEnum]
+
+
+export const ListeningTestScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  difficulty: 'difficulty',
+  audioUrl: 'audioUrl',
+  sections: 'sections',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ListeningTestScalarFieldEnum = (typeof ListeningTestScalarFieldEnum)[keyof typeof ListeningTestScalarFieldEnum]
+
+
+export const ListeningQuestionScalarFieldEnum = {
+  id: 'id',
+  listeningTestId: 'listeningTestId',
+  section: 'section',
+  type: 'type',
+  order: 'order',
+  text: 'text',
+  options: 'options',
+  answer: 'answer',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ListeningQuestionScalarFieldEnum = (typeof ListeningQuestionScalarFieldEnum)[keyof typeof ListeningQuestionScalarFieldEnum]
+
+
+export const ListeningResultScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  listeningTestId: 'listeningTestId',
+  score: 'score',
+  totalScore: 'totalScore',
+  answers: 'answers',
+  completedAt: 'completedAt'
+} as const
+
+export type ListeningResultScalarFieldEnum = (typeof ListeningResultScalarFieldEnum)[keyof typeof ListeningResultScalarFieldEnum]
 
 
 export const SortOrder = {

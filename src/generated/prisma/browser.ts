@@ -67,3 +67,18 @@ export type WritingSubmission = Prisma.WritingSubmissionModel
  * 
  */
 export type SpeakingResult = Prisma.SpeakingResultModel
+/**
+ * Model ListeningTest
+ * 
+ */
+export type ListeningTest = Prisma.ListeningTestModel
+/**
+ * Model ListeningQuestion
+ * 
+ */
+export type ListeningQuestion = Prisma.ListeningQuestionModel
+/**
+ * Model ListeningResult
+ * 
+ */
+export type ListeningResult = Prisma.ListeningResultModel

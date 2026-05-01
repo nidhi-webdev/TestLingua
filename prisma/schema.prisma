@@ -26,6 +26,7 @@ model User {
   testResults       TestResult[]
   writingSubmissions WritingSubmission[]
   speakingResults   SpeakingResult[]
+  listeningResults  ListeningResult[]
 }
 
 model Account {
@@ -157,4 +158,48 @@ model SpeakingResult {
   user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   @@index([userId])
+}
+
+model ListeningTest {
+  id               String              @id @default(cuid())
+  title            String
+  difficulty       String              @default("Medium")
+  audioUrl         String              // URL to the section audio
+  sections         Int                 @default(4)
+  questions        ListeningQuestion[]
+  listeningResults ListeningResult[]
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+}
+
+model ListeningQuestion {
+  id              String        @id @default(cuid())
+  listeningTestId String
+  section         Int           // 1, 2, 3, or 4
+  type            String        // "multiple_choice", "matching", "completion"
+  order           Int           @default(0)
+  text            String
+  options         String[]      // For MCQ
+  answer          String[]      // Correct answers
+  listeningTest   ListeningTest @relation(fields: [listeningTestId], references: [id], onDelete: Cascade)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([listeningTestId])
+}
+
+model ListeningResult {
+  id              String        @id @default(cuid())
+  userId          String?
+  listeningTestId String
+  score           Int
+  totalScore      Int
+  answers         Json          // User's answers
+  completedAt     DateTime      @default(now())
+  
+  user            User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  listeningTest   ListeningTest @relation(fields: [listeningTestId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([listeningTestId])
 }
