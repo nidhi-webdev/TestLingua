@@ -806,56 +806,24 @@ const type2Test: ListeningTest = {
 };
 
 const type4Section2Transcript = `
-CONFERENCE ORGANISER: Hello and welcome to our registration desk for the Business Innovation Conference 2026. Let me confirm your details and check you in for the three-day event.
+RECEPTIONIST: Good morning, and welcome to Westside Leisure Centre. I'm Claire, the membership coordinator, and I'm delighted to help you get started with us today. Let me give you an overview of our membership packages and facilities.
 
-PARTICIPANT: Yes, thank you. I'm looking forward to it.
+We have three main membership options. The Basic membership costs £35 per month and gives you access to the gym and swimming pool during standard hours, which are 6 AM to 10 PM, Monday to Friday, and 8 AM to 6 PM on weekends. The Premium membership, at £60 per month, includes everything in Basic plus access to all classes, including yoga, pilates, spin, and circuit training. You'll also get priority booking for classes and personal training sessions. Finally, our Elite membership at £90 per month is our most comprehensive option. It includes gym, pool, and classes, plus unlimited personal training consultations, access to the sauna and steam room, and extended hours until 11 PM on weekdays.
 
-CONFERENCE ORGANISER: Excellent. First, could I have your full name, please?
+All memberships include a complimentary induction session where a trainer will show you how to use the equipment safely. We also provide access to our online portal where you can book classes, track your progress, and access workout videos.
 
-PARTICIPANT: It's Sarah Mitchell.
+Now, regarding our facilities. We have a fully equipped gymnasium with cardio machines, free weights, and resistance equipment. The swimming pool is 25 metres and has dedicated lanes for lap swimming plus a shallow end for aqua aerobics. Our teaching studios host group fitness classes throughout the day. We also have a physiotherapy clinic on site if you need any rehabilitation or injury support. The sauna and steam room are complimentary for Premium and Elite members, though Basic members can pay a small fee to use them.
 
-CONFERENCE ORGANISER: And how do you spell your surname?
+For new members, we have a special promotion running this month. If you commit to a 12-month membership, you'll receive the first month completely free, plus a free gym bag and water bottle. Payment can be made by monthly direct debit or annual payment, and we accept all major credit cards.
 
-PARTICIPANT: M-I-T-C-H-E-L-L.
+Cancellation is straightforward – you simply give us 30 days' notice in writing, though if you're within the first 30 days of membership, there's a one-time £25 cancellation fee. We also offer a 7-day free trial if you'd like to experience the facilities before committing.
 
-CONFERENCE ORGANISER: Perfect. Sarah Mitchell. Now, which company are you representing?
-
-PARTICIPANT: Tech Solutions UK. We're based in Manchester.
-
-CONFERENCE ORGANISER: Great, and what is your job title?
-
-PARTICIPANT: I'm the Senior Marketing Manager.
-
-CONFERENCE ORGANISER: Excellent. Could I also get your contact number for emergencies?
-
-PARTICIPANT: It's 0161 447 8820.
-
-CONFERENCE ORGANISER: And your email address?
-
-PARTICIPANT: sarah.mitchell@techsolutions.co.uk
-
-CONFERENCE ORGANISER: Perfect. Now, which workshops are you interested in attending? We have three main tracks: Digital Transformation on Friday morning, Sustainable Business Practices on Saturday afternoon, or Leadership Innovation on Sunday morning.
-
-PARTICIPANT: I'd like to attend the Digital Transformation workshop and the Leadership Innovation one.
-
-CONFERENCE ORGANISER: Wonderful choices. We'll add those to your schedule. We also have some networking events. There's a welcome reception on Thursday evening from 6 to 8 pm, a gala dinner on Saturday at 7 pm, and a morning networking breakfast on Sunday at 7:30 am. Will you be joining any of these?
-
-PARTICIPANT: Yes, definitely the welcome reception and the gala dinner. The breakfast sounds good too, but I won't be able to make that one.
-
-CONFERENCE ORGANISER: No problem. So that's the welcome reception and the gala dinner confirmed. Your conference package includes access to all keynote sessions, three lunches, and a welcome gift package. Regarding catering, do you have any dietary requirements?
-
-PARTICIPANT: Yes, I'm vegetarian, and I also have an allergy to nuts.
-
-CONFERENCE ORGANISER: Noted. Vegetarian meals with no nuts. I'll pass that to our catering team. The conference runs from Thursday 15th to Sunday 18th of July. Your accommodation voucher is valid at the Riverside Hotel, which is walking distance from the conference centre. Is there anything else I can help you with?
-
-PARTICIPANT: No, that all sounds perfect. Thank you.
-
-CONFERENCE ORGANISER: You're welcome. Welcome to the conference, Sarah!
+One important note: we have a strict no-phones policy in the gym areas for safety reasons, and we ask all members to wipe down equipment after use. We're located at 47 Northgate Street, there's free parking for members, and we're just a five-minute walk from the train station. Do you have any questions before we proceed with your registration?
 `;
 
 const type4Section2Test: ListeningTest = {
   id: "listening-type-4-section2",
-  title: "Business Innovation Conference Registration",
+  title: "Westside Leisure Centre Membership Briefing",
   difficulty: "Medium",
   audioUrl: "https://example.com/listening-section-2-type-4.mp3",
   transcript: type4Section2Transcript,
@@ -865,91 +833,81 @@ const type4Section2Test: ListeningTest = {
       id: "l4s2q1",
       section: 2,
       type: "completion",
-      text: "Full name: _______________ Mitchell",
-      answer: ["Sarah"],
-      order: 1,
-      transcript: "First, could I have your full name, please? It's Sarah Mitchell."
+      text: "Basic membership costs: £_____ per month",
+      answer: ["35"],
+      order: 1
     },
     {
       id: "l4s2q2",
       section: 2,
       type: "completion",
-      text: "Company: _______________",
-      answer: ["Tech Solutions UK"],
-      order: 2,
-      transcript: "which company are you representing? Tech Solutions UK. We're based in Manchester."
+      text: "Premium membership provides access to all classes including _____, pilates, spin, and circuit training",
+      answer: ["yoga"],
+      order: 2
     },
     {
       id: "l4s2q3",
       section: 2,
       type: "completion",
-      text: "Job title: _______________",
-      answer: ["Senior Marketing Manager"],
-      order: 3,
-      transcript: "What is your job title? I'm the Senior Marketing Manager."
+      text: "Elite membership costs: £_____ per month",
+      answer: ["90"],
+      order: 3
     },
     {
       id: "l4s2q4",
       section: 2,
       type: "completion",
-      text: "Contact number: _______________",
-      answer: ["0161 447 8820"],
-      order: 4,
-      transcript: "Could I also get your contact number for emergencies? It's 0161 447 8820."
+      text: "Standard gym hours are 6 AM to 10 PM on weekdays and _____ to 6 PM on weekends",
+      answer: ["8 AM"],
+      order: 4
     },
     {
       id: "l4s2q5",
       section: 2,
       type: "completion",
-      text: "Email: _______________",
-      answer: ["sarah.mitchell@techsolutions.co.uk"],
-      order: 5,
-      transcript: "And your email address? sarah.mitchell@techsolutions.co.uk"
+      text: "The swimming pool is _____ metres long",
+      answer: ["25"],
+      order: 5
     },
     {
       id: "l4s2q6",
       section: 2,
       type: "completion",
-      text: "Workshops attending: Digital Transformation (Friday) and _______________",
-      answer: ["Leadership Innovation"],
-      order: 6,
-      transcript: "I'd like to attend the Digital Transformation workshop and the Leadership Innovation one."
+      text: "New members with 12-month commitment receive _____ month completely free",
+      answer: ["first", "the first"],
+      order: 6
     },
     {
       id: "l4s2q7",
       section: 2,
       type: "completion",
-      text: "Networking events: Welcome reception and _______________",
-      answer: ["gala dinner"],
-      order: 7,
-      transcript: "So that's the welcome reception and the gala dinner confirmed."
+      text: "Membership cancellation requires _____ days' written notice",
+      answer: ["30"],
+      order: 7
     },
     {
       id: "l4s2q8",
       section: 2,
       type: "completion",
-      text: "Dietary requirements: Vegetarian and no _______________",
-      answer: ["nuts"],
-      order: 8,
-      transcript: "I'm vegetarian, and I also have an allergy to nuts."
+      text: "There is a one-time cancellation fee of £_____ if cancelled within 30 days",
+      answer: ["25"],
+      order: 8
     },
     {
       id: "l4s2q9",
       section: 2,
       type: "completion",
-      text: "Conference dates: 15th to _____ July",
-      answer: ["18th"],
-      order: 9,
-      transcript: "The conference runs from Thursday 15th to Sunday 18th of July."
+      text: "The leisure centre is located at _____ Northgate Street",
+      answer: ["47"],
+      order: 9
     },
     {
       id: "l4s2q10",
       section: 2,
       type: "completion",
-      text: "Accommodation: _______________Hotel",
-      answer: ["Riverside"],
-      order: 10,
-      transcript: "Your accommodation voucher is valid at the Riverside Hotel, which is walking distance from the conference centre."
+      text: "Members must wipe down _____ after use",
+      answer: ["equipment"],
+      order: 10
     }
   ]
 };
