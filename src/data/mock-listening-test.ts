@@ -318,7 +318,135 @@ const type6Test: ListeningTest = {
   ]
 };
 
+const type3Transcript = `
+TOUR GUIDE: Good morning, everyone. Welcome to the Central Community Centre. Today I'm going to show you around our brand new facility. We've just completed the renovations last month.
+
+As you can see from the floor plan, the building is arranged over two levels. Let me explain what's on the ground floor first. When you enter through the main entrance, you'll notice the reception area on your left. That's where you can collect your visitor pass and get information about our facilities.
+
+Moving to your right from the entrance, you'll find the fitness studio. It's a large, bright space with floor-to-ceiling windows overlooking the garden. We've equipped it with the latest exercise equipment and mirrors along the walls.
+
+Behind the fitness studio, we have the swimming pool. It's Olympic-sized and heated to 28 degrees Celsius. The pool area also includes a shallow children's area which is perfect for swimming lessons.
+
+Now, if you continue straight ahead from the reception, you'll reach the library. It's a quiet space for reading and studying. We have computers available there as well, in case you need internet access.
+
+On the left side of the building, near the library, you'll see the café. It's got a large outdoor terrace where you can relax with a coffee. The café serves light lunches and refreshments throughout the day.
+
+To the right of the library, there's the dance studio. It's equipped with mirrors, a sound system, and a sprung floor to protect your joints during classes.
+
+In the far corner, next to the swimming pool, we have the physiotherapy clinic. This is staffed by qualified physiotherapists who can help with injuries or provide fitness advice.
+
+On the upper floor, we have the seminar rooms. There are four seminar rooms available for rent for meetings, workshops, or classes. They're all equipped with projectors and conference phones.
+
+Also on the upper floor, you'll find the lounge bar. It's a comfortable space with comfortable seating and a great view over the park.
+
+And finally, the games room is located in the centre of the upper floor. It has table tennis, pool tables, and board games. It's very popular with our members.
+
+So, that's our facility. I hope you'll enjoy exploring the centre. Does anyone have any questions?
+`;
+
+const type3Test: ListeningTest = {
+  id: "listening-type-3",
+  title: "Central Community Centre Floor Plan",
+  difficulty: "Medium",
+  audioUrl: "https://example.com/listening-section-2-type-3.mp3",
+  transcript: type3Transcript,
+  sections: 2,
+  questions: [
+    {
+      id: "l3q1",
+      section: 2,
+      type: "completion",
+      text: "Location 1 (ground floor, left of entrance): _______________",
+      answer: ["reception area", "reception"],
+      order: 1,
+      transcript: "you'll notice the reception area on your left. That's where you can collect your visitor pass"
+    },
+    {
+      id: "l3q2",
+      section: 2,
+      type: "completion",
+      text: "Location 2 (ground floor, right side): _______________",
+      answer: ["fitness studio", "fitness"],
+      order: 2,
+      transcript: "Moving to your right from the entrance, you'll find the fitness studio."
+    },
+    {
+      id: "l3q3",
+      section: 2,
+      type: "completion",
+      text: "Location 3 (ground floor, behind fitness studio): _______________",
+      answer: ["swimming pool", "pool"],
+      order: 3,
+      transcript: "Behind the fitness studio, we have the swimming pool. It's Olympic-sized"
+    },
+    {
+      id: "l3q4",
+      section: 2,
+      type: "completion",
+      text: "Location 4 (ground floor, straight ahead): _______________",
+      answer: ["library"],
+      order: 4,
+      transcript: "if you continue straight ahead from the reception, you'll reach the library."
+    },
+    {
+      id: "l3q5",
+      section: 2,
+      type: "completion",
+      text: "Location 5 (ground floor, left of library): _______________",
+      answer: ["café"],
+      order: 5,
+      transcript: "On the left side of the building, near the library, you'll see the café."
+    },
+    {
+      id: "l3q6",
+      section: 2,
+      type: "completion",
+      text: "Location 6 (ground floor, right of library): _______________",
+      answer: ["dance studio", "dance"],
+      order: 6,
+      transcript: "To the right of the library, there's the dance studio."
+    },
+    {
+      id: "l3q7",
+      section: 2,
+      type: "completion",
+      text: "Location 7 (ground floor, far corner): _______________",
+      answer: ["physiotherapy clinic", "physiotherapy"],
+      order: 7,
+      transcript: "In the far corner, next to the swimming pool, we have the physiotherapy clinic."
+    },
+    {
+      id: "l3q8",
+      section: 2,
+      type: "completion",
+      text: "Location 8 (upper floor, centre): _______________",
+      answer: ["games room", "games"],
+      order: 8,
+      transcript: "the games room is located in the centre of the upper floor. It has table tennis, pool tables"
+    },
+    {
+      id: "l3q9",
+      section: 2,
+      type: "completion",
+      text: "Location 9 (upper floor): _______________",
+      answer: ["lounge bar", "lounge"],
+      order: 9,
+      transcript: "the lounge bar. It's a comfortable space with comfortable seating and a great view"
+    },
+    {
+      id: "l3q10",
+      section: 2,
+      type: "short_answer",
+      text: "What is the temperature of the swimming pool?",
+      answer: ["28 degrees", "28°C", "28 degrees Celsius"],
+      order: 10,
+      transcript: "The pool area. It's Olympic-sized and heated to 28 degrees Celsius."
+    }
+  ]
+};
+
 export const listeningPracticeSets = {
+  "type-3": type3Test,
   "type-4": type4Test,
   "type-6": type6Test,
 } as const;
