@@ -445,7 +445,181 @@ const type3Test: ListeningTest = {
   ]
 };
 
+const type1Transcript = `
+PRESENTER: Good morning, everyone. Welcome to the Riverside Arts Centre opening ceremony. I'm delighted to see so many people here today. We've been working on this project for three years, and it's finally ready to welcome the community.
+
+Let me give you a brief overview of what we're offering. The Riverside Arts Centre is a state-of-the-art facility designed for both professional artists and members of the public. We have exhibition galleries, performance spaces, and teaching studios.
+
+Our main gallery on the ground floor features contemporary art, and we update the exhibitions quarterly. We currently have an exhibition of local photographers' work, and it's been incredibly popular. Next month, we'll be showcasing international sculptors.
+
+The performance space can accommodate up to 300 people. We host live music, theatre productions, and dance performances. We're particularly proud of our acoustics – they're excellent. We'll be hosting everything from classical concerts to modern jazz performances.
+
+We also have four teaching studios available for rent. Artists can book these for workshops, masterclasses, or private lessons. The studios are fully equipped with art supplies and technology. Whether you're a painter, sculptor, or digital artist, there's something here for you.
+
+One unique feature is our rooftop terrace. It overlooks the river, and it's a wonderful space for reflection and inspiration. We plan to host outdoor art installations there seasonally. The café is located near the terrace, so visitors can enjoy refreshments while taking in the views.
+
+Regarding opening hours: we're open from 9 a.m. to 6 p.m. Tuesday through Saturday, and 11 a.m. to 5 p.m. on Sundays. We're closed on Mondays for maintenance. Entry is free for exhibitions, but performances and workshops have separate fees.
+
+We're committed to making art accessible to everyone. We offer discounts for students, seniors, and family groups. We also have free community events every third Thursday of the month. Today, you'll enjoy a special preview tour, and there will be complimentary refreshments in the café.
+
+Before I conclude, I'd like to mention our artist residency programme. We're offering studio space and a small grant to emerging artists. The application deadline is at the end of next month. If you're interested, please see our staff at the information desk.
+
+Finally, thank you to everyone who made this possible – our sponsors, volunteers, and the local community. We look forward to serving you. Are there any questions?
+`;
+
+const type1Test: ListeningTest = {
+  id: "listening-type-1",
+  title: "Riverside Arts Centre Opening",
+  difficulty: "Medium",
+  audioUrl: "https://example.com/listening-section-2-type-1.mp3",
+  transcript: type1Transcript,
+  sections: 2,
+  questions: [
+    {
+      id: "l1q1",
+      section: 2,
+      type: "multiple_choice",
+      text: "How long has the Riverside Arts Centre been in development?",
+      options: [
+        "A. One year",
+        "B. Two years",
+        "C. Three years"
+      ],
+      answer: ["C"],
+      order: 1,
+      transcript: "We've been working on this project for three years, and it's finally ready"
+    },
+    {
+      id: "l1q2",
+      section: 2,
+      type: "multiple_choice",
+      text: "What is currently on display in the main gallery?",
+      options: [
+        "A. International sculptures",
+        "B. Work by local photographers",
+        "C. Digital art installations"
+      ],
+      answer: ["B"],
+      order: 2,
+      transcript: "We currently have an exhibition of local photographers' work, and it's been incredibly popular."
+    },
+    {
+      id: "l1q3",
+      section: 2,
+      type: "multiple_choice",
+      text: "What is the capacity of the performance space?",
+      options: [
+        "A. 200 people",
+        "B. 300 people",
+        "C. 400 people"
+      ],
+      answer: ["B"],
+      order: 3,
+      transcript: "The performance space can accommodate up to 300 people."
+    },
+    {
+      id: "l1q4",
+      section: 2,
+      type: "multiple_choice",
+      text: "What types of workshops can be held in the teaching studios?",
+      options: [
+        "A. Only painting and sculpture",
+        "B. Only digital art",
+        "C. Painting, sculpture, and digital art"
+      ],
+      answer: ["C"],
+      order: 4,
+      transcript: "Whether you're a painter, sculptor, or digital artist, there's something here for you."
+    },
+    {
+      id: "l1q5",
+      section: 2,
+      type: "multiple_choice",
+      text: "What is the purpose of the rooftop terrace?",
+      options: [
+        "A. Serving only food and drinks",
+        "B. Hosting outdoor art installations",
+        "C. Training artists"
+      ],
+      answer: ["B"],
+      order: 5,
+      transcript: "We plan to host outdoor art installations there seasonally."
+    },
+    {
+      id: "l1q6",
+      section: 2,
+      type: "multiple_choice",
+      text: "When is the centre open on Sundays?",
+      options: [
+        "A. 9 a.m. to 6 p.m.",
+        "B. 11 a.m. to 5 p.m.",
+        "C. 10 a.m. to 4 p.m."
+      ],
+      answer: ["B"],
+      order: 6,
+      transcript: "we're open from 9 a.m. to 6 p.m. Tuesday through Saturday, and 11 a.m. to 5 p.m. on Sundays."
+    },
+    {
+      id: "l1q7",
+      section: 2,
+      type: "multiple_choice",
+      text: "How often does the centre hold free community events?",
+      options: [
+        "A. Every second Thursday of the month",
+        "B. Every third Thursday of the month",
+        "C. Every Thursday of the month"
+      ],
+      answer: ["B"],
+      order: 7,
+      transcript: "We also have free community events every third Thursday of the month."
+    },
+    {
+      id: "l1q8",
+      section: 2,
+      type: "multiple_choice",
+      text: "What type of programme is the centre offering to emerging artists?",
+      options: [
+        "A. Student scholarship programme",
+        "B. Artist residency programme with studio space and grant",
+        "C. Mentorship programme only"
+      ],
+      answer: ["B"],
+      order: 8,
+      transcript: "We're offering studio space and a small grant to emerging artists."
+    },
+    {
+      id: "l1q9",
+      section: 2,
+      type: "multiple_choice",
+      text: "When is the deadline for the artist residency application?",
+      options: [
+        "A. End of this month",
+        "B. End of next month",
+        "C. End of the quarter"
+      ],
+      answer: ["B"],
+      order: 9,
+      transcript: "The application deadline is at the end of next month."
+    },
+    {
+      id: "l1q10",
+      section: 2,
+      type: "multiple_choice",
+      text: "What does the centre provide free of charge?",
+      options: [
+        "A. All performances and workshops",
+        "B. Entry to exhibitions only",
+        "C. All facilities and refreshments"
+      ],
+      answer: ["B"],
+      order: 10,
+      transcript: "Entry is free for exhibitions, but performances and workshops have separate fees."
+    }
+  ]
+};
+
 export const listeningPracticeSets = {
+  "type-1": type1Test,
   "type-3": type3Test,
   "type-4": type4Test,
   "type-6": type6Test,
