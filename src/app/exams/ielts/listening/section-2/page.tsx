@@ -7,9 +7,10 @@ export default function Section2Dashboard() {
   const questionTypes = [
     {
       id: "type-3",
-      title: "Plan/map/diagram labelling",
+      title: "Plan/Map/Diagram Labelling",
       description: "Complete labels on a visual such as a diagram, a plan, a map, or a set of pictures.",
-      skills: "Understanding descriptions of places and following directions.",
+      details: "Read instructions carefully as the word limit can change. For example: 'NO MORE THAN TWO WORDS'. Follow word limits exactly or lose the mark.",
+      skills: "Understanding descriptions of places and spatial relationships, following directions.",
       href: "/exams/ielts/listening/section-2/type-3",
       icon: <MessageSquare className="w-8 h-8" />,
       accent: "bg-blue-600",
@@ -19,8 +20,9 @@ export default function Section2Dashboard() {
     },
     {
       id: "type-1",
-      title: "Multiple choice",
-      description: "Choose one correct answer, or more than one answer when the question requires it.",
+      title: "Multiple Choice",
+      description: "Choose one correct answer (A, B, or C), or more than one answer when the question requires it.",
+      details: "This type may be a question with three possible answers or the first half of a sentence with three possible sentence endings.",
       skills: "Understanding specific points and the main ideas of the recording.",
       href: "/exams/ielts/listening/section-2/type-1",
       icon: <FileText className="w-8 h-8" />,
@@ -32,26 +34,28 @@ export default function Section2Dashboard() {
     {
       id: "type-2",
       title: "Matching",
-      description: "Match a list of items from the recording to the correct options on the question paper.",
-      skills: "Following a conversation and recognising how facts are connected.",
+      description: "Match a list of items from the recording to a list of options (A-E) on the question paper.",
+      details: "Listen for detailed information and understand how facts in the recording are connected to each other.",
+      skills: "Following the speaker, listening for detailed information, recognising connections between facts.",
       href: "/exams/ielts/listening/section-2/type-2",
       icon: <Target className="w-8 h-8" />,
       accent: "bg-emerald-600",
       iconBg: "bg-emerald-50 text-emerald-600",
       decor: "bg-emerald-500/5",
-      titleClass: "text-blue-600",
+      titleClass: "text-emerald-600",
     },
     {
       id: "type-4",
-      title: "Form/note/table/flow chart/summary completion",
-      description: "Fill in gaps in an outline of the recording using the correct words or letters.",
-      skills: "Listening for facts, names, places, prices, times, and categories.",
+      title: "Form/Note/Table/Flow Chart Completion",
+      description: "Fill in gaps in an outline using the correct words, letters, or numbers with specified word limits.",
+      details: "Follow word limits carefully, e.g., 'NO MORE THAN TWO WORDS AND/OR A NUMBER'. Exceeding the limit results in losing the mark.",
+      skills: "Listening for facts, names, places, prices, times, and understanding categories.",
       href: "/exams/ielts/listening/section-2/type-4",
       icon: <Clock className="w-8 h-8" />,
       accent: "bg-violet-600",
       iconBg: "bg-violet-50 text-violet-600",
       decor: "bg-violet-500/5",
-      titleClass: "text-slate-900",
+      titleClass: "text-violet-600",
     },
   ];
 
@@ -130,7 +134,7 @@ export default function Section2Dashboard() {
               >
                 <div className={`h-1.5 w-full ${type.accent}`} />
 
-                <div className="p-9 sm:p-10 flex flex-col h-full min-h-107.5">
+                <div className="p-9 sm:p-10 flex flex-col h-full min-h-115">
                   <div className="flex justify-between items-start mb-10">
                     <div className={`w-20 h-20 rounded-3xl ${type.iconBg} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
                       {type.icon}
@@ -141,17 +145,18 @@ export default function Section2Dashboard() {
                     </div>
                   </div>
 
-                  <div className="flex-1 space-y-5 mb-10">
+                  <div className="flex-1 space-y-4 mb-10">
                     <h2 className={`text-3xl font-black ${type.titleClass} transition-colors leading-[1.05] tracking-tight`}>
                       {type.title}
                     </h2>
-                    <p className="text-base text-slate-500 leading-relaxed font-medium max-w-120">{type.description}</p>
+                    <p className="text-base text-slate-600 leading-relaxed font-semibold">{type.description}</p>
+                    <p className="text-sm text-slate-500 leading-relaxed">{type.details}</p>
 
-                    <div className="pt-4 flex items-center gap-3">
-                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-emerald-400/30 text-emerald-500">
+                    <div className="pt-3 flex items-start gap-3">
+                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-emerald-400/30 text-emerald-500 shrink-0 mt-0.5">
                         <span className="h-2 w-2 rounded-full bg-emerald-500" />
                       </span>
-                      <p className="text-xs font-bold text-slate-400 uppercase tracking-[0.22em] leading-relaxed">{type.skills}</p>
+                      <p className="text-xs font-bold text-slate-500 uppercase tracking-[0.22em] leading-relaxed">{type.skills}</p>
                     </div>
                   </div>
 
