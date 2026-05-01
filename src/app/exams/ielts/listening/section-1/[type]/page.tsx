@@ -2,18 +2,22 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowLeft, Clock3, FileText, Headphones, Info, Mic2, PlayCircle, Sparkles } from "lucide-react";
-import { mockListeningTest } from "@/data/mock-listening-test";
+import { listeningPracticeSets } from "@/data/mock-listening-test";
 
 export default function ListeningSection1TypePage() {
   const [showTranscript, setShowTranscript] = useState(true);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const params = useParams<{ type?: string }>();
+  const routeType = typeof params?.type === "string" ? params.type : "type-4";
+  const practiceSet = listeningPracticeSets[routeType as keyof typeof listeningPracticeSets] ?? listeningPracticeSets["type-4"];
 
-  const questions = useMemo(() => mockListeningTest.questions, []);
+  const questions = useMemo(() => practiceSet.questions, [practiceSet]);
 
-  const totalQuestions = mockListeningTest.questions.length;
+  const totalQuestions = practiceSet.questions.length;
 
   return (
     <div className="min-h-screen bg-[#f5f7fb] text-slate-900">
@@ -37,7 +41,7 @@ export default function ListeningSection1TypePage() {
                 </div>
                 <div className="space-y-4">
                   <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[0.95]">
-                    Practice Questions
+                    {practiceSet.title}
                   </h1>
                   <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl">
                     Listen carefully and answer all the questions based on the transcript provided.
@@ -60,7 +64,7 @@ export default function ListeningSection1TypePage() {
                 <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Practice Set</p>
                 <p className="mt-2 text-3xl font-black">{totalQuestions} Questions</p>
                 <p className="mt-4 text-sm text-slate-500 leading-relaxed">
-                  Use the transcript and the question prompts to practice the exact answer selection and gap-filling style used in IELTS Listening Section 1.
+                  Use the transcript and the question prompts to practice the exact answer style used in IELTS Listening Section 1.
                 </p>
                 <div className="mt-6 flex items-center gap-3 text-xs font-black uppercase tracking-widest text-sky-600">
                   <PlayCircle className="w-4 h-4" /> Audio ready later via TTS
@@ -76,7 +80,9 @@ export default function ListeningSection1TypePage() {
               <div className="flex items-center justify-between gap-4 pb-6 border-b border-slate-100">
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">What&apos;s involved?</p>
-                  <h2 className="mt-2 text-2xl font-black text-slate-900">How to answer this task</h2>
+                  <h2 className="mt-2 text-2xl font-black text-slate-900">
+                    {routeType === "type-6" ? "Short-answer questions" : "Completion questions"}
+                  </h2>
                 </div>
                 <button
                   type="button"
@@ -88,15 +94,31 @@ export default function ListeningSection1TypePage() {
               </div>
 
               <div className="mt-6 space-y-4 text-slate-600 leading-relaxed text-[15px]">
-                <p>
-                  In this question type, you complete a form, set of notes, table, flow chart, or summary using information from the recording.
-                </p>
-                <p>
-                  You may need to choose answers from a list or write the exact words you hear. The word limit matters, so follow instructions such as <span className="font-bold text-slate-900">NO MORE THAN TWO WORDS AND/OR A NUMBER</span> very carefully.
-                </p>
-                <p>
-                  This task mainly tests whether you can identify main ideas, facts, names, categories, and specific details while listening.
-                </p>
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">What&apos;s involved?</h3>
+                  <p>
+                    In this type of question, you have to read a question and write a short answer using information from the recording.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">Important guidelines</h3>
+                  <ul className="space-y-2 list-disc list-inside text-sm">
+                    <li>Read the instructions very carefully as the word limit can change</li>
+                    <li>Follow word limits exactly, e.g., <span className="font-bold">NO MORE THAN TWO WORDS AND/OR A NUMBER</span></li>
+                    <li>Writing more than the word limit will result in losing the mark</li>
+                    <li>Contracted words like &apos;they&apos;re&apos; will not be tested</li>
+                    <li>Hyphenated words like &apos;check-in&apos; count as single words</li>
+                    <li>Sometimes you may need to provide two or three different answers</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">What skills are tested?</h3>
+                  <p>
+                    This question type focuses on your ability to listen for facts such as places, prices, times, or other specific information heard in the recording.
+                  </p>
+                </div>
               </div>
 
               {showTranscript && (
@@ -104,14 +126,14 @@ export default function ListeningSection1TypePage() {
                   <div className="flex items-center justify-between gap-4 mb-4">
                     <div>
                       <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Transcript</p>
-                      <h3 className="mt-2 text-xl font-black">Hotel booking conversation</h3>
+                      <h3 className="mt-2 text-xl font-black">{practiceSet.title}</h3>
                     </div>
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-sky-200">
                       <Sparkles className="w-3.5 h-3.5" /> For later TTS conversion
                     </span>
                   </div>
                   <pre className="whitespace-pre-wrap text-sm leading-7 text-slate-300 font-sans overflow-x-auto max-h-96">
-                    {mockListeningTest.transcript}
+                    {practiceSet.transcript}
                   </pre>
                 </div>
               )}

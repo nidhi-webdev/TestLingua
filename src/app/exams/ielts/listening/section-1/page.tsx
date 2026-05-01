@@ -151,7 +151,6 @@ export default function Section1Dashboard() {
                   <div className="mt-auto flex items-center justify-between pt-8 border-t border-slate-50">
                     <div className="flex items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
                       <span className="flex items-center gap-1"><Clock size={14} /> 10 Mins</span>
-                      <span className="flex items-center gap-1 text-emerald-600"><Zap size={14} className="fill-current" /> AI EVAL</span>
                     </div>
                     <span className="flex items-center gap-1 text-slate-900 font-black text-sm group-hover:text-blue-600 transition-colors">
                       Start Practice <ChevronRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
