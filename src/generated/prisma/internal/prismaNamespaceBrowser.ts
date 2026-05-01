@@ -227,6 +227,7 @@ export const ListeningTestScalarFieldEnum = {
   title: 'title',
   difficulty: 'difficulty',
   audioUrl: 'audioUrl',
+  transcript: 'transcript',
   sections: 'sections',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -244,6 +245,7 @@ export const ListeningQuestionScalarFieldEnum = {
   text: 'text',
   options: 'options',
   answer: 'answer',
+  transcript: 'transcript',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

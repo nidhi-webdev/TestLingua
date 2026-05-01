@@ -1,276 +1,170 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { 
   ArrowLeft, 
-  Play, 
-  Pause, 
-  Info, 
-  CheckCircle2, 
-  AlertCircle,
-  Save,
-  Clock,
-  RotateCcw
+  ChevronRight, 
+  FileText, 
+  MessageSquare, 
+  Clock, 
+  Target,
+  Zap,
+  Sparkles
 } from 'lucide-react';
 
-export default function ListeningSection1Page() {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Mock data for Section 1 Questions
-  const sectionData = {
-    title: "Section 1: Accomodation Request",
-    wordLimit: "NO MORE THAN TWO WORDS AND/OR A NUMBER",
-    questions: [
-      {
-        id: "q1",
-        type: "type-4", // Form/Note Completion
-        label: "1. Name of the student:",
-        placeholder: "Enter name",
-        correctAnswer: "Amrendu Kumar"
-      },
-      {
-        id: "q2",
-        type: "type-4",
-        label: "2. Date of birth:",
-        placeholder: "DD/MM/YYYY",
-        correctAnswer: "15/08/1995"
-      },
-      {
-        id: "q3",
-        type: "type-4",
-        label: "3. Preferred accommodation type:",
-        placeholder: "e.g. Shared house",
-        correctAnswer: "Apartment"
-      },
-      {
-        id: "q4",
-        type: "type-6", // Short Answer
-        label: "4. What is the maximum monthly rent the student can afford?",
-        placeholder: "e.g. 500 dollars",
-        correctAnswer: "800 dollars"
-      },
-      {
-        id: "q5",
-        type: "type-6",
-        label: "5. Which suburb does the student prefer to live in?",
-        placeholder: "e.g. Kensington",
-        correctAnswer: "Manly"
-      }
-    ]
-  };
-
-  const handleInputChange = (id: string, value: string) => {
-    setAnswers(prev => ({ ...prev, [id]: value }));
-  };
-
-  const handleSubmit = () => {
-    setIsSubmitted(true);
-  };
+export default function Section1Dashboard() {
+  const questionTypes = [
+    {
+      id: "type-4",
+      title: "Form/note/table/flow chart/summary completion",
+      description: "Fill in the gaps in an outline using facts, names, or categories from the recording.",
+      skills: "Listening for facts, names, and specific details.",
+      href: "/exams/ielts/listening/section-1/type-4",
+      icon: <FileText className="w-8 h-8" />,
+      color: "blue",
+      questions: "10 Questions"
+    },
+    {
+      id: "type-6",
+      title: "Short-answer questions",
+      description: "Read a question and write a short answer using information heard in the recording.",
+      skills: "Listening for facts like places, prices, or times.",
+      href: "/exams/ielts/listening/section-1/type-6",
+      icon: <MessageSquare className="w-8 h-8" />,
+      color: "slate",
+      questions: "10 Questions"
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
-      <main className="pt-32 pb-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back Navigation */}
-          <Link 
-            href="/exams/ielts/listening"
-            className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-900 transition mb-8 font-bold text-sm uppercase tracking-widest"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Sections
-          </Link>
+      <main className="pt-16 pb-20">
+        {/* Premium Header Region */}
+        <section className="bg-slate-900 pt-20 pb-24 text-white relative overflow-hidden">
+          {/* Decorative background effects */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full mix-blend-screen filter blur-[120px] animate-pulse"></div>
+          
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Back Navigation */}
+            <Link 
+              href="/exams/ielts/listening"
+              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition mb-10 font-bold text-xs uppercase tracking-widest"
+            >
+              <ArrowLeft className="w-4 h-4" /> Back to Listening Sections
+            </Link>
 
-          {/* Test Header */}
-          <div className="bg-slate-900 rounded-[2.5rem] p-10 mb-10 text-white relative overflow-hidden shadow-2xl shadow-slate-900/20">
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="space-y-4">
-                <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-[10px] font-black rounded-full uppercase tracking-widest border border-emerald-500/20">
-                  Practice Mode
-                </span>
-                <h1 className="text-4xl font-black tracking-tight">{sectionData.title}</h1>
-                <div className="flex items-center gap-6 text-slate-400 text-sm font-bold">
-                  <div className="flex items-center gap-2">
-                    <Clock size={16} /> 10:00
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Info size={16} /> 5 Questions
-                  </div>
+            <div className="flex flex-col md:flex-row justify-between items-end gap-10">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-300 text-[10px] font-black uppercase tracking-widest">
+                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
+                  IELTS Academic Listening
+                </div>
+                
+                <h1 className="text-6xl md:text-7xl font-black tracking-tight leading-none">
+                  Listening <span className="text-blue-400">Section 1</span>
+                </h1>
+                
+                <p className="text-lg text-slate-400 max-w-2xl font-medium leading-relaxed">
+                  Master all IELTS listening question types. Choose a category below to start your targeted practice session.
+                </p>
+              </div>
+
+              <div className="text-right hidden md:block">
+                <div className="space-y-1">
+                  <p className="text-5xl font-black tracking-tighter">02</p>
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Question Types</p>
                 </div>
               </div>
-
-              {/* Audio Player Placeholder */}
-              <div className="w-full md:w-auto bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md flex flex-col gap-4">
-                <div className="flex items-center gap-4">
-                  <button className="w-12 h-12 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-105 transition shadow-lg shadow-white/10">
-                    <Play size={20} fill="currentColor" />
-                  </button>
-                  <div className="flex-1 space-y-2 min-w-[200px]">
-                    <div className="h-1 bg-white/20 rounded-full overflow-hidden">
-                      <div className="h-full bg-emerald-500 w-1/3" />
-                    </div>
-                    <div className="flex justify-between text-[10px] font-bold text-slate-400">
-                      <span>02:15</span>
-                      <span>10:00</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-[10px] font-black text-center text-slate-500 uppercase tracking-widest">Audio Track: Section 1 Simulation</p>
-              </div>
-            </div>
-            <div className="absolute -left-10 -bottom-10 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl" />
-          </div>
-
-          {/* Instructions */}
-          <div className="bg-blue-50 border border-blue-100 rounded-3xl p-8 mb-10 flex items-start gap-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">
-              <Info size={24} />
-            </div>
-            <div className="space-y-2">
-              <h4 className="text-lg font-black text-blue-900 uppercase tracking-tight">Instructions</h4>
-              <p className="text-sm text-blue-800/80 font-medium leading-relaxed">
-                Complete the form and answer the questions below using <span className="font-black text-blue-900 underline decoration-2">{sectionData.wordLimit}</span> for each answer. 
-                Listen to the recording carefully while filling in the blanks.
-              </p>
             </div>
           </div>
+        </section>
 
-          {/* Questions Content */}
-          <div className="space-y-8">
-            {/* Section 1 Type 4: Form Completion */}
-            <section className="bg-white rounded-[2.5rem] border border-slate-200 p-10 shadow-xl shadow-slate-200/50">
-              <div className="mb-10">
-                <h2 className="text-2xl font-black text-slate-900 mb-2">Part 1: Personal Details</h2>
-                <p className="text-sm text-slate-400 font-bold uppercase tracking-widest">Question 1-3 • Form Completion</p>
-              </div>
+        {/* Section Tabs Navigation */}
+        <div className="sticky top-16 z-30 bg-white border-b border-slate-100 shadow-xs">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex gap-10 overflow-x-auto hide-scrollbar">
+              {[
+                { label: 'Section 1 (Easy)', active: true, href: '/exams/ielts/listening/section-1' },
+                { label: 'Section 2 (Medium)', active: false, href: '/exams/ielts/listening/section-2' },
+                { label: 'Section 3 (Hard)', active: false, href: '/exams/ielts/listening/section-3' },
+                { label: 'Section 4 (Expert)', active: false, href: '/exams/ielts/listening/section-4' }
+              ].map((tab) => (
+                <Link
+                  key={tab.label}
+                  href={tab.href}
+                  className={`whitespace-nowrap py-6 border-b-2 text-xs font-black uppercase tracking-widest transition-all ${
+                    tab.active 
+                      ? 'border-blue-600 text-blue-600' 
+                      : 'border-transparent text-slate-400 hover:text-slate-900'
+                  }`}
+                >
+                  {tab.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
 
-              <div className="grid gap-8 max-w-2xl">
-                {sectionData.questions.slice(0, 3).map((q) => (
-                  <div key={q.id} className="space-y-3">
-                    <label className="text-sm font-black text-slate-900 uppercase tracking-tight block">
-                      {q.label}
-                    </label>
-                    <div className="relative">
-                      <input 
-                        type="text"
-                        disabled={isSubmitted}
-                        value={answers[q.id] || ""}
-                        onChange={(e) => handleInputChange(q.id, e.target.value)}
-                        placeholder={q.placeholder}
-                        className={`w-full px-6 py-4 rounded-2xl border-2 transition-all font-medium focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-hidden ${
-                          isSubmitted 
-                            ? answers[q.id]?.toLowerCase() === q.correctAnswer?.toLowerCase()
-                              ? 'border-emerald-500 bg-emerald-50 text-emerald-900'
-                              : 'border-rose-500 bg-rose-50 text-rose-900'
-                            : 'border-slate-100 bg-slate-50 hover:border-slate-200'
-                        }`}
-                      />
-                      {isSubmitted && (
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2">
-                          {answers[q.id]?.toLowerCase() === q.correctAnswer?.toLowerCase() ? (
-                            <CheckCircle2 size={20} className="text-emerald-500" />
-                          ) : (
-                            <AlertCircle size={20} className="text-rose-500" />
-                          )}
-                        </div>
-                      )}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+
+          {/* Type Selection Cards */}
+          <div className="grid md:grid-cols-2 gap-10">
+            {questionTypes.map((type) => (
+              <Link 
+                key={type.id}
+                href={type.href}
+                className="group relative flex flex-col h-full bg-white rounded-[3rem] border border-slate-200 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2"
+              >
+                {/* Accent Bar */}
+                <div className={`h-1.5 w-full ${type.color === 'blue' ? 'bg-blue-600' : 'bg-slate-900'}`} />
+                
+                <div className="p-10 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className={`w-16 h-16 rounded-2xl ${type.color === 'blue' ? 'bg-blue-50 text-blue-600' : 'bg-slate-100 text-slate-900'} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
+                      {type.icon}
                     </div>
-                    {isSubmitted && answers[q.id]?.toLowerCase() !== q.correctAnswer?.toLowerCase() && (
-                      <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest pl-2">
-                        Correct Answer: {q.correctAnswer}
-                      </p>
-                    )}
+                    <div className="text-right">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Practice Set</p>
+                      <p className="text-lg font-black text-slate-900 mt-2">{type.questions}</p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            </section>
 
-            {/* Section 1 Type 6: Short Answer Questions */}
-            <section className="bg-white rounded-[2.5rem] border border-slate-200 p-10 shadow-xl shadow-slate-200/50">
-              <div className="mb-10">
-                <h2 className="text-2xl font-black text-slate-900 mb-2">Part 2: Preferences & Budget</h2>
-                <p className="text-sm text-slate-400 font-bold uppercase tracking-widest">Question 4-5 • Short Answer Questions</p>
-              </div>
-
-              <div className="grid gap-10 max-w-2xl">
-                {sectionData.questions.slice(3).map((q) => (
-                  <div key={q.id} className="space-y-4">
-                    <p className="text-lg font-bold text-slate-900 leading-snug">
-                      {q.label}
+                  <div className="flex-1 space-y-4 mb-10">
+                    <h2 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
+                      {type.title}
+                    </h2>
+                    <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                      {type.description}
                     </p>
-                    <div className="relative">
-                      <input 
-                        type="text"
-                        disabled={isSubmitted}
-                        value={answers[q.id] || ""}
-                        onChange={(e) => handleInputChange(q.id, e.target.value)}
-                        placeholder={q.placeholder}
-                        className={`w-full px-6 py-4 rounded-2xl border-2 transition-all font-medium focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-hidden ${
-                          isSubmitted 
-                            ? answers[q.id]?.toLowerCase() === q.correctAnswer?.toLowerCase()
-                              ? 'border-emerald-500 bg-emerald-50 text-emerald-900'
-                              : 'border-rose-500 bg-rose-50 text-rose-900'
-                            : 'border-slate-100 bg-slate-50 hover:border-slate-200'
-                        }`}
-                      />
-                      {isSubmitted && (
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2">
-                          {answers[q.id]?.toLowerCase() === q.correctAnswer?.toLowerCase() ? (
-                            <CheckCircle2 size={20} className="text-emerald-500" />
-                          ) : (
-                            <AlertCircle size={20} className="text-rose-500" />
-                          )}
-                        </div>
-                      )}
+                    
+                    <div className="pt-4 flex items-center gap-3">
+                      <Target size={16} className="text-emerald-500" />
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{type.skills}</p>
                     </div>
-                    {isSubmitted && answers[q.id]?.toLowerCase() !== q.correctAnswer?.toLowerCase() && (
-                      <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest pl-2">
-                        Correct Answer: {q.correctAnswer}
-                      </p>
-                    )}
                   </div>
-                ))}
-              </div>
-            </section>
+
+                  <div className="mt-auto flex items-center justify-between pt-8 border-t border-slate-50">
+                    <div className="flex items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                      <span className="flex items-center gap-1"><Clock size={14} /> 10 Mins</span>
+                      <span className="flex items-center gap-1 text-emerald-600"><Zap size={14} className="fill-current" /> AI EVAL</span>
+                    </div>
+                    <span className="flex items-center gap-1 text-slate-900 font-black text-sm group-hover:text-blue-600 transition-colors">
+                      Start Practice <ChevronRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+
+                {/* Background Decor */}
+                <div className={`absolute -right-8 -bottom-8 w-40 h-40 ${type.color === 'blue' ? 'bg-blue-500/5' : 'bg-slate-900/5'} rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700`} />
+              </Link>
+            ))}
           </div>
 
-          {/* Action Bar */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-between p-8 bg-slate-900 rounded-[2.5rem] text-white shadow-2xl shadow-slate-900/30 gap-6">
-            <div className="flex items-center gap-6">
-              <div className="text-center sm:text-left">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Progress</p>
-                <p className="text-xl font-black">{Object.keys(answers).length} / 5 Answered</p>
-              </div>
-              <div className="h-10 w-px bg-white/10 hidden sm:block" />
-              <div className="text-center sm:text-left">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Time Remaining</p>
-                <p className="text-xl font-black font-mono">07:45</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4 w-full sm:w-auto">
-              <button 
-                onClick={() => {
-                  setAnswers({});
-                  setIsSubmitted(false);
-                }}
-                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition"
-              >
-                <RotateCcw size={18} /> Reset
-              </button>
-              <button 
-                onClick={handleSubmit}
-                disabled={isSubmitted || Object.keys(answers).length === 0}
-                className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-10 py-4 bg-emerald-500 text-white rounded-2xl font-black hover:bg-emerald-400 transition shadow-xl shadow-emerald-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <Save size={18} /> Submit Test
-              </button>
-            </div>
-          </div>
         </div>
       </main>
 

@@ -43,6 +43,7 @@ export type ListeningQuestionMinAggregateOutputType = {
   type: string | null
   order: number | null
   text: string | null
+  transcript: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -54,6 +55,7 @@ export type ListeningQuestionMaxAggregateOutputType = {
   type: string | null
   order: number | null
   text: string | null
+  transcript: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -67,6 +69,7 @@ export type ListeningQuestionCountAggregateOutputType = {
   text: number
   options: number
   answer: number
+  transcript: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -90,6 +93,7 @@ export type ListeningQuestionMinAggregateInputType = {
   type?: true
   order?: true
   text?: true
+  transcript?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -101,6 +105,7 @@ export type ListeningQuestionMaxAggregateInputType = {
   type?: true
   order?: true
   text?: true
+  transcript?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -114,6 +119,7 @@ export type ListeningQuestionCountAggregateInputType = {
   text?: true
   options?: true
   answer?: true
+  transcript?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -214,6 +220,7 @@ export type ListeningQuestionGroupByOutputType = {
   text: string
   options: string[]
   answer: string[]
+  transcript: string | null
   createdAt: Date
   updatedAt: Date
   _count: ListeningQuestionCountAggregateOutputType | null
@@ -250,6 +257,7 @@ export type ListeningQuestionWhereInput = {
   text?: Prisma.StringFilter<"ListeningQuestion"> | string
   options?: Prisma.StringNullableListFilter<"ListeningQuestion">
   answer?: Prisma.StringNullableListFilter<"ListeningQuestion">
+  transcript?: Prisma.StringNullableFilter<"ListeningQuestion"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ListeningQuestion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ListeningQuestion"> | Date | string
   listeningTest?: Prisma.XOR<Prisma.ListeningTestScalarRelationFilter, Prisma.ListeningTestWhereInput>
@@ -264,6 +272,7 @@ export type ListeningQuestionOrderByWithRelationInput = {
   text?: Prisma.SortOrder
   options?: Prisma.SortOrder
   answer?: Prisma.SortOrder
+  transcript?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   listeningTest?: Prisma.ListeningTestOrderByWithRelationInput
@@ -281,6 +290,7 @@ export type ListeningQuestionWhereUniqueInput = Prisma.AtLeast<{
   text?: Prisma.StringFilter<"ListeningQuestion"> | string
   options?: Prisma.StringNullableListFilter<"ListeningQuestion">
   answer?: Prisma.StringNullableListFilter<"ListeningQuestion">
+  transcript?: Prisma.StringNullableFilter<"ListeningQuestion"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ListeningQuestion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ListeningQuestion"> | Date | string
   listeningTest?: Prisma.XOR<Prisma.ListeningTestScalarRelationFilter, Prisma.ListeningTestWhereInput>
@@ -295,6 +305,7 @@ export type ListeningQuestionOrderByWithAggregationInput = {
   text?: Prisma.SortOrder
   options?: Prisma.SortOrder
   answer?: Prisma.SortOrder
+  transcript?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ListeningQuestionCountOrderByAggregateInput
@@ -316,6 +327,7 @@ export type ListeningQuestionScalarWhereWithAggregatesInput = {
   text?: Prisma.StringWithAggregatesFilter<"ListeningQuestion"> | string
   options?: Prisma.StringNullableListFilter<"ListeningQuestion">
   answer?: Prisma.StringNullableListFilter<"ListeningQuestion">
+  transcript?: Prisma.StringNullableWithAggregatesFilter<"ListeningQuestion"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ListeningQuestion"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ListeningQuestion"> | Date | string
 }
@@ -328,6 +340,7 @@ export type ListeningQuestionCreateInput = {
   text: string
   options?: Prisma.ListeningQuestionCreateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionCreateanswerInput | string[]
+  transcript?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   listeningTest: Prisma.ListeningTestCreateNestedOneWithoutQuestionsInput
@@ -342,6 +355,7 @@ export type ListeningQuestionUncheckedCreateInput = {
   text: string
   options?: Prisma.ListeningQuestionCreateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionCreateanswerInput | string[]
+  transcript?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -354,6 +368,7 @@ export type ListeningQuestionUpdateInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   options?: Prisma.ListeningQuestionUpdateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionUpdateanswerInput | string[]
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   listeningTest?: Prisma.ListeningTestUpdateOneRequiredWithoutQuestionsNestedInput
@@ -368,6 +383,7 @@ export type ListeningQuestionUncheckedUpdateInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   options?: Prisma.ListeningQuestionUpdateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionUpdateanswerInput | string[]
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -381,6 +397,7 @@ export type ListeningQuestionCreateManyInput = {
   text: string
   options?: Prisma.ListeningQuestionCreateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionCreateanswerInput | string[]
+  transcript?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -393,6 +410,7 @@ export type ListeningQuestionUpdateManyMutationInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   options?: Prisma.ListeningQuestionUpdateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionUpdateanswerInput | string[]
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -406,6 +424,7 @@ export type ListeningQuestionUncheckedUpdateManyInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   options?: Prisma.ListeningQuestionUpdateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionUpdateanswerInput | string[]
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -429,6 +448,7 @@ export type ListeningQuestionCountOrderByAggregateInput = {
   text?: Prisma.SortOrder
   options?: Prisma.SortOrder
   answer?: Prisma.SortOrder
+  transcript?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -445,6 +465,7 @@ export type ListeningQuestionMaxOrderByAggregateInput = {
   type?: Prisma.SortOrder
   order?: Prisma.SortOrder
   text?: Prisma.SortOrder
+  transcript?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -456,6 +477,7 @@ export type ListeningQuestionMinOrderByAggregateInput = {
   type?: Prisma.SortOrder
   order?: Prisma.SortOrder
   text?: Prisma.SortOrder
+  transcript?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -533,6 +555,7 @@ export type ListeningQuestionCreateWithoutListeningTestInput = {
   text: string
   options?: Prisma.ListeningQuestionCreateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionCreateanswerInput | string[]
+  transcript?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -545,6 +568,7 @@ export type ListeningQuestionUncheckedCreateWithoutListeningTestInput = {
   text: string
   options?: Prisma.ListeningQuestionCreateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionCreateanswerInput | string[]
+  transcript?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -587,6 +611,7 @@ export type ListeningQuestionScalarWhereInput = {
   text?: Prisma.StringFilter<"ListeningQuestion"> | string
   options?: Prisma.StringNullableListFilter<"ListeningQuestion">
   answer?: Prisma.StringNullableListFilter<"ListeningQuestion">
+  transcript?: Prisma.StringNullableFilter<"ListeningQuestion"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ListeningQuestion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ListeningQuestion"> | Date | string
 }
@@ -599,6 +624,7 @@ export type ListeningQuestionCreateManyListeningTestInput = {
   text: string
   options?: Prisma.ListeningQuestionCreateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionCreateanswerInput | string[]
+  transcript?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -611,6 +637,7 @@ export type ListeningQuestionUpdateWithoutListeningTestInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   options?: Prisma.ListeningQuestionUpdateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionUpdateanswerInput | string[]
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -623,6 +650,7 @@ export type ListeningQuestionUncheckedUpdateWithoutListeningTestInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   options?: Prisma.ListeningQuestionUpdateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionUpdateanswerInput | string[]
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -635,6 +663,7 @@ export type ListeningQuestionUncheckedUpdateManyWithoutListeningTestInput = {
   text?: Prisma.StringFieldUpdateOperationsInput | string
   options?: Prisma.ListeningQuestionUpdateoptionsInput | string[]
   answer?: Prisma.ListeningQuestionUpdateanswerInput | string[]
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -650,6 +679,7 @@ export type ListeningQuestionSelect<ExtArgs extends runtime.Types.Extensions.Int
   text?: boolean
   options?: boolean
   answer?: boolean
+  transcript?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   listeningTest?: boolean | Prisma.ListeningTestDefaultArgs<ExtArgs>
@@ -664,6 +694,7 @@ export type ListeningQuestionSelectCreateManyAndReturn<ExtArgs extends runtime.T
   text?: boolean
   options?: boolean
   answer?: boolean
+  transcript?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   listeningTest?: boolean | Prisma.ListeningTestDefaultArgs<ExtArgs>
@@ -678,6 +709,7 @@ export type ListeningQuestionSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   text?: boolean
   options?: boolean
   answer?: boolean
+  transcript?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   listeningTest?: boolean | Prisma.ListeningTestDefaultArgs<ExtArgs>
@@ -692,11 +724,12 @@ export type ListeningQuestionSelectScalar = {
   text?: boolean
   options?: boolean
   answer?: boolean
+  transcript?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ListeningQuestionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "listeningTestId" | "section" | "type" | "order" | "text" | "options" | "answer" | "createdAt" | "updatedAt", ExtArgs["result"]["listeningQuestion"]>
+export type ListeningQuestionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "listeningTestId" | "section" | "type" | "order" | "text" | "options" | "answer" | "transcript" | "createdAt" | "updatedAt", ExtArgs["result"]["listeningQuestion"]>
 export type ListeningQuestionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   listeningTest?: boolean | Prisma.ListeningTestDefaultArgs<ExtArgs>
 }
@@ -721,6 +754,7 @@ export type $ListeningQuestionPayload<ExtArgs extends runtime.Types.Extensions.I
     text: string
     options: string[]
     answer: string[]
+    transcript: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["listeningQuestion"]>
@@ -1155,6 +1189,7 @@ export interface ListeningQuestionFieldRefs {
   readonly text: Prisma.FieldRef<"ListeningQuestion", 'String'>
   readonly options: Prisma.FieldRef<"ListeningQuestion", 'String[]'>
   readonly answer: Prisma.FieldRef<"ListeningQuestion", 'String[]'>
+  readonly transcript: Prisma.FieldRef<"ListeningQuestion", 'String'>
   readonly createdAt: Prisma.FieldRef<"ListeningQuestion", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ListeningQuestion", 'DateTime'>
 }

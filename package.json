@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint --concurrency 2",
     "seed": "tsx scripts/seed.ts",
+    "seed:listening": "tsx scripts/seed-listening-only.ts",
     "db:reset": "prisma migrate reset --force"
   },
   "dependencies": {

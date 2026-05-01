@@ -39,6 +39,7 @@ export type ListeningTestMinAggregateOutputType = {
   title: string | null
   difficulty: string | null
   audioUrl: string | null
+  transcript: string | null
   sections: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -49,6 +50,7 @@ export type ListeningTestMaxAggregateOutputType = {
   title: string | null
   difficulty: string | null
   audioUrl: string | null
+  transcript: string | null
   sections: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -59,6 +61,7 @@ export type ListeningTestCountAggregateOutputType = {
   title: number
   difficulty: number
   audioUrl: number
+  transcript: number
   sections: number
   createdAt: number
   updatedAt: number
@@ -79,6 +82,7 @@ export type ListeningTestMinAggregateInputType = {
   title?: true
   difficulty?: true
   audioUrl?: true
+  transcript?: true
   sections?: true
   createdAt?: true
   updatedAt?: true
@@ -89,6 +93,7 @@ export type ListeningTestMaxAggregateInputType = {
   title?: true
   difficulty?: true
   audioUrl?: true
+  transcript?: true
   sections?: true
   createdAt?: true
   updatedAt?: true
@@ -99,6 +104,7 @@ export type ListeningTestCountAggregateInputType = {
   title?: true
   difficulty?: true
   audioUrl?: true
+  transcript?: true
   sections?: true
   createdAt?: true
   updatedAt?: true
@@ -196,6 +202,7 @@ export type ListeningTestGroupByOutputType = {
   title: string
   difficulty: string
   audioUrl: string
+  transcript: string | null
   sections: number
   createdAt: Date
   updatedAt: Date
@@ -229,6 +236,7 @@ export type ListeningTestWhereInput = {
   title?: Prisma.StringFilter<"ListeningTest"> | string
   difficulty?: Prisma.StringFilter<"ListeningTest"> | string
   audioUrl?: Prisma.StringFilter<"ListeningTest"> | string
+  transcript?: Prisma.StringNullableFilter<"ListeningTest"> | string | null
   sections?: Prisma.IntFilter<"ListeningTest"> | number
   createdAt?: Prisma.DateTimeFilter<"ListeningTest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ListeningTest"> | Date | string
@@ -241,6 +249,7 @@ export type ListeningTestOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   audioUrl?: Prisma.SortOrder
+  transcript?: Prisma.SortOrderInput | Prisma.SortOrder
   sections?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -256,6 +265,7 @@ export type ListeningTestWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"ListeningTest"> | string
   difficulty?: Prisma.StringFilter<"ListeningTest"> | string
   audioUrl?: Prisma.StringFilter<"ListeningTest"> | string
+  transcript?: Prisma.StringNullableFilter<"ListeningTest"> | string | null
   sections?: Prisma.IntFilter<"ListeningTest"> | number
   createdAt?: Prisma.DateTimeFilter<"ListeningTest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ListeningTest"> | Date | string
@@ -268,6 +278,7 @@ export type ListeningTestOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   audioUrl?: Prisma.SortOrder
+  transcript?: Prisma.SortOrderInput | Prisma.SortOrder
   sections?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -286,6 +297,7 @@ export type ListeningTestScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"ListeningTest"> | string
   difficulty?: Prisma.StringWithAggregatesFilter<"ListeningTest"> | string
   audioUrl?: Prisma.StringWithAggregatesFilter<"ListeningTest"> | string
+  transcript?: Prisma.StringNullableWithAggregatesFilter<"ListeningTest"> | string | null
   sections?: Prisma.IntWithAggregatesFilter<"ListeningTest"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ListeningTest"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ListeningTest"> | Date | string
@@ -296,6 +308,7 @@ export type ListeningTestCreateInput = {
   title: string
   difficulty?: string
   audioUrl: string
+  transcript?: string | null
   sections?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -308,6 +321,7 @@ export type ListeningTestUncheckedCreateInput = {
   title: string
   difficulty?: string
   audioUrl: string
+  transcript?: string | null
   sections?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -320,6 +334,7 @@ export type ListeningTestUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -332,6 +347,7 @@ export type ListeningTestUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -344,6 +360,7 @@ export type ListeningTestCreateManyInput = {
   title: string
   difficulty?: string
   audioUrl: string
+  transcript?: string | null
   sections?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -354,6 +371,7 @@ export type ListeningTestUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -364,6 +382,7 @@ export type ListeningTestUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -374,6 +393,7 @@ export type ListeningTestCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   audioUrl?: Prisma.SortOrder
+  transcript?: Prisma.SortOrder
   sections?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -388,6 +408,7 @@ export type ListeningTestMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   audioUrl?: Prisma.SortOrder
+  transcript?: Prisma.SortOrder
   sections?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -398,6 +419,7 @@ export type ListeningTestMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   audioUrl?: Prisma.SortOrder
+  transcript?: Prisma.SortOrder
   sections?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -445,6 +467,7 @@ export type ListeningTestCreateWithoutQuestionsInput = {
   title: string
   difficulty?: string
   audioUrl: string
+  transcript?: string | null
   sections?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -456,6 +479,7 @@ export type ListeningTestUncheckedCreateWithoutQuestionsInput = {
   title: string
   difficulty?: string
   audioUrl: string
+  transcript?: string | null
   sections?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -483,6 +507,7 @@ export type ListeningTestUpdateWithoutQuestionsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -494,6 +519,7 @@ export type ListeningTestUncheckedUpdateWithoutQuestionsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -505,6 +531,7 @@ export type ListeningTestCreateWithoutListeningResultsInput = {
   title: string
   difficulty?: string
   audioUrl: string
+  transcript?: string | null
   sections?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -516,6 +543,7 @@ export type ListeningTestUncheckedCreateWithoutListeningResultsInput = {
   title: string
   difficulty?: string
   audioUrl: string
+  transcript?: string | null
   sections?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -543,6 +571,7 @@ export type ListeningTestUpdateWithoutListeningResultsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -554,6 +583,7 @@ export type ListeningTestUncheckedUpdateWithoutListeningResultsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
   audioUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  transcript?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sections?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -605,6 +635,7 @@ export type ListeningTestSelect<ExtArgs extends runtime.Types.Extensions.Interna
   title?: boolean
   difficulty?: boolean
   audioUrl?: boolean
+  transcript?: boolean
   sections?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -618,6 +649,7 @@ export type ListeningTestSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   title?: boolean
   difficulty?: boolean
   audioUrl?: boolean
+  transcript?: boolean
   sections?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -628,6 +660,7 @@ export type ListeningTestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   title?: boolean
   difficulty?: boolean
   audioUrl?: boolean
+  transcript?: boolean
   sections?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -638,12 +671,13 @@ export type ListeningTestSelectScalar = {
   title?: boolean
   difficulty?: boolean
   audioUrl?: boolean
+  transcript?: boolean
   sections?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ListeningTestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "difficulty" | "audioUrl" | "sections" | "createdAt" | "updatedAt", ExtArgs["result"]["listeningTest"]>
+export type ListeningTestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "difficulty" | "audioUrl" | "transcript" | "sections" | "createdAt" | "updatedAt", ExtArgs["result"]["listeningTest"]>
 export type ListeningTestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   questions?: boolean | Prisma.ListeningTest$questionsArgs<ExtArgs>
   listeningResults?: boolean | Prisma.ListeningTest$listeningResultsArgs<ExtArgs>
@@ -663,6 +697,7 @@ export type $ListeningTestPayload<ExtArgs extends runtime.Types.Extensions.Inter
     title: string
     difficulty: string
     audioUrl: string
+    transcript: string | null
     sections: number
     createdAt: Date
     updatedAt: Date
@@ -1095,6 +1130,7 @@ export interface ListeningTestFieldRefs {
   readonly title: Prisma.FieldRef<"ListeningTest", 'String'>
   readonly difficulty: Prisma.FieldRef<"ListeningTest", 'String'>
   readonly audioUrl: Prisma.FieldRef<"ListeningTest", 'String'>
+  readonly transcript: Prisma.FieldRef<"ListeningTest", 'String'>
   readonly sections: Prisma.FieldRef<"ListeningTest", 'Int'>
   readonly createdAt: Prisma.FieldRef<"ListeningTest", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ListeningTest", 'DateTime'>
