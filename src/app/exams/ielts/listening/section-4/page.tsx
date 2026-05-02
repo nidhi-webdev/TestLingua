@@ -104,9 +104,9 @@ export default function Section4Dashboard() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-          {/* Type Selection Cards - 3 Columns in one line */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+          {/* Type Selection Cards - Reverted to 2-Column Grid */}
+          <div className="grid md:grid-cols-2 gap-10">
             {questionTypes.map((type) => (
               <Link
                 key={type.id}

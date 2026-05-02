@@ -81,7 +81,7 @@ export default function ListeningSection1TypePage() {
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">What&apos;s involved?</p>
                   <h2 className="mt-2 text-2xl font-black text-slate-900">
-                    {routeType === "type-6" ? "Short-answer questions" : "Completion questions"}
+                    {routeType === "type-6" ? "Short-answer questions" : "Form/note/table/flow chart/summary completion"}
                   </h2>
                 </div>
                 <button
@@ -97,7 +97,9 @@ export default function ListeningSection1TypePage() {
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">What&apos;s involved?</h3>
                   <p>
-                    In this type of question, you have to read a question and write a short answer using information from the recording.
+                    {routeType === "type-6" 
+                      ? "In this type of question, you have to read a question and write a short answer using information from the recording."
+                      : "Fill in the gaps in an outline using facts, names, or categories from the recording."}
                   </p>
                 </div>
 
@@ -147,67 +149,91 @@ export default function ListeningSection1TypePage() {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Practice Questions</p>
-                    <h2 className="text-2xl font-black text-slate-900">Completion questions</h2>
+                    <h2 className="text-2xl font-black text-slate-900">
+                      {routeType === "type-6" ? "Short-answer questions" : "Form/note/table/flow chart/summary completion"}
+                    </h2>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  {questions.map((question) => (
-                    <div key={question.id} className="rounded-2xl border border-slate-200 p-4 sm:p-5 bg-slate-50/80">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Question {question.order}</p>
-                          <p className="mt-2 text-base font-semibold text-slate-900">{question.text}</p>
-                        </div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full">
-                          Gap fill
-                        </span>
+                  {routeType === "type-4" ? (
+                    <div className="bg-slate-50 border-2 border-slate-200 rounded-[2rem] overflow-hidden">
+                      <div className="bg-slate-900 px-8 py-4 flex items-center justify-between">
+                        <h3 className="text-white font-black uppercase tracking-widest text-xs">Membership Form</h3>
+                        <span className="text-slate-400 text-[10px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
                       </div>
-                      {question.type === "multiple_choice" ? (
-                        <div className="mt-4 space-y-3">
-                          {question.options?.map((option) => {
-                            const isSelected = answers[question.id] === option;
-
-                            return (
-                              <button
-                                key={option}
-                                type="button"
-                                onClick={() => setAnswers((prev) => ({ ...prev, [question.id]: option }))}
-                                className={`w-full text-left rounded-xl border px-4 py-3 text-sm font-medium transition ${
-                                  isSelected
-                                    ? "border-sky-500 bg-sky-50 text-sky-900"
-                                    : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"
-                                }`}
-                              >
-                                {option}
-                              </button>
-                            );
-                          })}
-                          <p className="text-xs text-slate-400 font-medium">
-                            Correct answer: {question.answer.join(" / ")}
-                          </p>
-                        </div>
-                      ) : (
-                        <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
-                          <input
-                            type="text"
-                            value={answers[question.id] || ""}
-                            onChange={(event) => setAnswers((prev) => ({ ...prev, [question.id]: event.target.value }))}
-                            placeholder="Type your answer"
-                            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
-                          />
-                          <p className="text-xs text-slate-400 font-medium sm:text-right">
-                            Accepts: {question.answer.join(" / ")}
-                          </p>
-                        </div>
-                      )}
-                      {question.transcript && (
-                        <p className="mt-3 text-xs leading-6 text-slate-500 border-t border-slate-200 pt-3">
-                          Transcript cue: {question.transcript}
-                        </p>
-                      )}
+                      <div className="p-8 sm:p-10 space-y-8">
+                        {questions.map((question) => (
+                          <div key={question.id} className="grid sm:grid-cols-[1fr_1.5fr] gap-6 items-center group">
+                            <label className="text-sm font-bold text-slate-700 flex items-center gap-3">
+                              <span className="w-6 h-6 rounded bg-slate-900 text-white flex items-center justify-center text-[10px] font-black">{question.order}</span>
+                              {question.text}
+                            </label>
+                            <div className="relative">
+                              <input
+                                type="text"
+                                value={answers[question.id] || ""}
+                                onChange={(event) => setAnswers((prev) => ({ ...prev, [question.id]: event.target.value }))}
+                                placeholder="Type answer..."
+                                className="w-full rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-black outline-none transition focus:border-sky-600 focus:ring-4 focus:ring-sky-100 shadow-sm"
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  ))}
+                  ) : (
+                    questions.map((question) => (
+                      <div key={question.id} className="rounded-2xl border border-slate-200 p-4 sm:p-5 bg-slate-50/80">
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-400">Question {question.order}</p>
+                            <p className="mt-2 text-base font-semibold text-slate-900">{question.text}</p>
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full">
+                            {question.type === "short_answer" ? "Short Answer" : "Gap fill"}
+                          </span>
+                        </div>
+                        {question.type === "multiple_choice" ? (
+                          <div className="mt-4 space-y-3">
+                            {question.options?.map((option) => {
+                              const isSelected = answers[question.id] === option;
+
+                              return (
+                                <button
+                                  key={option}
+                                  type="button"
+                                  onClick={() => setAnswers((prev) => ({ ...prev, [question.id]: option }))}
+                                  className={`w-full text-left rounded-xl border px-4 py-3 text-sm font-medium transition ${
+                                    isSelected
+                                      ? "border-sky-500 bg-sky-50 text-sky-900"
+                                      : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"
+                                  }`}
+                                >
+                                  {option}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        ) : (
+                          <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+                            <input
+                              type="text"
+                              value={answers[question.id] || ""}
+                              onChange={(event) => setAnswers((prev) => ({ ...prev, [question.id]: event.target.value }))}
+                              placeholder="Type your answer"
+                              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
+                            />
+                          </div>
+                        )}
+                        {question.transcript && (
+                          <p className="mt-3 text-xs leading-6 text-slate-500 border-t border-slate-200 pt-3">
+                            Transcript cue: {question.transcript}
+                          </p>
+                        )}
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
 

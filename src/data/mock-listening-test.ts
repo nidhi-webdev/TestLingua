@@ -806,19 +806,31 @@ const type2Test: ListeningTest = {
 };
 
 const type4Section2Transcript = `
-RECEPTIONIST: Good morning, and welcome to Westside Leisure Centre. I'm Claire, the membership coordinator, and I'm delighted to help you get started with us today. Let me give you an overview of our membership packages and facilities.
-
-We have three main membership options. The Basic membership costs £35 per month and gives you access to the gym and swimming pool during standard hours, which are 6 AM to 10 PM, Monday to Friday, and 8 AM to 6 PM on weekends. The Premium membership, at £60 per month, includes everything in Basic plus access to all classes, including yoga, pilates, spin, and circuit training. You'll also get priority booking for classes and personal training sessions. Finally, our Elite membership at £90 per month is our most comprehensive option. It includes gym, pool, and classes, plus unlimited personal training consultations, access to the sauna and steam room, and extended hours until 11 PM on weekdays.
-
-All memberships include a complimentary induction session where a trainer will show you how to use the equipment safely. We also provide access to our online portal where you can book classes, track your progress, and access workout videos.
-
-Now, regarding our facilities. We have a fully equipped gymnasium with cardio machines, free weights, and resistance equipment. The swimming pool is 25 metres and has dedicated lanes for lap swimming plus a shallow end for aqua aerobics. Our teaching studios host group fitness classes throughout the day. We also have a physiotherapy clinic on site if you need any rehabilitation or injury support. The sauna and steam room are complimentary for Premium and Elite members, though Basic members can pay a small fee to use them.
-
-For new members, we have a special promotion running this month. If you commit to a 12-month membership, you'll receive the first month completely free, plus a free gym bag and water bottle. Payment can be made by monthly direct debit or annual payment, and we accept all major credit cards.
-
-Cancellation is straightforward – you simply give us 30 days' notice in writing, though if you're within the first 30 days of membership, there's a one-time £25 cancellation fee. We also offer a 7-day free trial if you'd like to experience the facilities before committing.
-
-One important note: we have a strict no-phones policy in the gym areas for safety reasons, and we ask all members to wipe down equipment after use. We're located at 47 Northgate Street, there's free parking for members, and we're just a five-minute walk from the train station. Do you have any questions before we proceed with your registration?
+RECEPTIONIST: Good morning, and welcome to Westside Leisure Centre. I'm Claire, the membership coordinator. How can I help you today?
+CUSTOMER: Hi Claire, I'm interested in joining the centre. Could you give me some information about your membership packages?
+RECEPTIONIST: Of course! We actually have three main options. Our Basic membership is quite popular—that's thirty-five pounds per month. It gives you full access to the gym and swimming pool during our standard hours.
+CUSTOMER: And what are those hours, exactly?
+RECEPTIONIST: On weekdays, we're open from six AM to ten PM. Then on weekends, it's eight AM to six PM.
+CUSTOMER: That sounds reasonable. What about your other plans?
+RECEPTIONIST: Well, we have the Premium membership for sixty pounds a month. That includes everything in the Basic plan, plus access to all our group classes—things like yoga, pilates, spin, and circuit training. You also get priority when booking those sessions.
+CUSTOMER: I see. And you mentioned a third option?
+RECEPTIONIST: Yes, that's our Elite membership at ninety pounds per month. It's our most comprehensive package. You get unlimited personal training consultations, access to the sauna and steam room, and we even extend the hours until eleven PM on weekdays just for Elite members.
+CUSTOMER: That's a lot of features! Does every new member get any help starting out?
+RECEPTIONIST: Absolutely. All memberships include a complimentary induction session where a professional trainer will show you how to use all the equipment safely. You'll also get access to our online portal for tracking your progress.
+CUSTOMER: Great. Aside from the gym and pool, are there any other facilities I should know about?
+RECEPTIONIST: We have a physiotherapy clinic right here on site for injury support. And as I mentioned, the sauna and steam room are free for Premium and Elite members, though Basic members can use them for a small extra fee.
+CUSTOMER: Are there any special promotions for joining this month?
+RECEPTIONIST: Yes, if you sign up for a twelve-month commitment, your first month is completely free! We'll even throw in a free gym bag and a water bottle.
+CUSTOMER: That's a great deal. How does the payment work?
+RECEPTIONIST: Most people set up a monthly direct debit, but you can also make an annual payment if you prefer. We accept all major credit cards.
+CUSTOMER: And what if I need to cancel at some point?
+RECEPTIONIST: It's very simple. You just need to give us thirty days' notice in writing. Just keep in mind that if you cancel within your very first month, there's a one-time twenty-five pound fee. We do offer a seven-day free trial if you want to test the waters first!
+CUSTOMER: Perfect. One last thing—where exactly are you located and is there parking?
+RECEPTIONIST: We're at forty-seven Northgate Street. There's plenty of free parking for members, and we're only a five-minute walk from the train station.
+CUSTOMER: Excellent. Are there any specific rules I should follow in the gym?
+RECEPTIONIST: Just two main ones: we have a strict no-phones policy in the workout areas for safety, and we ask everyone to wipe down the equipment after they use it.
+CUSTOMER: That makes sense. Well, I think I have everything I need.
+RECEPTIONIST: Wonderful! Shall we proceed with your registration?
 `;
 
 const type4Section2Test: ListeningTest = {
@@ -831,81 +843,81 @@ const type4Section2Test: ListeningTest = {
   questions: [
     {
       id: "l4s2q1",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "Basic membership costs: £_____ per month",
+      text: "Basic membership monthly fee:",
       answer: ["35"],
       order: 1
     },
     {
       id: "l4s2q2",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "Premium membership provides access to all classes including _____, pilates, spin, and circuit training",
+      text: "Premium membership (classes):",
       answer: ["yoga"],
       order: 2
     },
     {
       id: "l4s2q3",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "Elite membership costs: £_____ per month",
+      text: "Elite membership monthly fee:",
       answer: ["90"],
       order: 3
     },
     {
       id: "l4s2q4",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "Standard gym hours are 6 AM to 10 PM on weekdays and _____ to 6 PM on weekends",
+      text: "Weekend opening time:",
       answer: ["8 AM"],
       order: 4
     },
     {
       id: "l4s2q5",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "The swimming pool is _____ metres long",
-      answer: ["25"],
+      text: "Swimming pool length:",
+      answer: ["25", "25 metres"],
       order: 5
     },
     {
       id: "l4s2q6",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "New members with 12-month commitment receive _____ month completely free",
-      answer: ["first", "the first"],
+      text: "Promotion: commitment for",
+      answer: ["12 months"],
       order: 6
     },
     {
       id: "l4s2q7",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "Membership cancellation requires _____ days' written notice",
-      answer: ["30"],
+      text: "Cancellation notice period:",
+      answer: ["30 days"],
       order: 7
     },
     {
       id: "l4s2q8",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "There is a one-time cancellation fee of £_____ if cancelled within 30 days",
-      answer: ["25"],
+      text: "One-time cancellation fee:",
+      answer: ["25", "25 pounds"],
       order: 8
     },
     {
       id: "l4s2q9",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "The leisure centre is located at _____ Northgate Street",
+      text: "Address: Northgate Street number",
       answer: ["47"],
       order: 9
     },
     {
       id: "l4s2q10",
-      section: 2,
+      section: 1,
       type: "completion",
-      text: "Members must wipe down _____ after use",
+      text: "Rule: must wipe down",
       answer: ["equipment"],
       order: 10
     }
