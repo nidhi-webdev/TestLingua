@@ -348,7 +348,7 @@ const type3Test: ListeningTest = {
   id: "listening-type-3",
   title: "Central Community Centre Floor Plan",
   difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-2-type-3.mp3",
+  audioUrl: "/audio/Generated Audio May 02, 2026 - 3_49PM.wav",
   transcript: type3Transcript,
   sections: 2,
   questions: [
