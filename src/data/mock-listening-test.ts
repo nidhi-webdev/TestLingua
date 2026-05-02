@@ -1522,6 +1522,335 @@ const section3Type6Test: ListeningTest = {
   ]
 };
 
+// Section 4: Monologue in an Academic Context
+
+const section4Type4Transcript = `
+LECTURER: Good morning, everyone. Today, I'll be discussing the evolution of renewable energy technology and its impact on global energy systems. This is particularly relevant as we face increasing pressure to reduce carbon emissions.
+
+Let me start with a historical overview. In the 1970s, the first significant solar panels were developed, though they had an efficiency rate of only about 6 percent. Meanwhile, modern wind turbines were also being experimented with, but they were much smaller than the massive installations we see today.
+
+The 1980s saw rapid development. Solar efficiency improved to around 12 percent, and commercial wind farms began operating in California. Investment was moderate, approximately $5 billion globally. However, there were significant challenges – technology was unreliable, and maintenance costs were extraordinarily high.
+
+The turning point came in the 2000s. By 2005, solar panel efficiency had reached 15 percent, and costs had dropped dramatically. Wind energy became increasingly cost-effective. Government incentives played a crucial role during this period. Germany, for instance, invested heavily in photovoltaic installations. Annual investment reached $20 billion worldwide by 2008.
+
+Today, the situation has transformed completely. Solar panel efficiency now exceeds 20 percent for commercial panels, with laboratory prototypes reaching over 45 percent. Wind turbine capacity has grown exponentially, with modern turbines producing 12 megawatts or more. Costs have become competitive with fossil fuels in many regions.
+
+The global renewable energy market in 2024 is worth approximately $500 billion, with projections suggesting growth to $2 trillion by 2030. Challenges remain, however. Energy storage is still problematic – batteries can store power for hours, but large-scale storage for days is still difficult. Grid integration remains another challenge.
+
+Looking forward, I predict that by 2040, renewable energy will account for over 50 percent of global electricity generation, up from approximately 30 percent today. This transformation will fundamentally reshape energy markets and geopolitical relationships. Thank you.
+`;
+
+const section4Type4Test: ListeningTest = {
+  id: "listening-section4-type4",
+  title: "History of Renewable Energy Technology",
+  difficulty: "Hard",
+  audioUrl: "https://example.com/listening-section-4-type-4.mp3",
+  transcript: section4Type4Transcript,
+  sections: 4,
+  questions: [
+    {
+      id: "s4t4q1",
+      section: 4,
+      type: "completion",
+      text: "1970s solar panel efficiency: _____ percent",
+      answer: ["6"],
+      order: 1
+    },
+    {
+      id: "s4t4q2",
+      section: 4,
+      type: "completion",
+      text: "1980s solar panel efficiency improved to: _____ percent",
+      answer: ["12"],
+      order: 2
+    },
+    {
+      id: "s4t4q3",
+      section: 4,
+      type: "completion",
+      text: "1980s global investment: approximately _____ billion",
+      answer: ["5"],
+      order: 3
+    },
+    {
+      id: "s4t4q4",
+      section: 4,
+      type: "completion",
+      text: "By 2008, annual global renewable investment reached: _____ billion",
+      answer: ["20"],
+      order: 4
+    },
+    {
+      id: "s4t4q5",
+      section: 4,
+      type: "completion",
+      text: "Current commercial solar panel efficiency: over _____ percent",
+      answer: ["20"],
+      order: 5
+    },
+    {
+      id: "s4t4q6",
+      section: 4,
+      type: "completion",
+      text: "Modern wind turbines produce: _____ megawatts or more",
+      answer: ["12"],
+      order: 6
+    },
+    {
+      id: "s4t4q7",
+      section: 4,
+      type: "completion",
+      text: "2024 global renewable energy market: approximately _____ billion",
+      answer: ["500"],
+      order: 7
+    },
+    {
+      id: "s4t4q8",
+      section: 4,
+      type: "completion",
+      text: "Projected market value by 2030: _____ trillion",
+      answer: ["2"],
+      order: 8
+    },
+    {
+      id: "s4t4q9",
+      section: 4,
+      type: "completion",
+      text: "Current renewable energy percentage of global electricity: approximately _____ percent",
+      answer: ["30"],
+      order: 9
+    },
+    {
+      id: "s4t4q10",
+      section: 4,
+      type: "completion",
+      text: "Predicted renewable energy percentage by 2040: over _____ percent",
+      answer: ["50"],
+      order: 10
+    }
+  ]
+};
+
+const section4Type5Transcript = `
+PROFESSOR: Good afternoon. Today's lecture focuses on the psychology of decision-making and how cognitive biases affect our choices. This is crucial to understanding human behaviour in both personal and professional contexts.
+
+Let me begin with a fundamental concept: bounded rationality. Unlike classical economics which assumes we make perfectly rational decisions, bounded rationality suggests that our decisions are limited by the information available, our cognitive abilities, and the time we have to decide.
+
+One critical bias is confirmation bias. This is our tendency to search for, interpret, and remember information that confirms what we already believe. For example, if you believe electric cars are superior, you might focus on reading positive reviews about them while ignoring negative feedback. This bias can lead to poor decision-making because we're not considering all available evidence.
+
+Another important phenomenon is anchoring bias. When we're making decisions, we rely heavily on the first piece of information we receive, which acts as an anchor. Imagine you're buying a car, and the dealer first mentions a high price. Even if they then offer a lower price, that initial anchor influences your perception of whether the final price is reasonable.
+
+Then there's the availability heuristic. We tend to judge the likelihood of events based on how easily examples come to mind. For instance, after watching news about plane crashes, people often overestimate the danger of flying because those dramatic examples are very available in their memory.
+
+The sunk cost fallacy is particularly damaging in business decisions. This is when people continue investing in a failing project because of money they've already invested, rather than making a rational assessment of future potential. For example, a company might continue funding an unsuccessful product because they've already spent millions on it.
+
+Importantly, understanding these biases doesn't eliminate them. Even when we're aware of them, they still influence our thinking. The key is to implement systematic processes to counteract them, such as seeking diverse opinions or considering alternative scenarios.
+
+In conclusion, recognising cognitive biases is essential for making better decisions. Whether in finance, medicine, or personal life, understanding these mental shortcuts helps us make more thoughtful choices. Thank you for your attention.
+`;
+
+const section4Type5Test: ListeningTest = {
+  id: "listening-section4-type5",
+  title: "Psychology of Decision-Making",
+  difficulty: "Hard",
+  audioUrl: "https://example.com/listening-section-4-type-5.mp3",
+  transcript: section4Type5Transcript,
+  sections: 4,
+  questions: [
+    {
+      id: "s4t5q1",
+      section: 4,
+      type: "completion",
+      text: "Bounded rationality suggests our decisions are limited by _____ available, cognitive abilities, and time.",
+      answer: ["information", "the information"],
+      order: 1
+    },
+    {
+      id: "s4t5q2",
+      section: 4,
+      type: "completion",
+      text: "Confirmation bias is our tendency to search for information that _____ what we already believe.",
+      answer: ["confirms"],
+      order: 2
+    },
+    {
+      id: "s4t5q3",
+      section: 4,
+      type: "completion",
+      text: "In anchoring bias, we rely heavily on _____ piece of information we receive.",
+      answer: ["the first", "first"],
+      order: 3
+    },
+    {
+      id: "s4t5q4",
+      section: 4,
+      type: "completion",
+      text: "The availability heuristic means we judge events based on how easily _____ come to mind.",
+      answer: ["examples"],
+      order: 4
+    },
+    {
+      id: "s4t5q5",
+      section: 4,
+      type: "completion",
+      text: "The sunk cost fallacy occurs when people continue investing based on _____ already invested.",
+      answer: ["money they have", "money", "the money"],
+      order: 5
+    },
+    {
+      id: "s4t5q6",
+      section: 4,
+      type: "completion",
+      text: "Understanding cognitive biases _____ eliminate them from our thinking.",
+      answer: ["does not", "doesn't"],
+      order: 6
+    },
+    {
+      id: "s4t5q7",
+      section: 4,
+      type: "completion",
+      text: "To counteract biases, we should seek _____ opinions and consider alternatives.",
+      answer: ["diverse"],
+      order: 7
+    },
+    {
+      id: "s4t5q8",
+      section: 4,
+      type: "completion",
+      text: "Cognitive biases affect decision-making in _____, medicine, and personal life.",
+      answer: ["finance"],
+      order: 8
+    },
+    {
+      id: "s4t5q9",
+      section: 4,
+      type: "completion",
+      text: "Classical economics assumes we make _____ rational decisions.",
+      answer: ["perfectly"],
+      order: 9
+    },
+    {
+      id: "s4t5q10",
+      section: 4,
+      type: "completion",
+      text: "The key to better decision-making is implementing _____ processes to counteract biases.",
+      answer: ["systematic"],
+      order: 10
+    }
+  ]
+};
+
+const section4Type6Transcript = `
+LECTURER: Hello, everyone. I'm Dr. James Morrison, and today I'll be discussing climate change impacts on ocean ecosystems. This is a topic of critical importance for understanding future environmental challenges.
+
+Ocean ecosystems face unprecedented challenges due to climate change. Let me outline the major impacts we're observing. First, ocean acidification. The oceans absorb approximately 30 percent of the carbon dioxide we emit. When CO2 dissolves in seawater, it forms carbonic acid, making the oceans more acidic. Over the past 150 years, ocean acidity has increased by 30 percent. This sounds modest, but on a pH scale, this represents a significant change.
+
+The consequences are severe for marine life, particularly creatures with shells – molluscs, corals, and some crustaceans. Pteropods, which are crucial food sources for many fish species, are already showing signs of shell dissolution in some regions. Coral bleaching, caused by elevated temperatures, has affected massive areas. The Great Barrier Reef has experienced unprecedented bleaching events in recent years.
+
+Temperature increases are another major concern. The oceans have absorbed approximately 90 percent of the excess heat from greenhouse gas emissions. This has warmed water layers, causing thermocline strengthening – the boundary between warm and cold water becoming more pronounced. This affects nutrient cycling and the distribution of marine species.
+
+Sea level rise is also accelerating. Primarily caused by thermal expansion of warming water and melting ice sheets, sea levels have risen approximately 210 millimetres since 1880. Small island nations face existential threats. Some Pacific islands may become uninhabitable within this century.
+
+Deoxygenation is another critical issue. Warmer water holds less dissolved oxygen, and stratification reduces mixing, creating dead zones where oxygen levels are insufficient for most marine life. The Black Sea, for example, has extensive dead zones.
+
+Fisheries are severely impacted. Fish populations are shifting poleward and to deeper waters, disrupting traditional fishing communities. Commercial fish stocks are declining, with some species facing potential collapse.
+
+The good news is that nature has remarkable resilience. If we reduce emissions and implement marine protection measures, some ecosystems can recover. Marine protected areas have shown positive results in preserving biodiversity and allowing population recovery.
+
+In conclusion, ocean ecosystems face urgent challenges, but with determined action on climate change and marine protection, we can mitigate the worst impacts. Thank you.
+`;
+
+const section4Type6Test: ListeningTest = {
+  id: "listening-section4-type6",
+  title: "Climate Change Impacts on Ocean Ecosystems",
+  difficulty: "Hard",
+  audioUrl: "https://example.com/listening-section-4-type-6.mp3",
+  transcript: section4Type6Transcript,
+  sections: 4,
+  questions: [
+    {
+      id: "s4t6q1",
+      section: 4,
+      type: "short_answer",
+      text: "What percentage of carbon dioxide do oceans absorb?",
+      answer: ["30 percent", "approximately 30 percent"],
+      order: 1
+    },
+    {
+      id: "s4t6q2",
+      section: 4,
+      type: "short_answer",
+      text: "By how much has ocean acidity increased over the past 150 years?",
+      answer: ["30 percent", "by 30 percent"],
+      order: 2
+    },
+    {
+      id: "s4t6q3",
+      section: 4,
+      type: "short_answer",
+      text: "What percentage of excess heat from greenhouse gases have oceans absorbed?",
+      answer: ["90 percent", "approximately 90 percent"],
+      order: 3
+    },
+    {
+      id: "s4t6q4",
+      section: 4,
+      type: "short_answer",
+      text: "By how much have sea levels risen since 1880?",
+      answer: ["210 millimetres", "approximately 210 millimetres"],
+      order: 4
+    },
+    {
+      id: "s4t6q5",
+      section: 4,
+      type: "short_answer",
+      text: "Name one marine creature affected by ocean acidification.",
+      answer: ["molluscs", "corals", "crustaceans", "pteropods"],
+      order: 5
+    },
+    {
+      id: "s4t6q6",
+      section: 4,
+      type: "short_answer",
+      text: "What does thermocline strengthening mean?",
+      answer: ["boundary between warm and cold water becomes more pronounced", "the boundary becomes stronger"],
+      order: 6
+    },
+    {
+      id: "s4t6q7",
+      section: 4,
+      type: "short_answer",
+      text: "What causes sea level rise?",
+      answer: ["thermal expansion and melting ice sheets"],
+      order: 7
+    },
+    {
+      id: "s4t6q8",
+      section: 4,
+      type: "short_answer",
+      text: "What is deoxygenation?",
+      answer: ["warmer water holds less dissolved oxygen"],
+      order: 8
+    },
+    {
+      id: "s4t6q9",
+      section: 4,
+      type: "short_answer",
+      text: "How are fish populations responding to climate change?",
+      answer: ["shifting poleward and to deeper waters"],
+      order: 9
+    },
+    {
+      id: "s4t6q10",
+      section: 4,
+      type: "short_answer",
+      text: "What has shown positive results in preserving marine biodiversity?",
+      answer: ["marine protected areas"],
+      order: 10
+    }
+  ]
+};
+
 export const listeningPracticeSets = {
   "type-1": type1Test,
   "type-2": type2Test,
@@ -1532,6 +1861,9 @@ export const listeningPracticeSets = {
   "section3-type-2": section3Type2Test,
   "section3-type-5": section3Type5Test,
   "section3-type-6": section3Type6Test,
+  "section4-type-4": section4Type4Test,
+  "section4-type-5": section4Type5Test,
+  "section4-type-6": section4Type6Test,
 } as const;
 
 export const mockListeningTest: ListeningTest = type4Test;
