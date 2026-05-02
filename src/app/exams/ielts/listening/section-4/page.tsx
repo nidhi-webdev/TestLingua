@@ -94,9 +94,8 @@ export default function Section4Dashboard() {
                 <Link
                   key={tab.label}
                   href={tab.href}
-                  className={`whitespace-nowrap py-6 border-b-2 text-xs font-black uppercase tracking-widest transition-all ${
-                    tab.active ? "border-blue-600 text-blue-600" : "border-transparent text-slate-400 hover:text-slate-900"
-                  }`}
+                  className={`whitespace-nowrap py-6 border-b-2 text-xs font-black uppercase tracking-widest transition-all ${tab.active ? "border-blue-600 text-blue-600" : "border-transparent text-slate-400 hover:text-slate-900"
+                    }`}
                 >
                   {tab.label}
                 </Link>
@@ -109,14 +108,14 @@ export default function Section4Dashboard() {
           {/* Type Selection Cards - 3 Columns in one line */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {questionTypes.map((type) => (
-              <Link 
+              <Link
                 key={type.id}
                 href={type.href}
                 className="group relative flex flex-col h-full bg-white rounded-[3rem] border border-slate-200 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2"
               >
                 {/* Accent Bar */}
                 <div className={`h-1.5 w-full ${type.accent}`} />
-                
+
                 <div className="p-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-8">
                     <div className={`w-16 h-16 rounded-2xl ${type.iconBg} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
@@ -135,7 +134,7 @@ export default function Section4Dashboard() {
                     <p className="text-sm text-slate-500 leading-relaxed font-medium">
                       {type.description}
                     </p>
-                    
+
                     <div className="pt-4 flex items-center gap-3">
                       <Target size={16} className="text-emerald-500" />
                       <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Listening for Academic Details</p>
@@ -145,7 +144,6 @@ export default function Section4Dashboard() {
                   <div className="mt-auto flex items-center justify-between pt-8 border-t border-slate-50">
                     <div className="flex items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
                       <span className="flex items-center gap-1"><Clock size={14} /> 9 Mins</span>
-                      <span className="flex items-center gap-1 text-emerald-600"><Zap size={14} className="fill-current" /> AI EVAL</span>
                     </div>
                     <span className={`flex items-center gap-1 text-slate-900 font-black text-sm group-hover:${type.titleClass} transition-colors`}>
                       Start Practice <ChevronRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
