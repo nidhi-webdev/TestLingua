@@ -837,7 +837,7 @@ const type4Section2Test: ListeningTest = {
   id: "listening-type-4-section2",
   title: "Westside Leisure Centre Membership Briefing",
   difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-2-type-4.mp3",
+  audioUrl: "/audio/Generated Audio May 02, 2026 - 11_30AM.wav",
   transcript: type4Section2Transcript,
   sections: 2,
   questions: [
