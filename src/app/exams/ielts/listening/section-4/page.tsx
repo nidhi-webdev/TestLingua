@@ -105,50 +105,55 @@ export default function Section4Dashboard() {
           </div>
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+          {/* Type Selection Cards - 3 Columns in one line */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {questionTypes.map((type) => (
-              <Link
+              <Link 
                 key={type.id}
                 href={type.href}
-                className="group relative flex flex-col h-full bg-white rounded-[2.75rem] border border-slate-200/80 overflow-hidden transition-all duration-500 hover:shadow-[0_24px_80px_rgba(15,23,42,0.12)] hover:-translate-y-1"
+                className="group relative flex flex-col h-full bg-white rounded-[3rem] border border-slate-200 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2"
               >
-                  <div className={`h-2 w-full ${type.accent}`} />
-
-                  <div className="p-8 sm:p-9 flex flex-col h-full min-h-92">
-                    <div className="flex items-start justify-between gap-6">
-                      <div className={`w-20 h-20 rounded-4xl ${type.iconBg} flex items-center justify-center shadow-[0_18px_40px_rgba(15,23,42,0.06)] transition-transform duration-500 group-hover:scale-105`}>
-                        {type.icon}
-                      </div>
-
-                      <div className="text-right pt-2">
-                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.24em] leading-none">Practice Set</p>
-                        <p className="mt-4 text-2xl font-black text-slate-900 leading-none">10 Questions</p>
-                      </div>
+                {/* Accent Bar */}
+                <div className={`h-1.5 w-full ${type.accent}`} />
+                
+                <div className="p-10 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-8">
+                    <div className={`w-16 h-16 rounded-2xl ${type.iconBg} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
+                      {type.icon}
                     </div>
-
-                    <div className="flex-1" />
-
-                    <div className="pt-10">
-                      <h2 className={`text-2xl font-black ${type.titleClass} transition-colors leading-[1.05] tracking-tight max-w-[11ch]`}>
-                        {type.title}
-                      </h2>
-                      <p className="mt-4 text-sm text-slate-600 leading-relaxed font-medium max-w-[20rem]">
-                        {type.description}
-                      </p>
+                    <div className="text-right">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Practice Set</p>
+                      <p className="text-lg font-black text-slate-900 mt-2">10 Questions</p>
                     </div>
+                  </div>
 
-                    <div className="mt-8 flex items-center justify-between pt-6 border-t border-slate-100">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
-                        <Clock size={13} /> 9 mins
-                      </span>
-                      <span className={`flex items-center gap-1.5 font-black text-sm transition-colors ${type.titleClass} group-hover:opacity-90`}>
-                        Start <ChevronRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
-                      </span>
+                  <div className="flex-1 space-y-4 mb-10">
+                    <h2 className={`text-2xl font-black text-slate-900 group-hover:${type.titleClass} transition-colors leading-tight`}>
+                      {type.title}
+                    </h2>
+                    <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                      {type.description}
+                    </p>
+                    
+                    <div className="pt-4 flex items-center gap-3">
+                      <Target size={16} className="text-emerald-500" />
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Listening for Academic Details</p>
                     </div>
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between pt-8 border-t border-slate-50">
+                    <div className="flex items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                      <span className="flex items-center gap-1"><Clock size={14} /> 9 Mins</span>
+                      <span className="flex items-center gap-1 text-emerald-600"><Zap size={14} className="fill-current" /> AI EVAL</span>
+                    </div>
+                    <span className={`flex items-center gap-1 text-slate-900 font-black text-sm group-hover:${type.titleClass} transition-colors`}>
+                      Start Practice <ChevronRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </div>
                 </div>
 
+                {/* Background Decor */}
                 <div className={`absolute -right-8 -bottom-8 w-40 h-40 ${type.decor} rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700`} />
               </Link>
             ))}
