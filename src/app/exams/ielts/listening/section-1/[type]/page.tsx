@@ -5,12 +5,13 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowLeft, CheckCircle2, Clock3, FileText, Headphones, Info, PlayCircle, RotateCcw, Send, Sparkles, XCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Clock3, FileText, Headphones, Info, Mic2, PlayCircle, RotateCcw, Send, Sparkles, XCircle } from "lucide-react";
 import { listeningPracticeSets } from "@/data/mock-listening-test";
 
 export default function ListeningSection1TypePage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [showTranscript, setShowTranscript] = useState(false);
   const params = useParams<{ type?: string }>();
   const routeType = typeof params?.type === "string" ? params.type : "type-4";
   const practiceSet = listeningPracticeSets[routeType as keyof typeof listeningPracticeSets] ?? listeningPracticeSets["type-4"];
@@ -90,16 +91,58 @@ export default function ListeningSection1TypePage() {
                       <PlayCircle className="w-6 h-6" />
                     </div>
                   </div>
-                  <div className="bg-slate-50 rounded-2xl border border-slate-100 p-1">
-                    <audio
-                      controls
-                      src={practiceSet.audioUrl}
-                      className="w-full h-11"
-                    />
+                  <div className="space-y-6">
+                    <div className="p-1 bg-slate-50 rounded-2xl border border-slate-100">
+                      <audio
+                        controls
+                        src={practiceSet.audioUrl}
+                        className="w-full h-11"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 px-2">
+                        <Info className="w-3.5 h-3.5" />
+                        Listen carefully; audio plays only once in the real exam.
+                      </div>
+                      
+                      <button 
+                        onClick={() => setShowTranscript(!showTranscript)}
+                        className={`w-full py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border ${
+                          showTranscript 
+                            ? "bg-slate-900 text-white border-slate-900 shadow-lg shadow-slate-900/20" 
+                            : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                        }`}
+                      >
+                        {showTranscript ? "Hide Transcript" : "Show Transcript"}
+                      </button>
+                    </div>
+
+                    {showTranscript && (
+                      <div className="mt-6 p-6 bg-slate-50 rounded-[1.5rem] border border-slate-100 animate-in fade-in slide-in-from-top-2 duration-300 overflow-hidden">
+                        <div className="flex items-center gap-2 mb-4 text-[10px] font-black uppercase tracking-widest text-blue-600">
+                          <Mic2 className="w-3.5 h-3.5" /> Audio Transcript
+                        </div>
+                        <div className="max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                          <div className="space-y-4">
+                            {practiceSet.transcript?.split('\n').map((line, i) => {
+                              if (!line.trim()) return null;
+                              const [speaker, ...textParts] = line.split(':');
+                              const text = textParts.join(':');
+                              
+                              if (!text) return <p key={i} className="text-xs text-slate-600 font-medium leading-relaxed">{line}</p>;
+                              
+                              return (
+                                <div key={i} className="space-y-1">
+                                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">{speaker}</span>
+                                  <p className="text-xs text-slate-700 font-bold leading-relaxed">{text.trim()}</p>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <p className="mt-3 flex items-center gap-1.5 text-[10px] font-bold text-slate-400">
-                    <Info className="w-3 h-3" /> Audio plays only once in the real exam.
-                  </p>
                 </div>
               </div>
             </div>
@@ -161,108 +204,53 @@ export default function ListeningSection1TypePage() {
 
                 {/* Questions */}
                 <div className="space-y-6">
-                  {routeType === "type-4" ? (
-                    /* ── Form Completion Layout ── */
-                    <div className="border-2 border-slate-100 rounded-2xl overflow-hidden">
-                      <div className="bg-slate-900 px-6 sm:px-8 py-4 flex items-center justify-between">
-                        <h3 className="text-white font-black uppercase tracking-widest text-[10px]">Membership Form</h3>
-                        <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
-                      </div>
-                      <div className="p-6 sm:p-8 space-y-6 bg-slate-50/30">
-                        {questions.map((question) => {
-                          const isCorrect = question.answer.some(a => a.toLowerCase().trim() === (answers[question.id] || "").toLowerCase().trim());
-
-                          return (
-                            <div key={question.id} className="grid sm:grid-cols-[1.1fr_1fr] gap-4 sm:gap-6 items-start">
-                              <label className="text-sm font-bold text-slate-700 flex items-center gap-3 pt-3">
-                                <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 ${
-                                  submitted
-                                    ? isCorrect ? "bg-emerald-500 text-white" : "bg-rose-500 text-white"
-                                    : "bg-slate-900 text-white"
-                                }`}>
-                                  {question.order}
-                                </span>
-                                {question.text}
-                              </label>
-                              <div className="space-y-1.5">
-                                <input
-                                  type="text"
-                                  disabled={submitted}
-                                  value={answers[question.id] || ""}
-                                  onChange={(e) => setAnswers(prev => ({ ...prev, [question.id]: e.target.value }))}
-                                  placeholder="Type your answer..."
-                                  className={`w-full rounded-xl border-2 px-4 py-3 text-sm font-bold outline-none transition-all ${
-                                    submitted
-                                      ? isCorrect
-                                        ? "border-emerald-400 bg-emerald-50 text-emerald-900"
-                                        : "border-rose-400 bg-rose-50 text-rose-900"
-                                      : "border-slate-200 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
-                                  } disabled:cursor-not-allowed`}
-                                />
-                                {submitted && !isCorrect && (
-                                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 pl-1">
-                                    <CheckCircle2 className="w-3 h-3" /> Correct: {question.answer[0]}
-                                  </div>
-                                )}
-                                {submitted && isCorrect && (
-                                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 pl-1">
-                                    <CheckCircle2 className="w-3 h-3" /> Correct!
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
+                  {/* ── Unified Form Layout for all Section 1 question types ── */}
+                  <div className="border-2 border-slate-100 rounded-2xl overflow-hidden">
+                    <div className="bg-slate-900 px-6 sm:px-8 py-4 flex items-center justify-between">
+                      <h3 className="text-white font-black uppercase tracking-widest text-[10px]">
+                        {routeType === "type-4" ? "Membership Form" : "Short-Answer Questions"}
+                      </h3>
+                      <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
                     </div>
-                  ) : (
-                    /* ── Short Answer Layout ── */
-                    <div className="space-y-5">
+                    <div className="p-6 sm:p-8 space-y-6 bg-slate-50/30">
                       {questions.map((question) => {
                         const isCorrect = question.answer.some(a => a.toLowerCase().trim() === (answers[question.id] || "").toLowerCase().trim());
 
                         return (
-                          <div key={question.id} className={`rounded-2xl border p-6 transition-all ${
-                            submitted
-                              ? isCorrect ? "border-emerald-200 bg-emerald-50/40" : "border-rose-200 bg-rose-50/40"
-                              : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-md"
-                          }`}>
-                            <div className="flex items-start gap-4">
-                              <span className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-black shrink-0 ${
+                          <div key={question.id} className="grid sm:grid-cols-[1.1fr_1fr] gap-4 sm:gap-6 items-start">
+                            <label className="text-sm font-bold text-slate-700 flex items-center gap-3 pt-3">
+                              <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 ${
                                 submitted
                                   ? isCorrect ? "bg-emerald-500 text-white" : "bg-rose-500 text-white"
-                                  : "bg-blue-600 text-white"
+                                  : "bg-slate-900 text-white"
                               }`}>
                                 {question.order}
                               </span>
-                              <div className="flex-1 min-w-0 space-y-3">
-                                <p className="text-[15px] font-bold text-slate-900 leading-relaxed">{question.text}</p>
-                                <input
-                                  type="text"
-                                  disabled={submitted}
-                                  value={answers[question.id] || ""}
-                                  onChange={(e) => setAnswers(prev => ({ ...prev, [question.id]: e.target.value }))}
-                                  placeholder="Type your answer"
-                                  className={`w-full max-w-sm rounded-xl border-2 px-4 py-3 text-sm font-bold outline-none transition-all ${
-                                    submitted
-                                      ? isCorrect
-                                        ? "border-emerald-400 bg-emerald-50 text-emerald-900"
-                                        : "border-rose-400 bg-rose-50 text-rose-900"
-                                      : "border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
-                                  } disabled:cursor-not-allowed`}
-                                />
-                                {submitted && !isCorrect && (
-                                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600">
-                                    <CheckCircle2 className="w-3.5 h-3.5" /> Correct: {question.answer[0]}
-                                  </div>
-                                )}
-                              </div>
-                              {submitted && (
-                                <div className="pt-1">
-                                  {isCorrect
-                                    ? <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                                    : <XCircle className="w-5 h-5 text-rose-400" />
-                                  }
+                              {question.text}
+                            </label>
+                            <div className="space-y-1.5">
+                              <input
+                                type="text"
+                                disabled={submitted}
+                                value={answers[question.id] || ""}
+                                onChange={(e) => setAnswers(prev => ({ ...prev, [question.id]: e.target.value }))}
+                                placeholder="Type your answer..."
+                                className={`w-full rounded-xl border-2 px-4 py-3 text-sm font-bold outline-none transition-all ${
+                                  submitted
+                                    ? isCorrect
+                                      ? "border-emerald-400 bg-emerald-50 text-emerald-900"
+                                      : "border-rose-400 bg-rose-50 text-rose-900"
+                                    : "border-slate-200 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+                                } disabled:cursor-not-allowed`}
+                              />
+                              {submitted && !isCorrect && (
+                                <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 pl-1">
+                                  <CheckCircle2 className="w-3 h-3" /> Correct: {question.answer[0]}
+                                </div>
+                              )}
+                              {submitted && isCorrect && (
+                                <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 pl-1">
+                                  <CheckCircle2 className="w-3 h-3" /> Correct!
                                 </div>
                               )}
                             </div>
@@ -270,7 +258,7 @@ export default function ListeningSection1TypePage() {
                         );
                       })}
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 {/* ── Action Buttons — always at the bottom of the form ── */}

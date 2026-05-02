@@ -221,7 +221,7 @@ const type6Test: ListeningTest = {
   id: "listening-type-6",
   title: "Campus Volunteer Briefing",
   difficulty: "Easy",
-  audioUrl: "https://example.com/listening-section-1-type-6.mp3",
+  audioUrl: "/audio/Generated Audio May 02, 2026 - 2_08PM.wav",
   transcript: type6Transcript,
   sections: 1,
   questions: [
