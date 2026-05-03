@@ -70,8 +70,8 @@ export default function Section2TypePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  /* ── Section 1–style layout for Plan/Map/Diagram Labelling, Multiple Choice, & Matching ── */
-  if (routeType === "type-3" || routeType === "type-1" || routeType === "type-2") {
+  /* ── Section 1–style layout for Plan/Map/Diagram Labelling, Multiple Choice, Matching, & Form Completion ── */
+  if (routeType === "type-3" || routeType === "type-1" || routeType === "type-2" || routeType === "type-4") {
     return (
       <div className="min-h-screen bg-[#f8fafc] text-slate-900">
         <Navbar />
@@ -159,7 +159,12 @@ export default function Section2TypePage() {
                     <div className="w-12 h-12 rounded-xl bg-slate-950 text-white flex items-center justify-center shrink-0"><FileText className="w-6 h-6" /></div>
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Question Task</p>
-                      <h2 className="text-xl font-black text-slate-900 leading-tight truncate">{routeType === "type-1" ? "Multiple choice questions" : routeType === "type-2" ? "Matching questions" : "Plan/map/diagram labelling"}</h2>
+                      <h2 className="text-xl font-black text-slate-900 leading-tight truncate">
+                        {routeType === "type-1" ? "Multiple choice questions" : 
+                         routeType === "type-2" ? "Matching questions" : 
+                         routeType === "type-4" ? "Form completion" :
+                         "Plan/map/diagram labelling"}
+                      </h2>
                     </div>
                     {!submitted && <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest shrink-0">{answeredCount}/{totalQuestions} answered</span>}
                   </div>
@@ -167,7 +172,12 @@ export default function Section2TypePage() {
                   <div className="space-y-6">
                     <div className="border-2 border-slate-100 rounded-2xl overflow-hidden">
                       <div className="bg-slate-900 px-6 sm:px-8 py-4 flex items-center justify-between">
-                        <h3 className="text-white font-black uppercase tracking-widest text-[10px]">{routeType === "type-1" ? "Multiple Choice" : routeType === "type-2" ? "Matching" : "Diagram Labelling"}</h3>
+                        <h3 className="text-white font-black uppercase tracking-widest text-[10px]">
+                          {routeType === "type-1" ? "Multiple Choice" : 
+                           routeType === "type-2" ? "Matching" : 
+                           routeType === "type-4" ? "Form Completion" :
+                           "Diagram Labelling"}
+                        </h3>
                         <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
                       </div>
                       <div className="p-6 sm:p-8 space-y-6 bg-slate-50/30">
@@ -265,6 +275,8 @@ export default function Section2TypePage() {
                       ["Read questions before listening", "Only one answer is correct", "Don't get tricked by distractors", "Audio plays only once"] : 
                       routeType === "type-2" ?
                       ["Listen for detailed information", "Options may be paraphrased", "Write the correct letter", "Audio plays only once"] :
+                      routeType === "type-4" ?
+                      ["Follow word limits exactly", "Check your spelling carefully", "Write exactly what you hear", "Audio plays only once"] :
                       ["Follow word limits exactly", "NO MORE THAN TWO WORDS", "Spelling must be accurate", "Audio plays only once"]
                     ).map((text, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm font-medium text-slate-600 leading-snug"><div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />{text}</li>

@@ -806,120 +806,124 @@ const type2Test: ListeningTest = {
 };
 
 const type4Section2Transcript = `
-RECEPTIONIST: Good morning, and welcome to Westside Leisure Centre. I'm Claire, the membership coordinator. How can I help you today?
-CUSTOMER: Hi Claire, I'm interested in joining the centre. Could you give me some information about your membership packages?
-RECEPTIONIST: Of course! We actually have three main options. Our Basic membership is quite popular—that's thirty-five pounds per month. It gives you full access to the gym and swimming pool during our standard hours.
-CUSTOMER: And what are those hours, exactly?
-RECEPTIONIST: On weekdays, we're open from six AM to ten PM. Then on weekends, it's eight AM to six PM.
-CUSTOMER: That sounds reasonable. What about your other plans?
-RECEPTIONIST: Well, we have the Premium membership for sixty pounds a month. That includes everything in the Basic plan, plus access to all our group classes—things like yoga, pilates, spin, and circuit training. You also get priority when booking those sessions.
-CUSTOMER: I see. And you mentioned a third option?
-RECEPTIONIST: Yes, that's our Elite membership at ninety pounds per month. It's our most comprehensive package. You get unlimited personal training consultations, access to the sauna and steam room, and we even extend the hours until eleven PM on weekdays just for Elite members.
-CUSTOMER: That's a lot of features! Does every new member get any help starting out?
-RECEPTIONIST: Absolutely. All memberships include a complimentary induction session where a professional trainer will show you how to use all the equipment safely. You'll also get access to our online portal for tracking your progress.
-CUSTOMER: Great. Aside from the gym and pool, are there any other facilities I should know about?
-RECEPTIONIST: We have a physiotherapy clinic right here on site for injury support. And as I mentioned, the sauna and steam room are free for Premium and Elite members, though Basic members can use them for a small extra fee.
-CUSTOMER: Are there any special promotions for joining this month?
-RECEPTIONIST: Yes, if you sign up for a twelve-month commitment, your first month is completely free! We'll even throw in a free gym bag and a water bottle.
-CUSTOMER: That's a great deal. How does the payment work?
-RECEPTIONIST: Most people set up a monthly direct debit, but you can also make an annual payment if you prefer. We accept all major credit cards.
-CUSTOMER: And what if I need to cancel at some point?
-RECEPTIONIST: It's very simple. You just need to give us thirty days' notice in writing. Just keep in mind that if you cancel within your very first month, there's a one-time twenty-five pound fee. We do offer a seven-day free trial if you want to test the waters first!
-CUSTOMER: Perfect. One last thing—where exactly are you located and is there parking?
-RECEPTIONIST: We're at forty-seven Northgate Street. There's plenty of free parking for members, and we're only a five-minute walk from the train station.
-CUSTOMER: Excellent. Are there any specific rules I should follow in the gym?
-RECEPTIONIST: Just two main ones: we have a strict no-phones policy in the workout areas for safety, and we ask everyone to wipe down the equipment after they use it.
-CUSTOMER: That makes sense. Well, I think I have everything I need.
-RECEPTIONIST: Wonderful! Shall we proceed with your registration?
+CLAIRE: Good morning, everyone, and welcome to Westside Leisure Centre. I'm Claire, the membership coordinator here. Today, I'm going to give you a briefing on our centre and the membership packages we offer.
+
+To start with, we have three main membership options designed to suit different needs. Our Basic membership is a very popular choice, priced at thirty-five pounds per month. This package gives you full access to both the gym and our twenty-five metre swimming pool during our standard operating hours. Speaking of which, we are open from six AM until ten PM on weekdays, and from eight AM to six PM at the weekends.
+
+For those looking for more variety, we offer the Premium membership at sixty pounds a month. This includes all the benefits of the Basic plan, but also gives you access to all our group classes, including yoga, pilates, spin, and circuit training. Premium members also receive priority when booking these sessions.
+
+Our most comprehensive package is the Elite membership, which costs ninety pounds per month. This is tailored for members who want the full experience, as it includes unlimited personal training consultations and access to the sauna and steam room. Elite members also enjoy extended access to the gym until eleven PM on weekdays.
+
+Every new member at Westside receives a complimentary induction session. This is where a professional trainer will show you how to use all the equipment safely and effectively. You'll also get access to our online portal to track your fitness progress over time.
+
+In terms of facilities, we also have an on-site physiotherapy clinic for any injury support you might need. The sauna and steam room are free for Premium and Elite members, although Basic members can also access them for a small additional fee.
+
+This month, we have a special promotion: if you sign up for a twelve-month commitment, your first month will be completely free! To welcome you, we'll also provide a free gym bag and a water bottle.
+
+When it comes to payments, most of our members choose to set up a monthly direct debit, but we also accept annual payments and all major credit cards. If you ever need to cancel, our policy is straightforward: we require thirty days' notice in writing. Please be aware that if a cancellation occurs within your very first month, there's a one-time twenty-five pound fee. We do, however, offer a seven-day free trial for those who want to try us out first.
+
+We are conveniently located at forty-seven Northgate Street, which features plenty of free parking for members and is just a five-minute walk from the train station. Finally, I'd like to remind you of a couple of our house rules: for safety reasons, we have a strict no-phones policy in the workout areas, and we ask that everyone wipes down the equipment after use.
+
+Thank you for listening, and I look forward to seeing you around the centre!
 `;
 
 const type4Section2Test: ListeningTest = {
   id: "listening-type-4-section2",
   title: "Westside Leisure Centre Membership Briefing",
   difficulty: "Medium",
-  audioUrl: "/audio/Generated Audio May 02, 2026 - 11_30AM.wav",
+  audioUrl: "/audio/Generated Audio May 03, 2026 - 11_39AM.wav",
   transcript: type4Section2Transcript,
   sections: 2,
   questions: [
     {
       id: "l4s2q1",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Basic membership monthly fee:",
       answer: ["35"],
-      order: 1
+      order: 1,
+      transcript: "CLAIRE: Our Basic membership is a very popular choice, priced at thirty-five pounds per month."
     },
     {
       id: "l4s2q2",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Premium membership (classes):",
       answer: ["yoga"],
-      order: 2
+      order: 2,
+      transcript: "CLAIRE: ...gives you access to all our group classes, including yoga, pilates, spin, and circuit training."
     },
     {
       id: "l4s2q3",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Elite membership monthly fee:",
       answer: ["90"],
-      order: 3
+      order: 3,
+      transcript: "CLAIRE: Our most comprehensive package is the Elite membership, which costs ninety pounds per month."
     },
     {
       id: "l4s2q4",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Weekend opening time:",
       answer: ["8 AM"],
-      order: 4
+      order: 4,
+      transcript: "CLAIRE: ...and from eight AM to six PM at the weekends."
     },
     {
       id: "l4s2q5",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Swimming pool length:",
       answer: ["25", "25 metres"],
-      order: 5
+      order: 5,
+      transcript: "CLAIRE: This package gives you full access to both the gym and our twenty-five metre swimming pool..."
     },
     {
       id: "l4s2q6",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Promotion: commitment for",
       answer: ["12 months"],
-      order: 6
+      order: 6,
+      transcript: "CLAIRE: ...if you sign up for a twelve-month commitment, your first month will be completely free!"
     },
     {
       id: "l4s2q7",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Cancellation notice period:",
       answer: ["30 days"],
-      order: 7
+      order: 7,
+      transcript: "CLAIRE: ...we require thirty days' notice in writing."
     },
     {
       id: "l4s2q8",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "One-time cancellation fee:",
       answer: ["25", "25 pounds"],
-      order: 8
+      order: 8,
+      transcript: "CLAIRE: ...if a cancellation occurs within your very first month, there's a one-time twenty-five pound fee."
     },
     {
       id: "l4s2q9",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Address: Northgate Street number",
       answer: ["47"],
-      order: 9
+      order: 9,
+      transcript: "CLAIRE: We are conveniently located at forty-seven Northgate Street..."
     },
     {
       id: "l4s2q10",
-      section: 1,
+      section: 2,
       type: "completion",
       text: "Rule: must wipe down",
       answer: ["equipment"],
-      order: 10
+      order: 10,
+      transcript: "CLAIRE: ...and we ask that everyone wipes down the equipment after use."
     }
   ]
 };
