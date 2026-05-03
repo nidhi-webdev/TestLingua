@@ -78,7 +78,7 @@ export default function Section3TypePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (routeType === "multiple-choice") {
+  if (routeType === "multiple-choice" || routeType === "matching") {
     return (
       <div className="min-h-screen bg-[#f8fafc] text-slate-900">
         <Navbar />
@@ -167,7 +167,7 @@ export default function Section3TypePage() {
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Question Task</p>
                       <h2 className="text-xl font-black text-slate-900 leading-tight truncate">
-                        Multiple choice questions
+                        {routeType === "multiple-choice" ? "Multiple choice questions" : "Matching questions"}
                       </h2>
                     </div>
                     {!submitted && <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest shrink-0">{answeredCount}/{totalQuestions} answered</span>}
@@ -177,7 +177,7 @@ export default function Section3TypePage() {
                     <div className="border-2 border-slate-100 rounded-2xl overflow-hidden">
                       <div className="bg-slate-900 px-6 sm:px-8 py-4 flex items-center justify-between">
                         <h3 className="text-white font-black uppercase tracking-widest text-[10px]">
-                          Multiple Choice
+                          {routeType === "multiple-choice" ? "Multiple Choice" : "Matching"}
                         </h3>
                         <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
                       </div>
@@ -191,6 +191,11 @@ export default function Section3TypePage() {
                                 {question.text}
                               </label>
                               <div className="space-y-2 pl-10">
+                                {question.type === "matching" && (
+                                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">
+                                    Select the matching option:
+                                  </label>
+                                )}
                                 {question.options?.map((option) => {
                                   const optionLetter = option.split(".")[0].trim();
                                   const isSelected = answers[question.id] === optionLetter;
@@ -259,7 +264,10 @@ export default function Section3TypePage() {
                 <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-lg shadow-slate-200/30">
                   <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-5 flex items-center gap-2"><Sparkles className="w-3.5 h-3.5 text-blue-500" /> Exam Tips</h3>
                   <ul className="space-y-4">
-                    {["Read questions before listening", "Only one answer is correct", "Don't get tricked by distractors", "Audio plays only once"].map((text, i) => (
+                    {(routeType === "multiple-choice" ? 
+                      ["Read questions before listening", "Only one answer is correct", "Don't get tricked by distractors", "Audio plays only once"] :
+                      ["Listen for detailed information", "Options may be paraphrased", "Write the correct letter", "Audio plays only once"]
+                    ).map((text, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm font-medium text-slate-600 leading-snug"><div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />{text}</li>
                     ))}
                   </ul>

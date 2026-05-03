@@ -1131,7 +1131,7 @@ const section3Type2Test: ListeningTest = {
   id: "listening-section3-type2",
   title: "Exam Preparation Strategies",
   difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-3-type-2.mp3",
+  audioUrl: "/audio/ElevenLabs_2026-05-03T11_05_28_Raju - Clear, Natural and Warm_pvc_sp100_s33_sb31_v3.mp3",
   transcript: section3Type2Transcript,
   sections: 3,
   questions: [
