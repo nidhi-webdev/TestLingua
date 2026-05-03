@@ -1444,7 +1444,7 @@ const section3Type6Test: ListeningTest = {
   id: "listening-section3-type6",
   title: "University Library Orientation",
   difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-3-type-6.mp3",
+  audioUrl: "/audio/ElevenLabs_2026-05-03T13_58_47_Anny - Soft and Girly_pvc_sp100_s50_sb75_v3.mp3",
   transcript: section3Type6Transcript,
   sections: 3,
   questions: [

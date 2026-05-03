@@ -78,7 +78,7 @@ export default function Section3TypePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (routeType === "multiple-choice" || routeType === "matching" || routeType === "form-completion") {
+  if (routeType === "multiple-choice" || routeType === "matching" || routeType === "form-completion" || routeType === "short-answer") {
     return (
       <div className="min-h-screen bg-[#f8fafc] text-slate-900">
         <Navbar />
@@ -169,6 +169,7 @@ export default function Section3TypePage() {
                       <h2 className="text-xl font-black text-slate-900 leading-tight truncate">
                         {routeType === "multiple-choice" ? "Multiple choice questions" : 
                          routeType === "matching" ? "Matching questions" :
+                         routeType === "short-answer" ? "Answer the questions" :
                          "Complete the form/notes/table/flow chart"}
                       </h2>
                     </div>
@@ -181,6 +182,7 @@ export default function Section3TypePage() {
                         <h3 className="text-white font-black uppercase tracking-widest text-[10px]">
                           {routeType === "multiple-choice" ? "Multiple Choice" : 
                            routeType === "matching" ? "Matching" :
+                           routeType === "short-answer" ? "Short Answer" :
                            "Form Completion"}
                         </h3>
                         <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
@@ -280,6 +282,8 @@ export default function Section3TypePage() {
                       ["Read questions before listening", "Only one answer is correct", "Don't get tricked by distractors", "Audio plays only once"] :
                       routeType === "matching" ?
                       ["Listen for detailed information", "Options may be paraphrased", "Write the correct letter", "Audio plays only once"] :
+                      routeType === "short-answer" ?
+                      ["Write no more than the stated word limit", "Use words exactly as you hear them", "Check your spelling", "Audio plays only once"] :
                       ["Follow word limits exactly", "Check your spelling carefully", "Write exactly what you hear", "Audio plays only once"]
                     ).map((text, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm font-medium text-slate-600 leading-snug"><div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />{text}</li>
