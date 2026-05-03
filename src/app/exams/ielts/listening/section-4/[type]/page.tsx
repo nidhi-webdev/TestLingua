@@ -70,7 +70,7 @@ export default function Section4TypePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (routeType === "type-4") {
+  if (routeType === "type-4" || routeType === "type-5") {
     return (
       <div className="min-h-screen bg-[#f8fafc] text-slate-900">
         <Navbar />
@@ -159,7 +159,7 @@ export default function Section4TypePage() {
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Question Task</p>
                       <h2 className="text-xl font-black text-slate-900 leading-tight truncate">
-                        Complete the form/notes/table/flow chart
+                        {routeType === "type-4" ? "Complete the form/notes/table/flow chart" : "Complete the sentences"}
                       </h2>
                     </div>
                     {!submitted && <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest shrink-0">{answeredCount}/{totalQuestions} answered</span>}
@@ -169,7 +169,7 @@ export default function Section4TypePage() {
                     <div className="border-2 border-slate-100 rounded-2xl overflow-hidden">
                       <div className="bg-slate-900 px-6 sm:px-8 py-4 flex items-center justify-between">
                         <h3 className="text-white font-black uppercase tracking-widest text-[10px]">
-                          Form Completion
+                          {routeType === "type-4" ? "Form Completion" : "Sentence Completion"}
                         </h3>
                         <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
                       </div>
