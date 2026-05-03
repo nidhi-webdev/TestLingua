@@ -1310,7 +1310,7 @@ const section3Type5Test: ListeningTest = {
   id: "listening-section3-type5",
   title: "Research Project Briefing",
   difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-3-type-5.mp3",
+  audioUrl: "/audio/ElevenLabs_2026-05-03T13_22_17_Amit Gupta - Explosive and Youthful_pvc_sp100_s50_sb75_v3.mp3",
   transcript: section3Type5Transcript,
   sections: 3,
   questions: [

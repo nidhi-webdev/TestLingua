@@ -78,7 +78,7 @@ export default function Section3TypePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (routeType === "multiple-choice" || routeType === "matching") {
+  if (routeType === "multiple-choice" || routeType === "matching" || routeType === "form-completion") {
     return (
       <div className="min-h-screen bg-[#f8fafc] text-slate-900">
         <Navbar />
@@ -167,7 +167,9 @@ export default function Section3TypePage() {
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Question Task</p>
                       <h2 className="text-xl font-black text-slate-900 leading-tight truncate">
-                        {routeType === "multiple-choice" ? "Multiple choice questions" : "Matching questions"}
+                        {routeType === "multiple-choice" ? "Multiple choice questions" : 
+                         routeType === "matching" ? "Matching questions" :
+                         "Complete the form/notes/table/flow chart"}
                       </h2>
                     </div>
                     {!submitted && <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest shrink-0">{answeredCount}/{totalQuestions} answered</span>}
@@ -177,7 +179,9 @@ export default function Section3TypePage() {
                     <div className="border-2 border-slate-100 rounded-2xl overflow-hidden">
                       <div className="bg-slate-900 px-6 sm:px-8 py-4 flex items-center justify-between">
                         <h3 className="text-white font-black uppercase tracking-widest text-[10px]">
-                          {routeType === "multiple-choice" ? "Multiple Choice" : "Matching"}
+                          {routeType === "multiple-choice" ? "Multiple Choice" : 
+                           routeType === "matching" ? "Matching" :
+                           "Form Completion"}
                         </h3>
                         <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
                       </div>
@@ -185,48 +189,56 @@ export default function Section3TypePage() {
                         {questions.map((question) => {
                           const isCorrect = question.answer.some(a => a.toLowerCase().trim() === (answers[question.id] || "").toLowerCase().trim());
                           return (
-                            <div key={question.id} className="space-y-4">
+                            <div key={question.id} className={question.type === "multiple_choice" || question.type === "matching" ? "space-y-4" : "grid sm:grid-cols-[1.1fr_1fr] gap-4 sm:gap-6 items-start"}>
                               <label className="text-sm font-bold text-slate-700 flex items-center gap-3 pt-3">
                                 <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-black shrink-0 ${submitted ? (isCorrect ? "bg-emerald-500 text-white" : "bg-rose-500 text-white") : "bg-slate-900 text-white"}`}>{question.order}</span>
                                 {question.text}
                               </label>
-                              <div className="space-y-2 pl-10">
-                                {question.type === "matching" && (
-                                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">
-                                    Select the matching option:
-                                  </label>
-                                )}
-                                {question.options?.map((option) => {
-                                  const optionLetter = option.split(".")[0].trim();
-                                  const isSelected = answers[question.id] === optionLetter;
-                                  const isOptionCorrect = question.answer.includes(optionLetter);
-                                  
-                                  let btnClass = "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50";
-                                  if (submitted) {
-                                    if (isOptionCorrect) {
-                                      btnClass = "border-emerald-400 bg-emerald-50 text-emerald-900";
-                                    } else if (isSelected && !isOptionCorrect) {
-                                      btnClass = "border-rose-400 bg-rose-50 text-rose-900";
-                                    } else {
-                                      btnClass = "border-slate-200 bg-slate-50 opacity-50";
+                              {question.type === "multiple_choice" || question.type === "matching" ? (
+                                <div className="space-y-2 pl-10">
+                                  {question.type === "matching" && (
+                                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">
+                                      Select the matching option:
+                                    </label>
+                                  )}
+                                  {question.options?.map((option) => {
+                                    const optionLetter = option.split(".")[0].trim();
+                                    const isSelected = answers[question.id] === optionLetter;
+                                    const isOptionCorrect = question.answer.includes(optionLetter);
+                                    
+                                    let btnClass = "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50";
+                                    if (submitted) {
+                                      if (isOptionCorrect) {
+                                        btnClass = "border-emerald-400 bg-emerald-50 text-emerald-900";
+                                      } else if (isSelected && !isOptionCorrect) {
+                                        btnClass = "border-rose-400 bg-rose-50 text-rose-900";
+                                      } else {
+                                        btnClass = "border-slate-200 bg-slate-50 opacity-50";
+                                      }
+                                    } else if (isSelected) {
+                                      btnClass = "border-blue-500 bg-blue-50 text-blue-900 ring-2 ring-blue-500/10";
                                     }
-                                  } else if (isSelected) {
-                                    btnClass = "border-blue-500 bg-blue-50 text-blue-900 ring-2 ring-blue-500/10";
-                                  }
 
-                                  return (
-                                    <button
-                                      key={option}
-                                      type="button"
-                                      disabled={submitted}
-                                      onClick={() => setAnswers((prev) => ({ ...prev, [question.id]: optionLetter }))}
-                                      className={`w-full text-left rounded-xl border-2 px-4 py-3 text-sm font-bold outline-none transition-all ${btnClass} disabled:cursor-not-allowed`}
-                                    >
-                                      {option}
-                                    </button>
-                                  );
-                                })}
-                              </div>
+                                    return (
+                                      <button
+                                        key={option}
+                                        type="button"
+                                        disabled={submitted}
+                                        onClick={() => setAnswers((prev) => ({ ...prev, [question.id]: optionLetter }))}
+                                        className={`w-full text-left rounded-xl border-2 px-4 py-3 text-sm font-bold outline-none transition-all ${btnClass} disabled:cursor-not-allowed`}
+                                      >
+                                        {option}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              ) : (
+                                <div className="space-y-1.5">
+                                  <input type="text" disabled={submitted} value={answers[question.id] || ""} onChange={(e) => setAnswers(prev => ({ ...prev, [question.id]: e.target.value }))} placeholder="Type your answer..." className={`w-full rounded-xl border-2 px-4 py-3 text-sm font-bold outline-none transition-all ${submitted ? (isCorrect ? "border-emerald-400 bg-emerald-50 text-emerald-900" : "border-rose-400 bg-rose-50 text-rose-900") : "border-slate-200 bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"} disabled:cursor-not-allowed`} />
+                                  {submitted && !isCorrect && <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 pl-1"><CheckCircle2 className="w-3 h-3" /> Correct: {question.answer[0]}</div>}
+                                  {submitted && isCorrect && <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-600 pl-1"><CheckCircle2 className="w-3 h-3" /> Correct!</div>}
+                                </div>
+                              )}
                             </div>
                           );
                         })}
@@ -266,7 +278,9 @@ export default function Section3TypePage() {
                   <ul className="space-y-4">
                     {(routeType === "multiple-choice" ? 
                       ["Read questions before listening", "Only one answer is correct", "Don't get tricked by distractors", "Audio plays only once"] :
-                      ["Listen for detailed information", "Options may be paraphrased", "Write the correct letter", "Audio plays only once"]
+                      routeType === "matching" ?
+                      ["Listen for detailed information", "Options may be paraphrased", "Write the correct letter", "Audio plays only once"] :
+                      ["Follow word limits exactly", "Check your spelling carefully", "Write exactly what you hear", "Audio plays only once"]
                     ).map((text, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm font-medium text-slate-600 leading-snug"><div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />{text}</li>
                     ))}
