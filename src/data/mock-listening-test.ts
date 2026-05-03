@@ -638,7 +638,7 @@ const type2Test: ListeningTest = {
   id: "listening-type-2",
   title: "Student Accommodation Options",
   difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-2-type-2.mp3",
+  audioUrl: "/audio/Generated Audio May 03, 2026 - 11_16AM.wav",
   transcript: type2Transcript,
   sections: 2,
   questions: [
