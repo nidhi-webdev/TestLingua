@@ -471,7 +471,7 @@ const type1Test: ListeningTest = {
   id: "listening-type-1",
   title: "Riverside Arts Centre Opening",
   difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-2-type-1.mp3",
+  audioUrl: "/audio/Generated Audio May 02, 2026 - 4_26PM.wav",
   transcript: type1Transcript,
   sections: 2,
   questions: [
