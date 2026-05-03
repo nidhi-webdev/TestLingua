@@ -1568,7 +1568,7 @@ const section4Type4Test: ListeningTest = {
   id: "listening-section4-type4",
   title: "History of Renewable Energy Technology",
   difficulty: "Hard",
-  audioUrl: "https://example.com/listening-section-4-type-4.mp3",
+  audioUrl: "/audio/Generated Audio May 03, 2026 - 4_04PM.wav",
   transcript: section4Type4Transcript,
   sections: 4,
   questions: [
