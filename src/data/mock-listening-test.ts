@@ -931,42 +931,38 @@ const type4Section2Test: ListeningTest = {
 // Section 3: Conversation in an Academic Context
 
 const section3Type1Transcript = `
-STUDENT: Hi Professor Chen, I wanted to discuss my essay on climate change mitigation strategies.
+PROFESSOR CHEN: Good afternoon, everyone. Sarah, James, Maya — thank you all for coming to this tutorial. Today we're going to discuss your group essay on climate change mitigation strategies. Let's start with where you all are. Sarah, you said you wanted to open?
 
-PROFESSOR: Of course, Sarah. Please sit down. How are you feeling about the assignment so far? Have you made good progress?
+SARAH: Yes, thanks. So I've been leading the research on technological solutions. I've covered solar and wind power in detail, and I'm fairly happy with that section. But I'm not sure our policy section is strong enough yet.
 
-STUDENT: Well, I've done quite a bit of research, but I'm not sure if I'm addressing all the required elements. The prompt mentions both technological and policy-based solutions, and I want to make sure I'm covering everything needed.
+JAMES: I agree with Sarah. I've been working on the policy side — carbon pricing and emissions trading schemes — but I feel like we're missing the international dimension. Should we be covering things like the Paris Agreement more explicitly?
 
-PROFESSOR: That's a good observation. The assignment definitely requires both perspectives to be covered thoroughly. What have you covered so far? Walk me through your current approach.
+PROFESSOR CHEN: That's an excellent instinct, James. International frameworks are absolutely crucial to how mitigation strategies are implemented on a global scale. You definitely need to include that.
 
-STUDENT: I've focused mainly on renewable energy technologies like solar and wind power, and I've discussed carbon pricing as a policy measure. But I feel like I might be missing something important that would really strengthen my argument.
+MAYA: I was actually going to raise that too. I've been looking at nature-based solutions — reforestation, wetland preservation, soil conservation — and I think they tie in well with both the technological and policy angles. But I'm not sure where they fit in the essay structure.
 
-PROFESSOR: Actually, what you've covered so far is a solid foundation. Have you considered the role of international cooperation and treaties in mitigation efforts?
+PROFESSOR CHEN: Maya, nature-based solutions work best as an integrating conclusion — they show how technology and policy must work together. So I'd suggest structuring the essay like this: start with a problem statement, then technological solutions, then policy measures, then international cooperation, and finally conclude with natural solutions and their integration. Does that feel manageable?
 
-STUDENT: Not really. Should I include that? Won't it make the essay too long?
+SARAH: That flow makes a lot of sense. How long should the whole essay be?
 
-PROFESSOR: Not at all. In fact, I'd strongly recommend including it. The Paris Agreement and similar international frameworks are absolutely crucial to understanding how mitigation strategies are actually implemented on a global scale. Along those lines, you should also consider discussing nature-based solutions – things like reforestation, wetland preservation, and soil conservation.
+PROFESSOR CHEN: Aim for around 2,500 to 3,000 words as a group. The upper end gives you the space to develop each section fully. Make sure your conclusion ties everything together and addresses why multiple approaches are necessary — not just one strategy in isolation.
 
-STUDENT: Those are really good points. Do you think I should reorganise my essay structure to include all of this?
+JAMES: Should we be referencing specific agreements like the Paris Agreement by name, or is it enough to describe the mechanisms?
 
-PROFESSOR: That depends on what you've already written so far. But typically, I've found it works well to start with the problem statement, then move into technological solutions, followed by policy measures, then examine international cooperation, and finally conclude with natural solutions and their integration.
+PROFESSOR CHEN: Name them specifically — that shows precise academic knowledge. Vague references to "international treaties" won't impress the markers. Cite the actual agreements and explain what they commit countries to doing.
 
-STUDENT: That makes sense. I can see how that flows logically. How long should the essay be?
+MAYA: What about the word count split between us? Is it okay if some sections are longer than others?
 
-PROFESSOR: Aim for around 2,500 to 3,000 words. The upper end gives you space to develop your arguments fully. Make sure your conclusion ties everything together and addresses the key question of why multiple approaches are necessary.
+PROFESSOR CHEN: That's fine, as long as each section is proportionate to its importance. Analysis and interpretation carry the most weight in marking, so don't sacrifice depth for balance. One more thing — the deadline is next Friday, October 25th, by 5 PM. You'll submit it through the online portal as a single document. Don't hesitate to email me as a group if questions come up.
 
-STUDENT: Got it. I think I have a much clearer direction now. One more question – what's the deadline for submission?
-
-PROFESSOR: The deadline is next Friday, October 25th, by 5 PM. You'll submit it through the online portal. And Sarah, don't hesitate to email me if you have questions as you write.
-
-STUDENT: Thank you, that's really helpful.
+SARAH: Thank you, Professor. That's given us a much clearer direction.
 `;
 
 const section3Type1Test: ListeningTest = {
   id: "listening-section3-type1",
-  title: "Climate Change Essay Discussion",
-  difficulty: "Medium",
-  audioUrl: "https://example.com/listening-section-3-type-1.mp3",
+  title: "Group Tutorial: Climate Change Essay",
+  difficulty: "Hard",
+  audioUrl: "/audio/ElevenLabs_2026-05-03T10_46_28_Ria - Next-door chatty Girl_pvc_sp100_s50_sb75_v3.mp3",
   transcript: section3Type1Transcript,
   sections: 3,
   questions: [
@@ -974,50 +970,50 @@ const section3Type1Test: ListeningTest = {
       id: "s3t1q1",
       section: 3,
       type: "multiple_choice",
-      text: "What is Sarah mainly concerned about regarding her essay?",
+      text: "Who is leading the research on technological solutions for the group essay?",
       options: [
-        "A. She hasn't done any research on the topic",
-        "B. She's unsure if she's covering all the required elements",
-        "C. She disagrees with the professor's interpretation"
+        "A. James",
+        "B. Maya",
+        "C. Sarah"
       ],
-      answer: ["B"],
+      answer: ["C"],
       order: 1
     },
     {
       id: "s3t1q2",
       section: 3,
       type: "multiple_choice",
-      text: "Which of the following has Sarah already covered in her essay?",
+      text: "What aspect of the essay is James responsible for?",
       options: [
-        "A. International cooperation and treaties",
-        "B. Nature-based solutions like reforestation",
-        "C. Renewable energy and carbon pricing"
+        "A. Nature-based solutions",
+        "B. Policy measures such as carbon pricing",
+        "C. Technological solutions like solar power"
       ],
-      answer: ["C"],
+      answer: ["B"],
       order: 2
     },
     {
       id: "s3t1q3",
       section: 3,
       type: "multiple_choice",
-      text: "According to the professor, what are nature-based solutions?",
+      text: "What topic has Maya been researching?",
       options: [
-        "A. Only solar and wind power",
-        "B. Reforestation, wetland preservation, and soil conservation",
-        "C. International treaties and agreements"
+        "A. Carbon pricing and emissions trading",
+        "B. Renewable energy and solar panels",
+        "C. Reforestation, wetland preservation, and soil conservation"
       ],
-      answer: ["B"],
+      answer: ["C"],
       order: 3
     },
     {
       id: "s3t1q4",
       section: 3,
       type: "multiple_choice",
-      text: "What does the professor suggest as the essay structure?",
+      text: "Where does Professor Chen suggest placing nature-based solutions in the essay?",
       options: [
-        "A. Technological solutions, policy measures, then international cooperation",
-        "B. Problem statement, technological, policy, international cooperation, then natural solutions",
-        "C. Natural solutions first, then all policy measures"
+        "A. As the opening section to introduce the topic",
+        "B. As an integrating conclusion that ties technology and policy together",
+        "C. As a stand-alone section in the middle"
       ],
       answer: ["B"],
       order: 4
@@ -1026,20 +1022,20 @@ const section3Type1Test: ListeningTest = {
       id: "s3t1q5",
       section: 3,
       type: "multiple_choice",
-      text: "Why does the professor recommend including international cooperation?",
+      text: "What does Professor Chen recommend as the first element of the essay structure?",
       options: [
-        "A. To make the essay longer",
-        "B. To show how strategies are implemented on a global scale",
-        "C. Because all essays need this section"
+        "A. Technological solutions",
+        "B. International cooperation",
+        "C. A problem statement"
       ],
-      answer: ["B"],
+      answer: ["C"],
       order: 5
     },
     {
       id: "s3t1q6",
       section: 3,
       type: "multiple_choice",
-      text: "What word count does the professor recommend?",
+      text: "What word count does Professor Chen recommend for the group essay?",
       options: [
         "A. Around 2,000 to 2,500 words",
         "B. Around 2,500 to 3,000 words",
@@ -1052,83 +1048,83 @@ const section3Type1Test: ListeningTest = {
       id: "s3t1q7",
       section: 3,
       type: "multiple_choice",
-      text: "What should the conclusion address?",
+      text: "What does Professor Chen say the conclusion must address?",
       options: [
         "A. Only the history of climate change",
-        "B. Personal recommendations for climate action",
-        "C. Why multiple approaches are necessary"
+        "B. Why multiple approaches are necessary",
+        "C. Personal recommendations for climate action"
       ],
-      answer: ["C"],
+      answer: ["B"],
       order: 7
     },
     {
       id: "s3t1q8",
       section: 3,
       type: "multiple_choice",
-      text: "When is the essay deadline?",
+      text: "What does Professor Chen advise James to do when referencing international agreements?",
       options: [
-        "A. Next Wednesday by noon",
-        "B. Next Friday by 5 PM",
-        "C. The following Monday"
+        "A. Refer to them vaguely as international treaties",
+        "B. Avoid mentioning them to stay within word count",
+        "C. Name them specifically and explain their commitments"
       ],
-      answer: ["B"],
+      answer: ["C"],
       order: 8
     },
     {
       id: "s3t1q9",
       section: 3,
       type: "multiple_choice",
-      text: "How should Sarah submit her essay?",
+      text: "When is the group essay deadline?",
       options: [
-        "A. By email to the professor",
-        "B. By hand in the professor's office",
-        "C. Through the online portal"
+        "A. Next Wednesday by noon",
+        "B. Next Friday by 5 PM",
+        "C. The following Monday"
       ],
-      answer: ["C"],
+      answer: ["B"],
       order: 9
     },
     {
       id: "s3t1q10",
       section: 3,
       type: "multiple_choice",
-      text: "According to the professor, what should Sarah do if she has further questions?",
+      text: "How should the group submit their essay?",
       options: [
-        "A. Wait until the next meeting",
-        "B. Email the professor",
-        "C. Ask her classmates"
+        "A. As separate individual documents by email",
+        "B. By hand in the professor's office",
+        "C. As a single document through the online portal"
       ],
-      answer: ["B"],
+      answer: ["C"],
       order: 10
     }
   ]
 };
 
 const section3Type2Transcript = `
-TUTOR: Hello David. I'm glad you came in for a tutoring session. Let's discuss the key concepts for your upcoming biology exam. I've prepared some comprehensive learning outcomes and study strategies that might really help you prepare effectively.
+DR FOSTER: Good afternoon, everyone. Marcus, Priya, Leon — welcome to this biology exam preparation session. I've asked you all to come together because you're sitting the unit four paper next Thursday, and I think it'll be more productive to go through the key areas as a group. Let's make a start. Marcus, do you want to tell us where you feel least confident?
 
-STUDENT: Thanks. There's so much to cover. What should I focus on most?
+MARCUS: Thanks, Dr Foster. Honestly, I keep getting confused between photosynthesis and cellular respiration. I know they're connected, but I can't always explain how.
 
-TUTOR: Well, there are several important areas, but let me start with the fundamentals. First, you need a solid understanding of photosynthesis – that's the process where plants convert light energy into chemical energy. This is absolutely fundamental to biology at this level.
+DR FOSTER: That's a very common issue. Let's clarify it now. Photosynthesis is the process where plants use light energy to convert carbon dioxide and water into glucose and oxygen. Cellular respiration is essentially the reverse — organisms break down glucose to release energy in the form of ATP. The key point is that they're complementary processes, and the exam frequently asks you to compare them.
 
-STUDENT: Right, that's definitely important. What else should I prioritise?
+PRIYA: I'm okay with those two, but I struggle with the section on enzymes — specifically how temperature and pH affect enzyme activity. Can we go over that?
 
-TUTOR: Then there's cellular respiration, which is essentially the reverse of photosynthesis. It's how organisms release energy from glucose. You should also really understand the relationship between these two processes because the exam often tests how you can connect them.
+DR FOSTER: Of course. Enzymes are biological catalysts with an optimal temperature and pH. Beyond those optimal conditions, the enzyme's shape changes — it denatures — and it can no longer bind to its substrate. This is really important to explain precisely in the exam, not just say it "stops working."
 
-STUDENT: That makes sense. What about memorisation techniques? I'm struggling to remember so much information.
+LEON: What about the revision strategies themselves? I feel like I've been reading through notes, but the information isn't sticking.
 
-TUTOR: Good question. For memorisation, I recommend several techniques. First, try creating concept maps. You visually connect related ideas and this really helps with long-term retention. Another very effective technique is the method of loci – you imagine walking through a familiar place, like your home, and associate information with different locations.
+DR FOSTER: That's a really honest observation, Leon. Passive reading is one of the least effective strategies. Instead, I want you all to try active recall — close your notes and try to write down everything you remember about a topic. Then check what you missed. It feels harder, but the research is clear that it leads to much better retention.
 
-STUDENT: Those sound useful. Anything else I should be doing?
+MARCUS: What about practice questions? Is it worth doing past papers at this stage?
 
-TUTOR: Yes, and this is crucial. Practice problems are absolutely essential. Working through past exam questions helps you understand the exam format and identifies your weak areas. Also, try teaching the material to someone else – explaining concepts forces you to think deeply about them and really understand the material.
+DR FOSTER: Absolutely essential. Working through past papers does three things: it familiarises you with the exam format, it shows you the standard of answer expected, and it reveals your weak areas so you can target them. I'd suggest doing at least two full past papers before Thursday.
 
-STUDENT: What about managing time during the exam itself?
+PRIYA: Should we be doing that in timed conditions?
 
-TUTOR: That's crucial too. I suggest reading all questions first to get an overview, allocating time proportionally to question marks, and answering easier questions first to build confidence before tackling harder ones.
+DR FOSTER: Yes, at least one of them. Simulate exam conditions — no notes, strict timing, no phone. The other one you can do more openly to focus on quality of answers. Both approaches have value.
 
-STUDENT: Should I study alone or in groups?
+LEON: Is it worth forming a study group between the three of us?
 
-TUTOR: Both have advantages. Study groups help you understand different perspectives and can be motivating, but solo study allows for focused work on your weak areas. I recommend alternating between both approaches.
+DR FOSTER: Definitely. Teaching each other is one of the most powerful ways to consolidate knowledge. If you can explain a concept clearly to someone else, it means you genuinely understand it. What I'd suggest is that each of you takes a topic, prepares a short explanation, and then teaches it to the others. You'll quickly discover any gaps in your own understanding.
 `;
 
 const section3Type2Test: ListeningTest = {
@@ -1147,9 +1143,9 @@ const section3Type2Test: ListeningTest = {
       options: [
         "A. Photosynthesis",
         "B. Cellular respiration",
-        "C. Concept mapping",
-        "D. The method of loci",
-        "E. Study groups"
+        "C. Active recall",
+        "D. Enzyme denaturation",
+        "E. Past papers"
       ],
       answer: ["A"],
       order: 1
@@ -1158,13 +1154,13 @@ const section3Type2Test: ListeningTest = {
       id: "s3t2q2",
       section: 3,
       type: "matching",
-      text: "How organisms release energy from glucose",
+      text: "How organisms break down glucose to release energy as ATP",
       options: [
         "A. Photosynthesis",
         "B. Cellular respiration",
-        "C. Concept mapping",
-        "D. The method of loci",
-        "E. Study groups"
+        "C. Active recall",
+        "D. Enzyme denaturation",
+        "E. Past papers"
       ],
       answer: ["B"],
       order: 2
@@ -1173,13 +1169,13 @@ const section3Type2Test: ListeningTest = {
       id: "s3t2q3",
       section: 3,
       type: "matching",
-      text: "Visually connecting related ideas",
+      text: "Writing down everything you remember about a topic without looking at notes",
       options: [
         "A. Photosynthesis",
         "B. Cellular respiration",
-        "C. Concept mapping",
-        "D. The method of loci",
-        "E. Study groups"
+        "C. Active recall",
+        "D. Enzyme denaturation",
+        "E. Past papers"
       ],
       answer: ["C"],
       order: 3
@@ -1188,13 +1184,13 @@ const section3Type2Test: ListeningTest = {
       id: "s3t2q4",
       section: 3,
       type: "matching",
-      text: "Imagining walking through a familiar place to associate information",
+      text: "What happens to an enzyme when conditions exceed its optimal temperature or pH",
       options: [
         "A. Photosynthesis",
         "B. Cellular respiration",
-        "C. Concept mapping",
-        "D. The method of loci",
-        "E. Study groups"
+        "C. Active recall",
+        "D. Enzyme denaturation",
+        "E. Past papers"
       ],
       answer: ["D"],
       order: 4
@@ -1203,13 +1199,13 @@ const section3Type2Test: ListeningTest = {
       id: "s3t2q5",
       section: 3,
       type: "matching",
-      text: "Learning advantages of multiple perspectives",
+      text: "Reveals weak areas and shows the standard of answer expected",
       options: [
         "A. Photosynthesis",
         "B. Cellular respiration",
-        "C. Concept mapping",
-        "D. The method of loci",
-        "E. Study groups"
+        "C. Active recall",
+        "D. Enzyme denaturation",
+        "E. Past papers"
       ],
       answer: ["E"],
       order: 5
@@ -1217,14 +1213,12 @@ const section3Type2Test: ListeningTest = {
     {
       id: "s3t2q6",
       section: 3,
-      type: "matching",
-      text: "Working through previous assessment papers",
+      type: "multiple_choice",
+      text: "Which student raises the question about enzyme activity?",
       options: [
-        "A. Memorisation",
-        "B. Teaching others",
-        "C. Practice problems",
-        "D. Time management",
-        "E. Solo study"
+        "A. Marcus",
+        "B. Leon",
+        "C. Priya"
       ],
       answer: ["C"],
       order: 6
@@ -1232,14 +1226,12 @@ const section3Type2Test: ListeningTest = {
     {
       id: "s3t2q7",
       section: 3,
-      type: "matching",
-      text: "Explaining concepts to understand them better",
+      type: "multiple_choice",
+      text: "What does Dr Foster describe as one of the least effective revision strategies?",
       options: [
-        "A. Memorisation",
-        "B. Teaching others",
-        "C. Practice problems",
-        "D. Time management",
-        "E. Solo study"
+        "A. Doing past papers",
+        "B. Passive reading through notes",
+        "C. Teaching others"
       ],
       answer: ["B"],
       order: 7
@@ -1247,44 +1239,38 @@ const section3Type2Test: ListeningTest = {
     {
       id: "s3t2q8",
       section: 3,
-      type: "matching",
-      text: "Allocating time proportionally to question marks",
+      type: "multiple_choice",
+      text: "How many full past papers does Dr Foster suggest completing before the exam?",
       options: [
-        "A. Memorisation",
-        "B. Teaching others",
-        "C. Practice problems",
-        "D. Time management",
-        "E. Solo study"
+        "A. At least one",
+        "B. At least three",
+        "C. At least two"
       ],
-      answer: ["D"],
+      answer: ["C"],
       order: 8
     },
     {
       id: "s3t2q9",
       section: 3,
-      type: "matching",
-      text: "Focusing on weak areas without distractions",
+      type: "multiple_choice",
+      text: "What does Dr Foster recommend about timed exam conditions?",
       options: [
-        "A. Memorisation",
-        "B. Teaching others",
-        "C. Practice problems",
-        "D. Time management",
-        "E. Solo study"
+        "A. All papers should be done under strict exam conditions",
+        "B. At least one paper should simulate real exam conditions",
+        "C. Timed practice is not recommended at this stage"
       ],
-      answer: ["E"],
+      answer: ["B"],
       order: 9
     },
     {
       id: "s3t2q10",
       section: 3,
-      type: "matching",
-      text: "The inverse process of photosynthesis",
+      type: "multiple_choice",
+      text: "What does Dr Foster suggest each student should do in the study group?",
       options: [
-        "A. Concept mapping",
-        "B. Cellular respiration",
-        "C. Memorisation",
-        "D. Study groups",
-        "E. Time management"
+        "A. Read a chapter and summarise it for the others",
+        "B. Take a topic, prepare an explanation, and teach it to the others",
+        "C. Complete a practice paper independently and compare answers"
       ],
       answer: ["B"],
       order: 10
@@ -1293,31 +1279,31 @@ const section3Type2Test: ListeningTest = {
 };
 
 const section3Type5Transcript = `
-ADVISOR: Good morning! I'm Dr. Patricia Williams, the academic advisor for biology students. I'm here to brief you on your research project requirements for this semester. I know it can seem overwhelming, so I'll walk you through everything step by step.
+DR WILLIAMS: Good morning, everyone. Aiden, Sophie, Ravi — thank you all for coming to this project briefing. As your academic advisor, I want to make sure each of you is clear on the requirements for this semester's research project before you get started. Let's go through everything together. Aiden, you look like you have a question already.
 
-STUDENT: Thank you. I'm keen to get started, but I do have some questions.
+AIDEN: Yes, thanks Dr Williams. I wasn't sure about the overall theme. Is it fixed, or do we choose our own?
 
-ADVISOR: Excellent. First, the overall project theme this year is "Biodiversity in Urban Ecosystems". Your project should explore how cities impact plant and animal diversity. You'll need to select a specific location for your study – ideally a local park or green space within the city. This is important because you'll need to visit it multiple times.
+DR WILLIAMS: The theme is fixed for all students this year — it's "Biodiversity in Urban Ecosystems." Your project should explore how cities impact plant and animal diversity. You'll each select your own specific location though — ideally a local park or green space within the city. You'll need to visit it multiple times throughout the semester, so choose somewhere accessible.
 
-STUDENT: Do I need special equipment for fieldwork?
+SOPHIE: Do we need any specialist equipment for the fieldwork? I was worried it might be expensive.
 
-ADVISOR: Not necessarily, which is good news. For the initial phase, you'll conduct observations and surveys using simple methods. You'll document species using photographs, field notes, and specimen identification guides. In the second phase, you'll analyse your data using statistical software and compare your findings with existing research on the same area or similar urban ecosystems.
+DR WILLIAMS: Not at all, Sophie — that's good news. For the initial phase, you'll use simple observation and survey methods. You'll document species using photographs, field notes, and specimen identification guides. In the second phase, you'll analyse your data using statistical software, which is available through the university, and compare your findings with existing research.
 
-STUDENT: When are the key deadlines? I need to plan my time.
+RAVI: What are the key deadlines? I want to build a proper schedule.
 
-ADVISOR: Absolutely. Let me go through them carefully. The proposal is due on November 10th – this is just a two-page outline of your project. Your literature review should be submitted by December 1st. The final project report – that's around 5,000 words – is due on March 15th. Additionally, you'll give a formal presentation on April 5th, which is worth marks as well.
+DR WILLIAMS: Absolutely, let's go through them. Your project proposal is due November 10th — it's just a two-page outline, so don't overthink it. The literature review is due December 1st. The final report, which should be around 5,000 words, is due March 15th. And you'll each give a formal presentation on April 5th, which also contributes to your grade.
 
-STUDENT: How many sources should I use for each section?
+AIDEN: How many sources are we expected to use?
 
-ADVISOR: Good question. For the literature review, use a minimum of 15 academic sources. For the final report, aim for at least 20 sources. You must use peer-reviewed journals primarily, though you can include reputable websites and books as supplementary sources. This is really important for academic integrity.
+DR WILLIAMS: For the literature review, a minimum of 15 academic sources. For the final report, aim for at least 20. Peer-reviewed journals should be your primary sources — you can use reputable websites and books as supplements, but academic journals must form the core. This is critical for maintaining academic integrity.
 
-STUDENT: What about the assessment criteria? I want to know exactly what you're marking.
+SOPHIE: How will we be graded? I'd like to know what carries the most weight.
 
-ADVISOR: Your project will be assessed in different areas. Research methodology – that's how you design your study – accounts for 25%. Analysis and interpretation of your findings is worth 35%, which is the largest component. The quality of your writing is 20%. Your use of appropriate scientific terminology accounts for 10%, and finally, your presentation skills during the oral presentation is worth 10%.
+DR WILLIAMS: Good question. Research methodology accounts for 25% — that's how well you've designed your study. Analysis and interpretation of your data is the largest component at 35%. Writing quality is worth 20%. Scientific terminology accounts for 10%, and your oral presentation is also 10%.
 
-STUDENT: That's very clear. One final question – can I work with a partner or must I work alone?
+RAVI: One last thing — is this an individual project, or can we collaborate?
 
-ADVISOR: This is an individual project, so you must work alone. However, you can definitely discuss ideas with classmates and your project supervisor, who will be assigned next week. The supervisor will provide guidance throughout the process and will meet with you monthly.
+DR WILLIAMS: It's strictly individual — you each submit your own report. That said, you're very welcome to discuss ideas with each other and with your assigned supervisor. Supervisors will be announced next week and will meet with each of you on a monthly basis throughout the project.
 `;
 
 const section3Type5Test: ListeningTest = {
@@ -1387,64 +1373,71 @@ const section3Type5Test: ListeningTest = {
     {
       id: "s3t5q8",
       section: 3,
-      type: "completion",
-      text: "Research methodology accounts for _____ % of the grade",
-      answer: ["25"],
+      type: "multiple_choice",
+      text: "Which student asks about the number of sources required?",
+      options: [
+        "A. Sophie",
+        "B. Ravi",
+        "C. Aiden"
+      ],
+      answer: ["C"],
       order: 8
     },
     {
       id: "s3t5q9",
       section: 3,
-      type: "completion",
-      text: "Analysis and interpretation worth _____ % of assessment",
-      answer: ["35"],
+      type: "multiple_choice",
+      text: "Which student asks about the grading criteria?",
+      options: [
+        "A. Aiden",
+        "B. Sophie",
+        "C. Ravi"
+      ],
+      answer: ["B"],
       order: 9
     },
     {
       id: "s3t5q10",
       section: 3,
-      type: "completion",
-      text: "Project supervisors will meet with students _____",
-      answer: ["monthly"],
+      type: "multiple_choice",
+      text: "What does Dr Williams say about collaboration between students?",
+      options: [
+        "A. Students may submit a joint report if agreed in advance",
+        "B. Collaboration is completely forbidden throughout the project",
+        "C. Students may discuss ideas but must each submit their own individual report"
+      ],
+      answer: ["C"],
       order: 10
     }
   ]
 };
 
 const section3Type6Transcript = `
-LIBRARIAN: Hello! Welcome to the university library. I'm showing you around today to help you familiarise yourself with our research facilities and services. As a first-year student, you'll need to know where everything is and how to use our resources effectively.
+MS OKONKWO: Good morning, everyone. Welcome to the university library. I'm Ms Okonkwo, the research services librarian. Bethany, Joel, Fatima — I'm glad you could all make it to this orientation session. There's quite a lot to cover, so please do ask questions as we go. Let's start with the main collection. Those shelves behind me are the open stacks, where most of our books are organised by the Dewey Decimal System — the standard classification used in libraries around the world.
 
-STUDENT: Thanks for taking the time. I'm a bit overwhelmed actually. There's so much here.
+BETHANY: How do we actually find a specific book? Do we just walk through the shelves?
 
-LIBRARIAN: That's completely normal. Don't worry, you'll get the hang of it quickly. Let me start by showing you where the main collection is. Behind me, you see the open stacks – that's where most of our books are shelved. They're organised by the Dewey Decimal System, which is the standard system used in most libraries worldwide.
+MS OKONKWO: Not quite — that would take forever! You use our online catalogue. You can see the computer terminals along that wall. Type in the title, the author's name, or some subject keywords, and the system will give you the shelf location and tell you whether the book is currently available or already on loan.
 
-STUDENT: How do I find a specific book?
+JOEL: What happens if the book I need is already borrowed by someone else?
 
-LIBRARIAN: Great question. You can search our online catalogue. Look at those computer terminals over there – use those to search. You can type the title, the author's name, or subject keywords. The system will tell you the shelf location and whether the book is available right now or already on loan.
+MS OKONKWO: Good question, Joel. You have two options. First, you can place a hold — the system queues your request, and when the book is returned, it's reserved for you for seven days. Your second option is our inter-library loan service, where we borrow the item from another institution if we don't hold a copy. That takes around two weeks but it's completely free of charge.
 
-STUDENT: What if a book I need is already borrowed?
+FATIMA: What about access to journal articles? My supervisor mentioned using academic databases.
 
-LIBRARIAN: You have two options. You can place a hold – the system keeps a queue. When the book is returned by the other borrower, it's reserved for you for seven days. Alternatively, we have an inter-library loan service where we can borrow materials from other institutions if we don't have it. This takes a bit longer, usually about two weeks, but it's free.
+MS OKONKWO: Absolutely essential for research. We subscribe to several major databases — JSTOR, ScienceDirect, and ProQuest are the main ones. You can access all of them from the library computers or remotely from your accommodation using your student login. They contain millions of peer-reviewed articles across all disciplines.
 
-STUDENT: That's helpful. What about journal articles and academic papers?
+BETHANY: How long are we allowed to borrow books for?
 
-LIBRARIAN: Excellent question. We have access to many databases through our subscriptions. You can access them from computers here in the library or from your dorm using your student ID. Databases like JSTOR, ScienceDirect, and ProQuest are invaluable for academic research. They contain millions of peer-reviewed articles.
+MS OKONKWO: The standard loan period is four weeks. You can renew online up to three times, as long as no one else has placed a hold on the item. Please do keep track of your due dates — overdue fines are 50 pence per day per book. We do send reminders, but the responsibility is ultimately yours.
 
-STUDENT: How long can I borrow books for?
+JOEL: Are there quiet spaces for studying? Our halls of residence can be quite noisy.
 
-LIBRARIAN: The standard loan period is four weeks. You can renew books online up to three times if no one else has placed a hold on them. Overdue fines are 50 pence per day per book, so please return them on time or renew them. We do send reminders before the due date.
+MS OKONKWO: Yes, floors three, four, and five are designated quiet zones — no conversation permitted at all up there. On the third floor, you'll also find group study rooms, which you can book online in advance. They're fully soundproofed, so ideal for group work without disturbing others.
 
-STUDENT: Is there a quiet place to study?
+FATIMA: Is there anything else we should know before we leave today?
 
-LIBRARIAN: Absolutely. The upper floors – floors three, four, and five – are designated quiet zones where conversation is not permitted. We also have group study rooms on the third floor – you can book those online in advance if you need to collaborate with classmates. They're soundproof, so you won't disturb others.
-
-STUDENT: Can I use my laptop here to study?
-
-LIBRARIAN: Of course. There's WiFi throughout the building, and you'll find power outlets at most tables. We also have computers available for public use on this floor if you need them. We have both Windows and Mac computers available.
-
-STUDENT: One last thing – are there orientation sessions?
-
-LIBRARIAN: Yes! We run library orientation sessions every Friday at 2 PM. They last about 45 minutes. You'll learn more about our research tools, citation management software like RefWorks, and how to evaluate source credibility. It's highly recommended for all new students, and you'll get helpful tips that really speed up your research.
+MS OKONKWO: One more thing — we run weekly library orientation sessions every Friday at 2 PM, lasting about 45 minutes. We cover research tools, citation management software like RefWorks, and how to assess the credibility of your sources. I'd strongly recommend attending at least once, especially before your first major assignment.
 `;
 
 const section3Type6Test: ListeningTest = {
@@ -1459,7 +1452,7 @@ const section3Type6Test: ListeningTest = {
       id: "s3t6q1",
       section: 3,
       type: "short_answer",
-      text: "What classification system is used to organise books?",
+      text: "What classification system organises the books in the open stacks?",
       answer: ["Dewey Decimal System"],
       order: 1
     },
@@ -1467,16 +1460,16 @@ const section3Type6Test: ListeningTest = {
       id: "s3t6q2",
       section: 3,
       type: "short_answer",
-      text: "What can you search for in the online catalogue?",
-      answer: ["title, author, or subject keywords"],
+      text: "Which student asks how to find a specific book?",
+      answer: ["Bethany"],
       order: 2
     },
     {
       id: "s3t6q3",
       section: 3,
       type: "short_answer",
-      text: "How long will a book from inter-library loan usually take to arrive?",
-      answer: ["about two weeks", "two weeks", "approximately two weeks"],
+      text: "How long does an inter-library loan usually take?",
+      answer: ["about two weeks", "two weeks", "around two weeks"],
       order: 3
     },
     {
@@ -1491,7 +1484,7 @@ const section3Type6Test: ListeningTest = {
       id: "s3t6q5",
       section: 3,
       type: "short_answer",
-      text: "What is the standard loan period for books?",
+      text: "What is the standard loan period for borrowed books?",
       answer: ["four weeks"],
       order: 5
     },
@@ -1499,7 +1492,7 @@ const section3Type6Test: ListeningTest = {
       id: "s3t6q6",
       section: 3,
       type: "short_answer",
-      text: "How much do you pay per day for overdue books?",
+      text: "What is the fine per day for an overdue book?",
       answer: ["50 pence"],
       order: 6
     },
@@ -1507,32 +1500,47 @@ const section3Type6Test: ListeningTest = {
       id: "s3t6q7",
       section: 3,
       type: "short_answer",
-      text: "Which floors are designated as quiet zones?",
-      answer: ["floors three, four, and five", "upper floors", "three, four, and five"],
+      text: "Which floors are designated as quiet study zones?",
+      answer: ["floors three, four, and five", "three, four, and five", "upper floors"],
       order: 7
     },
     {
       id: "s3t6q8",
       section: 3,
-      type: "short_answer",
-      text: "Name one database available for academic research",
-      answer: ["JSTOR", "ScienceDirect", "ProQuest"],
+      type: "multiple_choice",
+      text: "Which student asks about access to academic journal databases?",
+      options: [
+        "A. Bethany",
+        "B. Joel",
+        "C. Fatima"
+      ],
+      answer: ["C"],
       order: 8
     },
     {
       id: "s3t6q9",
       section: 3,
-      type: "short_answer",
-      text: "When are library orientation sessions held?",
-      answer: ["Friday at 2 PM", "every Friday at 2 PM"],
+      type: "multiple_choice",
+      text: "When are the weekly library orientation sessions held?",
+      options: [
+        "A. Every Thursday at 2 PM",
+        "B. Every Friday at 2 PM",
+        "C. Every Monday at 10 AM"
+      ],
+      answer: ["B"],
       order: 9
     },
     {
       id: "s3t6q10",
       section: 3,
-      type: "short_answer",
-      text: "How long does the library orientation session usually last?",
-      answer: ["45 minutes", "about 45 minutes"],
+      type: "multiple_choice",
+      text: "What does Ms Okonkwo say about the group study rooms?",
+      options: [
+        "A. They are available on a first-come, first-served basis only",
+        "B. They must be booked in person at the library desk",
+        "C. They are soundproofed and can be booked online in advance"
+      ],
+      answer: ["C"],
       order: 10
     }
   ]
