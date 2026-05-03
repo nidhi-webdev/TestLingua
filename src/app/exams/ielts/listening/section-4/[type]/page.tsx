@@ -70,7 +70,7 @@ export default function Section4TypePage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (routeType === "type-4" || routeType === "type-5") {
+  if (routeType === "type-4" || routeType === "type-5" || routeType === "type-6") {
     return (
       <div className="min-h-screen bg-[#f8fafc] text-slate-900">
         <Navbar />
@@ -159,7 +159,9 @@ export default function Section4TypePage() {
                     <div className="flex-1 min-w-0">
                       <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">Question Task</p>
                       <h2 className="text-xl font-black text-slate-900 leading-tight truncate">
-                        {routeType === "type-4" ? "Complete the form/notes/table/flow chart" : "Complete the sentences"}
+                        {routeType === "type-4" ? "Complete the form/notes/table/flow chart" : 
+                         routeType === "type-5" ? "Complete the sentences" : 
+                         "Answer the questions"}
                       </h2>
                     </div>
                     {!submitted && <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-[10px] font-black text-slate-500 uppercase tracking-widest shrink-0">{answeredCount}/{totalQuestions} answered</span>}
@@ -169,7 +171,9 @@ export default function Section4TypePage() {
                     <div className="border-2 border-slate-100 rounded-2xl overflow-hidden">
                       <div className="bg-slate-900 px-6 sm:px-8 py-4 flex items-center justify-between">
                         <h3 className="text-white font-black uppercase tracking-widest text-[10px]">
-                          {routeType === "type-4" ? "Form Completion" : "Sentence Completion"}
+                          {routeType === "type-4" ? "Form Completion" : 
+                           routeType === "type-5" ? "Sentence Completion" : 
+                           "Short Answer"}
                         </h3>
                         <span className="text-slate-500 text-[9px] font-bold tracking-widest">OFFICIAL PRACTICE</span>
                       </div>
@@ -224,7 +228,10 @@ export default function Section4TypePage() {
                 <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-lg shadow-slate-200/30">
                   <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-5 flex items-center gap-2"><Sparkles className="w-3.5 h-3.5 text-blue-500" /> Exam Tips</h3>
                   <ul className="space-y-4">
-                    {["Follow word limits exactly", "Check your spelling carefully", "Write exactly what you hear", "Audio plays only once"].map((text, i) => (
+                    {(routeType === "type-6" ? 
+                      ["Write no more than the stated word limit", "Use words exactly as you hear them", "Check your spelling", "Audio plays only once"] :
+                      ["Follow word limits exactly", "Check your spelling carefully", "Write exactly what you hear", "Audio plays only once"]
+                    ).map((text, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm font-medium text-slate-600 leading-snug"><div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0" />{text}</li>
                     ))}
                   </ul>
