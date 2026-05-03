@@ -19,9 +19,8 @@ export default function TestClient({ test, previousResult }: TestClientProps) {
   const [timeLeft, setTimeLeft] = useState(20 * 60); // 20 minutes in seconds
   const [timerActive, setTimerActive] = useState(!previousResult);
   
-  // Determine if this is a Section 2 test (ID ends with -2)
-  const isSection2 = test.id.endsWith('-2');
-  const sectionLink = isSection2 ? '/exams/ielts/reading/section-2' : '/exams/ielts/reading/section-1';
+  // Determine section from test data to navigate back correctly
+  const sectionLink = `/exams/ielts/reading/section-${test.section || 1}`;
 
   useEffect(() => {
     let timer: any;
